@@ -2,6 +2,82 @@ import { TimelineEntryProps } from "@/interfaces";
 
 export default [
   {
+    title: "Q2 2025",
+    content: {
+      status: "ongoing",
+      output: "I started to feel senior.",
+      role: "Entrepreneur",
+      title: "modulith.app",
+      usedTechs: [
+        "React",
+        "TailwindCSS",
+        "TypeScript",
+        "Motion",
+        "Nextjs",
+        "Supabase",
+        "Redux",
+        "PostgreSQL",
+      ],
+      desc: "Modulith is a fullstack, real-time SaaS portal framework designed to power industry-specific digital platforms with customizable functionality. It enables agencies to build, bundle, and deploy client-facing apps using a modular system of feature kits, each composed of smart, reusable components.",
+      githubLink: "https://github.com/Masculinn/modulith",
+      link: "https://modulith.app/",
+      images: [
+        "/assets/timeline/modulith/modulith.webp",
+        "/assets/timeline/modulith/modulith2.webp",
+        "/assets/timeline/modulith/modulith3.webp",
+        "/assets/timeline/modulith/modulith4.webp",
+      ],
+    },
+  },
+  {
+    title: "Q2 2025",
+    content: {
+      status: "done",
+      title: "izisarcheologia.com",
+      output:
+        "Consider reminding yourself about each added file into node_modules folder. After you might need 3 days to refactor bundle size and optimize it...",
+      role: "Software developer",
+      usedTechs: [
+        "React",
+        "TailwindCSS",
+        "TypeScript",
+        "Motion",
+        "Nextjs",
+        "Supabase",
+        "Redux",
+      ],
+      desc: "A full-stack archeology web app covering end-to-end cutting-edge enterprise development featuring; 25 years company portfolio, media presses, project areas as well as visual excavational fields with mapbox renderers",
+      githubLink: "https://github.com/Masculinn/izis",
+      link: "https://izisarcheologia.netlify.app/",
+      images: [
+        "/assets/timeline/izis/izis.webp",
+        "/assets/timeline/izis/izis2.webp",
+        "/assets/timeline/izis/izis3.webp",
+        "/assets/timeline/izis/izis4.webp",
+      ],
+    },
+  },
+  {
+    title: "Q2 2025",
+    content: {
+      status: "done",
+      title: "ovensandwich.com",
+      output:
+        "Be careful when you are adjusting the background color — whatever you picked can cause cross-browser compatibility issues mistakenly.",
+      role: "Software developer",
+      usedTechs: ["React", "TailwindCSS", "TypeScript", "Motion", "Nextjs"],
+      desc: "A restaurant SPA contains various information about the restaurant, menu, and contact details. Classic freelance SPA project.",
+      githubLink: "https://github.com/Masculinn/ovensandwich",
+      link: "https://ovensandwich.netlify.app/",
+      images: [
+        "/assets/timeline/ovensandwich/ovensandwich.webp",
+        "/assets/timeline/ovensandwich/ovensandwich2.webp",
+        "/assets/timeline/ovensandwich/ovensandwich3.webp",
+        "/assets/timeline/ovensandwich/ovensandwich4.webp",
+      ],
+    },
+  },
+  {
     title: "Q1 2025",
     content: {
       status: "done",

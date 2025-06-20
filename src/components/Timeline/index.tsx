@@ -1,6 +1,6 @@
 import { TimelineEntryProps } from "@/interfaces";
 import { useScroll, useTransform, motion } from "motion/react";
-import React, { FC, useEffect, useRef, useState } from "react";
+import React, { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { TimelineItem } from "./TimelineItem";
 import MotionContainer from "../MotionProvider/motion-container";
 
@@ -9,7 +9,7 @@ export const Timeline: FC<{ data: TimelineEntryProps[] }> = ({ data }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [height, setHeight] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (ref.current) {
       const rect = ref.current.getBoundingClientRect();
       setHeight(rect.height);
@@ -72,9 +72,9 @@ export const Timeline: FC<{ data: TimelineEntryProps[] }> = ({ data }) => {
         ))}
         <div
           style={{
-            height: height + "px",
+            height: height * 4 + "px",
           }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))]  from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-purple-500 via-pink-500 to-blue-500 from-[30%] via-[40%] to-[30%] mask-image:linear-gradient(to-bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
         >
           <motion.div
             style={{

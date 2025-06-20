@@ -3,8 +3,8 @@ import Head from "next/head";
 import { Info } from "lucide-react";
 import { Timeline } from "@/components/Timeline";
 import timelineConfig from "@/lib/timeline.config";
-import MotionContainer from "@/components/MotionProvider/motion-container";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { motion as m } from "motion/react";
 
 export default function Home() {
   return (
@@ -34,29 +34,23 @@ export default function Home() {
         <meta property="og:url" content="https://burakdev.com/" />
         <meta property="og:site_name" content="burakdev" />
       </Head>
-      <MotionContainer
-        elementType="div"
-        duration={1}
-        transition="easeOut"
-        mode={["filterBlurIn", "fadeIn"]}
-        className="overflow-hidden"
-        configView={{ once: true, amount: 0.5 }}
+
+      <m.h2
+        initial={{ y: 20, filter: "blur(5px)" }}
+        animate={{ y: 0, filter: "blur(0px)" }}
+        transition={{ duration: 0.5, ease: "easeInOut" }}
+        className="lg:text-6xl text-5xl text-start font-extrabold tracking-tighter line-clamp-5 text-clip overflow-clip"
       >
-        <h2 className="lg:text-6xl text-5xl text-start font-extrabold tracking-tighter line-clamp-5 text-clip overflow-clip">
-          Hey there 👋
-        </h2>
-      </MotionContainer>
+        Hey there 👋
+      </m.h2>
       <p className="text-start leading-relaxed lg:pt-8 pt-6">
-        Here is a little bit about me. I'm a results-driven Full-Stack Mid-Level
-        Application Engineer with 5+ years of experience specializing in
-        frontend & backend development, particularly with the techs shown below.
-        I'm passionate about crafting responsive, high-performing, and
-        user-friendly web applications and services. I'm proficient in
-        translating client needs into innovative technical solutions, optimizing
-        for performance, and ensuring seamless cross-browser compatibility while
-        maintaining scalability. I chose to pursue independent learning and
-        professional development after graduating from my Computer Engineering
-        degree program at Managerial Academy of Applied Sciences in Warsaw
+        Full-stack software engineer — over 5 years of experience in the agile
+        industries, specializing in creating responsive and high-performing web
+        applications using modern web technologies mainly Next.js. Adept at
+        translating client requirements into innovative technical solutions,
+        optimizing application performance, and ensuring seamless cross-browser
+        compatibility. Dedicated to delivering clean, type-safe, efficient code
+        and exceptional user experiences that align with business goals.
       </p>
 
       <Alert className="animate-in fade-in-0 duration-500 mt-4 p-4">
