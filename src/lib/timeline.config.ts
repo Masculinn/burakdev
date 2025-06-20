@@ -21,12 +21,6 @@ export default [
       desc: "Modulith is a fullstack, real-time SaaS portal framework designed to power industry-specific digital platforms with customizable functionality. It enables agencies to build, bundle, and deploy client-facing apps using a modular system of feature kits, each composed of smart, reusable components.",
       githubLink: "https://github.com/Masculinn/modulith",
       link: "https://modulith.app/",
-      images: [
-        "/assets/timeline/modulith/modulith.webp",
-        "/assets/timeline/modulith/modulith2.webp",
-        "/assets/timeline/modulith/modulith3.webp",
-        "/assets/timeline/modulith/modulith4.webp",
-      ],
     },
   },
   {

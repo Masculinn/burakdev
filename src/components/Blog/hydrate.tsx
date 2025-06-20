@@ -24,7 +24,7 @@ const Hydrate: FC<BlogPageProps> = ({ source, frontMatter }) => {
     level,
   } = frontMatter;
 
-  const SESSION_NO = `JUSTCODESESSION00${id.toString()}`;
+  const SESSION_NO = `#JUSTCODESESSION00${id.toString()}`;
   const appTheme = useSelector(
     (state: { theme: ReduxThemeProps }) => state.theme
   );
@@ -55,7 +55,7 @@ const Hydrate: FC<BlogPageProps> = ({ source, frontMatter }) => {
             className="mt-4 lg:mt-0 max-h-max min-h-60 "
             duration={1}
           />
-          <ul className="absolute bottom-4 left-4 flex gap-2 flex-row">
+          <ul className="absolute bottom-4 left-4 md:flex hidden gap-2 flex-row">
             {tags.map((val, idx) => (
               <MotionContainer
                 key={idx}
@@ -69,11 +69,8 @@ const Hydrate: FC<BlogPageProps> = ({ source, frontMatter }) => {
               />
             ))}
           </ul>
-          <div className="absolute top-4 right-4 flex gap-1 flex-wrap text-muted-foreground font-mono font-light text-xs">
-            <span>#</span>
-            <div className="flex flex-wrap gap-2">
-              <SessionText text={SESSION_NO} />
-            </div>
+          <div className="absolute top-4 right-4  text-muted-foreground font-mono font-light text-xs">
+            <SessionText text={SESSION_NO} />
           </div>
           <div className="absolute font-mono text-muted-foreground text-xs top-4 left-4 flex gap-2 items-center justify-center">
             <Ping {...levelConfig} />

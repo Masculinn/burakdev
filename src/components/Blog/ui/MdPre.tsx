@@ -1,4 +1,4 @@
-import CodeProvider from "@/components/Documentation/code-provider";
+import CodeProvider from "@/components/code-provider";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ReduxThemeProps } from "@/interfaces";
 import extractTextFromReactNode from "@/utils/extractTextFromReactNode";

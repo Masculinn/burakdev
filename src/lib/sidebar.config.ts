@@ -15,7 +15,7 @@ export const sidebarConfig: SidebarProps = {
   user: {
     name: "Burak Bilen",
     email: "hello@burakdev.com",
-    avatar: "/me.jpg",
+    avatar: "/burak-bilen.webp",
   },
   navMain: [
     {

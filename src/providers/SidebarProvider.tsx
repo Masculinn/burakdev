@@ -48,7 +48,7 @@ const SidebarProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
             />
           </div>
         </header>
-        <AppContainer>{children as React.ReactNode}</AppContainer>
+        <AppContainer>{children}</AppContainer>
       </SidebarInset>
     </SidebarComponentProvider>
   );

@@ -9,8 +9,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Check, Copy } from "lucide-react";
 import copyCode from "@/utils/copyCode";
-import MotionContainer from "../MotionProvider/motion-container";
 import { Badge } from "@/components/ui/badge";
+import MotionContainer from "./MotionProvider/motion-container";
 
 const CodeProvider: FC<CodeProviderProps> = ({
   code,

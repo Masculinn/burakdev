@@ -2,7 +2,6 @@ import { ComponentBannerCardProps } from "@/interfaces";
 import { cn } from "@/lib/utils";
 import { FC, useMemo } from "react";
 import { Skeleton } from "./ui/skeleton";
-import MotionContainer from "./MotionProvider/motion-container";
 import MotionImage from "./MotionProvider/motion-image";
 
 export const BannerCard: FC<ComponentBannerCardProps> = ({
@@ -16,8 +15,6 @@ export const BannerCard: FC<ComponentBannerCardProps> = ({
   imageAnimationDuration = 1,
   delayLogic = "chaotic",
   animations = ["fadeIn"],
-  duration,
-  delayed,
 }) => {
   const appTheme = useMemo(() => theme, [theme]);
 
@@ -46,28 +43,12 @@ export const BannerCard: FC<ComponentBannerCardProps> = ({
         totalDelay={0.5}
         wrapperClassName="w-full h-full absolute rounded-xl"
       />
-      <MotionContainer
-        configView={{ once: true, amount: 0.5 }}
-        elementType={"h1"}
-        mode={["filterBlurIn", "fadeIn"]}
-        duration={duration ?? 1}
-        delay={delayed ?? 0}
-        className="text-2xl lg:text-4xl font-bold tracking-tight text-center"
-        transition="smooth"
-        children={title}
-      />
 
-      <MotionContainer
-        configView={{ once: true, amount: 0.5 }}
-        elementType={"div"}
-        mode={["filterBlurIn", "fadeIn"]}
-        className="overflow-hidden"
-        transition="delayedSmooth"
-        delay={delayed ? Math.sqrt(delayed) : 0}
-        duration={duration ?? 1}
-      >
-        <p className="lg:text-sm text-xs">{description}</p>
-      </MotionContainer>
+      <h1 className="text-2xl lg:text-4xl font-bold tracking-tight text-center z-20">
+        {title}
+      </h1>
+
+      <p className="lg:text-sm z-20 text-xs lg:flex hidden">{description}</p>
     </div>
   );
 };

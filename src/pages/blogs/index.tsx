@@ -182,7 +182,7 @@ interface MagazineHeaderProps {
   handlePopup: () => void;
 }
 
-const title = "Welcome To My Kitchen.".split(/\s+/);
+const title = "justcode_sessions".split(/\s+/);
 const tagLoading = Array.from({ length: 6 }).map((_, idx) => (
   <Skeleton className="h-8 w-24" key={idx} />
 ));
@@ -215,14 +215,12 @@ const MagazineHeader = ({
               isDynamicallyQueued
               children={title}
               delayLogic="linear"
-              className="text-4xl md:text-5xl font-bold tracking-tight"
+              className="text-4xl md:text-5xl tracking-tight font-mono"
               duration={0.5}
             />
           </div>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            Prepare yourself for a culinary adventure! You will find yourself
-            surrounded by everything related with a purpose that touches to any
-            way of building better web.
+            I write sometimes.
           </p>
         </div>
       </div>

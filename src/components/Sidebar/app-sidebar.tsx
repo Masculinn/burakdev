@@ -8,7 +8,6 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { sidebarConfig } from "@/lib/sidebar.config";
-import { NavProjects } from "./nav-projects";
 import { NavSocials } from "./nav-socials";
 
 export default function AppSidebar({
@@ -22,12 +21,6 @@ export default function AppSidebar({
       <SidebarContent>
         <NavMain items={sidebarConfig.navMain} title="Platform" />
         <NavMain items={sidebarConfig.blogs} title="My Blogs" />
-        <NavMain items={sidebarConfig.motionProvider} title="Motion Provider" />
-        <NavProjects
-          projects={sidebarConfig.projects}
-          title="Motion Projects"
-          isMore
-        />
         <NavSocials socials={sidebarConfig.socials} title="Socials" />
       </SidebarContent>
       <SidebarRail />

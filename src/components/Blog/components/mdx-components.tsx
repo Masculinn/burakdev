@@ -38,7 +38,7 @@ export const MdxComponents = {
     <MdHeading as="h5" size="xs" className="my-4" {...props} />
   ),
   p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <MdParagraph className="my-8" {...props} />
+    <MdParagraph {...props} />
   ),
   a: (props: AnchorProps) => <MdLink {...props} />,
   code: (props: React.HTMLAttributes<HTMLElement>) => <MdCode {...props} />,
@@ -75,5 +75,8 @@ export const MdxComponents = {
   ),
   hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
     <MdHr className="my-24" {...props} />
+  ),
+  strong: (props: React.HTMLAttributes<HTMLElement>) => (
+    <strong className="font-semibold" {...props} />
   ),
 };
