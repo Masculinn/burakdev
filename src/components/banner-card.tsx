@@ -48,7 +48,9 @@ export const BannerCard: FC<ComponentBannerCardProps> = ({
         {title}
       </h1>
 
-      <p className="lg:text-sm z-20 text-xs lg:flex hidden">{description}</p>
+      <p className="lg:text-sm z-20 text-xs lg:flex hidden lg:max-w-lg">
+        {description}
+      </p>
     </div>
   );
 };

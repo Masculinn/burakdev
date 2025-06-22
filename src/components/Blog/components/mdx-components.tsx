@@ -73,10 +73,11 @@ export const MdxComponents = {
   td: (props: React.TdHTMLAttributes<HTMLTableCellElement>) => (
     <MdTd {...props} />
   ),
-  hr: (props: React.HTMLAttributes<HTMLHRElement>) => (
-    <MdHr className="my-24" {...props} />
-  ),
+  hr: (props: React.HTMLAttributes<HTMLHRElement>) => <MdHr {...props} />,
   strong: (props: React.HTMLAttributes<HTMLElement>) => (
     <strong className="font-semibold" {...props} />
+  ),
+  center: (props: React.HTMLAttributes<HTMLElement>) => (
+    <center className="-mt-8" />
   ),
 };

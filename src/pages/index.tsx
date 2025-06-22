@@ -30,7 +30,10 @@ export default function Home() {
         frontend & backend development"
         />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://burakdev.com/me.jpg" />
+        <meta
+          property="og:image"
+          content="https://burakdev.com/burak-bilen.webp"
+        />
         <meta property="og:url" content="https://burakdev.com/" />
         <meta property="og:site_name" content="burakdev" />
       </Head>

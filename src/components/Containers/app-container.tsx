@@ -19,7 +19,7 @@ export const AppContainer: FC<AppContainterProps> = ({ children }) => {
         ref={ref}
         className="w-full h-screen overflow-y-scroll dark:text-white text-black relative"
       >
-        <div className="w-full lg:max-w-4xl max-w-xs md:max mx-auto h-full pt-8 relative">
+        <div className="w-full lg:max-w-4xl max-w-[20.4rem]  mx-auto h-full pt-8 relative">
           {children as React.ReactNode}
           <div className="pb-24 w-24 h-12" />
         </div>
