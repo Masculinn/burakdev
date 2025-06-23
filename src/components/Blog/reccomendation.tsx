@@ -25,22 +25,29 @@ const getAnimation = ({
 
 const title = "Continue with Trends.".split(/\s+/);
 const Reccomendation: FC = () => {
-  const currentPost = useSelector((state: { blog: BlogPost }) => state.blog);
+  const { id: currentPostID } = useSelector(
+    (state: { blog: BlogPost }) => state.blog
+  );
   const theme = useSelector((state: { theme: ReduxThemeProps }) => state.theme);
-  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [posts, setPosts] = useState<BlogPost[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const { data, error } = await db.from("blog_posts").select("*");
+        const { data, error } = await db
+          .from("blog_posts")
+          .select("*")
+          .order("view", { ascending: false })
+          .limit(3);
+
         if (error) throw error;
         if (data) {
-          const filteredPost = data.filter(
-            (post) => post.id !== currentPost.id
+          const filteredPosts = data.filter(
+            (post) => post.id !== currentPostID
           );
-          setPosts(filteredPost.slice(0, 3));
+          setPosts(filteredPosts);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -48,10 +55,10 @@ const Reccomendation: FC = () => {
         setLoading(false);
       }
     };
-    if (posts.length === 0) fetchData();
+    if (!posts) fetchData();
   }, []);
 
-  if (loading) {
+  if (loading || !posts) {
     return (
       <div className="w-full py-20  items-center justify-center flex lg:flex-row flex-col gap-2">
         {Array.from({ length: 3 }).map((_, i) => (
@@ -60,6 +67,7 @@ const Reccomendation: FC = () => {
       </div>
     );
   }
+  if (posts.length === 0) return null;
   return (
     <div className={cn("w-full py-20", theme)}>
       <div className="container mx-auto flex flex-col gap-14">
@@ -83,7 +91,7 @@ const Reccomendation: FC = () => {
           </div>
           <Link href="/blogs">
             <Button className="gap-4" variant="ghost">
-              Explore the Journal <MoveRight className="w-4 h-4" />
+              Continue with Trends <MoveRight className="w-4 h-4" />
             </Button>
           </Link>
         </div>

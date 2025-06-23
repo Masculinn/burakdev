@@ -35,15 +35,15 @@ export const BannerCard: FC<ComponentBannerCardProps> = ({
         }
         imageUrl={src}
         pieces={144}
-        fallback={<Skeleton className="w-full h-full absolute" />}
+        fallback={<Skeleton className="size-full absolute" />}
         animationDuration={imageAnimationDuration}
         transition={transition}
         delayLogic={delayLogic}
         isDynamicallyQueued
         totalDelay={0.5}
-        wrapperClassName="w-full h-full absolute rounded-xl"
+        wrapperClassName="size-full absolute rounded-xl object-contain inset-0"
       />
-
+      <div className="inset-0 absolute bg-gradient-to-t from-stone-900/60 to-stone-900/0" />
       <h1 className="text-2xl lg:text-4xl font-bold tracking-tight text-center z-20">
         {title}
       </h1>

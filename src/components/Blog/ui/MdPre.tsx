@@ -22,7 +22,7 @@ export const MdPre: FC<React.HTMLAttributes<HTMLPreElement>> = ({
       code={code}
       appTheme={theme}
       bordered
-      wrapperStyle="h-auto max-h-max"
+      wrapperStyle="h-auto max-h-max my-6"
       fontSize={font}
       lang={props.lang}
       rounded

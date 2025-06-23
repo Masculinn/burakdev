@@ -16,7 +16,7 @@ export const MdBlockquote: FC<React.HTMLAttributes<HTMLQuoteElement>> = ({
       <Alert>
         <AlertTitle className="font-bold lg:text-xl text-lg text-primary flex flex-row-reverse gap-2 justify-between">
           <Info />
-          <span>Burak Says,</span>
+          <span>Note</span>
         </AlertTitle>
         <AlertDescription className="text-muted-foreground text-sm flex flex-wrap gap-1 -ml-1 my-2">
           <MotionQueue

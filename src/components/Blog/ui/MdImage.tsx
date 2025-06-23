@@ -8,7 +8,7 @@ export const MdImage: FC<
     height={600}
     width={1200}
     alt={alt}
-    className={`${className} h-60 w-auto  object-contain mx-auto lg:mt-8 mt-2 lg:mb-2`}
+    className={`${className} w-full lg:h-96 h-auto  object-contain mx-auto lg:my-8 my-4`}
     src={src}
     {...props}
   />
