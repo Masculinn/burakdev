@@ -134,7 +134,6 @@ export default function Blogs() {
       >
         <SearchBar handleChange={setSearch} value={search} />
       </MagazineHeader>
-      <ContainerDelayedRotateIn />
       <div className="w-full h-auto grid lg:grid-cols-2 grid-cols-1 lg:my-8 my-4 gap-4">
         {loading
           ? renderLoading
