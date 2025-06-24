@@ -20,3 +20,6 @@ export interface MdImageOptions {
   fn?: ImageMotionFnTypes;
   animations?: AnimationKeys[];
 }
+export interface SubscribeProps {
+  className?: string;
+}

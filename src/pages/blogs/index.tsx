@@ -21,6 +21,7 @@ import Newsletter from "@/components/Blog/newsletter";
 import Link from "next/link";
 import MotionQueue from "@/components/MotionProvider/motion-queue";
 import { AnimationQueueAnimationProps } from "@/components/MotionProvider/types";
+import ContainerDelayedRotateIn from "@/components/Experiments/container-delayed-rotate-in";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
@@ -133,6 +134,7 @@ export default function Blogs() {
       >
         <SearchBar handleChange={setSearch} value={search} />
       </MagazineHeader>
+      <ContainerDelayedRotateIn />
       <div className="w-full h-auto grid lg:grid-cols-2 grid-cols-1 lg:my-8 my-4 gap-4">
         {loading
           ? renderLoading

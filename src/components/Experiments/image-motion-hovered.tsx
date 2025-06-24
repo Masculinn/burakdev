@@ -1,12 +1,11 @@
 import { Skeleton } from "../ui/skeleton";
-import { CodeBadge } from "../Documentation/code-badge";
 import MotionImage from "../MotionProvider/motion-image";
 
 const ImageMotionHovered = () => {
   return (
     <div className="relative flex items-center justify-center w-full h-full top-0 left-0">
       <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-        <CodeBadge code="Hover Me!" />
+        <button>Hover Me!</button>
       </div>
       <MotionImage
         isDynamicallyQueued

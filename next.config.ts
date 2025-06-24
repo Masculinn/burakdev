@@ -5,6 +5,10 @@ const withTm = require("next-transpile-modules")([
   "react-syntax-highlighter",
 ]);
 
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
+
 const nextConfig: NextConfig = withTm({
   output: "export",
   transpilePackages: ["next-mdx-remote"],
@@ -42,4 +46,4 @@ const nextConfig: NextConfig = withTm({
   trailingSlash: true,
 });
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

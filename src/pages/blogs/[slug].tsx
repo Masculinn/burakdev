@@ -11,9 +11,15 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setBlog } from "@/redux/slices/blogSlice";
 import Reccomendation from "@/components/Blog/reccomendation";
+import { Button } from "@/components/ui/button";
+import { Rss } from "lucide-react";
+import BuyMeCoffee from "@/components/ui/buy-me-coffee";
+import Newsletter from "@/components/Blog/newsletter";
+import { Subscribe } from "@/components/Blog/Subscribe";
 
 const BlogPage: NextPage<BlogPageProps> = ({ source, frontMatter }) => {
   const publishedDate = new Date(frontMatter.published_at).toLocaleDateString();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -51,6 +57,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ source, frontMatter }) => {
         />
         <Hydrate frontMatter={frontMatter} source={source} />
       </main>
+      <Subscribe />
       <Reccomendation />
     </>
   );

@@ -139,7 +139,7 @@ export const sidebarConfig: SidebarProps = {
     },
     {
       title: "X",
-      url: "https://x.com/masculinnnnn",
+      url: "https://x.com/devvburak",
       icon: FaX,
     },
     {
