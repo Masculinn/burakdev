@@ -26,6 +26,32 @@ export default [
   {
     title: "Q2 2025",
     content: {
+      images: [
+        "/assets/timeline/beyazkose/gif-beyaz-kose.gif",
+        "/assets/timeline/beyazkose/beyaz-kose-patiserrie-landing.png",
+      ],
+      output:
+        "I discovered my intuitive ability to create and maintain React components with ease .",
+      role: "Software engineer",
+      status: "done",
+      title: "beyazkose.com",
+      usedTechs: [
+        "React",
+        "TailwindCSS",
+        "TypeScript",
+        "Motion",
+        "Nextjs",
+        "Supabase",
+        "Redux",
+      ],
+      desc: "A patisserie mobile menu web project aims at creating design and developing the interface of the products by listing and categorizing them throughout the scope of the MVP",
+      githubLink: "https://github.com/Masculinn/qr-menu-restaurant-app",
+      link: "https://beyazkosepatisserie.netlify.app/",
+    },
+  },
+  {
+    title: "Q2 2025",
+    content: {
       status: "done",
       title: "izisarcheologia.com",
       output:
