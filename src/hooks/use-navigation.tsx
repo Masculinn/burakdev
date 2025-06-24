@@ -1,5 +1,4 @@
 import { BlogPost, UseNavigationProps } from "@/interfaces";
-import _ from "lodash";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -17,7 +16,7 @@ export const useNavigation = () => {
     (state: { blog: Omit<BlogPost, "content"> }) => state.blog
   );
   const paths = pathname.split("/");
-  const filteredPaths = paths.filter((val) => !_.isEmpty(val));
+  const filteredPaths = paths.filter((val) => val !== "");
   const pureName = filteredPaths.map((val) => val.split("-").join(" "));
   const removeChildSlash = pureName[1];
   const removeParentSlash = pureName[0];

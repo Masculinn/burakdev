@@ -1,4 +1,3 @@
-import { isArray } from "lodash";
 import React from "react";
 
 export default function extractTextFromReactNode(
@@ -7,7 +6,7 @@ export default function extractTextFromReactNode(
   if (typeof node === "string" || typeof node === "number")
     return node.toString();
 
-  if (isArray(node)) {
+  if (Array.isArray(node)) {
     return node.map(extractTextFromReactNode).join("");
   }
 

@@ -1,7 +1,6 @@
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ReduxThemeProps } from "@/interfaces";
 import extractTextFromReactNode from "@/utils/extractTextFromReactNode";
-import _ from "lodash";
 import { FC } from "react";
 import { useSelector } from "react-redux";
 import dynamic from "next/dynamic";
@@ -19,7 +18,7 @@ export const MdPre: FC<React.HTMLAttributes<HTMLPreElement>> = ({
   const theme = useSelector((state: { theme: ReduxThemeProps }) => state.theme);
   const code = extractTextFromReactNode(props.children).trim();
 
-  if (_.isEmpty(code)) return null;
+  if (code === "" || !code) return null;
 
   return (
     <CodeProvider
