@@ -81,7 +81,7 @@ const Hydrate: FC<BlogPageProps> = ({ source, frontMatter }) => {
           </span>
         </div>
         <aside className="sticky top-0 py-4 w-full max-h-max mt-2 flex items-center justify-between">
-          <Actions blog_id={id} like={like} view={view} />
+          {/* <Actions blog_id={id} like={like} view={view} /> */}
           <Socials />
         </aside>
       </header>
