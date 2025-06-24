@@ -1,16 +1,19 @@
 import { CodeProviderProps } from "@/interfaces";
 import { FC, memo, useState } from "react";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import {
-  a11yDark,
-  a11yLight,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
+import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import ts from "react-syntax-highlighter/dist/esm/languages/hljs/typescript";
+import js from "react-syntax-highlighter/dist/esm/languages/hljs/javascript";
+import a11yDark from "react-syntax-highlighter/dist/esm/styles/hljs/a11y-dark";
+import a11yLight from "react-syntax-highlighter/dist/esm/styles/hljs/a11y-light";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Check, Copy } from "lucide-react";
 import copyCode from "@/utils/copyCode";
 import { Badge } from "@/components/ui/badge";
 import MotionContainer from "./MotionProvider/motion-container";
+
+SyntaxHighlighter.registerLanguage("typescript", ts);
+SyntaxHighlighter.registerLanguage("javascript", js);
 
 const CodeProvider: FC<CodeProviderProps> = ({
   code,

@@ -44,6 +44,10 @@ const nextConfig: NextConfig = withTm({
     unoptimized: true,
   },
   trailingSlash: true,
+  bundlePagesRouterDependencies: true,
+  experimental: {
+    optimizePackageImports: ["lucide-react", "react-icons", "justd-icons"],
+  },
 });
 
 export default withBundleAnalyzer(nextConfig);

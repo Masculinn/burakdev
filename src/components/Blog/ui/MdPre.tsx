@@ -1,10 +1,14 @@
-import CodeProvider from "@/components/code-provider";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ReduxThemeProps } from "@/interfaces";
 import extractTextFromReactNode from "@/utils/extractTextFromReactNode";
 import _ from "lodash";
 import { FC } from "react";
 import { useSelector } from "react-redux";
+import dynamic from "next/dynamic";
+
+const CodeProvider = dynamic(() => import("@/components/code-provider"), {
+  ssr: false,
+});
 
 export const MdPre: FC<React.HTMLAttributes<HTMLPreElement>> = ({
   className,
