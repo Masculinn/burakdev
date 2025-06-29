@@ -1,49 +1,54 @@
+"use client";
+
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CircleX, Loader2 } from "lucide-react";
 import MotionQueue from "../MotionProvider/motion-queue";
 import { AnimationQueueAnimationProps } from "../MotionProvider/types";
-import { useState } from "react";
 import { db } from "@/db";
 import { toast } from "sonner";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 const title = "Stop Wasting Time. Get Code That Matters.".split(/\s+/);
 
+// ✅ Zod schema for email validation
+const newsletterSchema = z.object({
+  email: z.string().email("Please enter a valid email address."),
+});
+
+type NewsletterFormData = z.infer<typeof newsletterSchema>;
+
 const Newsletter = ({ onClose }: { onClose: () => void }) => {
-  const [email, setEmail] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<NewsletterFormData>({
+    resolver: zodResolver(newsletterSchema),
+  });
 
-  const isValidEmail = (email: string): boolean => {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  };
-
-  const handleSubscribe = async () => {
+  const onSubmit = async (data: NewsletterFormData) => {
     let res;
-    setLoading(true);
-
-    if (!isValidEmail(email)) {
-      toast("Please enter a valid email address.");
-      setLoading(false);
-      return;
-    }
-
     try {
-      const { error: dbError } = await db.from("users").insert({ email });
+      const { error: dbError } = await db
+        .from("users")
+        .insert({ email: data.email });
       if (dbError) {
         console.error("Error subscribing:", dbError);
         res = "There was an error subscribing. Please try again later.";
       } else {
         res = "Success! Now you will get #justcodesession updates.";
         onClose();
-        setEmail("");
+        reset();
       }
     } catch (err) {
       console.error("Unexpected error subscribing:", err);
       res = "There was an unexpected error. Please try again later.";
     } finally {
-      setLoading(false);
       toast(res);
-      return;
     }
   };
 
@@ -84,30 +89,37 @@ const Newsletter = ({ onClose }: { onClose: () => void }) => {
           <span className="font-bold">Totally free-forever.</span>
         </p>
 
-        <div className="text-center mx-auto mb-12 max-w-lg px-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="text-center mx-auto mb-12 max-w-lg px-4"
+        >
           <div className="relative">
             <Input
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              {...register("email")}
               type="email"
               placeholder="Type your email"
-              className="h-12 bg-white text-black border-none"
+              className="h-12 bg-white text-black hidden"
             />
             <Button
               size="sm"
-              onClick={handleSubscribe}
-              className="absolute  top-[6px] right-1 "
+              type="submit"
+              className="absolute top-[6px] right-1"
               variant={"outline"}
-              disabled={loading}
+              disabled={isSubmitting}
             >
-              {loading ? (
+              {isSubmitting ? (
                 <Loader2 className="animate-spin" />
               ) : (
                 "Subscribe Emails"
               )}
             </Button>
           </div>
-        </div>
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-2 text-left">
+              {errors.email.message}
+            </p>
+          )}
+        </form>
       </div>
     </div>
   );
