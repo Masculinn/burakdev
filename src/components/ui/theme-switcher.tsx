@@ -1,6 +1,6 @@
+import React, { FC } from "react";
 import { ThemeSwitcherButtonProps } from "@/interfaces";
 import { cn } from "@/lib/utils";
-import React, { FC } from "react";
 
 const ThemeSwitcher: FC<ThemeSwitcherButtonProps> = (props) => {
   const { onChange, theme, classname } = props;

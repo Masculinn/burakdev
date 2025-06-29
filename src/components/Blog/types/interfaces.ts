@@ -23,3 +23,14 @@ export interface MdImageOptions {
 export interface SubscribeProps {
   className?: string;
 }
+
+export interface MagazineHeaderProps {
+  children: React.ReactNode;
+  selectedTag: string;
+  onTagSelect: (tag: string) => void;
+  tags: string[];
+  sortBy: string;
+  loading: boolean;
+  onSortChange: (sort: string) => void;
+  handlePopup: () => void;
+}

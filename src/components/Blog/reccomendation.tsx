@@ -23,11 +23,9 @@ const getAnimation = ({
   }) as AnimationQueueAnimationProps[];
 };
 
-const title = "Continue with Trends.".split(/\s+/);
-const Reccomendation: FC = () => {
-  const { id: currentPostID } = useSelector(
-    (state: { blog: BlogPost }) => state.blog
-  );
+const title = "Continue reading.".split(/\s+/);
+
+const Reccomendation: FC<{ id: BlogPost["id"] }> = ({ id: currentPostID }) => {
   const theme = useSelector((state: { theme: ReduxThemeProps }) => state.theme);
   const [posts, setPosts] = useState<BlogPost[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -39,15 +37,15 @@ const Reccomendation: FC = () => {
         const { data, error } = await db
           .from("blog_posts")
           .select("*")
-          .order("view", { ascending: false })
-          .limit(3);
+          .limit(3)
+          .order("id", { ascending: false });
 
         if (error) throw error;
         if (data) {
           const filteredPosts = data.filter(
             (post) => post.id !== currentPostID
           );
-          setPosts(filteredPosts);
+          setPosts(data);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -55,6 +53,7 @@ const Reccomendation: FC = () => {
         setLoading(false);
       }
     };
+
     if (!posts) fetchData();
   }, []);
 
@@ -89,11 +88,6 @@ const Reccomendation: FC = () => {
               className="text-3xl lg:text-5xl tracking-tighter text-left font-regular "
             />
           </div>
-          <Link href="/blogs">
-            <Button className="gap-4" variant="ghost">
-              Continue with Trends <MoveRight className="w-4 h-4" />
-            </Button>
-          </Link>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           <MotionQueue
@@ -118,16 +112,16 @@ const Reccomendation: FC = () => {
                   alt="feauture"
                   height={500}
                   width={500}
-                  className="rounded-md aspect-video mb-4"
+                  className="rounded-md aspect-video mb-2"
                 />
                 <h3 className="text-xl tracking-tight group-hover:underline underline-offset-2 ">
                   {val.title}
                 </h3>
-                <p className="text-stone-800 tracking-tighter text-base group-hover:underline underline-offset-2 dark:group-hover:text-stone-400 group-hover:text-black ">
-                  {val.description}
-                </p>
-                <p className="text-stone-800 tracking-tighter text-base">
+                <span className="dark:text-muted-foreground tracking-tighter font-mono my-2">
                   {new Date(val.published_at).toLocaleDateString()}
+                </span>
+                <p className="dark:text-muted-foreground mt-2 tracking-tighter group-hover:underline underline-offset-2 dark:group-hover:text-stone-400 group-hover:text-black ">
+                  {val.description}
                 </p>
               </div>
             ))}

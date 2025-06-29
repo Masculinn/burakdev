@@ -27,8 +27,6 @@ export interface BlogPost {
   level: number;
   content: string;
   tags: string[];
-  like: number;
-  view: number;
   banner_image: string;
   description: string;
   published_at: string;

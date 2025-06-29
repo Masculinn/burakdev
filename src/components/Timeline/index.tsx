@@ -1,13 +1,13 @@
 import { TimelineEntryProps } from "@/interfaces";
-import { useScroll, useTransform, motion } from "motion/react";
-import React, { FC, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useScroll, useTransform, motion as m } from "motion/react";
+import React, { FC, useLayoutEffect, useRef, useState } from "react";
 import { TimelineItem } from "./TimelineItem";
 import MotionContainer from "../MotionProvider/motion-container";
 
 export const Timeline: FC<{ data: TimelineEntryProps[] }> = ({ data }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
+  const ref = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [height, setHeight] = useState<number>(0);
 
   useLayoutEffect(() => {
     if (ref.current) {
@@ -43,13 +43,12 @@ export const Timeline: FC<{ data: TimelineEntryProps[] }> = ({ data }) => {
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-neutral-200 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 p-2" />
+                <div className="h-4 w-4 rounded-full bg-neutral-600 dark:bg-neutral-800 border-2 border-neutral-500 dark:border-neutral-700 p-2" />
               </div>
               <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-500 dark:text-neutral-500 ">
                 {item.title}
               </h3>
             </div>
-
             <div className="relative pl-20 pr-4 md:pl-4 w-full">
               <h3 className="md:hidden block text-2xl lg:mb-4 mb-6 text-left font-bold text-neutral-500 dark:text-neutral-500">
                 {item.title}
@@ -70,20 +69,7 @@ export const Timeline: FC<{ data: TimelineEntryProps[] }> = ({ data }) => {
             </div>
           </div>
         ))}
-        <div
-          style={{
-            height: height * 4 + "px",
-          }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-gradient-to-b from-purple-500 via-pink-500 to-blue-500 from-[30%] via-[40%] to-[30%] mask-image:linear-gradient(to-bottom, transparent 0%, black 10%, black 90%, transparent 100%)"
-        >
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform,
-            }}
-            className="absolute inset-x-0 top-0 w-[2px]  rounded-full "
-          />
-        </div>
+        <div className="h-full absolute md:left-8 left-8 top-12 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-rose-500/50  to-blue-500 via-purple-500" />
       </div>
     </div>
   );

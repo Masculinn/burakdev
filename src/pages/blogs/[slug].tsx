@@ -1,30 +1,17 @@
 import { db } from "@/db";
-import rehypeSlug from "rehype-slug";
-import remarkGfm from "remark-gfm";
-import { serialize } from "next-mdx-remote/serialize";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Hydrate from "@/components/Blog/hydrate";
 import Head from "next/head";
 import Image from "next/image";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
+import Hydrate from "@/components/Blog/hydrate";
+import { serialize } from "next-mdx-remote/serialize";
 import { BlogPageProps } from "@/interfaces";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { setBlog } from "@/redux/slices/blogSlice";
-import Reccomendation from "@/components/Blog/reccomendation";
-import { Button } from "@/components/ui/button";
-import { Rss } from "lucide-react";
-import BuyMeCoffee from "@/components/ui/buy-me-coffee";
-import Newsletter from "@/components/Blog/newsletter";
 import { Subscribe } from "@/components/Blog/Subscribe";
+import Reccomendation from "@/components/Blog/reccomendation";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 
 const BlogPage: NextPage<BlogPageProps> = ({ source, frontMatter }) => {
   const publishedDate = new Date(frontMatter.published_at).toLocaleDateString();
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setBlog(frontMatter));
-  }, [dispatch]);
 
   return (
     <>
@@ -58,7 +45,7 @@ const BlogPage: NextPage<BlogPageProps> = ({ source, frontMatter }) => {
         <Hydrate frontMatter={frontMatter} source={source} />
       </main>
       <Subscribe />
-      <Reccomendation />
+      <Reccomendation id={frontMatter.id} />
     </>
   );
 };
@@ -114,8 +101,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         description: data.description,
         published_at: data.published_at,
         level: data.level,
-        like: data.like,
-        view: data.view,
       },
     },
   };

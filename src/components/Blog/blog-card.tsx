@@ -12,17 +12,8 @@ import { Badge } from "../ui/badge";
 import Ping from "../ui/ping";
 
 const BlogCard: FC<BlogPost> = (props) => {
-  const {
-    banner_image,
-    description,
-    level,
-    like,
-    published_at,
-    slug,
-    tags,
-    title,
-    view,
-  } = props;
+  const { banner_image, description, level, published_at, slug, tags, title } =
+    props;
 
   {
     const publishedDate = new Date(published_at).toLocaleDateString();

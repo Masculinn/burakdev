@@ -2,9 +2,8 @@ import MotionQueue from "@/components/MotionProvider/motion-queue";
 import { AnimationQueueAnimationProps } from "@/components/MotionProvider/types";
 import BuyMeCoffee from "@/components/ui/buy-me-coffee";
 import Link from "next/link";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa6";
-import { FiX } from "react-icons/fi";
 
 interface SocialItem {
   icon: React.ReactNode;
@@ -13,29 +12,33 @@ interface SocialItem {
 
 const socialItems: SocialItem[] = [
   {
-    icon: <FaGithub className="transition-all duration-200 hover:scale-110" />,
+    icon: (
+      <FaGithub className="md:transition-all md:duration-200 md:hover:scale-110 size-5" />
+    ),
     link: "https://github.com/Masculinn",
   },
   {
-    icon: <FiX className="transition-all duration-200 hover:scale-110" />,
-    link: "https://x.com/burak_dev",
+    icon: (
+      <FaTwitter className="md:transition-all md:duration-200 md:hover:scale-110 size-5" />
+    ),
+    link: "https://x.com/devvburak",
   },
   {
     icon: (
-      <FaLinkedin className="transition-all duration-200 hover:scale-110" />
+      <FaLinkedin className="md:transition-all md:duration-200 md:hover:scale-110 size-5" />
     ),
     link: "https://www.linkedin.com/in/burak-bilen-483772227",
   },
   {
     icon: (
-      <FaInstagram className="transition-all duration-200 hover:scale-110" />
+      <FaInstagram className="md:transition-all md:duration-200 md:hover:scale-110 size-5" />
     ),
     link: "https://www.instagram.com/_masculin_/",
   },
 ];
 
 const animations = Array.from({ length: socialItems.length }).fill({
-  mode: ["filterBlurIn", "fadeRight", "burakHeartbeat", "translate3dIn"],
+  mode: ["filterBlurIn", "fadeRight"],
   duration: 0.5,
   reverse: false,
   delay: 0,
@@ -44,7 +47,7 @@ const animations = Array.from({ length: socialItems.length }).fill({
 
 const Socials = () => {
   return (
-    <div className="flex items-center gap-4">
+    <div className="mb-2 flex flex-row items-center justify-start w-full md:gap-4 gap-3">
       <MotionQueue
         animations={animations as AnimationQueueAnimationProps[]}
         elementType="div"
@@ -63,7 +66,7 @@ const Socials = () => {
         isDynamicallyQueued
         key="social-animations"
       />
-      <BuyMeCoffee style="lg:scale-100" justCoffee />
+      <BuyMeCoffee style="lg:scale-100 " justCoffee />
     </div>
   );
 };

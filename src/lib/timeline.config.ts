@@ -5,7 +5,7 @@ export default [
     title: "Q2 2025",
     content: {
       status: "ongoing",
-      output: "I started to feel senior.",
+      output: "I started to feel like a senior engineer.",
       role: "Entrepreneur",
       title: "modulith.app",
       usedTechs: [
@@ -18,9 +18,15 @@ export default [
         "Redux",
         "PostgreSQL",
       ],
-      desc: "Modulith is a fullstack, real-time SaaS portal framework designed to power industry-specific digital platforms with customizable functionality. It enables agencies to build, bundle, and deploy client-facing apps using a modular system of feature kits, each composed of smart, reusable components.",
+      desc: "Modulith is a fullstack, real-time all-in-one portal that designed to empower industry-specific digital platforms with customizable unique module system. It enables everyone to continue business or service without sticking to third parties.",
       githubLink: "https://github.com/Masculinn/modulith",
-      link: "https://modulith.app/",
+      link: undefined,
+      images: [
+        "/assets/timeline/modulith/modulith-2.webp",
+        "/assets/timeline/modulith/modulith-1.webp",
+        "/assets/timeline/modulith/modulith-3.webp",
+        "/assets/timeline/modulith/modulith-4.webp",
+      ],
     },
   },
   {

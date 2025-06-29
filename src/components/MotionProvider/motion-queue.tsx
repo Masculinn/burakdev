@@ -3,12 +3,12 @@ import {
   DelayLogic,
   ViewAnimationControllerProps,
 } from "./types";
-import { Children, FC, memo, useMemo } from "react";
+import { Children, FC, useMemo } from "react";
 import { calculateDelay } from "./utils/calculateDelay";
 import MotionContainer from "./motion-container";
 import { cn } from "@/lib/utils";
 
-const QueueContainer: FC<
+const MotionQueue: FC<
   AnimationQueueProps & {
     delayLogic?: DelayLogic;
     customLogic?: (index: number) => number;
@@ -101,9 +101,5 @@ import dynamic from "next/dynamic";
  * @param {(index: number) => number} [props.customLogic] - Custom function to calculate delay given the element's index.
  * @returns {JSX.Element|null} The rendered queue of animated elements or null if the animations and children arrays have mismatched lengths.
  */
-const MotionQueue = dynamic(
-  () => Promise.resolve(memo(QueueContainer as typeof QueueContainer)),
-  { ssr: false }
-);
 
 export default MotionQueue;

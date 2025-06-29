@@ -9,27 +9,16 @@ import { Badge } from "../ui/badge";
 import Ping from "../ui/ping";
 import SessionText from "./components/SessionText";
 import Socials from "./components/Socials";
-import Actions from "./components/Actions";
 
 const Hydrate: FC<BlogPageProps> = ({ source, frontMatter }) => {
-  const {
-    banner_image,
-    id,
-    like,
-    view,
-    description,
-    published_at,
-    tags,
-    title,
-    level,
-  } = frontMatter;
+  const { banner_image, id, description, published_at, tags, title, level } =
+    frontMatter;
 
   const SESSION_NO = `#JUSTCODESESSION00${id.toString()}`;
   const appTheme = useSelector(
     (state: { theme: ReduxThemeProps }) => state.theme
   );
   const publishedDate = new Date(published_at).toLocaleDateString();
-  console.log(banner_image);
 
   const levelConfig: PingProps = {
     mode: level === 1 ? "success" : level === 2 ? "warning" : "error",
@@ -69,26 +58,23 @@ const Hydrate: FC<BlogPageProps> = ({ source, frontMatter }) => {
               />
             ))}
           </ul>
-          <div className="absolute top-4 right-4  text-muted-foreground font-mono font-light text-xs">
+          <div className="absolute top-4 right-4  text-white font-mono font-light text-xs">
             <SessionText text={SESSION_NO} />
           </div>
-          <div className="absolute font-mono text-muted-foreground text-xs top-4 left-4 flex gap-2 items-center justify-center">
+          <div className="absolute font-mono text-white text-xs top-4 left-4 flex gap-2 items-center justify-center">
             <Ping {...levelConfig} />
             <span>{blogLevel}</span>
           </div>
-          <span className="absolute bottom-4 right-4 text-muted-foreground font-mono font-light text-xs">
+          <span className="absolute bottom-4 right-4 text-white font-mono font-light text-xs">
             {publishedDate}
           </span>
         </div>
         <aside className="sticky top-0 py-4 w-full max-h-max mt-2 flex items-center justify-between">
-          {/* <Actions blog_id={id} like={like} view={view} /> */}
           <Socials />
         </aside>
       </header>
       <article>
-        <section className="article-content">
-          <MDXRemote {...source} components={MdxComponents} />
-        </section>
+        <MDXRemote {...source} components={MdxComponents} />
       </article>
     </>
   );

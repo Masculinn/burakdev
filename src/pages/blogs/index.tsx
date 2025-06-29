@@ -21,7 +21,7 @@ import Newsletter from "@/components/Blog/newsletter";
 import Link from "next/link";
 import MotionQueue from "@/components/MotionProvider/motion-queue";
 import { AnimationQueueAnimationProps } from "@/components/MotionProvider/types";
-import ContainerDelayedRotateIn from "@/components/Experiments/container-delayed-rotate-in";
+import { MagazineHeaderProps } from "@/components/Blog/types/interfaces";
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState<BlogPost[]>([]);
@@ -172,17 +172,6 @@ const SearchBar: FC<SearchBarProps> = ({ handleChange, value }) => {
   );
 };
 
-interface MagazineHeaderProps {
-  children: React.ReactNode;
-  selectedTag: string;
-  onTagSelect: (tag: string) => void;
-  tags: string[];
-  sortBy: string;
-  loading: boolean;
-  onSortChange: (sort: string) => void;
-  handlePopup: () => void;
-}
-
 const title = "justcode_sessions".split(/\s+/);
 const tagLoading = Array.from({ length: 6 }).map((_, idx) => (
   <Skeleton className="h-8 w-24" key={idx} />
@@ -202,13 +191,13 @@ const MagazineHeader = ({
   return (
     <div className="max-w-6xl mx-auto space-y-10">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-        <div className="col-span-2 flex-1 space-y-4">
+        <div className="col-span-2 flex-1 space-y-4 lg:max-w-max max-w-sm mx-auto ">
           <div className="flex flex-wrap gap-2">
             <MotionQueue
               elementType="h1"
               animations={
                 Array.from({ length: title.length }).fill({
-                  mode: ["filterBlurIn", "fadeRight"],
+                  mode: ["filterBlurIn", "fadeUp"],
                   duration: 1,
                   configView: { once: false, amount: 0.5 },
                 }) as AnimationQueueAnimationProps[]
@@ -216,12 +205,14 @@ const MagazineHeader = ({
               isDynamicallyQueued
               children={title}
               delayLogic="linear"
-              className="text-4xl md:text-5xl tracking-tight font-mono"
+              className="text-3xl md:text-5xl tracking-tight font-mono"
               duration={0.5}
             />
           </div>
           <p className="max-w-2xl text-sm text-muted-foreground">
-            I write sometimes.
+            I would love to give back what I've got from the community so far.
+            My articles are like a pill where every developer needs daily.
+            Subscribe my newsletter to get updates — I promise, no bullshit.
           </p>
         </div>
       </div>

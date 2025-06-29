@@ -1,17 +1,16 @@
-import { useNavigation } from "@/hooks/use-navigation";
 import {
   Breadcrumb,
   BreadcrumbItem,
   BreadcrumbLink,
   BreadcrumbList,
-  BreadcrumbSeparator,
 } from "../ui/breadcrumb";
 import { Skeleton } from "../ui/skeleton";
+import { useRouter } from "next/router";
 
 export const NavigationBreadcrumb = () => {
-  const navigation = useNavigation();
+  const { pathname } = useRouter();
 
-  if (!navigation) {
+  if (!pathname) {
     return (
       <div className="space-y-2 pt-2">
         <Skeleton className="h-4 w-[150px]" />
@@ -20,22 +19,18 @@ export const NavigationBreadcrumb = () => {
     );
   }
 
-  const { parent, child } = navigation;
+  const currPath = pathname === "/" ? "home" : pathname.slice(1);
+
+  if (currPath.includes("/")) {
+    return <Breadcrumb className="w-full h-auto py-8"></Breadcrumb>;
+  }
 
   return (
     <Breadcrumb className="w-full h-auto py-8">
       <BreadcrumbList>
         <BreadcrumbItem className="capitalize">
-          <BreadcrumbLink href={parent?.url || "/"}>
-            {parent?.name ?? "Home"}
-          </BreadcrumbLink>
+          <BreadcrumbLink href={`/${currPath}`}>{currPath}</BreadcrumbLink>
         </BreadcrumbItem>
-        {child?.name && <BreadcrumbSeparator className="hidden md:block" />}
-        {child && (
-          <BreadcrumbItem className="capitalize">
-            <BreadcrumbLink href={child.url}>{child.name}</BreadcrumbLink>
-          </BreadcrumbItem>
-        )}
       </BreadcrumbList>
     </Breadcrumb>
   );
