@@ -1,0 +1,45 @@
+{
+  "name": "burakdev",
+  "short_name": "burakdev",
+  "description": "Software engineer Burak Bilen's Portfolio Web Application.",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display_override": ["fullscreen", "minimal-ui"],
+  "shortcuts": [
+    {
+      "name": "What's new in blogs?",
+      "short_name": "Blogs",
+      "description": "Check out the latest blogs now.",
+      "url": "/blogs",
+      "icons": [{ "src": "/android-chrome-192x192.png", "sizes": "192x192" }]
+    }
+  ],
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone",
+  "screenshots": [
+    {
+      "src": "/assets/pwa/burakdev-mobile-screenshot.jpg",
+      "sizes": "739x1600",
+      "type": "image/jpg",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/assets/pwa/burakdev-desktop-screenshot.png",
+      "sizes": "1920x1020",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
+}

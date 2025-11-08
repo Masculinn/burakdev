@@ -1,0 +1,69 @@
+﻿import {
+  Buymeacoffee,
+  Dailydotdev,
+  Github,
+  Instagram,
+  Linkedin,
+  X,
+} from "@/components/icons/svg-icons";
+import type { NavBasicType } from "@/interfaces";
+import { Box } from "lucide-react";
+
+export type DataType = {
+  user: {
+    name: string;
+    email: string;
+    avatar: string;
+  };
+  projects: NavBasicType[];
+  socials: NavBasicType[];
+};
+
+const data = {
+  user: {
+    name: "Burak Bilen",
+    email: "hello@burakdev.com",
+    avatar: "/burak-bilen.webp",
+  },
+  projects: [
+    {
+      title: "Motion Provider",
+      icon: Box,
+      url: "https://motionprovider.dev",
+    },
+  ],
+  socials: [
+    {
+      title: "Github",
+      url: "https://github.com/Masculinn",
+      icon: Github,
+    },
+    {
+      title: "Linkedin",
+      url: "https://www.linkedin.com/in/burak-bilen-483772227/",
+      icon: Linkedin,
+    },
+    {
+      title: "X",
+      url: "https://x.com/devvburak",
+      icon: X,
+    },
+    {
+      title: "Instagram",
+      url: "https://www.instagram.com/_masculin_",
+      icon: Instagram,
+    },
+    {
+      title: "DailyDev",
+      url: "https://app.daily.dev/masculin",
+      icon: Dailydotdev,
+    },
+    {
+      title: "Buy Me a Coffee",
+      url: "https://buymeacoffee.com/bilenburakf",
+      icon: Buymeacoffee,
+    },
+  ],
+} as const satisfies DataType;
+
+export default data;

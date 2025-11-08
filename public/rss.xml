@@ -1,0 +1,792 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Your Blog Title</title>
+        <link>https://burakdev.com</link>
+        <description>Your blog description</description>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 08 Nov 2025 18:13:43 GMT</lastBuildDate>
+        <item>
+    <title>CI/CD for frontend teams: build, test, deploy</title>
+    <link>https://burakdev.com/blogs/ci-cd-for-frontend-teams-build-test-deploy</link>
+    <guid isPermaLink="true">https://burakdev.com/blogs/ci-cd-for-frontend-teams-build-test-deploy</guid>
+    <pubDate>Mon, 20 Oct 2025 09:30:00 GMT</pubDate>
+    <description>A short guide to setting up CI/CD for frontend projects.</description>
+    <content:encoded><![CDATA[# Markdown Stress Test
+
+> [id='warning'] Short {title} description: this document exercises headings, lists, tables, task lists, footnotes, math, MDX, raw HTML, `<details>`/`<summary>`, reference links, images, code blocks, admonitions and more.
+
+> [id='error'] Short {title} description: this document exercises headings, lists, tables, task lists, footnotes, math, MDX, raw HTML, `<details>`/`<summary>`, reference links, images, code blocks, admonitions and more.
+
+> [id='info'] Short {title} description: this document exercises headings, lists, tables, task lists, footnotes, math, MDX, raw HTML, `<details>`/`<summary>`, reference links, images, code blocks, admonitions and more.
+
+> [id='success'] Short {title} description: this document exercises headings, lists, tables, task lists, footnotes, math, MDX, raw HTML, `<details>`/
+
+`<summary>`, reference links, images, code blocks, admonitions and more.
+
+## Table of contents
+- [Headings & Inline formatting](#headings--inline-formatting)
+- [Details / Summary / HTML blocks](#details--summary--html-blocks)
+- [Lists (ordered, nested, tasks)](#lists--ordered-nested-tasks)
+- [Tables & Alignments](#tables--alignments)
+- [Code blocks & Syntax Highlighting](#code-blocks--syntax-highlighting)
+- [MDX component usage (if MDX enabled)](#mdx-component-usage-if-mdx-enabled)
+- [Math (KaTeX/LaTeX)](#math-katexlatex)
+- [Footnotes & Definition lists](#footnotes--definition-lists)
+- [Admonitions & Blockquotes](#admonitions--blockquotes)
+- [Misc (emojis, autolinks, html comments, escapes)](#misc-emojis-autolinks-html-comments-escapes)
+
+ 
+
+## Headings & Inline formatting
+
+# H1 — level 1
+## H2 — level 2
+### H3 — level 3
+#### H4 — level 4
+##### H5 — level 5
+###### H6 — level 6
+
+**Bold text** and *italic text* and ***bold italic***.  
+~~Strikethrough~~ (GFM).  
+Inline `code` (backticks).  
+Math inline: `$e^{i\pi} + 1 = 0$` (if math plugin enabled).
+
+> [id='success'] Tip: headings will be slugged by `rehype-slug`. Check that anchors are created.
+
+---
+
+## Details / Summary / HTML blocks
+
+<Details>
+  <Summary>Click to expand</Summary>
+
+  [id='my-list'] This content is inside `<details>`. You can include **Markdown** inside if your renderer allows HTML with Markdown (some do, some don't).
+
+  ### Subheading inside details
+  
+  - a list
+  - with multiple items
+
+</Details>
+
+---
+
+## Lists (ordered, nested, tasks)
+
+1. First ordered item
+2. Second ordered item
+   1. nested ordered a
+   2. nested ordered b
+3. Third ordered item
+
+- Unordered item
+- Another item
+  - nested bullet 1
+  - nested bullet 2
+
+Task list (GFM):
+- [ ] open task
+- [x] completed task
+- [ ] another task
+
+Mixed content list:
+- Item with **bold**
+- Item with `inline code`
+- Item with a link: [MDN](https://developer.mozilla.org)  
+- Item with an image: ![tiny](https://via.placeholder.com/24)
+
+---
+
+## Tables & Alignments
+
+Simple table (GFM):
+
+| Feature         | Supported | Notes                           |
+|-----------------|:---------:|:--------------------------------|
+| Headings        | ✓         | Anchors should be generated     |
+| Task lists      | ✓         | Requires GFM                    |
+| Tables (GFM)    | ✓         | Alignment tested below          |
+
+Alignment table:
+
+| Left align | Center align | Right align |
+|:---------- |:------------:|------------:|
+| left       | center       |       right |
+| `code`     | **bold**     | <small>small</small> |
+
+Table with code block in cell:
+
+| Query | Result |
+|:------|:------|
+| `SELECT * FROM users;` | returns all users |
+
+---
+
+## Code blocks & Syntax Highlighting
+
+Inline code: `const x = 1;`
+
+Fenced code (bash):
+
+```jsx
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import themeSchema from "@/constants/theme-schema";
+import { useElementSize } from "@/hooks/use-element-size";
+import type { HTMLAttributes } from "@/interfaces";
+import MotionChain from "@/motion/motion-chain";
+import { useInView } from "motion/react";
+import { Highlight, type Language } from "prism-react-renderer";
+import React, { Children, isValidElement, useMemo, type FC } from "react";
+import { CopyCode } from "../copy-code";
+
+type MdPreProps = HTMLAttributes<HTMLPreElement>;
+
+const MAX_HEIGHT = 560;
+const LANG_RE = /language-(\w+)/;
+
+export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
+  const { ref: preRef, size } = useElementSize<HTMLPreElement>();
+  const isInView = useInView(preRef, { once: false });
+
+  const measuredHeight = size.height || 0;
+
+  const wrapperHeight =
+    measuredHeight > 0 ? Math.min(measuredHeight, MAX_HEIGHT) : undefined;
+
+  const child = getCode(props.children);
+  const code = useMemo(() => ensureChildExist(child), [child]);
+
+  const language = useMemo<Language | "text">(() => {
+    if (!child) return "text";
+    const className: string | undefined = (
+      child as { props: { className?: string } }
+    ).props?.className;
+
+    const m = className?.match(LANG_RE);
+
+    let lang = m?.[1] ?? "text";
+
+    if (lang === "ts" || lang === "typescript") lang = "tsx";
+    if (lang === "js" || lang === "javascript") lang = "jsx";
+    if (lang === "bash" || lang === "sh") lang = "bash";
+
+    return (lang as Language) ?? "text";
+  }, [child]);
+
+  return (
+    <div className="w-full my-4 flex justify-center relative">
+      <CopyCode
+        data={code}
+        variant="ghost"
+        className="absolute z-20 top-4 right-4 text-muted"
+      />
+      <ScrollArea
+        type="scroll"
+        className="rounded-xl border shadow-xl relative w-full"
+        style={{
+          height: wrapperHeight ? `${wrapperHeight}px` : "auto",
+          maxWidth: "100%",
+          maxHeight: `${MAX_HEIGHT}px`,
+          backgroundColor: "oklch(0.141 0.005 285.823)",
+        }}
+      >
+        <Highlight theme={themeSchema} code={code} language={language}>
+          {({ style, tokens, getLineProps, getTokenProps }) => (
+            <pre
+              ref={preRef}
+              style={style}
+              className="font-secondary md:p-8 p-6 text-sm whitespace-pre"
+            >
+              <MotionChain
+                animations={tokens.map(() => ({
+                  mode: ["fadeIn", "filterBlurIn"],
+                  transition: "gentle",
+                  duration: 1,
+                }))}
+                elementType="div"
+                controller={{
+                  trigger: isInView,
+                }}
+                config={{
+                  duration: 0.15,
+                  delayLogic: "linear",
+                }}
+              >
+                {tokens.map((line, i) => (
+                  <div key={i} {...getLineProps({ line })} className="flex">
+                    <span className="mr-6 dark:text-muted text-muted-foreground">
+                      {i + 1}
+                    </span>
+                    {line.map((v, idx) => (
+                      <span key={idx} {...getTokenProps({ token: v })} />
+                    ))}
+                  </div>
+                ))}
+              </MotionChain>
+            </pre>
+          )}
+        </Highlight>
+        <ScrollBar orientation="vertical" />
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
+    </div>
+  );
+};
+
+function getCode(children: React.ReactNode) {
+  return Children.toArray(children).find((c) => isValidElement(c));
+}
+
+function ensureChildExist(child: React.ReactNode | undefined) {
+  if (!child) return "";
+  const c = (child as { props: { children?: unknown } }).props?.children;
+  if (typeof c === "string") return c.replace(/\n$/, "");
+  if (Array.isArray(c)) return c.join("");
+  return String(c ?? "");
+}
+
+```]]></content:encoded>
+</item>
+<item>
+    <title>E2E testing: reliable flows for CI pipelines</title>
+    <link>https://burakdev.com/blogs/e2e-testing-reliable-flows-for-ci-pipelines</link>
+    <guid isPermaLink="true">https://burakdev.com/blogs/e2e-testing-reliable-flows-for-ci-pipelines</guid>
+    <pubDate>Sat, 20 Sep 2025 01:23:02 GMT</pubDate>
+    <description>Cupidatat amet eu nisi eu fugiat eiusmod anim labore aliqua fugiat irureCupidatat amet eu nisi eu fugiat eiusmod anim labore aliqua fugiat Cupidatat amet eu nisi eu fugiat eiusmod anim labore aliqua fugiat irureirure</description>
+    <content:encoded><![CDATA[Guide: write stable Playwright/Cypress tests, isolate flaky steps, record traces/screenshots, and run headless in CI with artifacts for debugging failures.]]></content:encoded>
+</item>
+<item>
+    <title>TypeScript + TDD: small, testable modules</title>
+    <link>https://burakdev.com/blogs/typescript-tdd-small-testable-modules</link>
+    <guid isPermaLink="true">https://burakdev.com/blogs/typescript-tdd-small-testable-modules</guid>
+    <pubDate>Tue, 02 Sep 2025 01:23:02 GMT</pubDate>
+    <description>Cupidatat amet eu nisi eu fugiat eiusmod anim labore aliqua fugiat irureCupidatat amet eu nisi eu fugiat eiusmod anim labore aliqua fugiat Cupidatat amet eu nisi eu fugiat eiusmod anim labore aliqua fugiat irureirure</description>
+    <content:encoded><![CDATA[Example: design a feature with failing unit tests first, implement minimal typesafe API, and iterate. Includes sample jest + ts-jest config and typical assertions.]]></content:encoded>
+</item>
+<item>
+    <title>My loveley wife!!!! ❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️❤️</title>
+    <link>https://burakdev.com/blogs/my-loveley-wife</link>
+    <guid isPermaLink="true">https://burakdev.com/blogs/my-loveley-wife</guid>
+    <pubDate>Tue, 24 Jun 2025 01:23:02 GMT</pubDate>
+    <description>Cupidatat amet eu nisi eu fugiat eiusmod anim labore aliqua fugiat irure.</description>
+    <content:encoded><![CDATA[<Contents>
+
+- [Headings & Inline formatting](#headings--inline-formatting)
+- [Paragraphs & classed paragraphs](#paragraphs--classed-paragraphs)
+- [Alerts using blockquotes](#alerts-using-blockquotes)
+- [Lists (ordered, nested, tasks)](#lists--ordered-nested-tasks)
+- [Tables](#tables)
+- [Images](#images)
+- [Details / Summary](#details--summary)
+- [Code blocks](#code-blocks--syntax-highlighting)
+- [Checklist](#checklist)
+- [Footnotes](#footnotes)
+- [Conclusion](#conclusion)
+
+</Contents>
+
+Notes: component composition, data fetching choices (SSR vs CSR vs SSG), useSWR vs react-query, and folder structure suggestions for scale.]]></content:encoded>
+</item>
+<item>
+    <title>Deailing with OAuth SSR in a Next.js project</title>
+    <link>https://burakdev.com/blogs/deailing-with-oauth-ssr-in-a-next-js-project</link>
+    <guid isPermaLink="true">https://burakdev.com/blogs/deailing-with-oauth-ssr-in-a-next-js-project</guid>
+    <pubDate>Fri, 20 Jun 2025 01:23:02 GMT</pubDate>
+    <description>How to use SSR properly for auth in your next application? In today's article, I will emphasize everything you need to know.</description>
+    <content:encoded><![CDATA[Welcome to the {title} **#CODESESSION00{id}** the first article so far! In today's article, we will practice end-to-end authorization & authentication system for our brand-new *Next.js app*, together.
+
+At the very beginning, I would like to inform you about the difficulty of the article that it's dramatically hard for beginners. But no worries if you are one — once you understand the core logic of the auth process, you will be able to deal with auth services like you are playing with a toy from your childhood.
+
+> Quick reminder: No shared AI code snippets or none of the words in any of my articles are written by AI. I'd love to share what I have learned with the community where it belongs. Each content is unique and meticulously prepared by FYI. Happy coding!
+
+### What you will see
+
+- Dealing with multiple **middlewares**
+- Fully customizable React server components with typescript.  
+- **OAuth** setup with `@supabase/ssr` using middlewares.
+- Craeating client side **React provider** components.
+- Creating slices in Redux to pass auth props to the client components.
+- Deailing with `route.ts` inside `@app/(auth)/api/auth/callback` to handle Google Provider that redirects to our backing service.
+
+All this will happen in the latest version of the techs described above mentioned below.
+
+- React 19
+- Typescript 5
+- Tailwind 4 (optional)
+- Next.js 15.3 (latest)
+- Supabase 2.24
+
+Supabase was struggling with `@supabase/auth-helpers-react` due to its own client database handlers. *In the way of evolving react.js Server Components — supabase simultaneously keeps going at the same speed of react.js.*. Both on the same boat, passing through newfangled ways to maximize throughput gracefully. So Supabase optimized their code though and provided `@supabase/ssr` to handle everything on the server side before initial load facilitates dynamic systems above application level where concurrency matters. 
+
+We will practice application level server-side typescript to handle everything. 
+
+### Auth Logic
+
+Below, there is a blueprint of the authentication process showing the login service's data and auth flows, let's have a look at it to see the big picture.   
+
+![auth-cycle](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/auth-cycle.png)
+
+### Creating Supabase Account
+
+Go to [supabase](https://supabase.com/) and create a new project. After that, in your user dashboard, navigate to authentication to activate Google OAuth Provider by switching the related button on, shown below.
+
+![supabase-google-auth](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/supabase-google-auth.png)
+
+Now, we're going to need configuration [following to console cloud](https://console.cloud.google.com/auth/clients). Thus, we will have a place for our Supabase OAuth provider that will be used to create authentication — shown below.
+
+![auth-consent](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/auth-consent.png)
+
+
+Then we can officially start building our brand new next.js project 
+
+```bash
+npx create-next-app@latest
+```
+
+Choose **app router** with **typescript** and create `.env` file at the root of your project, get your database credentials from your Supabase project, navigate to `settings > API keys` then obtain your API keys.
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_SUPABASE_JWT_SECRET=
+```
+
+### Creating Client DB With SSR
+
+Since `auth-helpers` deprecated — we will go fully with SSR in our `@utils/supabase/client.ts` file.
+
+```ts
+import { createBrowserClient } from '@supabase/ssr';
+
+export function createClient() {
+  return createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
+}
+```
+
+### Creating Server DB With SSR
+
+Creating `@utils/supabase/server.ts`,
+
+```ts
+import { createServerClient } from "@supabase/ssr";
+import { cookies } from "next/headers";
+
+/**
+ * Creates a Supabase client instance with Next.js server-side cookie support.
+ *
+ * The client is configured to use the `NEXT_PUBLIC_SUPABASE_URL` and
+ * `NEXT_PUBLIC_SUPABASE_ANON_KEY` environment variables.
+ *
+ * The `cookies` option is set to use the `next/headers` API to get and set
+ * cookies. This allows the client to use cookies to store the user's session
+ * and authentication state.
+ *
+ * @returns A Supabase client instance.
+ */
+export async function createClient() {
+  const cookieStore = await cookies();
+
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return cookieStore.getAll()
+        },
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            )
+          } catch (err) {
+            console.log (err)
+          }
+        },
+      },
+    }
+  )
+}
+```
+
+So far, we have created our accessible db server components — now it's time to use them in our real world app.
+
+Here is the client side `<LoginServices />` react component, it gets the email data from the server side; saving to redux auth slice and zod form library comes under the hood.  
+
+
+```tsx
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { LoginServicesProps } from "@/interfaces/@types-components";
+import { cn } from "@/lib/utils";
+import { ReduxRootState } from "@/redux";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { setLoading, setSynced } from "@/redux/slices/auth-slice";
+import { createClient } from "@/utils/supabase/client";
+import { IconBrandGoogle } from "@tabler/icons-react";
+import { FC, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "sonner";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { MailIcon } from "lucide-react";
+
+const FormSchema = z.object({
+  email: z.string().email({ message: "Invalid email." }),
+});
+
+export const LoginServices: FC<LoginServicesProps> = ({
+  className,
+  onChange,
+}) => {
+  const dispatch = useDispatch();
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: { email: "" },
+  });
+
+  const role = useSelector(
+    (state: ReduxRootState) => state.auth.auth?.role ?? "vendor"
+  );
+
+  const supabase = createClient();
+
+  const handleSignIn = async (values: z.infer<typeof FormSchema>) => {
+    dispatch(setLoading(true));
+
+    const { data: client, error: fetchErr } = await supabase
+      .from("clients")
+      .select("id")
+      .eq("email", values.email)
+      .single();
+
+    if (fetchErr && fetchErr.code !== "PGRST116") {
+      toast.error("Server error — please try again.");
+      console.error(fetchErr);
+      dispatch(setLoading(false));
+      return;
+    }
+
+    // if (!client) {
+    //   toast.error("Failed to login — please register first.");
+    //   dispatch(setLoading(false));
+    //   return;
+    // }
+
+    try {
+      const { error: otpErr } = await supabase.auth.signInWithOtp({
+        email: values.email,
+        options: {
+          emailRedirectTo: `${window.location.origin}/api/auth/callback`,
+        },
+      });
+      if (otpErr) {
+        toast.error(otpErr.message);
+        console.error(otpErr);
+        dispatch(setLoading(false));
+        return;
+      }
+      toast.success("Check your email for the magic link!");
+      dispatch(setSynced(true));
+    } catch (err) {
+      toast.error(`Unexpected error: ${err}`);
+      dispatch(setSynced(false));
+      console.error(err);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  const handleSignUp = async () => {
+    dispatch(setLoading(true));
+
+    try {
+      const { error: oauthErr } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: `${window.location.origin}/api/auth/callback`,
+          queryParams: {
+            access_type: "offline",
+            prompt: "consent",
+          },
+        },
+      });
+      if (oauthErr) {
+        toast.error(oauthErr.message);
+        console.error(oauthErr);
+        dispatch(setLoading(false));
+        return;
+      }
+    } catch (err) {
+      toast.error(`Unexpected error: ${err}`);
+      console.error(err);
+    } finally {
+      dispatch(setLoading(false));
+    }
+  };
+
+  return (
+    <div className={cn("flex flex-col gap-4", className)}>
+      {authMode === "login" ? (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(handleSignIn)}
+            className="w-full flex flex-row gap-2"
+          >
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem className="relative flex flex-col gap-2 w-full mr-auto">
+                  <FormControl>
+                    <Input placeholder="abc@example.com" {...field} />
+                  </FormControl>
+                  <FormDescription className="text-xs block">
+                    {role} email
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              onClick={() => form.handleSubmit(handleSignIn)()}
+              variant={"outline"}
+              className="w-auto"
+              disabled={form.formState.isSubmitting}
+              asChild
+            >
+              {form.formState.isSubmitting ? (
+                <span className="loader"></span>
+              ) : (
+                <MailIcon className="size-4" />
+              )}
+            </Button>
+          </form>
+        </Form>
+      ) : (
+        <Button variant="outline" onClick={handleSignUp}>
+          <IconBrandGoogle className="size-5" />
+          Continue with Google as {role}
+        </Button>
+      )}
+
+      <Button
+        variant="default"
+        onClick={() => {
+          const next = authMode === "login" ? "register" : "login";
+          setAuthMode(next);
+          onChange(next);
+        }}
+      >
+        {authMode === "login"
+          ? `Register to Modulith as ${role}`
+          : `Login to Modulith as ${role}`}
+      </Button>
+    </div>
+  );
+};
+```
+
+This is the actual client component that sends request to the db and validates whether the user is registered or not. Regardless — the user is redirected to the `api/auth/callback/route.ts` route if they have a chosen account that logged successfully.
+
+Therefore, imagine a login page like this,
+
+![user-login](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/user-register.png)
+
+Basically, the component sends email to the selected email account or sends a magic link to redirect authenticated users to login right away.
+
+### OAuth API Callback Server Component 
+
+Whenever Google redirects any user via a magic link, if the login succeeds (which means if the user got the link and assuming clicked on it), the user is being redirected to the `/api/auth/callback/route.ts` file which is shown below.
+
+```ts
+import { NextRequest } from "next/server";
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
+
+/**
+ * Handle auth callback from Supabase.
+ *
+ * The callback URL will be in the format:
+ *   /api/auth/callback?code=...&next=/...
+ *
+ * The "code" parameter is the authorization code returned by Supabase.
+ * The "next" parameter is the URL to redirect to after a successful login.
+ */
+export async function GET(req: NextRequest) {
+  const { searchParams } = new URL(req.url);
+
+  const code = searchParams.get("code");
+  const next = searchParams.get("next") ?? "/";
+
+  if (code) {
+    const supabase = await createClient();
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+
+    if (error || !data?.session) {
+      console.error("OTP magic link exchange failed", error);
+      redirect("/login");
+    }
+
+    redirect(next);
+  }
+
+
+  redirect('/error')
+}
+
+```
+
+This eventually handles the request that comes via supabase callbacks and OAuth services. For instance, let's say a brand-new user just registered/logged-in, the URL returns like,
+
+```bash
+http://example.com/api/auth/callback?code=123123123
+```
+
+The given code being used inside our API `GET` server function facilities HTTP request logic.
+
+### Middleware — Supabase User Registration
+
+To complete the entire authentication auth system in our brand-new Next.js application we are finally going to **configure middleware to keep the responsiveness between client and server.** To do this we are going to create a new file at the root of our project like this.
+
+```ts
+// middleware.ts
+
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
+import { createClient } from './utils/supabase/server';
+
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next();
+
+  const supabase = await createClient();
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session && req.nextUrl.pathname.startsWith('/dashboard')) {
+    return NextResponse.redirect(new URL('/api/auth/callback', req.url));
+  }
+
+  return res;
+}
+
+export const config = {
+  matcher: ['/dashboard/:path*'],
+};
+
+```
+
+Imagine you are developing a CRM dashboard. You might need an auth system, right? Therefore, you must also keep protected pages roughly unless the user logged in. What middleware you might ask — shown below:
+
+- Creates an instance of db `await createClient()`.
+- Checks whether auth valid or not with `await supabase.auth.getUser()`
+- `matcher` checks the given array of the paths and activates that routes for the authenticated user.
+- Makes proper redirection using `nextUrl` property.
+
+
+### Auth Provider
+
+To dispatch the taken auth credentials, we're going to need a special wrapper react component called `auth-provider` might located in `@providers/auth-provider.tsx` like this,
+
+```tsx
+"use client";
+
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { createClient } from "@/utils/supabase/client";
+import { setAuth, setLoading, setSynced } from "@/redux/slices/auth-slice";
+import { AuthProviderProps } from "@/interfaces/@types-providers";
+
+export default function AuthProvider({ children }: AuthProviderProps) {
+  const dispatch = useDispatch();
+  const db = createClient();
+
+  useEffect(() => {
+    const init = async () => {
+      dispatch(setLoading(true));
+      try {
+        const {
+          data: { user },
+        } = await db.auth.getUser();
+        typeof user !== "undefined" &&
+          dispatch(
+            setAuth({
+              role: "client",
+              user_metadata: user?.user_metadata,
+            })
+          );
+        dispatch(setSynced(true));
+      } catch (error) {
+        console.error("Auth init failed", error);
+      } finally {
+        dispatch(setLoading(false));
+      }
+    };
+
+    init();
+  }, [dispatch, db]);
+
+  return <>{children}</>;
+}
+```
+
+And after we will use this component in our root layout component `src/app/layout.tsx` as shown below.
+
+```tsx
+import "./globals.css";
+import { primaryFontClassName, secondaryFont } from "@/config/fonts";
+import {AuthProvider} from "@/providers/auth-provider"
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${primaryFontClassName} ${secondaryFont.variable} antialiased`}
+      >
+        <AuthProvider>
+            {children}
+        </AuthProvider>
+      </body>
+    </html>
+  );
+}
+
+```
+
+### Conclusion
+
+We have done so far in the way of our authentication journey using Next.js SSR and Supabase. By using the methods we have mentioned so far, you can handle all kinds of authentication logics in your modern applications. Subscribe to newsletter to get updated — promising no bullshit. `JUSTCODESESSION001` officially has finalized, thanks for reading the article  and see you in the next one!]]></content:encoded>
+</item>
+<item>
+    <title>Getting started with Supabase for fullstack apps</title>
+    <link>https://burakdev.com/blogs/getting-started-with-supabase-for-fullstack-apps</link>
+    <guid isPermaLink="true">https://burakdev.com/blogs/getting-started-with-supabase-for-fullstack-apps</guid>
+    <pubDate>Fri, 20 Jun 2025 01:23:02 GMT</pubDate>
+    <description>An introduction to soilless farming techniques.</description>
+    <content:encoded><![CDATA[Walkthrough: init Supabase project, enable auth, create storage bucket for banners, and a simple CRUD example using the JS client.]]></content:encoded>
+</item>
+    </channel>
+</rss>

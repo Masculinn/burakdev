@@ -1,0 +1,91 @@
+﻿import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import themeSchema from "@/constants/theme-schema";
+import { useElementSize } from "@/hooks/use-element-size";
+import type { HTMLAttributes } from "@/interfaces";
+import { ensureChildExist, getChild } from "@/lib/utils";
+import { useInView } from "motion/react";
+import { Highlight, type Language } from "prism-react-renderer";
+import { useMemo, type FC } from "react";
+import { CopyCode } from "../copy-code";
+import HighlightCodeSnippet from "../highlight-code-snippet";
+
+type MdPreProps = HTMLAttributes<HTMLPreElement>;
+
+const MAX_HEIGHT = 560;
+const ANIMATION_TRIGGER_THRESHOLD = 900;
+const LANG_RE = /language-(\w+)/;
+
+export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
+  const { ref: preRef, size } = useElementSize<HTMLPreElement>();
+  const isInView = useInView(preRef, { once: false });
+
+  const measuredHeight = size.height || 0;
+
+  const wrapperHeight =
+    measuredHeight > 0 ? Math.min(measuredHeight, MAX_HEIGHT) : undefined;
+
+  const child = getChild(props.children);
+  const code = useMemo(() => ensureChildExist(child), [child]);
+
+  const language = useMemo<Language | "text">(() => {
+    if (!child) return "text";
+
+    const className: string | undefined = (
+      child as { props: { className?: string } }
+    ).props?.className;
+
+    const m = className?.match(LANG_RE);
+
+    let lang = m?.[1] ?? "text";
+
+    if (lang === "ts" || lang === "typescript") lang = "tsx";
+    if (lang === "js" || lang === "javascript") lang = "jsx";
+    if (lang === "bash" || lang === "sh") lang = "bash";
+
+    return (lang as Language) ?? "text";
+  }, [child]);
+
+  return (
+    <div className="w-full my-4 flex justify-center relative">
+      <CopyCode
+        data={code}
+        variant="ghost"
+        className="absolute z-20 top-4 right-4 text-muted"
+      />
+      <ScrollArea
+        type="scroll"
+        className="rounded-xl border shadow-xl relative w-full"
+        style={{
+          height: wrapperHeight ? `${wrapperHeight}px` : "auto",
+          maxWidth: "100%",
+          maxHeight: `${MAX_HEIGHT}px`,
+          backgroundColor: "oklch(0.141 0.005 285.823)",
+        }}
+      >
+        <Highlight theme={themeSchema} code={code} language={language}>
+          {({ style, tokens, getLineProps, getTokenProps }) => {
+            const shouldAnimate = code.length <= ANIMATION_TRIGGER_THRESHOLD;
+
+            return (
+              <pre
+                ref={preRef}
+                style={style}
+                className="font-secondary md:p-8 -my-2 p-6 text-sm whitespace-pre"
+              >
+                <HighlightCodeSnippet
+                  getLineProps={getLineProps}
+                  getTokenProps={getTokenProps}
+                  isInView={isInView}
+                  shouldAnimate={shouldAnimate}
+                  tokens={tokens}
+                />
+              </pre>
+            );
+          }}
+        </Highlight>
+        <ScrollBar orientation="vertical" />
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
+    </div>
+  );
+};

@@ -1,0 +1,106 @@
+﻿/** interfaces */
+
+import type { MotionTextProps } from "@/motion/types";
+import type { ComponentType, JSX, SetStateAction, SVGProps } from "react";
+
+export interface WrapperProps {
+  children: React.ReactNode;
+  className?: string;
+}
+export interface ThemeProps {
+  theme: ThemeType;
+}
+export interface TextAnimatorProps
+  extends Pick<MotionTextProps, "config" | "animation" | "children"> {
+  elementType?: React.ElementType;
+  className?: string;
+}
+export interface TimelineItem {
+  title: string;
+  content: TimelineContentItem;
+}
+export interface MarqueeProps {
+  className?: string;
+  reverse?: boolean;
+  pauseOnHover?: boolean;
+  children?: React.ReactNode;
+  vertical?: boolean;
+  repeat?: number;
+}
+export interface BlogSearchContextProps {
+  search: string;
+  setSearch: SetStateProps<string>;
+}
+export interface BlogSortContextProps {
+  sort: BlogPostSortProps;
+  setSort: SetStateProps<BlogPostSortProps>;
+}
+export interface BlogTagsContextProps {
+  initialTags: Tag[];
+  setSelectedTags: SetStateProps<Tag[]>;
+  selectedTags: Tag[];
+}
+export interface BlogType {
+  id: number;
+  title: string;
+  tags: Tag[];
+  description: string;
+  banner_image: string;
+  content?: string;
+  published_at: string;
+  level: number;
+}
+
+export interface SlugType {
+  url: string;
+  title: string;
+}
+
+/** types */
+
+export type Tag = string;
+export type ThemeType = "light" | "dark";
+export type ProjectStatus = "ongoing" | "done" | "paused";
+export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
+export type IconProps = SVGProps<SVGSVGElement>;
+export type BlogPostSortProps = "old-to-new" | "new-to-old" | "a-z" | "z-a";
+export type HTMLAttributes<T> = React.HTMLAttributes<T>;
+export type NavItem = {
+  title: string;
+  url: string;
+  icon?: IconComponent;
+  iconProps?: SVGProps<SVGSVGElement>;
+  isActive?: boolean;
+  items?: NavItem[];
+};
+
+export type NavBasicType = {
+  title: string;
+  url: string;
+  icon: IconComponent;
+  iconProps?: SVGProps<SVGSVGElement>;
+};
+
+export type TimelineContentItem = {
+  status: ProjectStatus;
+  role: string;
+  title: string;
+  techs: string[];
+  desc: string;
+  gitLink?: string;
+  plainLink?: string;
+  images: string[];
+};
+
+export type SetStateProps<T> = React.Dispatch<SetStateAction<T>>;
+
+// mdx
+
+type IntrinsicComponentMap = {
+  [K in keyof JSX.IntrinsicElements]?: React.ComponentType<
+    JSX.IntrinsicElements[K]
+  >;
+};
+export type MDXComponentsMap = IntrinsicComponentMap & {
+  [custom: string]: React.ComponentType;
+};
