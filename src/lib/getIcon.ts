@@ -1,4 +1,5 @@
 ﻿import {
+  Astro,
   Css,
   Docker,
   Drizzle,
@@ -19,6 +20,7 @@
   Postman,
   Python,
   React,
+  Reactquery,
   Redux,
   Remix,
   Sap,
@@ -26,6 +28,7 @@
   Shopify,
   Supabase,
   Tailwindcss,
+  Tanstack,
   Threejs,
   Typescript,
   Unity,
@@ -71,6 +74,9 @@ export const iconsMap: Record<string, IconType> = {
   xml: Xml,
   yaml: Yaml,
   python: Python,
+  reactquery: Reactquery,
+  astro: Astro,
+  tanstack: Tanstack,
 };
 const fallbackIcon = Box;
 export default function getIcon(iconName: string): IconType {

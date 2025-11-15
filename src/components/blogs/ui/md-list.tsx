@@ -1,5 +1,4 @@
-﻿// src/components/blogs/ui/md-list.tsx
-import type { HTMLAttributes } from "@/interfaces";
+﻿import type { HTMLAttributes } from "@/interfaces";
 import { cn } from "@/lib/utils";
 import type { FC } from "react";
 
@@ -8,7 +7,7 @@ type MdULProps = HTMLAttributes<HTMLUListElement>;
 type MdOLProps = HTMLAttributes<HTMLOListElement>;
 
 export const MdList: FC<MdListProps> = ({ className, ...props }) => (
-  <li className={cn(className)} {...props} />
+  <li className={className} {...props} />
 );
 
 export const MdUl: FC<MdULProps> = ({ className, ...props }) => (

@@ -14,7 +14,8 @@ import fspromises from "node:fs/promises";
 
 const ROOT = process.cwd();
 const OUT_DIR = path.join(ROOT, "public");
-const OUT_FILE = path.join(OUT_DIR, "rss.xml");
+const RSS_OUT = path.join(OUT_DIR, "rss.xml");
+const SITEMAP_OUT = path.join(OUT_DIR, "sitemap.xml");
 
 function escapeCdata(str = "") {
   return str.replace(/]]>/g, "]]]]><![CDATA[>");
@@ -27,8 +28,7 @@ function createItem(post: BlogType & { slug?: SlugType }) {
 
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${post.slug}`;
   const date = new Date(post.published_at).toUTCString();
-
-  return `<item>
+  const rss = `<item>
     <title>${post.title}</title>
     <link>${url}</link>
     <guid isPermaLink="true">${url}</guid>
@@ -36,6 +36,15 @@ function createItem(post: BlogType & { slug?: SlugType }) {
     <description>${post.description}</description>
     <content:encoded><![CDATA[${escapeCdata(post.content)}]]></content:encoded>
 </item>`;
+
+  const sitemap = `<url>
+  <loc>${url}</loc>
+  <lastmod>${date}</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
+</url>`;
+
+  return [rss, sitemap] as const;
 }
 
 async function readServerSideData() {
@@ -44,7 +53,7 @@ async function readServerSideData() {
     !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
   ) {
     console.log(
-      "⚠️ Missing database env vars: check either NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY, returning 'null' in 'serverSideSlugs()'",
+      "⚠️ Missing database env vars: check either NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY, returning 'null' in 'serverSideSlugs()'"
     );
     throw new Error("Missing database env vars");
   }
@@ -73,7 +82,7 @@ async function readServerSideData() {
 
     if (error || !posts) {
       throw new Error(
-        `Error getting server side data: code: ${error?.code}, message: ${error?.message}`,
+        `Error getting server side data: code: ${error?.code}, message: ${error?.message}`
       );
     }
 
@@ -96,22 +105,46 @@ async function readServerSideData() {
 
 async function main() {
   const posts = await readServerSideData();
-  const items = posts.map(createItem).join("\n");
+  const items = posts.map(createItem);
+  const rssItems = items.map(([rss]) => rss);
+  const sitemapItems = items.map(([, sitemap]) => sitemap);
+
+  const mergeRssItems = rssItems.length ? rssItems.join("\n") : "";
+  const mergeSitemapItems = sitemapItems.length ? sitemapItems.join("\n") : "";
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
-        <title>Your Blog Title</title>
-        <link>${process.env.NEXT_PUBLIC_SITE_URL}</link>
-        <description>Your blog description</description>
+        <title>justc0de_sessions RSS field by Burak Bilen</title>
+        <link>${process.env.NEXT_PUBLIC_SITE_URL}/blogs</link>
+        <description>Stay up to date with my latest blog posts</description>
         <language>en-us</language>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <copyright>Copyright ${new Date().getFullYear()}, justc0de_sessions author Burak Bilen</copyright>
         <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
-        ${items}
+          ${mergeRssItems}
     </channel>
 </rss>`;
 
-  await fspromises.writeFile(OUT_FILE, rss, "utf8");
+  const sitemap = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://burakdev.com</loc>
+    <lastmod>${new Date().toUTCString()}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>https://burakdev.com/blogs</loc>
+    <lastmod>${new Date().toUTCString()}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  ${mergeSitemapItems}
+</urlset>`;
 
+  await fspromises.writeFile(SITEMAP_OUT, sitemap, "utf8");
+  console.log("✅ sitemap.xml written to public/sitemap.xml");
+  await fspromises.writeFile(RSS_OUT, rss, "utf8");
   console.log("✅ rss.xml written to public/rss.xml");
 }
 
