@@ -50,10 +50,10 @@ function createItem(post: BlogType & { slug?: SlugType }) {
 async function readServerSideData() {
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
   ) {
     console.log(
-      "⚠️ Missing database env vars: check either NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY, returning 'null' in 'serverSideSlugs()'"
+      "⚠️ Missing database env vars: check either, returning 'null' in 'serverSideSlugs()'"
     );
     throw new Error("Missing database env vars");
   }
@@ -121,7 +121,7 @@ async function main() {
         <language>en-us</language>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <copyright>Copyright ${new Date().getFullYear()}, justc0de_sessions author Burak Bilen</copyright>
-        <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+        <lastBuildDate>${new Date().toISOString()}</lastBuildDate>
           ${mergeRssItems}
     </channel>
 </rss>`;
@@ -129,13 +129,13 @@ async function main() {
   const sitemap = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://burakdev.com</loc>
-    <lastmod>${new Date().toUTCString()}</lastmod>
+    <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>https://burakdev.com/blogs</loc>
-    <lastmod>${new Date().toUTCString()}</lastmod>
+    <lastmod>${new Date().toISOString()}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

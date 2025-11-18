@@ -31,7 +31,7 @@ function NewsletterComponent({ className }: { className?: string }) {
           delay: 0,
         }}
         config={{
-          duration: isMobile ? 4 : 1.2,
+          duration: isMobile ? 2 : 1.2,
           img: "/assets/newsletter.svg",
           delayLogic: isMobile ? "jitter" : "pendulum",
           fn: !isMobile ? "hover" : undefined,

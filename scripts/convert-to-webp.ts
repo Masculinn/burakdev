@@ -118,7 +118,6 @@ async function convertFile(
 
 async function run(): Promise<void> {
   try {
-    // quick existence check
     try {
       const s = await stat(INPUT);
       if (!s.isDirectory()) {

@@ -1,8 +1,8 @@
 ﻿import {
+  Bluesky,
   Buymeacoffee,
   Dailydotdev,
   Github,
-  Instagram,
   Linkedin,
   X,
 } from "@/components/icons/svg-icons";
@@ -49,11 +49,6 @@ const data = {
       icon: X,
     },
     {
-      title: "Instagram",
-      url: "https://www.instagram.com/_masculin_",
-      icon: Instagram,
-    },
-    {
       title: "DailyDev",
       url: "https://app.daily.dev/masculin",
       icon: Dailydotdev,
@@ -62,6 +57,11 @@ const data = {
       title: "Buy Me a Coffee",
       url: "https://buymeacoffee.com/bilenburakf",
       icon: Buymeacoffee,
+    },
+    {
+      title: "Blusky",
+      url: "https://bsky.app/profile/burakdevv.bsky.social",
+      icon: Bluesky,
     },
   ],
 } as const satisfies DataType;

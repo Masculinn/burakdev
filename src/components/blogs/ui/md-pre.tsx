@@ -70,7 +70,7 @@ export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
               <pre
                 ref={preRef}
                 style={style}
-                className="font-secondary md:p-8 -my-2 p-6 text-sm whitespace-pre"
+                className="font-secondary md:px-8 -mt-1 p-6 text-sm whitespace-pre"
               >
                 <HighlightCodeSnippet
                   getLineProps={getLineProps}

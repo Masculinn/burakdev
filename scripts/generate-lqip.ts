@@ -41,7 +41,7 @@ const IMG_SIZE = 10;
 const yayOrNay = (bool: boolean) => (bool ? "✅" : "❌");
 
 async function safe<T>(
-  fn: () => Promise<T>,
+  fn: () => Promise<T>
 ): Promise<[T | null, unknown | null]> {
   try {
     return [await fn(), null];
@@ -76,7 +76,7 @@ function extToMime(ext: string) {
 
 async function tryPlaiceholder(buffer: Buffer) {
   const [res, err] = await safe(() =>
-    getPlaiceholder(buffer, { size: IMG_SIZE }),
+    getPlaiceholder(buffer, { size: IMG_SIZE })
   );
   if (res)
     return {
@@ -138,12 +138,10 @@ function normalizeRawAsset(a: RawAsset): string | null {
 async function readServerSideAssets(): Promise<string[] | undefined> {
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
     !process.env.BUCKET_NAME
   ) {
-    console.log(
-      "⚠️ Missing database env vars: check NEXT_PUBLIC_SUPABASE_URL / NEXT_PUBLIC_SUPABASE_ANON_KEY / BUCKET_NAME. Returning undefined.",
-    );
+    console.log("⚠️ Missing database env vars, Returning undefined.");
     return undefined;
   }
 
@@ -202,7 +200,7 @@ async function readServerSideAssets(): Promise<string[] | undefined> {
       if (!data || data.length === 0) return null;
 
       const images: RawAsset[] = data.map(
-        (row) => (row && (row.banner_image ?? null)) ?? null,
+        (row) => (row && (row.banner_image ?? null)) ?? null
       );
       return images.filter(Boolean);
     };
@@ -235,11 +233,11 @@ ${yayOrNay(Boolean(tableAssets))} Table assets: ${tableAssets?.length ?? 0}
             err,
             "from:",
             p,
-            bucketURL,
+            bucketURL
           );
           const full = `${bucketURL.replace(/\/$/, "")}/${p.replace(
             /^\//,
-            "",
+            ""
           )}`;
           fromBucket.push(full);
         }
@@ -247,7 +245,7 @@ ${yayOrNay(Boolean(tableAssets))} Table assets: ${tableAssets?.length ?? 0}
     }
 
     const combined = Array.from(
-      new Set([...normalizedFromTable, ...fromBucket]),
+      new Set([...normalizedFromTable, ...fromBucket])
     );
     console.log("🔹 Server-side assets resolved:", combined.length);
     return combined;
@@ -309,7 +307,7 @@ async function processOne(relPath: string | unknown) {
   } else {
     return encodeFullFileAsBase64(
       path.join(ROOT, "public", relPath.replace(/^\//, "")),
-      ext,
+      ext
     );
   }
 }
@@ -327,12 +325,12 @@ async function main() {
   console.log(
     "✅ Found",
     serverSideAssets?.length ?? 0,
-    "server-side assets to process",
+    "server-side assets to process"
   );
 
   const mergedRaw = [...paths, ...(serverSideAssets ?? [])];
   const merged = Array.from(
-    new Set(mergedRaw.filter(Boolean).map((v) => String(v))),
+    new Set(mergedRaw.filter(Boolean).map((v) => String(v)))
   );
 
   console.log("✅ Found", merged.length, "in total assets to process");
@@ -345,7 +343,7 @@ async function main() {
   }
 
   const [writeRes, writeErr] = await safe(() =>
-    fsPromises.writeFile(OUT_FILE, JSON.stringify(manifest, null, 2), "utf8"),
+    fsPromises.writeFile(OUT_FILE, JSON.stringify(manifest, null, 2), "utf8")
   );
   if (writeRes === null) {
     console.error("❌ Error writing manifest:", writeErr);
@@ -354,7 +352,7 @@ async function main() {
 
   console.log("Wrote manifest:", OUT_FILE);
   console.log(
-    `✅ Created ${Object.keys(manifest).length} entries of ${merged.length}`,
+    `✅ Created ${Object.keys(manifest).length} entries of ${merged.length}`
   );
   console.log("generate-lqip-plaiceholder: done");
 }

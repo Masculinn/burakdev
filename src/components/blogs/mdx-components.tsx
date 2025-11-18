@@ -47,7 +47,6 @@ export const MDXComponents = createMDXComponents({
   hr: (props) => <MdHr {...props} />,
   p: (props) => <MdParagraph {...props} />,
   pre: (props) => <MdPre {...props} />,
-  // customs
   Details: (props) => <MdDetails {...props} />,
   Summary: (props) => <MdSummary {...props} />,
   Contents: (props) => <MdContents {...props} />,

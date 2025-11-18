@@ -45,7 +45,7 @@ export const MdDetails: FC<DetailsProps> = ({
 
   if (meaningful.length === 0) {
     throw new Error(
-      "Parse error during MDX compilation: 'MdDetails' must have at least one child",
+      "Parse error during MDX compilation: 'MdDetails' must have at least one child"
     );
   }
 
@@ -71,11 +71,16 @@ export const MdDetails: FC<DetailsProps> = ({
   const id = useId();
 
   return (
-    <Card className={cn("my-4 px-6 py-1 bg-transparent", className)}>
+    <Card
+      className={cn(
+        "my-4 px-6 py-1 bg-transparent dark:border-rose-500/50 border-rose-500",
+        className
+      )}
+    >
       <Accordion type="single" collapsible {...rest}>
         <AccordionItem value={id}>
-          <AccordionTrigger className=" relative">
-            <BrainCircuit className="rotate-90 shrink-0 size-6 absolute -left-8 -top-2 transition-transform will-change-transform duration-500 ease-in-out" />
+          <AccordionTrigger className="relative">
+            <BrainCircuit className="rotate-90 shrink-0 size-6 absolute -left-8 -top-2 transition-transform will-change-transform duration-500 ease-in-out text-rose-500" />
             <div className="inline-block">{triggerContent}</div>
           </AccordionTrigger>
           <AccordionContent>{contentChildren}</AccordionContent>

@@ -28,10 +28,10 @@ async function ensureDirExist() {
 async function readServerSideSlugs(): Promise<Item[] | null> {
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+    !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
   ) {
     console.log(
-      "⚠️ Missing database env vars: check either NEXT_PUBLIC_SUPABASE_URL or NEXT_PUBLIC_SUPABASE_ANON_KEY, returning 'null' in 'serverSideSlugs()'",
+      "⚠️ Missing database env vars: check either, returning 'null' in 'serverSideSlugs()'"
     );
     return null;
   }
@@ -87,7 +87,7 @@ async function main() {
     await fsPromises.writeFile(
       OUT_FILE,
       JSON.stringify(generatedSlugs, null, 2),
-      "utf8",
+      "utf8"
     );
   } catch (err) {
     console.error("❌ Error writing slugs:", err);

@@ -4,7 +4,7 @@ import { visit } from "unist-util-visit";
 /**
  * Unwrap paragraphs that contain only an image OR a single link whose only child is an image.
  * When we replace the paragraph we also set `data-unwrap="1"` on the resulting node so downstream
- * rendering can decide to render a block <figure>. :)
+ * rendering can decide to render a block <figure> :)
  */
 export default function remarkUnwrapImageParagraphs() {
   return function transformer(tree: Root, _file?: unknown) {
@@ -14,7 +14,7 @@ export default function remarkUnwrapImageParagraphs() {
       (
         node: Paragraph,
         index: number | null | undefined,
-        parent: Parent | null | undefined,
+        parent: Parent | null | undefined
       ) => {
         if (!parent || typeof index !== "number") return;
 
@@ -53,7 +53,7 @@ export default function remarkUnwrapImageParagraphs() {
               innerImage.data.hProperties || {},
               {
                 "data-unwrap": "1",
-              },
+              }
             );
 
             const replacement = {
@@ -65,7 +65,7 @@ export default function remarkUnwrapImageParagraphs() {
             return;
           }
         }
-      },
+      }
     );
   };
 }
