@@ -27,7 +27,7 @@ function createItem(post: BlogType & { slug?: SlugType }) {
   }
 
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${post.slug}`;
-  const date = new Date(post.published_at).toUTCString();
+  const date = new Date(post.published_at).toISOString();
   const rss = `<item>
     <title>${post.title}</title>
     <link>${url}</link>
