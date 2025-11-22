@@ -60,7 +60,7 @@ const data = {
     },
     {
       title: "Blusky",
-      url: "https://bsky.app/profile/burakdevv.bsky.social",
+      url: "https://bsky.app/profile/burakdev.com",
       icon: Bluesky,
     },
   ],
