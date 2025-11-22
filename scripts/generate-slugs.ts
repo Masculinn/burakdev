@@ -94,8 +94,8 @@ async function main() {
     throw err;
   }
 
-  console.log("✅ Wrote", generatedSlugs.length, "slugs");
   console.log("✅ generate-blog-slugs: done");
+  console.log("✅", generatedSlugs.length, "slugs written");
 }
 
 main().catch((err) => {
