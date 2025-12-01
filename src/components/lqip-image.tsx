@@ -78,12 +78,12 @@ export const LqipImage: FC<LqipImageType> = ({
           <div
             className={cn(
               "relative aspect-auto block overflow-hidden",
-              className
+              className,
             )}
           >
             <div
               className={cn(
-                "absolute inset-1 scale-150 transform filter blur-2xl  object-cover"
+                "absolute inset-1 scale-150 transform filter blur-2xl  object-cover",
               )}
               style={css}
             />
@@ -105,12 +105,12 @@ export const LqipImage: FC<LqipImageType> = ({
         <div
           className={cn(
             "relative aspect-auto block overflow-hidden",
-            className
+            className,
           )}
         >
           <div
             className={cn(
-              "absolute inset-1 scale-150 transform filter blur-2xl object-cover"
+              "absolute inset-1 scale-150 transform filter blur-2xl object-cover",
             )}
             style={placeholder}
           />

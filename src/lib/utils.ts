@@ -70,7 +70,7 @@ function getReadingTime(content: string): number {
   const secondsFromWords = (words / wordsPerMinute) * 60;
   const totalSeconds = Math.max(
     0,
-    Math.round(secondsFromWords + images * imageSeconds)
+    Math.round(secondsFromWords + images * imageSeconds),
   );
   const minutes = totalSeconds / 60;
   return Math.ceil(minutes);

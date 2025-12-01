@@ -13,10 +13,15 @@ import { NavProjects } from "./nav-projects";
 
 const items = [
   {
-    title: "Motion Provider",
-    url: "https://motionprovider.dev",
+    title: "Motion Playgrounds",
+    url: "https://playground.motionprovider.dev/",
+  },
+  {
+    title: "Motion Docs",
+    url: "https://docs.motionprovider.dev",
   },
 ];
+
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>

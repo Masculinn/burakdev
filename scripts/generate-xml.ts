@@ -53,7 +53,7 @@ async function readServerSideData() {
     !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
   ) {
     console.log(
-      "⚠️ Missing database env vars: check either, returning 'null' in 'serverSideSlugs()'"
+      "⚠️ Missing database env vars: check either, returning 'null' in 'serverSideSlugs()'",
     );
     throw new Error("Missing database env vars");
   }
@@ -82,7 +82,7 @@ async function readServerSideData() {
 
     if (error || !posts) {
       throw new Error(
-        `Error getting server side data: code: ${error?.code}, message: ${error?.message}`
+        `Error getting server side data: code: ${error?.code}, message: ${error?.message}`,
       );
     }
 

@@ -132,7 +132,10 @@ export function NotFoundCircle({ className }: { className?: string }) {
       elementType="div"
       className={className}
       controller={{
-        trigger: true,
+        configView: {
+          once: false,
+          amount: 0.5,
+        },
       }}
     >
       {items}

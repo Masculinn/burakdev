@@ -45,7 +45,7 @@ export const Slider: FC<SliderProps> = ({ images, selected, plainLink }) => {
 
       api.scrollTo(idx);
     },
-    [api]
+    [api],
   );
 
   const items = useMemo(() => {
@@ -89,7 +89,7 @@ export const Slider: FC<SliderProps> = ({ images, selected, plainLink }) => {
             className={cn(
               "cursor-pointer w-2.5 h-1.5 dark:bg-white/10 shadow-2xs bg-slate-600/20 backdrop-blur-sm border-[0.5px] rounded-full",
               idx === current &&
-                "dark:bg-muted bg-muted-foreground w-5 transition-all"
+                "dark:bg-muted bg-muted-foreground w-5 transition-all",
             )}
             key={idx}
             onClick={() => handleSlideTo(idx)}

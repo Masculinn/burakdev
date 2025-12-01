@@ -14,7 +14,7 @@ export default function remarkUnwrapImageParagraphs() {
       (
         node: Paragraph,
         index: number | null | undefined,
-        parent: Parent | null | undefined
+        parent: Parent | null | undefined,
       ) => {
         if (!parent || typeof index !== "number") return;
 
@@ -53,7 +53,7 @@ export default function remarkUnwrapImageParagraphs() {
               innerImage.data.hProperties || {},
               {
                 "data-unwrap": "1",
-              }
+              },
             );
 
             const replacement = {
@@ -65,7 +65,7 @@ export default function remarkUnwrapImageParagraphs() {
             return;
           }
         }
-      }
+      },
     );
   };
 }

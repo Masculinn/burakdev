@@ -16,12 +16,17 @@ My personal web app for blogging and portfolio. Built at the top of latest tradi
 - **Database**: [Supabase/Postgres](https://supabase.com/)
 - **Deployment/Hosting**: [Netlify](https://www.netlify.com/)
 - **CI/CD**: [Netlify](https://www.netlify.com/)
-- **Animation**: [Motion Provider](https://motionprovider.dev/)
+- **Animation**: [Motion Provider](https://docs.motionprovider.dev/)
 - **CDN**: [Imgix](https://imgix.com/)
 - **Image processing**: [Sharp](https://sharp.pixelplumbing.com/)
 - **Analytics**: [GA](https://analytics.google.com/)
 - **Linter**: [Biome](https://biomejs.dev/)
 - **Formatter**: [Prettier](https://prettier.io/)
+
+### Latest Articles
+
+- [Is React(tanstack) Query Too Biased? Deep dive: Real Life Data Fetching Practices — Chapter 1](https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1)
+- [TypeScript Discriminated Unions and Generics: Complete Guide with Examples](https://burakdev.com/blogs/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples)
 
 ### License
 

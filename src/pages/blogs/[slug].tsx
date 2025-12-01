@@ -17,9 +17,12 @@ import remarkGfm from "remark-gfm";
 import remarkAttrsBrackets from "../../../scripts/custom-remark-plugins/remark-attrs";
 import remarkUnwrapImageParagraphs from "../../../scripts/custom-remark-plugins/remark-unwrap-image-paragraphs";
 
-const [Recommendation, Newsletter] = await Promise.all([
+const [Recommendation, Newsletter, SessionOver] = await Promise.all([
   dynamic(() => import("@/components/blogs/recommendation"), { ssr: false }),
   dynamic(() => import("@/components/blogs/newsletter"), { ssr: false }),
+  dynamic(() => import("@/components/blogs/session-over"), {
+    ssr: false,
+  }),
 ]);
 
 type GetStaticPropsType = GetStaticProps<
@@ -120,6 +123,7 @@ export default function Page({
         <Cover {...meta} readingTime={readingTime} />
         <Hydrate {...mdxSource} />
       </article>
+      <SessionOver sessionId={meta.id} />
       <Newsletter className="mt-12" />
       <Recommendation currentBlogID={meta.id} blogs={blogs} />
     </>

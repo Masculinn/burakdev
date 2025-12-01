@@ -12,6 +12,7 @@
   Jest,
   Jquery,
   Json,
+  Mdx,
   Mysql,
   Netlify,
   Nextjs,
@@ -41,7 +42,7 @@ import { Box } from "lucide-react";
 import type { SVGProps } from "react";
 
 type IconType = React.ComponentType<SVGProps<SVGSVGElement>>;
-export const iconsMap: Record<string, IconType> = {
+export const iconsMap = {
   react: React,
   tailwindcss: Tailwindcss,
   typescript: Typescript,
@@ -79,9 +80,13 @@ export const iconsMap: Record<string, IconType> = {
   swr: Swr,
   axios: Axios,
   astro: Astro,
-};
+  mdx: Mdx,
+} as const satisfies { [key: string]: IconType };
+
+export type IconName = keyof typeof iconsMap;
+
 const fallbackIcon = Box;
 export default function getIcon(iconName: string): IconType {
   const loweredIcon = iconName.toLowerCase();
-  return iconsMap[loweredIcon] || fallbackIcon;
+  return iconsMap[loweredIcon as IconName] || fallbackIcon;
 }

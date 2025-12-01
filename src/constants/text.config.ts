@@ -75,16 +75,16 @@ export default [
   },
   {
     animation: {
-      mode: ["textShimmer", "transformTextGlow"],
+      mode: ["fadeRight", "textShimmer"],
       transition: "linear",
       duration: 1,
-      delay: 7.5,
+      delay: 6.5,
     },
     children: "freelance projects",
     config: {
       duration: 0.06,
       mode: "chars",
     },
-    className: "inline text-purple-500",
+    className: "inline text-indigo-500",
   },
 ] as const satisfies TextAnimatorProps[];

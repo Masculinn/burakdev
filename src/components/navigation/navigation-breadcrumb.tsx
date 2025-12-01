@@ -50,7 +50,7 @@ export const NavigationBreadCrumb = ({ className }: { className?: string }) => {
                 className={cn(
                   "capitalize truncate max-w-32 md:max-w-max transition-opacity duration-300",
                   paths.length > 1 && "md:text-sm text-xs",
-                  hidden ? "opacity-0 pointer-events-none" : "opacity-100"
+                  hidden ? "opacity-0 pointer-events-none" : "opacity-100",
                 )}
               >
                 <BreadcrumbLink tabIndex={hidden ? -1 : 0} href={props.href}>
@@ -61,7 +61,7 @@ export const NavigationBreadCrumb = ({ className }: { className?: string }) => {
                 <BreadcrumbSeparator
                   className={cn(
                     "transition-opacity duration-300",
-                    scrolled ? "opacity-0 pointer-events-none" : "opacity-100"
+                    scrolled ? "opacity-0 pointer-events-none" : "opacity-100",
                   )}
                 >
                   <ChevronRight />
@@ -84,9 +84,9 @@ function extractPaths(currPath: string): PathObjType[] | null {
     const trimRef = trimFragment.split("?")[0];
 
     const title = slugs.find((s) => s.url === trimRef)?.title;
-    
+
     mergedSlug += `/${trimRef}`;
-    
+
     return {
       children: title || trimRef,
       href: mergedSlug,

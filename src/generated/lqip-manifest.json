@@ -1,4 +1,26 @@
 {
+  "/assets/timeline/motion-docs/1.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAk0lEQVR4nGNgxQAcHBy8PPwC/IIMaBKcnDzCQuLi4rKS0ioochwcHMJC4tKy6nqmLm5eEShyvDz84uKyeqYu1m6xDl6pKHK9vRNWrtp07vrzz//+33r1H0VOS9MgOiYtJrUiNrM9vWwOipy5mWVGZnlaTl1STmtiXie6W0RFJGUVtMxsvF18Eoj2A1y3hISkhIQMAOitJNchTU4JAAAAAElFTkSuQmCC",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(9,9,9) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(10,10,10) 66.66666666666666% 77.77777777777779%,rgb(12,11,14) 77.77777777777779% 88.88888888888889%,rgb(13,12,15) 88.88888888888889% 100%),linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(9,9,9) 44.44444444444444% 55.55555555555556%,rgb(10,10,13) 55.55555555555556% 66.66666666666666%,rgb(14,13,19) 66.66666666666666% 77.77777777777779%,rgb(16,15,23) 77.77777777777779% 88.88888888888889%,rgb(15,17,27) 88.88888888888889% 100%),linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(10,10,10) 44.44444444444444% 55.55555555555556%,rgb(14,13,19) 55.55555555555556% 66.66666666666666%,rgb(16,18,28) 66.66666666666666% 77.77777777777779%,rgb(19,26,40) 77.77777777777779% 88.88888888888889%,rgb(28,32,45) 88.88888888888889% 100%),linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(12,11,14) 44.44444444444444% 55.55555555555556%,rgb(16,15,23) 55.55555555555556% 66.66666666666666%,rgb(19,26,40) 66.66666666666666% 77.77777777777779%,rgb(19,31,52) 77.77777777777779% 88.88888888888889%,rgb(20,32,56) 88.88888888888889% 100%),linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(51,51,54) 44.44444444444444% 55.55555555555556%,rgb(58,59,66) 55.55555555555556% 66.66666666666666%,rgb(64,72,85) 66.66666666666666% 77.77777777777779%,rgb(72,82,104) 77.77777777777779% 88.88888888888889%,rgb(61,77,105) 88.88888888888889% 100%),linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(23,22,28) 44.44444444444444% 55.55555555555556%,rgb(36,37,46) 55.55555555555556% 66.66666666666666%,rgb(31,40,57) 66.66666666666666% 77.77777777777779%,rgb(27,41,67) 77.77777777777779% 88.88888888888889%,rgb(25,45,77) 88.88888888888889% 100%),linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(27,26,29) 44.44444444444444% 55.55555555555556%,rgb(39,41,52) 55.55555555555556% 66.66666666666666%,rgb(36,42,57) 66.66666666666666% 77.77777777777779%,rgb(31,42,64) 77.77777777777779% 88.88888888888889%,rgb(28,43,66) 88.88888888888889% 100%),linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(10,10,10) 44.44444444444444% 55.55555555555556%,rgb(15,14,20) 55.55555555555556% 66.66666666666666%,rgb(17,19,29) 66.66666666666666% 77.77777777777779%,rgb(22,28,42) 77.77777777777779% 88.88888888888889%,rgb(24,33,50) 88.88888888888889% 100%),linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(9,9,9) 44.44444444444444% 55.55555555555556%,rgb(10,10,13) 55.55555555555556% 66.66666666666666%,rgb(14,13,19) 66.66666666666666% 77.77777777777779%,rgb(16,15,23) 77.77777777777779% 88.88888888888889%,rgb(15,17,27) 88.88888888888889% 100%),linear-gradient(90deg, rgb(9,9,9) 11.11111111111111%,rgb(9,9,9) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(9,9,9) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(10,10,10) 66.66666666666666% 77.77777777777779%,rgb(16,16,18) 77.77777777777779% 88.88888888888889%,rgb(16,16,21) 88.88888888888889% 100%)",
+      "backgroundPosition": "0 0 ,0 11.11111111111111%,0 22.22222222222222%,0 33.33333333333333%,0 44.44444444444444%,0 55.55555555555556%,0 66.66666666666666%,0 77.77777777777779%,0 88.88888888888889%,0 100%",
+      "backgroundSize": "100% 10%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 1080,
+    "width": 963
+  },
+  "/assets/timeline/motion-docs/2.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAjUlEQVR4nGMQ4Bfi4+VnxQYYJKVVJcTlhIXEOTl50OVcPcN1jJ1k5NSFhcTR5Ry802094g3M3CTE5dAMZ3jx7f/qnVfffvl//eajvr5JKHJds/cn5nWGJxQbGNrKy6mgyDX2r8ou6w6OyraydFJSRJXzCkqzsPWVU9QSE5Xk5OQk2g+SkrLS0jJoOiByAKTvJIX81Q00AAAAAElFTkSuQmCC",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgb(13,12,15) 11.11111111111111%,rgb(12,11,14) 11.11111111111111% 22.22222222222222%,rgb(9,9,9) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(9,9,9) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%),linear-gradient(90deg, rgb(15,17,27) 11.11111111111111%,rgb(16,15,23) 11.11111111111111% 22.22222222222222%,rgb(14,13,19) 22.22222222222222% 33.33333333333333%,rgb(10,10,13) 33.33333333333333% 44.44444444444444%,rgb(9,9,9) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%),linear-gradient(90deg, rgb(27,31,44) 11.11111111111111%,rgb(18,25,39) 11.11111111111111% 22.22222222222222%,rgb(16,18,28) 22.22222222222222% 33.33333333333333%,rgb(14,13,19) 33.33333333333333% 44.44444444444444%,rgb(9,9,9) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%),linear-gradient(90deg, rgb(18,32,56) 11.11111111111111%,rgb(19,31,52) 11.11111111111111% 22.22222222222222%,rgb(19,26,40) 22.22222222222222% 33.33333333333333%,rgb(16,15,23) 33.33333333333333% 44.44444444444444%,rgb(12,11,14) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%),linear-gradient(90deg, rgb(63,78,106) 11.11111111111111%,rgb(48,62,85) 11.11111111111111% 22.22222222222222%,rgb(71,77,92) 22.22222222222222% 33.33333333333333%,rgb(68,70,77) 33.33333333333333% 44.44444444444444%,rgb(50,50,53) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%),linear-gradient(90deg, rgb(35,54,84) 11.11111111111111%,rgb(27,42,65) 11.11111111111111% 22.22222222222222%,rgb(29,38,54) 22.22222222222222% 33.33333333333333%,rgb(23,24,35) 33.33333333333333% 44.44444444444444%,rgb(19,18,24) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%),linear-gradient(90deg, rgb(36,51,73) 11.11111111111111%,rgb(33,44,62) 11.11111111111111% 22.22222222222222%,rgb(29,36,51) 22.22222222222222% 33.33333333333333%,rgb(27,26,35) 33.33333333333333% 44.44444444444444%,rgb(20,19,23) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%),linear-gradient(90deg, rgb(25,34,51) 11.11111111111111%,rgb(22,28,42) 11.11111111111111% 22.22222222222222%,rgb(17,19,29) 22.22222222222222% 33.33333333333333%,rgb(15,14,20) 33.33333333333333% 44.44444444444444%,rgb(10,10,10) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%),linear-gradient(90deg, rgb(15,17,27) 11.11111111111111%,rgb(16,15,23) 11.11111111111111% 22.22222222222222%,rgb(14,13,19) 22.22222222222222% 33.33333333333333%,rgb(10,10,13) 33.33333333333333% 44.44444444444444%,rgb(9,9,9) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%),linear-gradient(90deg, rgb(16,16,21) 11.11111111111111%,rgb(17,17,19) 11.11111111111111% 22.22222222222222%,rgb(10,10,10) 22.22222222222222% 33.33333333333333%,rgb(9,9,9) 33.33333333333333% 44.44444444444444%,rgb(9,9,9) 44.44444444444444% 55.55555555555556%,rgb(9,9,9) 55.55555555555556% 66.66666666666666%,rgb(9,9,9) 66.66666666666666% 77.77777777777779%,rgb(9,9,9) 77.77777777777779% 88.88888888888889%,rgb(9,9,9) 88.88888888888889% 100%)",
+      "backgroundPosition": "0 0 ,0 11.11111111111111%,0 22.22222222222222%,0 33.33333333333333%,0 44.44444444444444%,0 55.55555555555556%,0 66.66666666666666%,0 77.77777777777779%,0 88.88888888888889%,0 100%",
+      "backgroundSize": "100% 10%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 1080,
+    "width": 962
+  },
   "/assets/timeline/motion-playgrounds/1.webp": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAABDklEQVR4nGPIyM/qnzFDXlGJi4uLg5MNGTAsXDF7y75dJmamwsJCAgL8PLxcPLwgRRycbAy71y989+Ta3avHT+zftHL+lMVzJy5fNHXBrMn1lUUMYZ623Y2VVaWZbbUF5YVJxTlxU5oL8xKCpraXMqiqKOzZs3PipN4FC+YsXbrY1MxYSlIMghiqSnPrass8vVwsrcwNjXSFhYW4uLigbvn18dHpQ+sL8hKjIvzzs+NnT+moKM9VUVHg4uJisLU0tLU0dLA3d7A3j08Iy86MnTKpdcqk1rqaYoaD+zcfO77z+Il9Fy4ev37z3IUrJyCMcxeOMvz59vrPt9cvX965e+fS9ZvnIOjCxePnLhwFALnMeNhrM9XcAAAAAElFTkSuQmCC",
     "css": {
@@ -549,6 +571,17 @@
     "height": 1080,
     "width": 962
   },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/serenity-with-sea.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAxUlEQVR4nAG6AEX/AAAACwwQGhIYJBoeKSMkLisoLSYlLRkhKxcZJgoQHQBsVUqEZ1uTeGati3TRn3zyrH/tqXnDlHOjhWmHb1cAiUwopFwx2n5B/65V/9Zi/+hl/+1n/9Rd/79T/6RDAINGIZ5TJ9V3OP+hSvOhRf/lX//tYf/SV/+9T/+jRAB/YUyUcl6nhWu+mHncqID/toT7sXzRn3mtjG+UdlwABQkVFBglGyIwJys7MjA8PzU+NTQ9KS8+HyY2FRsmkW9OU2MxSqIAAAAASUVORK5CYII=",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgb(10,11,19) 10%,rgb(16,20,29) 10% 20%,rgb(19,25,37) 20% 30%,rgb(25,29,41) 30% 40%,rgb(32,33,43) 40% 50%,rgb(39,36,41) 50% 60%,rgb(35,34,42) 60% 70%,rgb(24,31,42) 70% 80%,rgb(23,26,39) 80% 90%,rgb(14,20,32) 90% 100%),linear-gradient(90deg, rgb(87,65,55) 10%,rgb(104,77,65) 10% 20%,rgb(113,89,72) 20% 30%,rgb(132,101,79) 30% 40%,rgb(159,113,80) 40% 50%,rgb(184,120,77) 50% 60%,rgb(180,118,73) 60% 70%,rgb(149,106,75) 70% 80%,rgb(125,97,71) 80% 90%,rgb(105,83,60) 90% 100%),linear-gradient(90deg, rgb(113,56,21) 10%,rgb(133,65,23) 10% 20%,rgb(171,86,27) 20% 30%,rgb(213,118,27) 30% 40%,rgb(235,146,23) 40% 50%,rgb(239,159,17) 50% 60%,rgb(237,163,18) 60% 70%,rgb(231,145,15) 70% 80%,rgb(224,130,11) 80% 90%,rgb(210,111,0) 90% 100%),linear-gradient(90deg, rgb(109,51,15) 10%,rgb(129,59,15) 10% 20%,rgb(168,81,17) 20% 30%,rgb(208,109,18) 30% 40%,rgb(185,112,13) 40% 50%,rgb(238,157,0) 50% 60%,rgb(235,163,0) 60% 70%,rgb(235,143,0) 70% 80%,rgb(229,127,0) 80% 90%,rgb(215,109,0) 90% 100%),linear-gradient(90deg, rgb(101,73,53) 10%,rgb(115,84,65) 10% 20%,rgb(128,97,72) 20% 30%,rgb(144,109,80) 30% 40%,rgb(166,119,81) 40% 50%,rgb(194,126,79) 50% 60%,rgb(190,123,73) 60% 70%,rgb(159,113,77) 70% 80%,rgb(132,102,74) 80% 90%,rgb(115,87,62) 90% 100%),linear-gradient(90deg, rgb(13,16,25) 10%,rgb(21,25,38) 10% 20%,rgb(25,32,46) 20% 30%,rgb(34,38,54) 30% 40%,rgb(43,41,53) 40% 50%,rgb(54,44,53) 50% 60%,rgb(45,44,53) 60% 70%,rgb(35,41,56) 70% 80%,rgb(28,35,50) 80% 90%,rgb(21,27,39) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 20%,0 40%,0 60%,0 80%,0 100%",
+      "backgroundSize": "100% 16.666666666666668%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 3046,
+    "width": 5416
+  },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/black-hole.webp": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAc0lEQVR4nGPgYWEBI0YBFiYeFkYwYuFiZeRiBTEY4NL6rOzRwqIhAiKiTAwQOZA0hMXLwhgtLPp/Sti/bMcQARGIGQhpHhbGEAGR/xfL/j+qA0uDzIcazsUKUijGwmTKxmnMzikPdQSKbhDihYlCEBcrIwCqOg9x2btbogAAAABJRU5ErkJggg==",
     "css": {
@@ -582,6 +615,28 @@
     "height": 1024,
     "width": 1536
   },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/deduplication-of-sections.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAADCAYAAACqPZ51AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAXUlEQVR4nGOozy/+v2rhov/fvn74f+DA/v9hwcH/y6ur/9s6OPxnYGBA4IqCvP/vfn773zWh97+vn99/Fw/3/z4BAf8tra1RFdYUF/63s7D67+bq9p+Pjw9VEgkDAPgfNa3awPNcAAAAAElFTkSuQmCC",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(24,7,13,1) 10%,rgba(22,14,15,1) 10% 20%,rgba(22,21,17,1) 20% 30%,rgba(18,18,17,1) 30% 40%,rgba(13,8,8,1) 40% 50%,rgba(8,14,14,1) 50% 60%,rgba(3,8,7,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(19,10,7,1) 10%,rgba(13,23,21,1) 10% 20%,rgba(9,16,13,1) 20% 30%,rgba(7,9,8,1) 30% 40%,rgba(3,9,8,1) 40% 50%,rgba(4,10,9,1) 50% 60%,rgba(4,7,6,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(20,10,7,1) 10%,rgba(13,4,7,1) 10% 20%,rgba(9,7,8,1) 20% 30%,rgba(1,1,1,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 50%,0 100%",
+      "backgroundSize": "100% 33.333333333333336%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 249,
+    "width": 800
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/distributive-behaviour-of-conditional-types.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAdklEQVR4nGPg5uH+LyAgAMb8/HxwNgMDAxjD+bq6ev+9vb3B2NHR6b+vr9//sLDw/z4+PmDs4uLy39zc4j/D/zev/t+7eu7/06dP/7/48Od/QHAoWANIkaOjI9xkBlUVlf/CQkL/ZaSl/0tJSSEkMDFOCfIUAgCaC1Tmp+jK8gAAAABJRU5ErkJggg==",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(0,1,0,1) 10%,rgba(1,1,1,1) 10% 20%,rgba(1,1,1,1) 20% 30%,rgba(1,1,0,1) 30% 40%,rgba(1,1,1,1) 40% 50%,rgba(1,1,1,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(1,1,1,1) 80% 90%,rgba(1,1,1,1) 90% 100%),linear-gradient(90deg, rgba(4,4,5,1) 10%,rgba(7,7,7,1) 10% 20%,rgba(7,7,7,1) 20% 30%,rgba(6,6,7,1) 30% 40%,rgba(7,7,9,1) 40% 50%,rgba(8,8,9,1) 50% 60%,rgba(7,7,8,1) 60% 70%,rgba(7,7,8,1) 70% 80%,rgba(7,6,7,1) 80% 90%,rgba(5,5,6,1) 90% 100%),linear-gradient(90deg, rgba(31,14,12,1) 10%,rgba(23,16,8,1) 10% 20%,rgba(18,18,18,1) 20% 30%,rgba(12,19,28,1) 30% 40%,rgba(5,8,12,1) 40% 50%,rgba(6,6,7,1) 50% 60%,rgba(7,7,8,1) 60% 70%,rgba(6,6,6,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(4,3,2,1) 10%,rgba(2,1,1,1) 10% 20%,rgba(3,2,2,1) 20% 30%,rgba(2,2,2,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(0,0,0,1) 20% 30%,rgba(0,0,0,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(0,0,0,1) 20% 30%,rgba(0,0,0,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 20%,0 40%,0 60%,0 80%,0 100%",
+      "backgroundSize": "100% 16.666666666666668%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 450,
+    "width": 800
+  },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/flashbang-csgo.webp": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAICAYAAADA+m62AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAl0lEQVR4nGP4//8/AzK+dOmS4PHjx7lPnTrFgIxRFIFwSkqKlpS8zAVvX9+q6upqBhjGUJhTkBPMycjwoyI5ZBVeE8sqyxz5GBjeBLtb9k6ZMoUBhjEURibFhjIwMPwNCPIJSUxMZIBhDIUR0aFZApwMf4PCgnTwKizKzej00JH+k5wYz4NX4aL5s8PaK7IWzZw+lQ/ZjQDUCqxUagTfoQAAAABJRU5ErkJggg==",
     "css": {
@@ -593,6 +648,28 @@
     "height": 384,
     "width": 512
   },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/hidden-unresolved-union-types.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAECAYAAAC3OK7NAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAj0lEQVR4nE3KsQqCQACA4dtCF81Lr5R6gBq6QJAgGiskKAqCNiHcC2prqSdI0EnfMvc/cJCGb/vEIox4JCl5lvGta86HE7frnef7hdExW2I6nlBWFXlZkBcfkvTCOt6y2x8J/BHSdhsi1JplNCdebZhpjep5DP2AQA3wHA8lVUOYpoFtWfSVQnYlru20/uMP/adCch5n6l8AAAAASUVORK5CYII=",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(17,4,9,1) 10%,rgba(28,7,13,1) 10% 20%,rgba(21,17,17,1) 20% 30%,rgba(24,25,25,1) 30% 40%,rgba(18,9,14,1) 40% 50%,rgba(16,14,19,1) 50% 60%,rgba(10,18,17,1) 60% 70%,rgba(2,0,3,1) 70% 80%,rgba(2,0,3,1) 80% 90%,rgba(2,0,3,1) 90% 100%),linear-gradient(90deg, rgba(12,4,6,1) 10%,rgba(18,19,19,1) 10% 20%,rgba(14,20,15,1) 20% 30%,rgba(17,19,13,1) 30% 40%,rgba(8,15,13,1) 40% 50%,rgba(6,11,14,1) 50% 60%,rgba(10,11,15,1) 60% 70%,rgba(5,2,9,1) 70% 80%,rgba(5,0,8,1) 80% 90%,rgba(5,0,8,1) 90% 100%),linear-gradient(90deg, rgba(12,5,6,1) 10%,rgba(16,5,8,1) 10% 20%,rgba(15,8,11,1) 20% 30%,rgba(8,6,7,1) 30% 40%,rgba(6,1,3,1) 40% 50%,rgba(7,2,4,1) 50% 60%,rgba(8,1,4,1) 60% 70%,rgba(7,0,6,1) 70% 80%,rgba(7,0,8,1) 80% 90%,rgba(7,0,8,1) 90% 100%),linear-gradient(90deg, rgba(1,1,0,1) 10%,rgba(3,1,1,1) 10% 20%,rgba(4,2,3,1) 20% 30%,rgba(4,1,3,1) 30% 40%,rgba(7,0,3,1) 40% 50%,rgba(7,0,3,1) 50% 60%,rgba(7,0,3,1) 60% 70%,rgba(7,0,6,1) 70% 80%,rgba(7,0,8,1) 80% 90%,rgba(7,0,8,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 33.33333333333333%,0 66.66666666666666%,0 100%",
+      "backgroundSize": "100% 25%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 281,
+    "width": 800
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/hidden-unresolved-union-types-solved.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAwUlEQVR4nGMw1dD+b6dj9F9bVfV/VFTM//DISDDbRN/wv7mD3X8JCYn/DAwM/xkkBUX+e7h5/PcPD/lvamrw38rG8r+2vt5/PkGB/6ISEv95+HghCrXU1P9LS0j+b5o46f+rb//+b9q59//MxUv/T5u36P/0+Yv/d0+a+r+yvvk/g5665n9ZMYn/TpY2/+csXP4/Iirmv529439nF3cwdvPwBmMGTnb2/wK8fP/5eHj+s7KygDHYKkyMKsDKyooVAwBVZF9+omYhyQAAAABJRU5ErkJggg==",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(24,7,12,1) 10%,rgba(28,7,14,1) 10% 20%,rgba(18,8,9,1) 20% 30%,rgba(22,22,23,1) 30% 40%,rgba(21,22,22,1) 40% 50%,rgba(18,8,9,1) 50% 60%,rgba(18,12,14,1) 60% 70%,rgba(7,19,17,1) 70% 80%,rgba(5,6,6,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(14,1,5,1) 10%,rgba(20,18,20,1) 10% 20%,rgba(15,23,20,1) 20% 30%,rgba(15,15,8,1) 30% 40%,rgba(14,17,13,1) 40% 50%,rgba(9,14,13,1) 50% 60%,rgba(1,4,3,1) 60% 70%,rgba(1,7,6,1) 70% 80%,rgba(1,3,2,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(16,9,11,1) 10%,rgba(10,5,6,1) 10% 20%,rgba(20,32,33,1) 20% 30%,rgba(36,46,52,1) 30% 40%,rgba(31,37,40,1) 40% 50%,rgba(26,34,36,1) 50% 60%,rgba(27,33,36,1) 60% 70%,rgba(27,33,37,1) 70% 80%,rgba(26,31,34,1) 80% 90%,rgba(24,28,32,1) 90% 100%),linear-gradient(90deg, rgba(18,9,12,1) 10%,rgba(16,2,7,1) 10% 20%,rgba(24,13,17,1) 20% 30%,rgba(29,33,38,1) 30% 40%,rgba(21,22,24,1) 40% 50%,rgba(16,17,19,1) 50% 60%,rgba(17,18,21,1) 60% 70%,rgba(17,18,21,1) 70% 80%,rgba(17,19,22,1) 80% 90%,rgba(17,19,22,1) 90% 100%),linear-gradient(90deg, rgba(3,1,1,1) 10%,rgba(5,2,3,1) 10% 20%,rgba(4,2,2,1) 20% 30%,rgba(1,1,0,1) 30% 40%,rgba(1,1,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(0,0,0,1) 20% 30%,rgba(0,0,0,1) 30% 40%,rgba(1,1,1,1) 40% 50%,rgba(1,1,1,1) 50% 60%,rgba(1,1,1,1) 60% 70%,rgba(1,1,1,1) 70% 80%,rgba(1,1,1,1) 80% 90%,rgba(1,1,1,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 20%,0 40%,0 60%,0 80%,0 100%",
+      "backgroundSize": "100% 16.666666666666668%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 450,
+    "width": 800
+  },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/js-event-loop.gif": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAA+ElEQVR4nB3DTUvCcADA4X+X7l73DWTtEF48CDuEWK3aAhcEUyIkiJKUUZoZ0mplgrHaCELNSggpojciKIIIIvDgN+nq9Rf0wCOmdR1zzmQ8kUDTNDa21vnufbHtlNi0bV6fHljOZBATySTmwjyxaISwHMat76IbBm59B6dUwJjRqTkVhBqPY1qzTE6NoaoxKvtlsrkVmh2f++s2brmIf+AicvlVCkWbVDqNlbI461xw3vTpXvr0fz64aQecHu0hItFRhoYFQggkSeJ3MOD5pctVq0a/98bn+y2Pdy2EoiiEQqH/8ohM1fPwTg7Jri1i55cIgiqNxjF/c2eKelbuPm4AAAAASUVORK5CYII=",
     "css": {
@@ -603,6 +680,17 @@
     },
     "height": 495,
     "width": 880
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/outcome-second-session.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAApElEQVR4nGNQkpP/Lycj89/ExOS/lqbGfykJif/Kyir/tfX0/ssrKvxnYGCAYEdz6/+ujo7/w6Oi/xdXNf5PS836b2lp+d/EwgKsmJ2DA6Iw1M3z/8dnz/4///Thf8/kWf/3HD76PzQ09L+3j/f/9MzM/9bWVhCFhRlZ/92dnP7b2Fj/FxMV/c/MxPSfl4cHjrm4uCCmqqqoItyBA4MUMxBSBMMAtSFYq6tE+qYAAAAASUVORK5CYII=",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(9,3,4,1) 10%,rgba(7,3,3,1) 10% 20%,rgba(8,8,7,1) 20% 30%,rgba(7,6,5,1) 30% 40%,rgba(7,2,2,1) 40% 50%,rgba(5,5,6,1) 50% 60%,rgba(3,8,7,1) 60% 70%,rgba(3,5,4,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(19,5,10,1) 10%,rgba(14,9,9,1) 10% 20%,rgba(11,14,15,1) 20% 30%,rgba(10,18,24,1) 30% 40%,rgba(16,14,20,1) 40% 50%,rgba(8,9,8,1) 50% 60%,rgba(3,10,9,1) 60% 70%,rgba(3,8,7,1) 70% 80%,rgba(0,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(24,6,10,1) 10%,rgba(32,24,24,1) 10% 20%,rgba(20,28,27,1) 20% 30%,rgba(14,20,26,1) 30% 40%,rgba(19,24,26,1) 40% 50%,rgba(13,13,13,1) 50% 60%,rgba(11,12,11,1) 60% 70%,rgba(13,16,15,1) 70% 80%,rgba(9,9,8,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(22,13,16,1) 10%,rgba(15,9,9,1) 10% 20%,rgba(10,9,8,1) 20% 30%,rgba(4,2,2,1) 30% 40%,rgba(1,0,0,1) 40% 50%,rgba(2,1,1,1) 50% 60%,rgba(2,1,1,1) 60% 70%,rgba(2,1,1,1) 70% 80%,rgba(1,1,1,1) 80% 90%,rgba(0,1,1,1) 90% 100%),linear-gradient(90deg, rgba(6,5,6,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(0,0,0,1) 20% 30%,rgba(0,0,0,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(1,1,1,1) 90% 100%),linear-gradient(90deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(0,0,0,1) 20% 30%,rgba(0,0,0,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 20%,0 40%,0 60%,0 80%,0 100%",
+      "backgroundSize": "100% 16.666666666666668%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 450,
+    "width": 800
   },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/pre-ajax-web-experience-cycle.webp": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAIAAADzBuo/AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAdklEQVR4nEXJsQkCQRSE4UumDsV0YgWTV8VU8YLDAhSD7WMSETywD7WALUDEArYD8c7DL5hg/g5ARGQmycwsM4w6AKvlYrtZk4yRpIj45+swPG73y/l03B9s11olkfxlSbZba32/ez3fnpH8ZgClFNvTSppOAB9I6zLYmIohVgAAAABJRU5ErkJggg==",
@@ -637,6 +725,17 @@
     "height": 751,
     "width": 1429
   },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/s-extends-section.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAqklEQVR4nGOQkpL67+7m9t/P1/d/UHDQf309vf+sLKz/eXh5/zMwMCCws53D/2XT5/xfPHvO/+u3b/+f1D/xf19n5/8lq1b+d3R0+i8sJARRaKxv8H/fstX/f/3+/7+nr/+/hbXd/6yM1P9FhXn/Kysr/3t7eUAUqqup/o+NjPo/ceKE//l5ef+VlZVRrYRhOWmZ/1FhYf+bmxv/l5eX/dfR0cGuEIcgBgYAcJRjOmXlSbEAAAAASUVORK5CYII=",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(2,2,2,1) 10%,rgba(8,6,7,1) 10% 20%,rgba(8,7,7,1) 20% 30%,rgba(7,8,7,1) 30% 40%,rgba(5,4,4,1) 40% 50%,rgba(1,0,1,1) 50% 60%,rgba(0,1,1,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(12,4,6,1) 10%,rgba(24,9,15,1) 10% 20%,rgba(19,12,13,1) 20% 30%,rgba(15,18,18,1) 30% 40%,rgba(15,12,14,1) 40% 50%,rgba(17,11,11,1) 50% 60%,rgba(9,16,14,1) 60% 70%,rgba(6,6,7,1) 70% 80%,rgba(2,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(9,3,4,1) 10%,rgba(29,8,14,1) 10% 20%,rgba(18,19,23,1) 20% 30%,rgba(11,13,14,1) 30% 40%,rgba(1,6,12,1) 40% 50%,rgba(13,9,5,1) 50% 60%,rgba(13,10,6,1) 60% 70%,rgba(11,11,12,1) 70% 80%,rgba(8,7,3,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(5,3,2,1) 10%,rgba(13,7,8,1) 10% 20%,rgba(13,13,12,1) 20% 30%,rgba(11,10,10,1) 30% 40%,rgba(3,3,3,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(6,1,3,1) 10%,rgba(12,7,7,1) 10% 20%,rgba(12,12,10,1) 20% 30%,rgba(11,11,10,1) 30% 40%,rgba(4,4,4,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(0,0,0,1) 20% 30%,rgba(0,0,0,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 20%,0 40%,0 60%,0 80%,0 100%",
+      "backgroundSize": "100% 16.666666666666668%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 450,
+    "width": 800
+  },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/stateless-greater-than-states.png": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAi0lEQVR4nE3OoQ3FIBSFYQTmCtxJSE5ykwqSii7SSbpADRbBBF2AGSrQNSzTGSpeAPM+eX9xj+EfP5BU1XkxJAF473VY1zWEICIAeg4h3MPzPDHGnPN1XaWUfd8BmGVZUkp5iDG21r7ve9/3OI6eSTrnRMRaC+A8z1rrtm0ioqo9z69zDgDn3JxC8ge1MiyPAOrucgAAAABJRU5ErkJggg==",
     "css": {
@@ -658,6 +757,50 @@
     },
     "height": 463,
     "width": 939
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/type-level-utils-testing-with-s.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAw0lEQVR4nGOwNrf4X1ZY9L+3u+d/VGTUf31Dw/8CAgL/BQQEwZiBgQGCY6Ni/9+5fvN/RHjYf3sH5/8BwaH/NdQ1/5uYmv/XNzIBawIr1NXV+9/V0/d/yvRp/0NDQ/9raeuATdXT0/3v6uL0X1hICKLQxdHx/6TJU//PnTfvf3xCwn83D6//0VGR/319fP4XFeb99/bw+M/KwvqfISYi/L+/n///gOCI/7W1jf+lpKT+8/Pzga0EmQY3EeZYiAeg7sGCATZOYcPtvddoAAAAAElFTkSuQmCC",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(9,4,5,1) 10%,rgba(15,9,10,1) 10% 20%,rgba(14,12,13,1) 20% 30%,rgba(9,8,9,1) 30% 40%,rgba(2,5,5,1) 40% 50%,rgba(1,1,1,1) 50% 60%,rgba(1,1,2,1) 60% 70%,rgba(1,1,2,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(12,7,12,1) 10%,rgba(21,16,18,1) 10% 20%,rgba(9,8,7,1) 20% 30%,rgba(4,6,11,1) 30% 40%,rgba(5,8,12,1) 40% 50%,rgba(4,3,7,1) 50% 60%,rgba(3,5,8,1) 60% 70%,rgba(1,5,9,1) 70% 80%,rgba(1,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(4,4,5,1) 10%,rgba(10,13,15,1) 10% 20%,rgba(11,14,13,1) 20% 30%,rgba(8,8,7,1) 30% 40%,rgba(3,4,5,1) 40% 50%,rgba(2,5,5,1) 50% 60%,rgba(5,4,3,1) 60% 70%,rgba(8,6,4,1) 70% 80%,rgba(2,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(10,5,5,1) 10%,rgba(12,13,16,1) 10% 20%,rgba(13,14,14,1) 20% 30%,rgba(8,9,10,1) 30% 40%,rgba(4,7,11,1) 40% 50%,rgba(10,8,7,1) 50% 60%,rgba(8,7,6,1) 60% 70%,rgba(13,10,6,1) 70% 80%,rgba(10,6,5,1) 80% 90%,rgba(1,0,1,1) 90% 100%),linear-gradient(90deg, rgba(13,7,6,1) 10%,rgba(8,7,8,1) 10% 20%,rgba(4,8,15,1) 20% 30%,rgba(11,11,16,1) 30% 40%,rgba(2,2,2,1) 40% 50%,rgba(1,1,0,1) 50% 60%,rgba(1,1,1,1) 60% 70%,rgba(2,1,1,1) 70% 80%,rgba(2,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(1,1,1,1) 20% 30%,rgba(1,1,1,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 20%,0 40%,0 60%,0 80%,0 100%",
+      "backgroundSize": "100% 16.666666666666668%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 450,
+    "width": 800
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/type-level-util-testing-empty-s-array.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAA0ElEQVR4nF2PS07CUABFXwJjKLAI5VMIP0uQKL9CsJGW6Ct9gDG+uAEduAhFN2CADZAwUbdCSNzLMVaZMLiDm5x7kitOrRpPD4+8vsyZqAmlchnDMP6TIBqJIIRAzIIp39sdKgg4b3bwriTHR2kqVYtCqRoOQtA08zzP39h8fOH7PplsjkKxSN7Mcdaok0om/0AlJe+LFYvlEq3v6fYv8NwhWmvWm0/UWFKzThB2q41t92h2B1xLheM4eCOPS9fl5vYuNMbjsV+rCNX7A/t+mB+TdmY0VaIcPQAAAABJRU5ErkJggg==",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(9,4,5,1) 10%,rgba(15,9,10,1) 10% 20%,rgba(14,12,13,1) 20% 30%,rgba(9,8,9,1) 30% 40%,rgba(3,5,5,1) 40% 50%,rgba(1,1,1,1) 50% 60%,rgba(1,1,1,1) 60% 70%,rgba(1,1,2,1) 70% 80%,rgba(1,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(12,7,10,1) 10%,rgba(21,16,18,1) 10% 20%,rgba(9,8,8,1) 20% 30%,rgba(4,6,11,1) 30% 40%,rgba(5,8,12,1) 40% 50%,rgba(4,3,7,1) 50% 60%,rgba(3,5,8,1) 60% 70%,rgba(1,5,10,1) 70% 80%,rgba(1,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(4,4,5,1) 10%,rgba(10,13,15,1) 10% 20%,rgba(11,16,18,1) 20% 30%,rgba(8,8,8,1) 30% 40%,rgba(3,4,5,1) 40% 50%,rgba(2,5,5,1) 50% 60%,rgba(5,4,2,1) 60% 70%,rgba(9,5,1,1) 70% 80%,rgba(2,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(12,7,6,1) 10%,rgba(12,14,16,1) 10% 20%,rgba(13,14,14,1) 20% 30%,rgba(9,9,11,1) 30% 40%,rgba(3,7,12,1) 40% 50%,rgba(9,7,6,1) 50% 60%,rgba(9,9,10,1) 60% 70%,rgba(12,15,21,1) 70% 80%,rgba(10,8,4,1) 80% 90%,rgba(6,5,3,1) 90% 100%),linear-gradient(90deg, rgba(10,5,6,1) 10%,rgba(7,6,8,1) 10% 20%,rgba(1,7,14,1) 20% 30%,rgba(6,8,13,1) 30% 40%,rgba(7,7,7,1) 40% 50%,rgba(6,8,7,1) 50% 60%,rgba(5,8,8,1) 60% 70%,rgba(7,9,12,1) 70% 80%,rgba(2,1,1,1) 80% 90%,rgba(1,1,0,1) 90% 100%),linear-gradient(90deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(1,1,1,1) 20% 30%,rgba(1,1,1,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 20%,0 40%,0 60%,0 80%,0 100%",
+      "backgroundSize": "100% 16.666666666666668%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 450,
+    "width": 800
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/type-level-util-testing-without-readonly.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAy0lEQVR4nGOwNrf4X1ZY9H/a1Kn/oyKj/hsZm/wXEBAAY3EJif8szMz/GRgY/jPERsX+v3P95n9fH5//YVFx/5NSM/+rqan/NzG1+O/lFwTWAFaoq6v3v6W98/+U6dP+e3t7/9fS1vmvb2j4X09X57+Drc1/YSEhiMLI0ND/kyZP/b9m7dr/Obl5/1Mycv8nJyX9D/T3/5+TmfHf28PjPysL638GV0en/66ubmBrAoJD/wcEBf2XlZEFWwkyDW4ilPjPw8sLxjA+OgYAJ9xjRGXdY+YAAAAASUVORK5CYII=",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(9,4,5,1) 10%,rgba(15,9,10,1) 10% 20%,rgba(14,13,13,1) 20% 30%,rgba(9,8,9,1) 30% 40%,rgba(3,5,6,1) 40% 50%,rgba(1,1,1,1) 50% 60%,rgba(1,1,1,1) 60% 70%,rgba(1,2,2,1) 70% 80%,rgba(1,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(12,7,12,1) 10%,rgba(21,16,18,1) 10% 20%,rgba(8,7,6,1) 20% 30%,rgba(4,9,14,1) 30% 40%,rgba(5,10,15,1) 40% 50%,rgba(4,3,5,1) 50% 60%,rgba(3,5,9,1) 60% 70%,rgba(2,8,14,1) 70% 80%,rgba(1,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(4,4,5,1) 10%,rgba(8,13,15,1) 10% 20%,rgba(11,14,13,1) 20% 30%,rgba(7,7,7,1) 30% 40%,rgba(3,4,5,1) 40% 50%,rgba(2,5,5,1) 50% 60%,rgba(5,4,2,1) 60% 70%,rgba(9,5,3,1) 70% 80%,rgba(2,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(12,7,6,1) 10%,rgba(12,13,16,1) 10% 20%,rgba(14,15,15,1) 20% 30%,rgba(9,10,13,1) 30% 40%,rgba(5,10,17,1) 40% 50%,rgba(10,9,8,1) 50% 60%,rgba(9,7,7,1) 60% 70%,rgba(13,9,7,1) 70% 80%,rgba(10,6,5,1) 80% 90%,rgba(1,0,1,1) 90% 100%),linear-gradient(90deg, rgba(10,5,6,1) 10%,rgba(7,6,8,1) 10% 20%,rgba(2,8,14,1) 20% 30%,rgba(5,8,12,1) 30% 40%,rgba(6,8,8,1) 40% 50%,rgba(3,2,3,1) 50% 60%,rgba(1,1,1,1) 60% 70%,rgba(2,1,1,1) 70% 80%,rgba(2,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(0,1,1,1) 20% 30%,rgba(0,1,1,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 20%,0 40%,0 60%,0 80%,0 100%",
+      "backgroundSize": "100% 16.666666666666668%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 450,
+    "width": 800
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/type-level-util-testing-with-s-number.gif": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAyUlEQVR4nGOwNrf4X1ZY9L+3u+d/VGTUf31Dw/8CAgL/BQQEwZiFmfk/AwPDf4bYqNj/d67f/B8RHvbf3sH5f0Bw6H8Ndc3/Jqbm//WNTMCawAp1dfX+t7R3/p8yfdp/P1/f/1raOmBT9fR0/7u6OP0XFhKCKLQwNfvfN2Hy/7nz5v3Pys757+bh9T85Kel/SnLy/5zMjP9hwcEQxdYWlv+dnJz/e/kF/ff28fsvIy0Ntk5KSgpMi4mIwNzJADYaJMjPzwexBgsGAAtCYTGlTVxgAAAAAElFTkSuQmCC",
+    "css": {
+      "backgroundImage": "linear-gradient(90deg, rgba(9,4,5,1) 10%,rgba(15,9,10,1) 10% 20%,rgba(14,12,13,1) 20% 30%,rgba(9,8,9,1) 30% 40%,rgba(2,5,5,1) 40% 50%,rgba(1,1,1,1) 50% 60%,rgba(1,1,2,1) 60% 70%,rgba(1,1,2,1) 70% 80%,rgba(1,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(12,7,12,1) 10%,rgba(21,16,18,1) 10% 20%,rgba(9,8,7,1) 20% 30%,rgba(4,6,11,1) 30% 40%,rgba(5,8,12,1) 40% 50%,rgba(4,3,7,1) 50% 60%,rgba(3,5,8,1) 60% 70%,rgba(1,5,9,1) 70% 80%,rgba(1,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(4,4,5,1) 10%,rgba(8,13,15,1) 10% 20%,rgba(11,14,13,1) 20% 30%,rgba(8,7,7,1) 30% 40%,rgba(3,4,5,1) 40% 50%,rgba(2,5,5,1) 50% 60%,rgba(5,4,3,1) 60% 70%,rgba(8,6,4,1) 70% 80%,rgba(2,1,1,1) 80% 90%,rgba(0,0,0,1) 90% 100%),linear-gradient(90deg, rgba(8,4,5,1) 10%,rgba(11,13,16,1) 10% 20%,rgba(13,14,14,1) 20% 30%,rgba(9,10,11,1) 30% 40%,rgba(4,7,11,1) 40% 50%,rgba(10,9,8,1) 50% 60%,rgba(10,9,9,1) 60% 70%,rgba(13,9,7,1) 70% 80%,rgba(11,7,6,1) 80% 90%,rgba(2,1,1,1) 90% 100%),linear-gradient(90deg, rgba(9,4,6,1) 10%,rgba(6,6,8,1) 10% 20%,rgba(2,8,14,1) 20% 30%,rgba(6,7,11,1) 30% 40%,rgba(3,2,2,1) 40% 50%,rgba(1,1,1,1) 50% 60%,rgba(2,2,2,1) 60% 70%,rgba(1,1,1,1) 70% 80%,rgba(3,1,1,1) 80% 90%,rgba(1,0,0,1) 90% 100%),linear-gradient(90deg, rgba(0,0,0,1) 10%,rgba(0,0,0,1) 10% 20%,rgba(1,1,1,1) 20% 30%,rgba(1,1,0,1) 30% 40%,rgba(0,0,0,1) 40% 50%,rgba(0,0,0,1) 50% 60%,rgba(0,0,0,1) 60% 70%,rgba(0,0,0,1) 70% 80%,rgba(0,0,0,1) 80% 90%,rgba(0,0,0,1) 90% 100%)",
+      "backgroundPosition": "0 0 ,0 20%,0 40%,0 60%,0 80%,0 100%",
+      "backgroundSize": "100% 16.666666666666668%",
+      "backgroundRepeat": "no-repeat"
+    },
+    "height": 450,
+    "width": 800
   },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/url-parts-decomposition.png": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAECAIAAAA4WjmaAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAc0lEQVR4nGMQFRUN8PdftXJ5a0sLBE2ePHnG9OleXp6ioqIMy5Yt+/Lu1ZHd25/du/X57fOfH98c2b3989vnm9atAknHxMRMnjw5Ly9v8uTJy5Ytg7C9wQAkzczMzMrKpqKsnJWW+vDhw507d+bl5YnCAAAbUDgyjjz0TwAAAABJRU5ErkJggg==",

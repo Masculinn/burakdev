@@ -7,16 +7,718 @@
         <language>en-us</language>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <copyright>Copyright 2025, justc0de_sessions author Burak Bilen</copyright>
-        <lastBuildDate>2025-11-18T22:58:45.380Z</lastBuildDate>
+        <lastBuildDate>2025-12-01T21:54:06.930Z</lastBuildDate>
           <item>
+    <title>TypeScript Discriminated Unions and Generics: Complete Guide with Examples</title>
+    <link>https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples</link>
+    <guid isPermaLink="true">https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples</guid>
+    <pubDate>2025-11-29T20:09:14.000Z</pubDate>
+    <description>Practicing with the type discrimination to eliminate and reduce a set of potential objects down to one specific object as well as utilizing generic types in order to provide type-safe DX and a reduced, error-prone system at scale.</description>
+    <content:encoded><![CDATA[Welcome to the second session! 
+
+As developers, we sometimes need a mechanism for narrowing the type based on the assigned value wired to another in the same object or an array. This is where discrimination and generic types shines 💫
+
+In today's article, we will talk about the type discrimination with Typescript to eliminate and reduce **a set of potential objects down to one specific object** as well as **utilizing generic types in order to provide type-safe DX and a reduced, error-prone system at scale**. 
+
+Enjoy reading!
+
+<Contents>
+
+1. [What are the terms 'discrimination' and 'generic'?](#what-are-the-terms-discrimination-and-generic)
+2. [Practicing with discriminated union](#practicing-with-discriminated-unions)
+
+   - [First bottleneck: Deduplication of tuples](#first-bottleneck-deduplication-of-tuples)
+   - [Second bottleneck: The hidden unresolved union types](#second-bottleneck-the-hidden-unresolved-union-types)
+   - [The root cause of deduplicated tuples](#the-root-cause-of-deduplicated-tuples)
+   - [Solution for the hidden unresolved union types](#solution-for-the-hidden-unresolved-union-types)
+
+3. [Making a generic type](#making-a-generic-type)
+
+   - [Creating basic generics](#creating-basic-generics)
+   - [Typescript conditional types](#typescript-conditional-types)
+   - [Using infer keyword to extract something from a matched type](#using-infer-keyword-to-extract-something-from-a-matched-type)
+   - [The comprehensive solution for the deduplicated tuples](#the-comprehensive-solution-for-the-deduplicated-tuples)
+   - [Creating a runtime function that wraps everything](#creating-a-runtime-function-that-wraps-everything)
+
+4. [Bottom Line](#bottom-line)
+
+</Contents>
+
+## What are the terms 'discrimination' and 'generic'?
+
+The term _discrimination(/dɪˌskrɪmɪˈneɪʃn/)_ is the process of making distinctions between people based on groups, classes and the categories. It came out in the early 17th century in the English language to distinguish particular characteristics such as race, gender, age, class and so on.
+
+**In the Typescript language, this has been passed down as a way of categorizing and granting privilege in the associated context**.
+
+Meanwhile the term _generic(/dʒɪˈnɛrɪk/)_ refers something general, common, or not specific just like a 'generic name' for a class of things such as 'generic brand'. The context when it comes to computer programming indicates a _'generic procedure'_.
+
+**In other words the generics is a style of coding where algorithms and data structures are written in terms of types that are specified later, at the time the code is used.**
+
+## Practicing with discriminated unions
+
+A common practice I've seen in the community is distinguishing vehicle properties. You know like if the vehicle is assigned for a motorbike then you should not access the door prop in that object but I would rather address something more common like authorization — assigning privileges that define what a user can do.
+
+Assuming that we're working on a dashboard app and have to deal with [role-based access control(RBAC)](https://en.wikipedia.org/wiki/Role-based_access_control). Some of the roles likely have same or similar duties. A common dashboard app typically contains sections with standalone inner-modules and there must be restrictions for that particular sections depending on the user role. Therefore some of the sections are prohibited. Nevertheless, an **employee** may likely access what an **editor** can't — at least in my imaginary app.
+
+In this case, we must implement our code based on the roles, so let's start with defining the `Role` literal type,
+
+```ts
+type Role = "user" | "admin" | "employee" | "editor" | "guest";
+```
+
+Say we've granted these privileges for each user type:
+
+- `guest` demo sections such as dashboard, settings.
+- `user` user-based sections such as profile management, order history.
+- `editor` content management sections such as article editing, media library uploads and publications.
+- `employee` employee-specific tools like timesheets, internal directories and everything that editor can access.
+- `admin` simply put, everything mentioned above plus say finance.
+
+Now, we're going to need that sections too,
+
+```ts
+type Section =
+  | "dashboard"
+  | "settings"
+  | "profile"
+  | "orders"
+  | "timesheets"
+  | "directory"
+  | "articles"
+  | "media"
+  | "publications"
+  | "users"
+  | "finance";
+```
+
+The most primitive instances before we move on designing the interfaces **in union type of literal string types**. These are I think pretty enough for now to build the interfaces.
+
+> [id=info] It's worth to mention that of course we won't get into the weeds like nested objects inside the interface so the following examples are simplified and **does not reflect to the real world scenario of RBACs**.
+
+It's now the time to define our user interfaces,
+
+```ts
+interface Guest {
+  role: "guest";
+  allowed: Extract<Section, "dashboard" | "settings">[];
+}
+
+interface Client {
+  role: "user";
+  allowed: Extract<Section, "dashboard" | "settings" | "profile" | "orders">[];
+}
+
+interface Editor {
+  role: "editor";
+  allowed: Extract<
+    Section,
+    "dashboard" | "settings" | "articles" | "media" | "publications"
+  >[];
+}
+
+interface Employee {
+  role: "employee";
+  // An 'Employee' gets everything an editor has, plus their own sections
+  allowed: Extract<Section, Editor["allowed"] | "timesheets" | "directory">[];
+}
+
+interface Admin {
+  role: "admin";
+  // No limit here as it's your boring admin..
+  allowed: Section[];
+}
+```
+
+<Details>
+  <Summary>Hot take: What is the `Extract` utility type and why not `Pick` instead?</Summary>
+
+  Essentially, `Extract` and `Pick` serve different purposes:
+
+  `Extract<Type, Union>` — filters **a union type** to only include members that match a condition:
+  
+  ```ts
+  type Result = Extract<Section, "dashboard" | "settings">;
+  // "dashboard" | "settings"
+  ```
+
+  `Pick<Type, Keys>` — selects specific properties from an **object/interface**:
+
+  ```ts
+  type Result = Pick<Guest, "role" | "allowed">;
+  // { role: "guest"; allowed: ... }
+  ```
+
+  Since we're working with **union types of literal strings**, `Section` that in not consist of the object props, **Pick would be inappropriate**. `Extract` narrows down which sections each role can access by filtering the `Section` union:
+
+  Therefore, our approach ensures **type safety**. TypeScript will error if we try to assign an unauthorized section to a role.
+</Details>
+ 
+So now everything looks fine so far, we have our interfaces that has their own props taking the advantages of lovely `Extract` util type in order to process the sections. The `Employee` gets whatever an editor has, so we don't need to rewrite everything from scratch. At the end of the article, I'll polish the implementation but for now it can stay as it is.
+
+Looks cool, doesn't it? If you say so, _then I suggest you check the code above once again. Because there a couple of bottlenecks in the code._
+
+Before breaking it down, let's look at **[an example of a discriminated union](https://www.typescriptlang.org/docs/handbook/typescript-in-5-minutes-func.html#discriminated-unions)** to create a `UserProfile`.
+
+```ts
+export type UserProfile = { id: string } & (
+  | Guest
+  | Client
+  | Editor
+  | Employee
+  | Admin
+);
+```
+
+Using it in our app,
+
+```tsx
+import type { UserProfile } from "@/types";
+
+const User: UserProfile = {
+  id: "1212",
+  role: "guest",
+  allowed: ["dashboard", "settings"],
+};
+
+export default User;
+```
+
+And that's all! Now, our IDE suggest the proper sections following to the defined value of `role` prop.
+
+But as I've mentioned earlier. There are still bottlenecks:
+
+### First bottleneck: **Deduplication of tuples**
+
+When we attempt to assign section types to the `User` object, **we encounter an indefinite unnecessary type recommendations that are already written**, which causes an endless loop.
+
+![Reproducing indefinite deduplication — code snippet](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/deduplication-of-sections.gif)
+
+### Second bottleneck: **The hidden unresolved union types**
+
+Similarly, in this case when we attempt to assign a new value to the `allowed` prop belonging to the `Editor` interface, such as the `media` or `articles` sections, right after setting the role to `employee` like `role: "employee"` ts does his job by immediately signaling us about the root error that is shown below:
+
+```bash
+Type '
+  { id: string; 
+    role: "employee"; 
+    allowed: ("timesheets" | "directory" | "media")[]; 
+  }' 
+is not assignable to type 'UserProfile'.
+```
+
+![Reproducing unresolved union types — code snippet](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/hidden-unresolved-union-types.gif)
+
+But why it's like that?
+
+### The root cause of **deduplicated tuples**
+
+In order to avoid deduplication, we must turn the `<Extract<Section, [literals]>>` util type to something that can trim the used values. When a duplication present, the developer must be warned by the compiler. So our general desired intention is to force TypeScript to error when duplicates are present at compile time.
+
+And to do that, we have to model the `allowed` property not as a general array type, but as a **Tuple of Unique Values.**
+
+> [id=info]I addressed this issue [in the next chapter](#making-a-generic-type) as the logic contains generic type enforcements. Therefore, it would be better for me to cover the topic comprehensively in the [next chapter](#making-a-generic-type).
+
+### Solution for **the hidden unresolved union types**
+
+There is a small bug in the ts file that we wrote. I think unlike the previous issue, this one is more certain — somewhere inside the `Employee` interface. Here once again, check it out.
+
+```ts
+interface Employee {
+  role: "employee";
+  allowed: Extract<Section, Editor["allowed"] | "timesheets" | "directory">[];
+}
+```
+
+Take a look at this part:
+
+```ts
+allowed: Extract < Section,
+  Editor["allowed"] | "timesheets" | ("directory" > []);
+```
+
+Reminding the TS error _Type '"articles"' is not assignable to type '"timesheets" | "directory"'_, even though the `allowed` prop is narrowed the `Section` type by inheriting `Editor` itself. We supposedly had everything what `Editor` has plus those 2 literals `"timesheets" | "directory"` **but instead we allowed only for those 2 literals to use.**
+
+The underlying root issue was hidden over here:
+
+```ts
+❌ Editor["allowed"]
+// Because this resolves to the ARRAY TYPE: ("dashboard" | "settings" | ... | "publications")[]
+```
+
+To fix it, we need to add `[number]` at the end:
+
+```ts
+✅ Editor["allowed"][number]
+// This resolves to the UNION TYPE of the literal strings: "dashboard" | "settings" | "articles" | "media" | "publications"...
+```
+
+Then the correction yields a proper type experience:
+
+![Reproducing resolved union types — code snippet](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/hidden-unresolved-union-types-solved.gif)
+
+We finally reached our goal by making a small change to our `Employee` interface. The final source type, yields like below:
+
+```ts
+interface Employee {
+  role: "employee";
+  allowed: Extract<
+    Section,
+    Editor["allowed"][number] | "timesheets" | "directory"
+  >[];
+```
+
+Now it's time for the developers to build the business logic since we've prepared the type-safe background for the implementation 🥳
+
+I tricked you 🫠
+
+We have to go way too much to reach our desired goal. Remember our first issue? I cover it comprehensively in the rest of the article.
+
+## Making a generic type
+
+Before moving on to the more sophisticated, unresolved issue that we postponed addressing under this heading associated with the **[first bottleneck](#practicing-with-a-discriminated-unions)**, I'd like to review the fundamentals of enforcing generic types correlated with the **deduplicated tuples** as this topic requires general knowledge of specific baselines like:
+
+- conditional types
+- mapped types
+- recursion
+- inferring
+
+and so on.
+
+> [id=info] This is where we start discussing more about advanced Typescript, which is why I marked this article as **advanced**. But it's all good. I'll try to be as thorough as possible gradually and gracefully.
+
+### Creating basic generics
+
+**Type manipulation is difficult...**
+
+Therefore, developers are more likely to use traditional methods, such as creating an interface with built-in utility types like `<Pick>` and `<Record>`, in their app logic unless they are working on a library API or more static, business-driven logic.
+
+This is why generics are used at the top of internal APIs to improve the developer experience (DX).
+
+And I agree to disagree with the statement **"Just use [ts-pattern](https://github.com/gvergnaud/ts-pattern), or third-party libs bro."**
+
+I don't want to see a _452 kB_ package in my `package.json/dependencies` or `package.json/devDependencies` just for a utility excluding such scenarios when building something from scratch, and everything pushes you to utilize third-parties.
+
+Returning to the topic, [generics emerged](https://www.typescriptlang.org/docs/handbook/2/generics.html#hello-world-of-generics) as a way of capturing the type of the argument in a way that could also be used to denote the return value.
+
+> [id=success] **Therefore, simply put: a generic indicates special kind of variable that works on types rather than values.**
+
+Remember about the `Section` type we've mentioned above. First, let's try to shortening the previous implementation using generic types while respecting to the DRY principle:
+
+```ts
+function Unique<T>(arr: T[]) {
+  return arr;
+}
+```
+
+`T` is indeed used as placeholder for `Type`. This acronym might be used arbitrarily. For the sake of what we address, I prefer using `S` as we go through `Section` type that we declared recently.
+
+Usage:
+
+```ts
+const uniqueValue = Unique([1, 2, 3, 4, 5]);
+// Ts yields: const uniqueValue: number[]
+```
+
+It would be uncertain with the logic above and here is the proof:
+
+```ts
+const uniqueValue = Unique([1, 2, "three", 4, 5]);
+// Ts yields: const uniqueValue: (string | number)[]
+```
+
+So we must narrow the type depending on the context requirements and in our case its going to be `Section` type. To convert the logic we can utilize the `extends` keyword.
+
+> [id=success] **Definition:** `extends` is widely used to extend interfaces, enabling the creation of more specific interfaces by inheriting properties and methods from a base interface.
+
+```ts
+function Unique<S extends Section>(section: S) {
+  return section;
+}
+
+const selectSection = Unique("dashboard");
+// Ts yields: const selectSection: Section
+
+const selectSection = Unique("socials");
+// Ts warns: Argument of type '"socials"' is not assignable to parameter of type 'Section'.
+```
+
+The result yields:
+
+![Demonstration of extends keyword](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/s-extends-section.gif)
+
+We can also use the generics in our `type` to avoid repetition when implementing the `Exclude` util in our main interfaces like this:
+
+```ts
+// from this
+
+interface Guest {
+  role: "guest";
+  allowed: Extract<Section, "dashboard" | "settings">[];
+}
+
+interface Client {
+  role: "user";
+  allowed: Extract<Section, "dashboard" | "settings" | "profile" | "orders">[];
+}
+
+// to this
+
+type ExtractSection<T extends Section> = Extract<Section, T>[];
+
+interface Guest {
+  role: "guest";
+  allowed: ExtractSection<"dashboard" | "settings">;
+}
+
+interface Client {
+  role: "user";
+  allowed: ExtractSection<"dashboard" | "settings" | "profile" | "orders">;
+}
+```
+
+You can think like this recent `ExtractSection` implementation is a total non-sense or overengineering. However consider that, as the app scales, it will likely facilitate the development process — especially with regard to reusability.
+
+### Typescript contitional types
+
+**Implements logic at the type level based on structural matching**. Think it like ES6+ ternary operations over (if / else) statement:
+
+```ts
+condition ? expressionIfTrue : expressionIfFalse;
+```
+
+Then we can implement it to our `Section` logic like:
+
+```ts
+type IsSection<T> = T extends Section ? true : false;
+
+type articles = IsSection<"articles">;
+// Ts yields: type articles = true
+
+type articles = IsSection<"justc0de_sessions002">;
+// Ts yields: type articles = false
+```
+
+<Details>
+  <Summary>Hot take: Distributive behavior of conditional types</Summary>
+
+By default, conditional types distribute over unions. I know sounds complicated and yes it is. But it is highly valuable in order to understand the advanced Typescript so I decided to dive a bit in it.
+
+Distribution might be surprising,
+
+```ts
+type Not<T> = T extends true ? false : true;
+type Result = Not<true | false>;
+// Ts yields: type Result = boolean
+// And also: type Result = Not<true | false>;
+```
+
+I do not know how could be more desriptive on this topic but yes it is weird stuff to deal with.
+
+And to prevent distribution we can wrap the type using brackets `[]` they call this as **tuple trick**,
+
+```ts
+type Not<T> = [T] extends true ? false : true;
+type Result = Not<true | false>;
+// Ts yields: type Result = true
+// since it includes true itself.
+```
+
+Final practice for better clarification,
+
+```ts
+type Not<T> = [T] extends [string] ? true : false;
+type Result = Not<string | number>;
+// Ts yields: type Result = false
+```
+
+Enforcing the type wrapped in brackets ensures that the entire union is treated as a single unit.
+
+</Details>
+
+![Demonstration of the distributive behaviour](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/distributive-behaviour-of-conditional-types.gif)
+
+### Using 'infer' keyword to extract something from a matched type
+
+We're going to need it soon, so addressing this topic was absolutely essential. The `infer` lets us capture parts of a matched type inside the conditional.
+
+So how exactly?
+
+```ts
+type UnwrapPromise<T> = T extends Promise<infer U> ? U : T;
+```
+
+if `T` is `Promise<Something>`, return that `Something` and otherwise return `T`.
+
+A magic trick let us to extract — in my words **expose** the underlying internal logic. I don't know how many times I've encountered such scenarios that I had to work with the `infer` keyword especially in my open source projects. Use this guys.
+
+But what does it yield? I haven't answered yet.
+
+```ts
+type Result1 = UnwrapPromise<Promise<number>>; // number
+type Result2 = UnwrapPromise<string>; // string
+```
+
+<Details>
+  <Summary>My takeaway from the magic `infer` keyword</Summary>
+
+I always think `infer` like its an object consist of the key that we're looking for:
+
+```ts
+const Infer = {
+  promise: 45,
+};
+
+const IsInferEncapsulatedPromise = "promise" in Infer;
+// JS yields: true
+```
+
+Or, if we could think realistically:
+
+```ts
+async function unwrapPromise(value) {
+  if (value instanceof Promise) {
+    return await value;
+  }
+  return value;
+}
+
+const ImaginaryStringInfer = async () =>
+  console.log(await unwrapPromise("justc0de_sessions"));
+// JS yields: justc0de_sessions
+const ImaginaryNumberInfer = async () => console.log(await unwrapPromise(35));
+// JS yields: 35
+```
+
+</Details>
+
+Now its time for the real-world implementation. I want you to go right back to the very first bottleneck, just to remember then scroll down over here to see how we enforce the uniqueness among tuples in Typescript to prevent deduplication. But no pressure if you remember, let's dive.
+
+### The comprehensive solution for the **deduplicated tuples**
+
+![Reproducing unresolved union types — reference](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/hidden-unresolved-union-types.gif)
+
+We get too much work to do...
+
+The first thing we need is a type-level utility that will check for duplication.
+
+Say `VerifyUnique`:
+
+```ts
+type VerifyUnique<S extends readonly unknown[]>
+```
+
+`S` stands for acronym to `Section` — section literals:
+
+```ts
+export type Section =
+  | "dashboard"
+  | "settings"
+  | "profile"
+  | "orders"
+  | "timesheets"
+  | "directory"
+  | "articles"
+  | "media"
+  | "publications"
+  | "users"
+  | "finance";
+```
+
+`readonly` ensures that the literals are constant and static. I also used `unknown[]` since our application can use it for other literals without getting stuck on just one kind of type like `Section[]`.
+
+```ts
+type VerifyUnique<S extends readonly unknown[]> = S extends readonly [
+  infer H,
+  ...infer T
+]
+  ? H extends T[number]
+    ? [`Error: Duplicate '${H & string}' detected`, ...VerifyUnique<T>]
+    : [H, ...VerifyUnique<T>]
+  : S;
+```
+
+I know, sophisticated usage of generic types and combining all things I've mentioned in this article was Just for demonstration so far. We did not scale it yet.
+
+**If we need the same implementation elsewhere in our app, we remain faithful to the DRY principle. Thus, the benefits of maintainability and scalability comes under the hood.**
+
+Now, allow me to tell what is happening in the snippet above:
+
+1. **Destruction the types using `infer` keyword.**
+
+```ts
+readonly [
+  infer H,
+  ...infer T
+]
+```
+
+We actually preparing the type by destructuring for the next recursion step. Think it something like:
+
+```ts
+function headTail(arr) {
+  const [head, ...tail] = arr;
+  return { head, tail };
+}
+
+console.log(headTail([1, 2, 3]));
+// { head: 1, tail: [2,3] }
+```
+
+**2.Conditional checking by extending the destructed type**
+
+```ts
+H extends T[number] ? ....
+```
+
+Checking the proceeding tuple or whatever you proceed at compile-time and making comparison for the **rest tuple**.
+
+**3. Recursive conditional type checking**
+
+```ts
+? H extends T[number]
+    ? [`Error: Duplicate '${H & string}' detected`, ...VerifyUnique<T>]
+    : [H, ...VerifyUnique<T>]
+```
+
+If the given statement yields `true` **then we assure that the duplication is truly exist** inside the user-provided array. The problem is that I do not know why this error is not printing on the dev IDE even though the condition errors...
+
+And finally our type-level utility with test context:
+
+```ts
+// utils.ts
+
+import type { Section } from "@/types";
+
+type VerifyUnique<S extends readonly unknown[]> = S extends readonly [
+  infer H,
+  ...infer T
+]
+  ? H extends T[number]
+    ? [`Error: Duplicate '${H & string}' detected`, ...VerifyUnique<T>]
+    : [H, ...VerifyUnique<T>]
+  : S;
+
+const isDuplicated = <S extends readonly Section[]>(arr: S & VerifyUnique<S>) =>
+  arr;
+
+const c = isDuplicated(["articles", "users"]);
+```
+
+Critical point emerges when we use `S & VerifyUnique<S>`:
+
+![Demonstration reference to 'S'](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/type-level-utils-testing-with-s.gif)
+
+Alternative to print our custom ts error but fragile:
+
+![Demonstration reference to 'S(number)'](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/type-level-util-testing-with-s-number.gif)
+
+And when we omit the `readonly`, the logic completely loses its type-safety:
+
+![Demonstration reference to 'readonly' keyword](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/type-level-util-testing-without-readonly.gif)
+
+Using `S[]` yields:
+
+![Demonstration with empty array symbol after S type](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/type-level-util-testing-empty-s-array.gif)
+
+I think the illustrations are good enough to break down distinctions between the usages with the util-type `VerifyUnique`.
+
+So let's move on the final boss
+
+### Creating a runtime function that wraps everything.
+
+We figured out the 75% of the problem. Now, we're going to need a function that wraps the logic itself and enable us to create users.
+
+I'll go gradually this time.
+
+Say `createUser`:
+
+```ts
+export const createUser = (user) => user;
+```
+
+Let's now, embed the `UserProfile` we have prepared in the very beginning of this article:
+
+```ts
+import type { UserProfile } from "@/types";
+
+export const createUser = (user: UserProfile) => user;
+```
+
+Cool, now time to transform it to something that can be consumed by `VerifyUnique` typescript util-type we created.
+
+```ts
+import type { Section, UserProfile, UserRole } from "@/types";
+
+export const createUser = <
+  R extends UserRole,
+  S extends readonly Section[]
+>(user: {
+  id: UserProfile["id"];
+  role: R;
+  allowed: S & VerifyUnique<S> & Extract<UserProfile, { role: R }>["allowed"];
+}) => user;
+```
+
+Eventual breakage likely happens exactly on the following line and I guess for the rest, no need to explain as we mentioned the details on the rest of the article context.
+
+```ts
+allowed: S & VerifyUnique<S> & (Extract < UserProfile),
+  { role: R } > ["allowed"];
+```
+
+Step by step If we break it down:
+
+1. At the call site `S` is the **actual tuple** type we pass `S = readonly ["dashboard", "orders"]`.
+2. `VerifyUnique<S>` ensures that the uniqueness across the wired intersections.
+3. At the end the `allowed` value **MUST BE ASSIGNIBLE** and **MUST SATISFY every constraint** simultaneously.
+
+And at the end the allowed sections must be:
+
+- The literal tuple type S,
+- Pass `VerifyUnique<S>` (i.e., be unique),
+- Match the role-specific `allowed` shape.
+
+## Bottom Line
+
+Below, code snippet works seamlessly with Typescript throughout every possible way that satisfies `createUser`:
+
+```ts
+// api/get-user.ts
+
+import { createUser } from "@/lib/utils";
+/* Auth imports */
+
+const user = createUser({
+  id: "9adfeaf3-c3cb-4b3d-af5d-5123c65319a3",
+  role: "employee",
+  allowed: ["publications", "timesheets"],
+});
+```
+
+It's relatively E2E, but we needed to add branded types for ID to make the fully transparent E2E enforcement. Let's discuss that in other sessions though, since I'm pretty exhausted from writing this article.
+
+Now I leave you with the result of all that effort and struggle 🥳💫:
+
+![type-safe user definer object demonstration](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/outcome-second-session.gif)
+
+--- 
+
+Wuuh.. 😅. I think this session was the most technical one so far(among 2 article in total :P). It was painful for me tbh. Because the more I wanted to address further subjects the more I've struggled.
+
+I hope you liked the content. Today we were talking about {title}. Subscribe to the newsletter to get instant updates. If you want to support me in order to keep these long sessions coming, [you can buy me a coffee](https://buymeacoffee.com/bilenburakf). 
+
+Thanks from now for your all supports and see you in the next one ❤️
+]]></content:encoded>
+</item>
+<item>
     <title>Is React(tanstack) Query Too Biased? Deep dive: Real Life Data Fetching Practices — Chapter 1</title>
     <link>https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1</link>
     <guid isPermaLink="true">https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1</guid>
-    <pubDate>Fri, 14 Nov 2025 23:11:58 GMT</pubDate>
+    <pubDate>2025-11-19T00:56:20.000Z</pubDate>
     <description>The hidden gem behind the React query is revealed. Take a gigantic dive into the traditional ways of data fetching vs newfangled ways where the term "query" is mentioned. </description>
-    <content:encoded><![CDATA[**Welcome aboard to the very first session Capitan!** `justc0de_sessions001`. I'm thrilled to share something with you especially when it's first — always makes the things more valuable(at least for me).
+    <content:encoded><![CDATA[**Welcome aboard to the very first session!** `justc0de_sessions001`. I'm thrilled to share something with you especially when it's first — always makes the things more valuable(at least for me).
 
-Before we move on to the context, make sure you have a golden shovel right next to you because we will be digging nonstop through the gap where you are likely feeling a huuuge hunger for something unique and immersive. if so, _no worries with your hunger Capitan!_. This episode will help you overcome your hunger that is no longer a problem. You will be satiated enough because we will be _fetching_ something for you..
+Before we move on to the context, make sure you have a golden shovel right next to you because we will be digging nonstop through the gap where you are likely feeling a huuuge hunger for something unique and immersive. You will be satiated enough because we will be _fetching_ something for you, a lot.
 
 > [id=warning] **Disclaimer:** None of my writing includes direct source of AI. All concrete, synthesized with the original source and my own conclusions/summaries. LLMs are only used to access specific knowledge bases or to create informative diagrams.
 
@@ -744,14 +1446,11 @@ In a nutshell, *intelligently define the strategy* for your next project before 
 
 I will probably publish the second part in the last week of this November. My intention is to cover react query comprehensively with more technical terms. The table of contents are shown below. If you do not want to miss, then subscribe to the newsletter to get instant updates.    
 
-- A Comparison of React Query Alternatives
-- A simple CRUD example using React Query 
+- CRUD app using React Query 
 - Why does even a tiny front-end app need React Query? 
-- Sophisticated React compiler problems with React Query next 
-- The place of React Query in 12 factor app next
+- Sophisticated React compiler problems with React Query 
 
-
-> [id=success] The just code session number 00{id} is over. Today we were talking about {title}. I hope you've liked this session. Subscribe to the newsletter to get instant updates. No ads, no fluffs just_c0de. If you want to support me in order to keep these looong sessions coming, [you can buy me a coffee](https://buymeacoffee.com/bilenburakf) — every cup genuinely helps. Thanks from now for your all supports ✨✨        ]]></content:encoded>
+> [id=success] Session 00{id} is over. Today we were talking about *{title}*. Subscribe to the newsletter to get instant updates. No ads, no fluffs `just_c0de`. If you want to support me in order to keep these looong sessions coming, [you can buy me a coffee](https://buymeacoffee.com/bilenburakf) — every cup genuinely helps. Thanks from now for your all supports!        ]]></content:encoded>
 </item>
     </channel>
 </rss>

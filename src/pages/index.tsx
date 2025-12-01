@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import MotionText from "@/motion/motion-text";
 import dynamic from "next/dynamic";
 import Head from "next/head";
+import Link from "next/link";
 import type { FC } from "react";
 
 const Cta = dynamic(() => import("@/components/cta"), {
@@ -49,23 +50,30 @@ export default function Home() {
           Hi there!
         </MotionText>
         <br />
-        <p className="text-start leading-relaxed lg:pt-8 pt-6 inline">
-          Here is the quick brief about me —{" "}
-          <span className="text-muted-foreground">
-            no worries this long dash '—' is not indicates AI-made bullshit...
-            It's me, using that since 2020!
-          </span>{" "}
+        <p className="text-start leading-relaxed pt-6 inline">
           I'm proud to be a <TextAnimator {...textConfig[0]} />
           over <Mq1 delay={2} /> of immersive experience in the agile industries
           based on <TextAnimator {...textConfig[1]} />. Dedicated to delivering{" "}
           <TextAnimator {...textConfig[2]} />{" "}
           <span className="text-muted-foreground">- kinda like a psycho -</span>{" "}
           and <TextAnimator {...textConfig[3]} /> that align with{" "}
-          <TextAnimator {...textConfig[4]} />. In my free time, I like to play
-          badminton 🏸 and cycling 🚲 with my lovely wife, play piano 🎹, write
-          some blogs covering the web. Currently working on{" "}
-          <TextAnimator {...textConfig[5]} />
-          that scales.
+          <TextAnimator {...textConfig[4]} />.
+        </p>
+        <br />
+        <br />
+        <p className="text-start leading-relaxed  inline">
+          I was a lead SWE at Atlantic and EDM. I'm open to new challenges and
+          currently working on <TextAnimator {...textConfig[5]} /> that scale. I
+          also maintain an{" "}
+          <Link
+            href="https://github.com/Motion-Provider"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-muted-foreground hover:text-primary transition-colors"
+          >
+            open-source animation library
+          </Link>
+          . In my free time, I play the piano 🎹, write articles about the web.
         </p>
         <section className="md:pt-14 pt-10 relative w-full">
           <h2 className="text-3xl md:text-4xl tracking-tight">

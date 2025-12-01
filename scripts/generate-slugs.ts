@@ -31,7 +31,7 @@ async function readServerSideSlugs(): Promise<Item[] | null> {
     !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
   ) {
     console.log(
-      "⚠️ Missing database env vars: check either, returning 'null' in 'serverSideSlugs()'"
+      "⚠️ Missing database env vars: check either, returning 'null' in 'serverSideSlugs()'",
     );
     return null;
   }
@@ -87,7 +87,7 @@ async function main() {
     await fsPromises.writeFile(
       OUT_FILE,
       JSON.stringify(generatedSlugs, null, 2),
-      "utf8"
+      "utf8",
     );
   } catch (err) {
     console.error("❌ Error writing slugs:", err);

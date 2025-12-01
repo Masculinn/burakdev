@@ -28,7 +28,7 @@ export const ProjectLive: FC<ProjectLiveProps> = ({
 
   const placeholderImg = useMemo(
     () => getImagePlaceholder(placeholder, "base64"),
-    [placeholder]
+    [placeholder],
   );
 
   const handlePreconnect = useCallback(() => {

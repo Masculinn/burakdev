@@ -31,7 +31,7 @@ const blockquoteVariants = cva(
         warning: "dark:border-l-amber-600 border-l-amber-400",
       } as const satisfies VariantProps,
     },
-  }
+  },
 );
 
 const motionBlurVariants = cva(
@@ -45,7 +45,7 @@ const motionBlurVariants = cva(
         warning: "from-amber-400/50",
       } as const satisfies VariantProps,
     },
-  }
+  },
 );
 
 const iconVariants = cva("size-5 shrink-0 mt-2 self-start z-30", {

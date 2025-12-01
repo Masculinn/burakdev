@@ -24,7 +24,7 @@ function Recommendation({
 
   if (filteredBlogs.length === 0) return null;
   return (
-    <section className="w-full h-auto">
+    <section className="w-full h-auto my-6">
       <MotionText
         animation={{
           mode: ["fadeUp", "filterBlurIn"],

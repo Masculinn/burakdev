@@ -230,7 +230,7 @@ const Slider = ({ selected, images, plainLink }: SliderProps) => {
 
       api.scrollTo(idx);
     },
-    [api]
+    [api],
   );
 
   const items = useMemo(() => {
@@ -275,7 +275,7 @@ const Slider = ({ selected, images, plainLink }: SliderProps) => {
             className={cn(
               "cursor-pointer w-2.5 h-1.5 dark:bg-white/10 shadow-2xs bg-slate-600/20 backdrop-blur-sm border-[0.5px] rounded-full",
               idx === current &&
-                "dark:bg-muted bg-muted-foreground w-5 transition-all"
+                "dark:bg-muted bg-muted-foreground w-5 transition-all",
             )}
             key={idx}
             onClick={() => handleSlideTo(idx)}
@@ -325,7 +325,7 @@ const ProjectLive = ({
 
   const placeholderImg = useMemo(
     () => getImagePlaceholder(placeholder, "base64"),
-    [placeholder]
+    [placeholder],
   );
 
   const handlePreconnect = useCallback(() => {

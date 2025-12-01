@@ -1,5 +1,6 @@
 ﻿/** interfaces */
 
+import type { IconName } from "@/lib/getIcon";
 import type { MotionTextProps } from "@/motion/types";
 import type { ComponentType, JSX, SetStateAction, SVGProps } from "react";
 
@@ -85,7 +86,7 @@ export type TimelineContentItem = {
   status: ProjectStatus;
   role: string;
   title: string;
-  techs: string[];
+  techs: readonly IconName[];
   desc: string;
   gitLink?: string;
   plainLink?: string;

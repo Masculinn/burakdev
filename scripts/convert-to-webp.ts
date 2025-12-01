@@ -18,35 +18,35 @@ const program = new Command();
 
 program
   .description(
-    "Convert JPG/PNG images to WebP recursively, preserving folder structure"
+    "Convert JPG/PNG images to WebP recursively, preserving folder structure",
   )
   .option("-i, --input <path>", "input folder containing images", ".")
   .option(
     "-o, --output <path>",
     "output folder (ignored if --overwrite)",
-    "./webp-output"
+    "./webp-output",
   )
   .option(
     "-q, --quality <number>",
     "webp quality 1-100",
     (val: string) => Number(val),
-    80
+    80,
   )
   .option(
     "-e, --extensions <list>",
     "comma-separated extensions",
     (val: string) => val.split(",").map((s) => s.trim().toLowerCase()),
-    ["jpg", "jpeg", "png"]
+    ["jpg", "jpeg", "png"],
   )
   .option(
     "--overwrite",
-    "write .webp next to originals (do not use separate output dir)"
+    "write .webp next to originals (do not use separate output dir)",
   )
   .option(
     "-c, --concurrency <n>",
     "number of concurrent conversions",
     (val: string) => Math.max(1, Number(val)),
-    5
+    5,
   )
   .parse(process.argv);
 
@@ -56,7 +56,7 @@ const INPUT = path.resolve(opts.input);
 const OUTPUT = path.resolve(opts.output);
 const QUALITY = Math.max(1, Math.min(100, opts.quality || 80));
 const EXTENSIONS = new Set(
-  opts.extensions.map((e) => e.replace(/^[.]/, "").toLowerCase())
+  opts.extensions.map((e) => e.replace(/^[.]/, "").toLowerCase()),
 );
 const OVERWRITE = !!opts.overwrite;
 const CONCURRENCY = Math.max(1, opts.concurrency || 5);
@@ -108,7 +108,7 @@ function toOutputPath(srcPath: string): string {
 }
 
 async function convertFile(
-  src: string
+  src: string,
 ): Promise<{ src: string; dest: string }> {
   const dest = toOutputPath(src);
   await ensureDir(path.dirname(dest));
@@ -138,7 +138,7 @@ async function run(): Promise<void> {
     if (!OVERWRITE) await ensureDir(OUTPUT);
 
     console.log(
-      `Found ${files.length} file(s). Converting with quality=${QUALITY}, concurrency=${CONCURRENCY}...`
+      `Found ${files.length} file(s). Converting with quality=${QUALITY}, concurrency=${CONCURRENCY}...`,
     );
 
     let index = 0;
@@ -168,7 +168,7 @@ async function run(): Promise<void> {
 
     const workers = Array.from(
       { length: Math.min(CONCURRENCY, files.length) },
-      () => worker()
+      () => worker(),
     );
     await Promise.all(workers);
     console.log("\nDone.");
@@ -181,7 +181,7 @@ async function run(): Promise<void> {
           "-",
           (f as any).reason.file,
           ":",
-          (f as any).reason.error
+          (f as any).reason.error,
         );
       process.exitCode = 1;
     } else {

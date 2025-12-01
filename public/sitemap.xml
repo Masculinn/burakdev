@@ -1,19 +1,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://burakdev.com</loc>
-    <lastmod>2025-11-18T22:58:45.380Z</lastmod>
+    <lastmod>2025-12-01T21:54:06.930Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>https://burakdev.com/blogs</loc>
-    <lastmod>2025-11-18T22:58:45.380Z</lastmod>
+    <lastmod>2025-12-01T21:54:06.930Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+  <loc>https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples</loc>
+  <lastmod>2025-11-29T20:09:14.000Z</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
   <loc>https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1</loc>
-  <lastmod>Fri, 14 Nov 2025 23:11:58 GMT</lastmod>
+  <lastmod>2025-11-19T00:56:20.000Z</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.5</priority>
 </url>

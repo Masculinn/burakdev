@@ -15,7 +15,7 @@ function NewsletterComponent({ className }: { className?: string }) {
     <section
       className={cn(
         "w-full h-auto md:h-88 overflow-hidden relative rounded-xl flex md:flex-row flex-col-reverse md:mb-0 mb-4",
-        className
+        className,
       )}
     >
       <MotionImage

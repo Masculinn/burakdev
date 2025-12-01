@@ -9,3 +9,4 @@ export * from "./md-paragraph";
 export * from "./md-pre";
 export * from "./md-summary";
 export * from "./md-table";
+export * from "./md-contents";

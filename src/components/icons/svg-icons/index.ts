@@ -41,3 +41,4 @@ export { default as Vercel } from "./vercel";
 export { default as X } from "./X";
 export { default as Xml } from "./xml";
 export { default as Yaml } from "./yaml";
+export { default as Mdx } from "./mdx";

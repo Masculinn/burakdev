@@ -20,8 +20,8 @@ import {
   MdThead,
   MdTr,
   MdUl,
+  MdContents,
 } from "./ui";
-import { MdContents } from "./ui/md-contents";
 
 export const MDXComponents = createMDXComponents({
   h1: (props) => <MdHeading as="h1" {...props} />,

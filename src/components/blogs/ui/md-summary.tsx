@@ -45,7 +45,7 @@ export const MdDetails: FC<DetailsProps> = ({
 
   if (meaningful.length === 0) {
     throw new Error(
-      "Parse error during MDX compilation: 'MdDetails' must have at least one child"
+      "Parse error during MDX compilation: 'MdDetails' must have at least one child",
     );
   }
 
@@ -74,7 +74,7 @@ export const MdDetails: FC<DetailsProps> = ({
     <Card
       className={cn(
         "my-4 px-6 py-1 bg-transparent dark:border-rose-500/50 border-rose-500",
-        className
+        className,
       )}
     >
       <Accordion type="single" collapsible {...rest}>
