@@ -1,6 +1,6 @@
-import Analytics from "@/components/analytics";
 import type { ThemeType } from "@/interfaces";
 import AppProvider from "@/providers/app-provider";
+import CookieProvider from "@/providers/cookie-provider";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Router from "next/router";
@@ -42,9 +42,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <AppProvider>
-      <Component {...pageProps} />
-      <Analytics />
-    </AppProvider>
+    <CookieProvider>
+      <AppProvider>
+        <Component {...pageProps} />
+      </AppProvider>
+    </CookieProvider>
   );
 }
