@@ -10,19 +10,15 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { CONSENT_VERSION } from "@/constants/cookie.config";
-import { CookieContext } from "@/contexts";
-import type {
-  ConsentRecord,
-  ConsentState,
-  CookieContextValue,
-} from "@/interfaces";
 import { isProd } from "@/lib/env";
-import { readStoredConsent, writeStoredConsent } from "@/utils/consent";
 import { GoogleAnalytics, sendGAEvent } from "@next/third-parties/google";
 import { useRouter } from "next/router";
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
+import { CookieContext } from "./context";
+import { CONSENT_VERSION } from "./data";
+import { readStoredConsent, writeStoredConsent } from "./lib";
+import type { ConsentRecord, ConsentState, CookieContextValue } from "./types";
 
 type PersistConsentType = Partial<Omit<ConsentState, "necessary">> & {
   source?: string;

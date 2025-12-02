@@ -1,5 +1,5 @@
-import { CONSENT_KEY, HISTORY_KEY } from "@/constants/cookie.config";
-import type { ConsentRecord } from "@/interfaces";
+import { CONSENT_KEY, HISTORY_KEY } from "../data";
+import type { ConsentRecord } from "../types";
 
 function readStoredConsent(): ConsentRecord | null {
   try {

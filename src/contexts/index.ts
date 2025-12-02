@@ -2,7 +2,6 @@
   BlogSearchContextProps,
   BlogSortContextProps,
   BlogTagsContextProps,
-  CookieContextValue,
 } from "@/interfaces";
 import { createContext } from "react";
 
@@ -15,6 +14,5 @@ const BlogSortContext = createContext<BlogSortContextProps | undefined>(
 const BlogTagsContext = createContext<BlogTagsContextProps | undefined>(
   undefined
 );
-const CookieContext = createContext<CookieContextValue | undefined>(undefined);
 
-export { BlogSearchContext, BlogSortContext, BlogTagsContext, CookieContext };
+export { BlogSearchContext, BlogSortContext, BlogTagsContext };
