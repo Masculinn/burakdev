@@ -7,13 +7,13 @@
         <language>en-us</language>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <copyright>Copyright 2025, justc0de_sessions author Burak Bilen</copyright>
-        <lastBuildDate>2025-12-01T21:54:06.930Z</lastBuildDate>
+        <lastBuildDate>2025-12-02T23:51:56.289Z</lastBuildDate>
           <item>
     <title>TypeScript Discriminated Unions and Generics: Complete Guide with Examples</title>
     <link>https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples</link>
     <guid isPermaLink="true">https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples</guid>
-    <pubDate>2025-11-29T20:09:14.000Z</pubDate>
-    <description>Practicing with the type discrimination to eliminate and reduce a set of potential objects down to one specific object as well as utilizing generic types in order to provide type-safe DX and a reduced, error-prone system at scale.</description>
+    <pubDate>2025-12-01T21:57:10.000Z</pubDate>
+    <description>Master advanced TypeScript patterns: Learn discriminated unions for precise type narrowing and generic types for building scalable, type-safe systems with practical RBAC examples and custom utility implementations.</description>
     <content:encoded><![CDATA[Welcome to the second session! 
 
 As developers, we sometimes need a mechanism for narrowing the type based on the assigned value wired to another in the same object or an array. This is where discrimination and generic types shines 💫
@@ -716,26 +716,42 @@ Thanks from now for your all supports and see you in the next one ❤️
     <guid isPermaLink="true">https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1</guid>
     <pubDate>2025-11-19T00:56:20.000Z</pubDate>
     <description>The hidden gem behind the React query is revealed. Take a gigantic dive into the traditional ways of data fetching vs newfangled ways where the term "query" is mentioned. </description>
-    <content:encoded><![CDATA[**Welcome aboard to the very first session!** `justc0de_sessions001`. I'm thrilled to share something with you especially when it's first — always makes the things more valuable(at least for me).
+    <content:encoded><![CDATA[Welcome aboard to the very first session!.
 
-Before we move on to the context, make sure you have a golden shovel right next to you because we will be digging nonstop through the gap where you are likely feeling a huuuge hunger for something unique and immersive. You will be satiated enough because we will be _fetching_ something for you, a lot.
+I'm thrilled to share something with you especially when it's first — always makes the things more valuable(at least for me). I intended to cover **traditional ways of data fetching vs. newfangled ways** in Javascript. I'll try to address the answer of cause-effect relations.
 
-> [id=warning] **Disclaimer:** None of my writing includes direct source of AI. All concrete, synthesized with the original source and my own conclusions/summaries. LLMs are only used to access specific knowledge bases or to create informative diagrams.
+In addition, This is one of three chapters(might be more, I'm just saying) under the same name with this article.
 
-My goal in overall is actually _covering the web(roughly)_. I like to write down the steps I take and document them for myself and others. The intention is basically trying to touch as much of the field as possible in order to understand and explain it thoroughly, since the best learning method is to be able to teach the basics. In this case, I intended to cover **traditional ways of data fetching vs. newfangled ways** in Javascript. I'll try to address the answer of cause-effect relations.
-
-In addition, I decided to divide the episode into three chapters(might be more, I'm just saying) under the same name with this article. Well, no more fluffs. Let's dive into the logic.
-
+Well, no more fluffs. Let's dive into the logic.
 
 <Contents>
 
-- [What is a query?](#what-is-a-query)
-- [What is React Query?](#what-is-react-query)
-- [The Big Picture: The Evolution of Data Fetching in JavaScript](#the-big-picture--evolution-of-data-fetching-in-javascript)
-- [Bottom line](#bottom-line)
-- [What next on chapter 2?](#what-next-on-chapter-2)
+1. [What is a query?](#what-is-a-query)
+
+   - [Database Query](#database-query)
+   - [Web Search Query](#web-search-query)
+   - [Query String](#query-string)
+
+2. [What is React Query?](#what-is-react-query)
+
+   - [Overview](#overview)
+   - [Common usage scenarios](#common-usage-scenarios)
+
+3. [The Big Picture: The Evolution of Data Fetching in JavaScript](#the-big-picture--evolution-of-data-fetching-in-javascript)
+
+   - [Pre-AJAX Web Experience (1999 and older)](#the-before-ajax-in-other-words-pre-ajax-web-experience-1999-and-older)
+   - [The AJAX Revolution with `XMLHttpRequest` (Early 2000s)](#the-ajax-revolution-with-xmlhttprequest-early-2000s)
+   - [Promises (ES6/ECMAScript 2015)](#promises-es6ecmascript-2015)
+   - [The Fetch API (Around 2015/2016)](#the-fetch-api-around-20152016)
+   - [Async/Await (ES2017)](#asyncawait-es2017)
+   - [Modern Libraries and Frameworks](#modern-libraries-and-frameworks)
+
+4. [Bottom line](#bottom-line)
+5. [What next on chapter 2?](#what-next-on-chapter-2)
 
 </Contents>
+
+> [id=warning] **Disclaimer:** None of my writing includes direct source of AI. All concrete, synthesized with the original source and my own conclusions/summaries. LLMs are only used to access specific knowledge bases or to create informative diagrams.
 
 ## What is a query?
 
@@ -804,81 +820,76 @@ Well, I think we are quite sure about what the **query** is so let's move on our
 
 As the name implies, in my words **React Query is a filling the missing gaps of data-fetching** as mentioned in the official [documentation of Tanstack Query](https://tanstack.com/query/v5/docs/framework/react/overview).
 
-Overall, React Query makes fetching, caching, synchronizing and updating server state in web apps. The documentation also emphasizes the common state management libraries, such as redux are not as good as Tanstack _when it comes to server state_ because, their structure designed for genereal use rather than server-driven goods.   
+Overall, React Query makes fetching, caching, synchronizing and updating server state in web apps. The documentation also emphasizes the common state management libraries, such as redux are not as good as Tanstack _when it comes to server state_ because, their structure designed for genereal use rather than server-driven goods.
 
-In this chapter, unlike getting into the weeds of **react query** technical details, it's better to mention it with introduction-like style superficially. Below, I have broken down the subheadings into a list.  
+In this chapter, unlike getting into the weeds of **react query** technical details, it's better to mention it with introduction-like style superficially. Below, I have broken down the subheadings into a list.
 
 - Common usage scenarios
 - Comparison in table view with relevant techs
-- React Query with React Native 
+- React Query with React Native
 
 ### Common usage scenarios
 
-**The main goal of React Query is to serve as a request reducer in any type of web application.** By interacting with network boundaries.  
+**The main goal of React Query is to serve as a request reducer in any type of web application.** By interacting with network boundaries.
 
 <Details>
   <Summary>Hot take: When you might not need React Query?</Summary>
 
-  It's worth to mentioned that this statement is a **brutal dependent following to your application needings.** If you're building some app that is going to be placed mostly on client-side with client logic like visual editor apps, **then you might not need react query**. Let me introduce you to Dominik, who has already covered the topic and got ideas from people(he will have more information) that built their apps using **React Query**. He is **one of the most valuable maintainer** who played an important role in the development of Tanstack and once he said:  
+It's worth to mentioned that this statement is a **brutal dependent following to your application needings.** If you're building some app that is going to be placed mostly on client-side with client logic like visual editor apps, **then you might not need react query**. Let me introduce you to Dominik, who has already covered the topic and got ideas from people(he will have more information) that built their apps using **React Query**. He is **one of the most valuable maintainer** who played an important role in the development of Tanstack and once he said:
 
-  > [id=success] *The answer is: You probably don't. If you're starting a new application, and you're using a mature framework like Next.js or Remix that has a good story around data fetching and mutations, you probably don't need React Query. — Ref: [Dominik Dorfmeister](https://tkdodo.eu/blog/you-might-not-need-react-query)*
+> [id=success] _The answer is: You probably don't. If you're starting a new application, and you're using a mature framework like Next.js or Remix that has a good story around data fetching and mutations, you probably don't need React Query. — Ref: [Dominik Dorfmeister](https://tkdodo.eu/blog/you-might-not-need-react-query)_
 
-  I agree to disagree with the statement that Dominik said.
+I agree to disagree with the statement that Dominik said.
 
-  The reason of disagreement is actually comes from effects in React ecosystem — assuming a client component in client-side **where async logic is not being used**. Take a look at this example:
+The reason of disagreement is actually comes from effects in React ecosystem — assuming a client component in client-side **where async logic is not being used**. Take a look at this example:
 
-  ```tsx
-  import getSession from './api';
-  import { useEffect, useState } from "react";
+```tsx
+import getSession from "./api";
+import { useEffect, useState } from "react";
 
-  export default function Session({ id } : { id: number }) { 
-    const [bio, setBio] = useState<string | null>(null);
+export default function Session({ id }: { id: number }) {
+  const [bio, setBio] = useState<string | null>(null);
 
-    useEffect(() => {
-      let ignore = false;
-      setBio(null);
-      getSession(id).then(res => {
-        if (!ignore) setBio(res);
-      });
-      return () => {
-        ignore = true;
-      }
-    }, [id]);
+  useEffect(() => {
+    let ignore = false;
+    setBio(null);
+    getSession(id).then((res) => {
+      if (!ignore) setBio(res);
+    });
+    return () => {
+      ignore = true;
+    };
+  }, [id]);
 
-    return <span>{bio ?? "loading..."}</span>;
-  }
-  ``` 
+  return <span>{bio ?? "loading..."}</span>;
+}
+```
 
-  The component mounts and *re-renders are prevented in strict mode* with the `ignore` assignment. This is the traditional way to render `jsx` based on the fetched value. As you may have noticed, I haven't used error handling or an explicit loading statement when fetching data passed from the component prop. Using altogether logic inside `useEffect()` would have made the component unreadable as hell. You can visit a well-written article by Robin, which will provide you a clear conclusion of *hooks and data fetching* [here](https://www.robinwieruch.de/react-hooks-fetch-data/)
+The component mounts and _re-renders are prevented in strict mode_ with the `ignore` assignment. This is the traditional way to render `jsx` based on the fetched value. As you may have noticed, I haven't used error handling or an explicit loading statement when fetching data passed from the component prop. Using altogether logic inside `useEffect()` would have made the component unreadable as hell. You can visit a well-written article by Robin, which will provide you a clear conclusion of _hooks and data fetching_ [here](https://www.robinwieruch.de/react-hooks-fetch-data/)
 
- That is the point where **React Query** shines. With the single hook provided by `useQuery()`, we can optimize the code in a more predictable, shorter and less tangled way: 
+That is the point where **React Query** shines. With the single hook provided by `useQuery()`, we can optimize the code in a more predictable, shorter and less tangled way:
 
-  ```tsx
-  import getSession from './api';
-  import { useQuery } from '@tanstack/react-query'
+```tsx
+import getSession from "./api";
+import { useQuery } from "@tanstack/react-query";
 
-  export default function Session({ id } : { id: number }) { 
-    const { data } = useQuery<string>(
-      ["session", id],
-      () => getSession(id),
-      {
-        retry: false,
-        enabled: id !== undefined && id !== null,
-      }
-    );
+export default function Session({ id }: { id: number }) {
+  const { data } = useQuery<string>(["session", id], () => getSession(id), {
+    retry: false,
+    enabled: id !== undefined && id !== null,
+  });
 
-    return <span>{data ?? "loading..."}</span>;
-  }
-  ```
+  return <span>{data ?? "loading..."}</span>;
+}
+```
 
+> related and written way more comprehensively about React Query [to see the actual big picture](https://tkdodo.eu/blog/). Anyway, let's get back to what he said:
 
-  >  related and written way more comprehensively about React Query [to see the actual big picture](https://tkdodo.eu/blog/). Anyway, let's get back to what he said:
+> [id=success] Dominik Toretto covering this topic very well, you should definitely check out his [meticulously written articles](https://tkdodo.eu/blog/why-you-want-react-query).
 
-  > [id=success] Dominik Toretto covering this topic very well, you should definitely check out his [meticulously written articles](https://tkdodo.eu/blog/why-you-want-react-query).
+Furthermore, this is not just my recommendation — in order to reduce the amount of `useState` in your react app and mitigate the client side bundle work is a non-trivial, inevitable fact:
 
-  Furthermore, this is not just my recommendation — in order to reduce the amount of `useState` in your react app and mitigate the client side bundle work is a non-trivial, inevitable fact:
-
-  > [id=info] *Consider using or building a client-side cache. Popular open source solutions include TanStack Query(React Query), useSWR, and React Router 6.4+. You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes) — [Official React Docs](https://react.dev/reference/react/useEffect#fetching-data-with-effects)*
+> [id=info] _Consider using or building a client-side cache. Popular open source solutions include TanStack Query(React Query), useSWR, and React Router 6.4+. You can build your own solution too, in which case you would use Effects under the hood but also add logic for deduplicating requests, caching responses, and avoiding network waterfalls (by preloading data or hoisting data requirements to routes) — [Official React Docs](https://react.dev/reference/react/useEffect#fetching-data-with-effects)_
 
 </Details>
 
@@ -890,16 +901,15 @@ Here are some of the most common usage scenarios of React Query:
 - Performing optimistic updates when a user likes a post or edits a comment so the UI updates immediately while the **mutation** runs.
 - Sharing a **cached** authenticated user profile across header, settings, and dashboard components **to avoid duplicate network requests**.
 
-As you may noticed, fetching, prefetching, mutating, caching and so on. Simply put, these are all fundamental things when it comes to **data manipulation** directly *correlated with UX, DX, UI*. It makes life easier for developers by eliminating the need to rewrite everything from scratch. Speaking of which, let's take a quick look like a speed run in minecraft at data fetching in chronological order.
+As you may noticed, fetching, prefetching, mutating, caching and so on. Simply put, these are all fundamental things when it comes to **data manipulation** directly _correlated with UX, DX, UI_. It makes life easier for developers by eliminating the need to rewrite everything from scratch. Speaking of which, let's take a quick look like a speed run in minecraft at data fetching in chronological order.
 
 ---
 
 ## The big picture — evolution of data fetching in Javascript
 
-Moving on without addressing this topic would have left people wondering. We have mentioned just the latest modern data fetching methods until now. So for the sake of this article, I have also decided to mention the evolution of data fetching in Javascript with quick snippets to fill all the missing gaps. 
+Moving on without addressing this topic would have left people wondering. We have mentioned just the latest modern data fetching methods until now. So for the sake of this article, I have also decided to mention the evolution of data fetching in Javascript with quick snippets to fill all the missing gaps.
 
 Grouped everything for you in chronological order for better impact.
-
 
 ### The **'Before AJAX'** in other words, pre-AJAX Web Experience (1999 and older)
 
@@ -912,17 +922,16 @@ This model followed a rigid pattern:
 1. **User Interaction:** User would click a link or submit an HTML form using a `GET` or `POST` request.
 2. **Browser Request:** The user's **screen would often go blank(see image below)** or show a loading indicator as it waited for the response.
 3. **Server Processing:** When retrieved the necessary data, and dynamically **generated an entire new HTML page** (or updated a full page template).
-4. **Full Page Reload:** The server sent the complete HTML response back to the browser. The browser then **discarded the current page entirely** and rendered the new one from scratch, along with all associated assets like images, CSS, and JavaScript files. 
+4. **Full Page Reload:** The server sent the complete HTML response back to the browser. The browser then **discarded the current page entirely** and rendered the new one from scratch, along with all associated assets like images, CSS, and JavaScript files.
 
 ![During second step on request the user's screen be like](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/flashbang-csgo.webp)
 
+### The AJAX Revolution with `XMLHttpRequest` (Early 2000s)
 
-### The AJAX Revolution with `XMLHttpRequest` (Early 2000s) 
-
-The introduction of async JavaScript and *XML (AJAX) was groundbreaking*. When came out it was pretty promising no more clunky experience for users in early 2000s and the sector had practically revived as it made background jobs possible after named **payload**. Long live `XMLHttpRequest`! 
+The introduction of async JavaScript and _XML (AJAX) was groundbreaking_. When came out it was pretty promising no more clunky experience for users in early 2000s and the sector had practically revived as it made background jobs possible after named **payload**. Long live `XMLHttpRequest`!
 
 **Mechanism:** XHR or in long from `XMLHttpRequest` uses event handlers and callbacks to manage the different stages of a request and eventually returns an observable object.
-**Limitations:** This approach was verbose and could lead to one of first-seen **"callback hell"** problems in js history with deeply nested callbacks for multiple requests, *making code difficult to read, manage, and debug.*
+**Limitations:** This approach was verbose and could lead to one of first-seen **"callback hell"** problems in js history with deeply nested callbacks for multiple requests, _making code difficult to read, manage, and debug._
 
 A `XMLHttpRequest` example can be given like down below:
 
@@ -947,7 +956,7 @@ xhr.onerror = () => {
 xhr.send();
 ```
 
-> [id=error] **Caveats:** Please pardon for my ignorance, but I've realized something that you might say *"Oh Burak seriously?"*. Node.js doesn't have `XMLHttpRequest` built into its runtime — it never did. When trying to execute what I have written above in my node(v24.0.1) snippet. But instead, I've encountered this error and wanted to mention:
+> [id=error] **Caveats:** Please pardon for my ignorance, but I've realized something that you might say _"Oh Burak seriously?"_. Node.js doesn't have `XMLHttpRequest` built into its runtime — it never did. When trying to execute what I have written above in my node(v24.0.1) snippet. But instead, I've encountered this error and wanted to mention:
 
 ```bash
 const xhr = new XMLHttpRequest();
@@ -955,244 +964,240 @@ const xhr = new XMLHttpRequest();
 ReferenceError: XMLHttpRequest is not defined.
 ```
 
-#### Current use cases of `XMLHttpRequest` 
+#### Current use cases of `XMLHttpRequest`
 
 1. **Progress tracking for file uploads**
-XHR or with long form `XMLHttpRequest` has **better native support** for monitoring the progress of file uploads than the Fetch API. For this reason, some devs still use XHR specifically for this task.
+   XHR or with long form `XMLHttpRequest` has **better native support** for monitoring the progress of file uploads than the Fetch API. For this reason, some devs still use XHR specifically for this task.
 
 2. **Support for older browsers**
-Supported by older browsers that **lack the Fetch API**. While the need for this is diminishing, it can be relevant in certain niche scenarios or for certain user bases. Acting like a **polyfill/fall**.
+   Supported by older browsers that **lack the Fetch API**. While the need for this is diminishing, it can be relevant in certain niche scenarios or for certain user bases. Acting like a **polyfill/fall**.
 
 3. **Setting headers**
-[View more about the implementation](https://www.greatfrontend.com/pt-BR/questions/quiz/what-are-the-differences-between-xmlhttprequest-and-fetch)
+   [View more about the implementation](https://www.greatfrontend.com/pt-BR/questions/quiz/what-are-the-differences-between-xmlhttprequest-and-fetch)
 
 Bottom line with XHR, sticking to modern solutions like the built-in `fetch()` method that we're about to talk about yields the best results when it comes to data fetching.
 
-
 ### Promises (ES6/ECMAScript 2015)
 
-As I mentioned above, the *callback problems had gone off the rails with XHR*. This created an opportunity for the core maintainers of the modern web to invent at least one workaround that would turn into a specification. Then, in ES6, JavaScript officially introduced Promises as an emergent feature.   
+As I mentioned above, the _callback problems had gone off the rails with XHR_. This created an opportunity for the core maintainers of the modern web to invent at least one workaround that would turn into a specification. Then, in ES6, JavaScript officially introduced Promises as an emergent feature.
 
-Unlike nested callbacks — developers now could chain `.then()` methods for successful responses and a `.catch()` method for error handling, resulting in flatter and more readable code. *A tiny spoiler from one of the next heading: once standard `async/await` was introduced, the developer's life became easier and hence, because of its's alignment with promises.*
+Unlike nested callbacks — developers now could chain `.then()` methods for successful responses and a `.catch()` method for error handling, resulting in flatter and more readable code. _A tiny spoiler from one of the next heading: once standard `async/await` was introduced, the developer's life became easier and hence, because of its's alignment with promises._
 
 <Details>
   <Summary>Deep dive: Execution order in ES6 when working with promises</Summary>
   
-  Wanted to emphasize one crucial point that you might have missed. Promises and the event loop execution order differs and matters when it comes to [v8 engine](https://v8.dev/) 
+  Wanted to emphasize one crucial point that you might have missed. Promises and the event loop execution order differs and matters when it comes to [v8 engine](https://v8.dev/)
 
-  > [id=info] *V8 is Google’s open source high-performance JavaScript and WebAssembly engine, written in C++. It is used in Chrome and in Node.js, among others, implements ECMAScript and WebAssembly and runs on Windows, macOS, and Linux systems that use x64, IA-32, or ARM processors. V8 can be embedded into any C++ application.*
+> [id=info] _V8 is Google’s open source high-performance JavaScript and WebAssembly engine, written in C++. It is used in Chrome and in Node.js, among others, implements ECMAScript and WebAssembly and runs on Windows, macOS, and Linux systems that use x64, IA-32, or ARM processors. V8 can be embedded into any C++ application._
 
-  Take a look at this snippet and try to guess the execution order:
+Take a look at this snippet and try to guess the execution order:
 
-  ```ts
-  // phase 1
-  const req = new Promise((res) => {
-    setTimeout(() => console.log('a'), 2000);
-    console.log('b');
-  })
+```ts
+// phase 1
+const req = new Promise((res) => {
+  setTimeout(() => console.log("a"), 2000);
+  console.log("b");
+});
 
-  req.then((res) => {
-    console.log(res);
-    console.log('c');
-  });
-  ```
+req.then((res) => {
+  console.log(res);
+  console.log("c");
+});
+```
 
-  Then, validate your guess with the snippet below:
+Then, validate your guess with the snippet below:
 
-  --- 
+---
 
-  The logged result for the *phase 1*  yields:
+The logged result for the _phase 1_ yields:
 
-  ```ts
-  // b <-- first instant
-  // a <-- second — after 2 sec  
-  ```
+```ts
+// b <-- first instant
+// a <-- second — after 2 sec
+```
 
-  Do not get me wrong, don't wanna be brain-rotted, hype-seeker and toxic linkedin user that appears randomly in the shuffle who mostly shares content kinda like "x = 1; y = 2; so z=?..". Thanks to linkedin's algorithm that perfectly matches with user's interesting... I mention these basics, it's just because of the relativity with the topic we currently addressing. 
+Do not get me wrong, don't wanna be brain-rotted, hype-seeker and toxic linkedin user that appears randomly in the shuffle who mostly shares content kinda like "x = 1; y = 2; so z=?..". Thanks to linkedin's algorithm that perfectly matches with user's interesting... I mention these basics, it's just because of the relativity with the topic we currently addressing.
 
-  Coming back to the *phase 1*, **why the result did not yield also 'c'?**. Where the hell 'c' vanished? Well, it's just **because the promise never resolved.** The promise remains in **pending state** because `res()` is never called. So let's implement it as well:
+Coming back to the _phase 1_, **why the result did not yield also 'c'?**. Where the hell 'c' vanished? Well, it's just **because the promise never resolved.** The promise remains in **pending state** because `res()` is never called. So let's implement it as well:
 
-  ```ts
-  // phase 2
-  const req = new Promise((res) => {
-    setTimeout(() => console.log('a'), 2000);
-    res('b');
-  })
+```ts
+// phase 2
+const req = new Promise((res) => {
+  setTimeout(() => console.log("a"), 2000);
+  res("b");
+});
 
-  req.then((res) => {
-    console.log(res);
-    console.log('c');
-  });
+req.then((res) => {
+  console.log(res);
+  console.log("c");
+});
 
-  // b <-- first instant 
-  // c <-- second instant 
-  // a <-- third — after 2 sec
-  ```   
+// b <-- first instant
+// c <-- second instant
+// a <-- third — after 2 sec
+```
 
-  Now, look's like we're getting the results as we expected. If we put them in **execution order**:
+Now, look's like we're getting the results as we expected. If we put them in **execution order**:
 
-  1. **Synced execution**: added to call stack
+1. **Synced execution**: added to call stack
 
-    - `setTimeout`, registered as a *macrotask*
-    - `res('b')`, resolved and called immediately
-    
-  2. **Microtask queue**
-    
-    - `then()` callback is added to the *microtask queue*
-    - Microtasks execute *before* any macrotasks
-    - Prints `b` then `c`
+   - `setTimeout`, registered as a _macrotask_
+   - `res('b')`, resolved and called immediately
 
-  3. Macrotask queue 
+2. **Microtask queue**
 
-    - `setTimeout` callback executes
-    - Prints `a`
+   - `then()` callback is added to the _microtask queue_
+   - Microtasks execute _before_ any macrotasks
+   - Prints `b` then `c`
 
+3. Macrotask queue
 
-  So, take another guess now. What if we call the `resolve` inside `setTimeout` like shown below?  Will it be `a` or `b`:
+   - `setTimeout` callback executes
+   - Prints `a`
 
-  ```ts
-  // phase 3
-  const req = new Promise((res) => {
-    setTimeout(() => {
-      console.log('a');
-      res('b');
-    }, 2000);
-  })
+So, take another guess now. What if we call the `resolve` inside `setTimeout` like shown below? Will it be `a` or `b`:
 
-  req.then((res) => {
-    console.log(res);
-    console.log('c');
-  });
-  ``` 
+```ts
+// phase 3
+const req = new Promise((res) => {
+  setTimeout(() => {
+    console.log("a");
+    res("b");
+  }, 2000);
+});
 
-  Now things changes a bit naturally since have we used the resolver inside the timeout. Corresponding answer for the *phase 3* is half tricky due to the logic itself. It yields alphabetically but..:
+req.then((res) => {
+  console.log(res);
+  console.log("c");
+});
+```
 
-  ```ts
-  // a <-- after 2 sec 
-  // b <-- after 2 sec 
-  // c <-- after 2 sec right after 'b'
-  ```    
+Now things changes a bit naturally since have we used the resolver inside the timeout. Corresponding answer for the _phase 3_ is half tricky due to the logic itself. It yields alphabetically but..:
 
-  Oh Javascript lovely javascript... 
+```ts
+// a <-- after 2 sec
+// b <-- after 2 sec
+// c <-- after 2 sec right after 'b'
+```
 
-  In this case things gets bigger Capitan. Understanding the fundamentals of event loop in javascript is actually requires a pure focus — so I recommend you to bring a cup of coffee as we dig more to stay focused ☕
+Oh Javascript lovely javascript...
 
-  Take a look this illustration to picture holy-canvas:
+In this case things gets bigger Capitan. Understanding the fundamentals of event loop in javascript is actually requires a pure focus — so I recommend you to bring a cup of coffee as we dig more to stay focused ☕
 
-  ![javascript event loop](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/js-event-loop.gif)
+Take a look this illustration to picture holy-canvas:
 
-  [Also check out Lydia's meticulous article covering event loops and task queues in much greater detail than I did.](https://www.lydiahallie.com/blog/event-loop)
+![javascript event loop](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/js-event-loop.gif)
 
-  Then come back please, I do not want to just giveaway my audience 😊
+[Also check out Lydia's meticulous article covering event loops and task queues in much greater detail than I did.](https://www.lydiahallie.com/blog/event-loop)
 
-  Coming back to the problem, `res('b')` added to an assigned macro-queue and JS talks with the v8:
-  
-  > [id=success] *Hey man stop! Take it easy for a while... Remember, we can only handle one thing at a time!*
+Then come back please, I do not want to just giveaway my audience 😊
 
-  Therefore, the **execution order** differs like this:
+Coming back to the problem, `res('b')` added to an assigned macro-queue and JS talks with the v8:
 
-  1. **Synced execution — (immediate)**
+> [id=success] _Hey man stop! Take it easy for a while... Remember, we can only handle one thing at a time!_
 
-    - `setTimeout`, registered as a *macrotask* but for 2(s) later
-    - Promise remains in **pending state** (no immediate resolution)
-    - `then()` callback is registered but won't execute yet (waiting an order from v8 for resolving the promise)
+Therefore, the **execution order** differs like this:
 
-  2. **Macrotask executes after 2 seconds**
-    
-    - `console.log('a')` executes and prints `a`
-    - `res('b')` is called, resolving the promise with value `b`
-    - This adds the `then()` callback to the **microtask queue!!**
+1. **Synced execution — (immediate)**
 
-  3. Microtask queue (immediately after macrotask):
+   - `setTimeout`, registered as a _macrotask_ but for 2(s) later
+   - Promise remains in **pending state** (no immediate resolution)
+   - `then()` callback is registered but won't execute yet (waiting an order from v8 for resolving the promise)
 
-    - `then()` callback executes
-    - Prints `b` then `c`
+2. **Macrotask executes after 2 seconds**
 
+   - `console.log('a')` executes and prints `a`
+   - `res('b')` is called, resolving the promise with value `b`
+   - This adds the `then()` callback to the **microtask queue!!**
 
-  **Key takeaway** would be *any changes to micro and macro tasks always matter*. And as a reminder, It's worth to mention that we're still in 2015 with lack of `async/await`. **Synced > Microtasks > Macrotasks** has been the rule since *promises* were introduced in ES2015.
+3. Microtask queue (immediately after macrotask):
 
-  ![javascript event loop priorization](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/synced-microtask-macrotask.png)
+   - `then()` callback executes
+   - Prints `b` then `c`
 
-  The next few articles for better clarification, I'm planning to cover low-level and lexical addressing in more detail highlighting the **event loops in interpreters**.
+**Key takeaway** would be _any changes to micro and macro tasks always matter_. And as a reminder, It's worth to mention that we're still in 2015 with lack of `async/await`. **Synced > Microtasks > Macrotasks** has been the rule since _promises_ were introduced in ES2015.
 
-  *Phase 3* also raises new questions like, what if we relocate the order of `console.log('a')` that comes first and `res('b')` comes right after? Can you predict the outcome for the following snippet: 
+![javascript event loop priorization](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/synced-microtask-macrotask.png)
 
-  ```ts
-  // phase 4
-  const req = new Promise((res) => {
-    setTimeout(() => {
-      res('b');
-      console.log('a');
-    }, 2000);
-  });
+The next few articles for better clarification, I'm planning to cover low-level and lexical addressing in more detail highlighting the **event loops in interpreters**.
 
-  req.then((res) => {
-    console.log(res);
-    console.log('c');
-  });
-  ```
+_Phase 3_ also raises new questions like, what if we relocate the order of `console.log('a')` that comes first and `res('b')` comes right after? Can you predict the outcome for the following snippet:
 
-  The *phase 4* yields to:
+```ts
+// phase 4
+const req = new Promise((res) => {
+  setTimeout(() => {
+    res("b");
+    console.log("a");
+  }, 2000);
+});
 
-  ```
-  // a <-- after 2 sec 
-  // b <-- after 2 sec 
-  // c <-- after 2 sec right after 'b'
-  ```
+req.then((res) => {
+  console.log(res);
+  console.log("c");
+});
+```
 
-  Even though we relocated the position of the internal logic we encountered the same result with the *phase 3*. Unlike the *phase 3*, `console.log('a')` runs before the `then()` handler, not after, because the `console.log('a')` is **part of the synchronous code** inside the setTimeout callback, while the `then()` handler is queued as a microtask that runs after the current task finishes.
-  
-  *The last phase* included one more variant as `console.log(d)` to see how it unfolded:
+The _phase 4_ yields to:
 
-  ```ts
-  // phase 5
-  const req = new Promise((res) => {
-    console.log('a');
-    setTimeout(() => {
-      res('b');
-    }, 2000);
-  })
+```
+// a <-- after 2 sec
+// b <-- after 2 sec
+// c <-- after 2 sec right after 'b'
+```
 
-  req.then((res) => {
-    console.log(res);
-    console.log('c');
-  });
+Even though we relocated the position of the internal logic we encountered the same result with the _phase 3_. Unlike the _phase 3_, `console.log('a')` runs before the `then()` handler, not after, because the `console.log('a')` is **part of the synchronous code** inside the setTimeout callback, while the `then()` handler is queued as a microtask that runs after the current task finishes.
 
-  console.log('d');
-  ``` 
+_The last phase_ included one more variant as `console.log(d)` to see how it unfolded:
 
-  Yields:
+```ts
+// phase 5
+const req = new Promise((res) => {
+  console.log("a");
+  setTimeout(() => {
+    res("b");
+  }, 2000);
+});
 
-  ```ts
-  // a
-  // d
-  // (wait 2 seconds)
-  // b
-  // c
-  ```
+req.then((res) => {
+  console.log(res);
+  console.log("c");
+});
 
-  But what was the underlying reason behind the very first logger `console.log('a')` that is printed first despite the `Promise()` fact? 
-  
-  It's because the code in Promise constructor runs **synchronously** when the promise is created, **not when it resolves**. So the promise — when registered, **synced-threatened** the inner logics and remember the picture I shared above about the order that is prioritized with the **synchronous ones first**. And finally, since Javascript is interpreted into byte code that is read from top to bottom, the result is yielded at first with `a`  then `d`. The snippet looks tricky, and it is actually. Therefore, **understanding the fundamentals of JavaScript execution order is essential yet challenging.**
+console.log("d");
+```
 
+Yields:
+
+```ts
+// a
+// d
+// (wait 2 seconds)
+// b
+// c
+```
+
+But what was the underlying reason behind the very first logger `console.log('a')` that is printed first despite the `Promise()` fact?
+
+It's because the code in Promise constructor runs **synchronously** when the promise is created, **not when it resolves**. So the promise — when registered, **synced-threatened** the inner logics and remember the picture I shared above about the order that is prioritized with the **synchronous ones first**. And finally, since Javascript is interpreted into byte code that is read from top to bottom, the result is yielded at first with `a` then `d`. The snippet looks tricky, and it is actually. Therefore, **understanding the fundamentals of JavaScript execution order is essential yet challenging.**
 
 </Details>
 
 ### The Fetch API (Around 2015/2016)
 
-I guess this one is the most efficient way to get some data from the internet that is being used even in last quarter of 2025. Yet interestingly, it has been 10 years since the built-in `fetch()` method came out as a solution for the refinement of legacy data fetching molds such as `XMLHttpRequest` that we mentioned earlier. Simply put, the `XMLHttpRequest` API was largely superseded by the more modern and efficient **Fetch API, which is built on promises from the ground up**. Thus, `fetch` function started to provide a *simpler, cleaner interface for making network requests* that led to **better DX** thereby.
+I guess this one is the most efficient way to get some data from the internet that is being used even in last quarter of 2025. Yet interestingly, it has been 10 years since the built-in `fetch()` method came out as a solution for the refinement of legacy data fetching molds such as `XMLHttpRequest` that we mentioned earlier. Simply put, the `XMLHttpRequest` API was largely superseded by the more modern and efficient **Fetch API, which is built on promises from the ground up**. Thus, `fetch` function started to provide a _simpler, cleaner interface for making network requests_ that led to **better DX** thereby.
 
 > [id=success] The eventual breakage was **it's modular design and data streams** that are being used under the hood, which is **beneficial for performance and memory** usage when dealing with large files.
 
-Mechanism of the `fetch()` API returns a promise that resolves to a `Response` object. To access the actual returned data, a second promise-based method like `json()` must be called. 
+Mechanism of the `fetch()` API returns a promise that resolves to a `Response` object. To access the actual returned data, a second promise-based method like `json()` must be called.
 
-For better clarification, I've prepared a specific snippet, assuming that our goal is fetching this article's `<lastmod>` tag to prove how up to date and fresh my articles are ✨: 
+For better clarification, I've prepared a specific snippet, assuming that our goal is fetching this article's `<lastmod>` tag to prove how up to date and fresh my articles are ✨:
 
 ```ts
 fetch("https://burakdev.com/sitemap.xml", {
 	method: "GET",
 	headers: {
-		"Content-Type": "application/xml"	
+		"Content-Type": "application/xml"
 	},
 })
 	.then((response) => res.text())
@@ -1200,7 +1205,7 @@ fetch("https://burakdev.com/sitemap.xml", {
 	.catch((err) => console.log(err));
 ```
 
-This snippet yields: 
+This snippet yields:
 
 ```ts
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -1217,7 +1222,9 @@ This snippet yields:
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1</loc>
+    <loc>
+      https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1
+    </loc>
     <lastmod>Fri, 14 Nov 2025 23:11:58 GMT</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -1225,17 +1232,17 @@ This snippet yields:
 </urlset>
 ```
 
-And yeah, I slightly realized the date format I used inside `<lastmod>` tag is not following the [W3 ISO STANDART](https://www.w3.org/TR/NOTE-datetime). While I get to work on this, you may have a look this [microsoft report](https://blogs.bing.com/webmaster/february-2023/The-Importance-of-Setting-the-lastmod-Tag-in-Your-Sitemap) about sitemaps where we mentioned the importance of sitemaps right above in [Web search query](#what-is-a-query) section.  
+And yeah, I slightly realized the date format I used inside `<lastmod>` tag is not following the [W3 ISO STANDART](https://www.w3.org/TR/NOTE-datetime). While I get to work on this, you may have a look this [microsoft report](https://blogs.bing.com/webmaster/february-2023/The-Importance-of-Setting-the-lastmod-Tag-in-Your-Sitemap) about sitemaps where we mentioned the importance of sitemaps right above in [Web search query](#what-is-a-query) section.
 
 > [id=info] **58% of hosts have at least one XML sitemap** (sitemap known by Bing) while **42% of hosts don’t have one XML sitemap (Bing does not know it)**, this is absolutely insane! Almost half of the web, opt-out from indexing boundaries by crawlers. For those where `<lastmod>` attribute set that is taking the compounds around %84 of sitemaps, %18 have lastmod values not correctly set. — [direct source: Microsoft bing blogs](https://blogs.bing.com/webmaster/february-2023/The-Importance-of-Setting-the-lastmod-Tag-in-Your-Sitemap)
 
-I genuinely believe if you haven't grabbed your sitemap yet, *go compose your sitemap ASAP* in order to use your map because I want you to never forget, *in my articles you're a Capitan and not knowing which way to go is no different from an elderly man walking down a dark, unsafe street without a flashlight being mugged by thieves.* 
+I genuinely believe if you haven't grabbed your sitemap yet, _go compose your sitemap ASAP_ in order to use your map because I want you to never forget, _in my articles you're a Capitan and not knowing which way to go is no different from an elderly man walking down a dark, unsafe street without a flashlight being mugged by thieves._
 
-Anyway coming back to `fetch()`. The way I went through right up in the snippet was deliberately uncommon as we used xml with `.text()` method since *the Fetch API does not natively parse XML*. In the fast-paced modern web development, *the devs are generally tend to follow common data type which is javascript object notation(JSON)* that is naturally supported natively. XML (for reasons unknown to me) kinda enterprise-like staff. In regular-basis, devs are likely go with `response.json()` since fetch method has parsing feature for json files. The very common pattern when using fetch shown below:
+Anyway coming back to `fetch()`. The way I went through right up in the snippet was deliberately uncommon as we used xml with `.text()` method since _the Fetch API does not natively parse XML_. In the fast-paced modern web development, _the devs are generally tend to follow common data type which is javascript object notation(JSON)_ that is naturally supported natively. XML (for reasons unknown to me) kinda enterprise-like staff. In regular-basis, devs are likely go with `response.json()` since fetch method has parsing feature for json files. The very common pattern when using fetch shown below:
 
 ```ts
 fetch("https://burakdev.com/api/v3/posts", {
-  method: "POST", // also could be like GET, POST, PUT, DELETE, and PATCH  
+  method: "POST", // also could be like GET, POST, PUT, DELETE, and PATCH
   headers: {
     "Content-Type": "application/json",
   },
@@ -1249,23 +1256,21 @@ fetch("https://burakdev.com/api/v3/posts", {
   .catch((error) => console.error(error));
 ```
 
-**A story comes from me and would like convey that experience since we're on the XML subject,** I have been participating in the operation where _we were responsible to connect notional e-invoice system in poland(KSeF)_ and I've been collabrating with a indifferent Turkish team.  
+**A story comes from me and would like convey that experience since we're on the XML subject,** I have been participating in the operation where _we were responsible to connect notional e-invoice system in poland(KSeF)_ and I've been collabrating with a indifferent Turkish team.
 
-*My part was mostly dealing with an indpendent, original and sophisticated invoicing specifications* which was pretty hard staff to overcome with zero polish, but eventually **we connected to the system in weeks** even though I had limited knowledge and experince in enterprise industry because I was just 20, so no blame for myself :D 
+_My part was mostly dealing with an indpendent, original and sophisticated invoicing specifications_ which was pretty hard staff to overcome with zero polish, but eventually **we connected to the system in weeks** even though I had limited knowledge and experince in enterprise industry because I was just 20, so no blame for myself :D
 
-*Governments(not all) has built their system on legacy standarts* since the internet came out. *Mostly XML being used for this kind of industry-driven architects*, so be aware next time before trying to deal with XML.
+_Governments(not all) has built their system on legacy standarts_ since the internet came out. _Mostly XML being used for this kind of industry-driven architects_, so be aware next time before trying to deal with XML.
 
----   
+---
 
-> [id=success] I could just put there some sort of basic implementation that I copied from LLM's but such things are out of the question here. I believe my approach is memorable when it comes to maintaining/creating a knowledge-base because I know, one topic can lead to another and another, therefore a shining giant chain would be better than piece of chain that are not matching well with each other. Trying to produce organic content for you so to stay tuned subscribe to the newsletter to get instant update for recent articles and [you also can support me financially](https://buymeacoffee.com/bilenburakf) since writing takes days and I must refill my coffee machine & take care of my wife, thanks from now for your all support ❤️ 
+> [id=success] I could just put there some sort of basic implementation that I copied from LLM's but such things are out of the question here. I believe my approach is memorable when it comes to maintaining/creating a knowledge-base because I know, one topic can lead to another and another, therefore a shining giant chain would be better than piece of chain that are not matching well with each other. Trying to produce organic content for you so to stay tuned subscribe to the newsletter to get instant update for recent articles and [you also can support me financially](https://buymeacoffee.com/bilenburakf) since writing takes days and I must refill my coffee machine & take care of my wife, thanks from now for your all support ❤️
 
-
-Overall, the fetch is a magic key when it comes to data fetching with Javascript. Dismissing or ignoring its existence may result in not being hired and staying away from the industry. Embrace it and fetch some data. 
-
+Overall, the fetch is a magic key when it comes to data fetching with Javascript. Dismissing or ignoring its existence may result in not being hired and staying away from the industry. Embrace it and fetch some data.
 
 ### Async/Await (ES2017)
 
-The `async`/`await` syntax further simplified asynchronous programming by **providing a more concise, synchronous-looking way** to work with promises. It is a **syntactic sugar** over Promises. 
+The `async`/`await` syntax further simplified asynchronous programming by **providing a more concise, synchronous-looking way** to work with promises. It is a **syntactic sugar** over Promises.
 
 Until now, we have been using the strategy behind the `fetch()` API and promises in order to fetch some data. And to do that, we used chained `.then()`'s to negotiate with what we returned. **Clearly, ES15 is more error-prone because its syntax contains composed compounds and nested logic.** This may be the reason the core team invented a new turnaround according to me.
 
@@ -1273,112 +1278,109 @@ I do not know but in the current era of the modern web development, am I the onl
 
 ```ts
 const getBlogs = async () => {
-	const res = await fetch('https://burakdev.com/api/v3/posts');
-	const data = res.json();
-	return data;
-}
+  const res = await fetch("https://burakdev.com/api/v3/posts");
+  const data = res.json();
+  return data;
+};
 
 const blogs = await getBlogs();
 console.log(blogs);
 ```
 
-Could be wrapped in `try`, `catch` block, but since the intention is just showing the usage, it's enough to show up the core funcionality — everyone is already familiar with this.   
+Could be wrapped in `try`, `catch` block, but since the intention is just showing the usage, it's enough to show up the core funcionality — everyone is already familiar with this.
 
-> [id=error] Warning: To not make the app stuck in pending status, always resolve the assigned request with `await`. The await keyword **pauses the execution of the function** until a promise is resolved. Linters and prettiers are your best bet. Personally, **I recommend using biome over eslint for your projects** because lightning-fast formats just so cool. 
-
+> [id=error] Warning: To not make the app stuck in pending status, always resolve the assigned request with `await`. The await keyword **pauses the execution of the function** until a promise is resolved. Linters and prettiers are your best bet. Personally, **I recommend using biome over eslint for your projects** because lightning-fast formats just so cool.
 
 ### Modern Libraries and Frameworks
 
-Aye aye Capitan! **You are now entering our time — to the present, congrats and welcome!** if you are reading everything from the beginning until now, as it was a very long run — *approximately takes 25 minutes*, then respect to you 🫡 Now, we're on the verge of entering the phase we referenced earlier. This theme went through the past to the present under the name "Evolution of Data Fetching in JavaScript." and this is the last heading, ending all up with a serious topic since **it is all about today**.  
+Aye aye Capitan! **You are now entering our time — to the present, congrats and welcome!** if you are reading everything from the beginning until now, as it was a very long run — _approximately takes 25 minutes_, then respect to you 🫡 Now, we're on the verge of entering the phase we referenced earlier. This theme went through the past to the present under the name "Evolution of Data Fetching in JavaScript." and this is the last heading, ending all up with a serious topic since **it is all about today**.
 
 Today, many developers use purpose-built libraries like **Axios** for data fetching, or rely on framework-specific solutions such as **React Query**, which is the main topic we covering so far, **SWR**, or **server components in React that renders ahead of time**, before bundling, in an environment separate from your client app or SSR server. In this section, we will briefly discuss all of these.
 
-These libraries abstract data fetching complexities for *better efficiency, robustness and of course the DX*. Basically, these tools focus on improving performance, managing server-state, and optimizing user interfaces through features like caching strategies, automatic refetching, and the great SSR.
-
+These libraries abstract data fetching complexities for _better efficiency, robustness and of course the DX_. Basically, these tools focus on improving performance, managing server-state, and optimizing user interfaces through features like caching strategies, automatic refetching, and the great SSR.
 
 #### Axios
 
-A popular, promise-based HTTP client. While native fetch can handle most tasks, *Axios provides features that improve the developer experience* for complex applications.
+A popular, promise-based HTTP client. While native fetch can handle most tasks, _Axios provides features that improve the developer experience_ for complex applications.
 
-**Interceptors** Allows us to globally intercept and modify requests or responses, which is **useful for adding authentication tokens or logging**. 
+**Interceptors** Allows us to globally intercept and modify requests or responses, which is **useful for adding authentication tokens or logging**.
 
-Below I've curated a boilerplate, an instance of auth implementation with axios although I don't love them and one bonus, HTTP authentication diagram.  
+Below I've curated a boilerplate, an instance of auth implementation with axios although I don't love them and one bonus, HTTP authentication diagram.
 
 <Details>
   <Summary>**Under the macroscope:** HTTP background process while auth with axios interceptors, visualized.</Summary>
  
   > [id=info] Axios, automatically converts JSON data into a JS object, unlike `fetch` as we mentioned in this article.
 
-  ```ts
-  import axios, 
-  { 
-    AxiosInstance, 
-    InternalAxiosRequestConfig, 
-    AxiosResponse, 
-    AxiosError 
-  } from 'axios';
+```ts
+import axios, {
+  AxiosInstance,
+  InternalAxiosRequestConfig,
+  AxiosResponse,
+  AxiosError,
+} from "axios";
 
-  // A custom Axios instance
-  const apiClient: AxiosInstance = axios.create({
-    baseURL: 'https://api-staff.com/',
-    headers: {
-      'Content-Type': 'application/json', 
-      // or whatever the requested content type is and to learn 
-      // target-agnostic content type, you can always run
-      // console.log(fetch(URL_TO_FETCH).then((val) => val));
-      // (without parsing!) 
-      // this will return an object containing bunch of 
-      // useful information about the identity
-      // of the targetted utility.
-    },
-  });
+// A custom Axios instance
+const apiClient: AxiosInstance = axios.create({
+  baseURL: "https://api-staff.com/",
+  headers: {
+    "Content-Type": "application/json",
+    // or whatever the requested content type is and to learn
+    // target-agnostic content type, you can always run
+    // console.log(fetch(URL_TO_FETCH).then((val) => val));
+    // (without parsing!)
+    // this will return an object containing bunch of
+    // useful information about the identity
+    // of the targetted utility.
+  },
+});
 
-  const getAuthToken = (): string | null => {
-    // next line not reflects the real-life practices 
-    // just arbitary usage — do not try at home
-    return localStorage.getItem('authToken');  
-  };
+const getAuthToken = (): string | null => {
+  // next line not reflects the real-life practices
+  // just arbitary usage — do not try at home
+  return localStorage.getItem("authToken");
+};
 
-  // This is the request interceptor
-  apiClient.interceptors.request.use(
-    (config: InternalAxiosRequestConfig) => {
-      const token = getAuthToken();
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    (error: AxiosError) => {
-      // Handle request errors
-      return Promise.reject(error);
+// This is the request interceptor
+apiClient.interceptors.request.use(
+  (config: InternalAxiosRequestConfig) => {
+    const token = getAuthToken();
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
     }
-  );
+    return config;
+  },
+  (error: AxiosError) => {
+    // Handle request errors
+    return Promise.reject(error);
+  }
+);
 
-  // And finally the response interceptor for logging and global error handling
-  apiClient.interceptors.response.use(
-    (response: AxiosResponse) => response,
-    (error: AxiosError) => {
-      console.error(`❌ [API] Error: ${error.message}`);
+// And finally the response interceptor for logging and global error handling
+apiClient.interceptors.response.use(
+  (response: AxiosResponse) => response,
+  (error: AxiosError) => {
+    console.error(`❌ [API] Error: ${error.message}`);
 
-      if (error.response && error.response.status === 401) {
-        console.log('Unauthorized request');
-      }
-      return Promise.reject(error);
+    if (error.response && error.response.status === 401) {
+      console.log("Unauthorized request");
     }
-  );
+    return Promise.reject(error);
+  }
+);
 
-  export default apiClient;
-  ```
+export default apiClient;
+```
 
-  For detailed information about authentication and authorization with HTTP, [you can check out the MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Authentication). The background work during the authentication process would look like the diagram below while it is ongoing:
+For detailed information about authentication and authorization with HTTP, [you can check out the MDN docs](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Authentication). The background work during the authentication process would look like the diagram below while it is ongoing:
 
-  ![auth process simplified diagram: ref mdn docs](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/auth-with-axios-diagram.png)
-  
+![auth process simplified diagram: ref mdn docs](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/auth-with-axios-diagram.png)
+
 </Details>
 
 ---
 
-> [id=warning] Wanted to give referral for Axios but as soon as I checked their official website, I have changed my mind... It's just because the fact I've encountered — ridiculous fact they're showcasing bet companies and stuff in **their official website** where npm downloads hits up to 72 millions, weekly. It wasn't as bad as *sweetalert* drama with NSFW sponsors, but it was pretty bad.
+> [id=warning] Wanted to give referral for Axios but as soon as I checked their official website, I have changed my mind... It's just because the fact I've encountered — ridiculous fact they're showcasing bet companies and stuff in **their official website** where npm downloads hits up to 72 millions, weekly. It wasn't as bad as _sweetalert_ drama with NSFW sponsors, but it was pretty bad.
 
 #### The legend — React Query
 
@@ -1386,41 +1388,40 @@ Between all these data fetching technologies, this is my favorite so far. When i
 
 I've mentioned quite all staffs for this chapter covering react query and planning to continue with implementation and actual practices on the next chapter. So do not forget to subscribe newsletter. Let's move on the next one.
 
-#### SWR 
+#### SWR
 
-Developed by Vercel(oh shit here we go again), SWR **(stale-while-revalidate)** is a lightweight React Hooks library that also focuses on efficient data fetching and caching. The name comes from an **HTTP cache invalidation strategy** — first returns cached  data instantly, then re-fetches the latest data in the background, *thus completing stale—revalidate cycle* and providing a stream of updates to the UI.
+Developed by Vercel(oh shit here we go again), SWR **(stale-while-revalidate)** is a lightweight React Hooks library that also focuses on efficient data fetching and caching. The name comes from an **HTTP cache invalidation strategy** — first returns cached data instantly, then re-fetches the latest data in the background, _thus completing stale—revalidate cycle_ and providing a stream of updates to the UI.
 
 - **Simple API:** Provides a very minimal and easy-to-use useSWR hook.
-- **Automatic Revalidation:** *Automatically re-fetches data* when the user regains network connection or switches browser tabs.
+- **Automatic Revalidation:** _Automatically re-fetches data_ when the user regains network connection or switches browser tabs.
 - **Lightweight:** It is a smaller alternative to **React Query**, ideal for simpler data fetching needs. **(The sources say so, NOT me)**
-
 
 #### React Server Components (RSCs)
 
-This is the topic I genuinely want to cover in a new episode. RSCs are a relatively *new paradigm that allows developers to run React components exclusively on the server*. Designed to combine the benefits of server-side rendering with the component-based model of React. Therefore, **RSCs can stream HTML progressively for the non-interactive parts and reduces JS bundle size**. Since it runs entirely on the server, the page loads way faster but not as fast as the website that you are currently visiting, thanks to the SSG(you decide how reasonable this claim is).
+This is the topic I genuinely want to cover in a new episode. RSCs are a relatively _new paradigm that allows developers to run React components exclusively on the server_. Designed to combine the benefits of server-side rendering with the component-based model of React. Therefore, **RSCs can stream HTML progressively for the non-interactive parts and reduces JS bundle size**. Since it runs entirely on the server, the page loads way faster but not as fast as the website that you are currently visiting, thanks to the SSG(you decide how reasonable this claim is).
 
-*To see the actual diff between the client and server and how it yields, have a look:*
+_To see the actual diff between the client and server and how it yields, have a look:_
 
-| Instance / Use-case                     | React Server Component (RSC)                         | Client Component                                    | Why / Example |
-|-----------------------------------------|-----------------------------------------------------|-----------------------------------------------------|---------------|
-| Static marketing page (SSG / CDN)       | Perfect re-rendered, no client JS required for content. | Overkill — brings JS bundle + hydration cost.      | Just use SSG with Astro |
-| Personalized dashboard (user-agnostic)  | Good for non-interactive panels (await user data server-side) | Required for interactive widgets, state, and events | Combine: RSC shell + client components for widgets. |
-| Modal / click handlers                  | Not usable for DOM events — can render markup server-side | Ideal — handles events, focus management, animations | Make modal a client component. |
-| Forms with validation & instant UX      | Server can render initial form, but no `useState` for instant validation | Required for real-time validation, optimistic UI    | Use client for validation, RSC for initial form markup. |
-| Realtime chat / websockets              | Not suitable for direct socket handling            | Required — `useEffect`, subscriptions, mutable refs | Use client component for socket, RSC for historic messages. |
-| Large client CPU work (charts/dragging) | Fine to render static chart markup server-side     | Better — client does heavy rendering & interactions | Offload to client for interactivity and animation. |
-| Data fetching (one-off, blocking)       | Native `await` in component — simple, no extra client fetch | Fetch in effects or libraries (SWR/React Query)    | This is depends Capitan — No comment. |
-| Streaming / progressive hydration       | Can stream HTML progressively to client            | Hydration still required for interactive parts      | RSC + streaming improves TTI for large pages. |
-| Third-party DOM libs | Can't run in RSC — server can pre-render fallback | Use client component to mount the library          | Render static fallback in RSC, enhance in client. |
-| Authentication state (server-checked)   | Great for ssr tokens/cookies  | Good for client-side session state & client-only checks | Check auth on server, use client for UX that depends on client storage. |
-| SEO landing page                        | Excellent — fully server HTML, minimal JS          | Works but slower TTI due to hydration              | Use RSC / SSG for SEO pages. |
-| Analytics / third-party scripts         | Execution depends on client | Client component can lazily load analytics lib      | Defer analytics to client to avoid blocking render. |
-| Component library (UI primitives)       | Buttons/inputs that need events must be client     | Pure presentational primitives can be RSC-friendly | Export both: presentational RSC + interactive client wrapper. |
+| Instance / Use-case                     | React Server Component (RSC)                                             | Client Component                                        | Why / Example                                                           |
+| --------------------------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Static marketing page (SSG / CDN)       | Perfect re-rendered, no client JS required for content.                  | Overkill — brings JS bundle + hydration cost.           | Just use SSG with Astro                                                 |
+| Personalized dashboard (user-agnostic)  | Good for non-interactive panels (await user data server-side)            | Required for interactive widgets, state, and events     | Combine: RSC shell + client components for widgets.                     |
+| Modal / click handlers                  | Not usable for DOM events — can render markup server-side                | Ideal — handles events, focus management, animations    | Make modal a client component.                                          |
+| Forms with validation & instant UX      | Server can render initial form, but no `useState` for instant validation | Required for real-time validation, optimistic UI        | Use client for validation, RSC for initial form markup.                 |
+| Realtime chat / websockets              | Not suitable for direct socket handling                                  | Required — `useEffect`, subscriptions, mutable refs     | Use client component for socket, RSC for historic messages.             |
+| Large client CPU work (charts/dragging) | Fine to render static chart markup server-side                           | Better — client does heavy rendering & interactions     | Offload to client for interactivity and animation.                      |
+| Data fetching (one-off, blocking)       | Native `await` in component — simple, no extra client fetch              | Fetch in effects or libraries (SWR/React Query)         | This is depends Capitan — No comment.                                   |
+| Streaming / progressive hydration       | Can stream HTML progressively to client                                  | Hydration still required for interactive parts          | RSC + streaming improves TTI for large pages.                           |
+| Third-party DOM libs                    | Can't run in RSC — server can pre-render fallback                        | Use client component to mount the library               | Render static fallback in RSC, enhance in client.                       |
+| Authentication state (server-checked)   | Great for ssr tokens/cookies                                             | Good for client-side session state & client-only checks | Check auth on server, use client for UX that depends on client storage. |
+| SEO landing page                        | Excellent — fully server HTML, minimal JS                                | Works but slower TTI due to hydration                   | Use RSC / SSG for SEO pages.                                            |
+| Analytics / third-party scripts         | Execution depends on client                                              | Client component can lazily load analytics lib          | Defer analytics to client to avoid blocking render.                     |
+| Component library (UI primitives)       | Buttons/inputs that need events must be client                           | Pure presentational primitives can be RSC-friendly      | Export both: presentational RSC + interactive client wrapper.           |
 
-A minimal implementation example for *RSCs* in Next.js 16 app router:
+A minimal implementation example for _RSCs_ in Next.js 16 app router:
 
 ```tsx
-// app/blog/[id]/page.tsx 
+// app/blog/[id]/page.tsx
 import { getPost } from "@/lib/db";
 
 export default async function PostPage({ params }) {
@@ -1435,22 +1436,22 @@ export default async function PostPage({ params }) {
 }
 ```
 
-User clicks an article card just like you did. Data prefetched with `await`. User near-instantly starts observing the content of the page. This is the *happenning* when it comes to the snippet above.
+User clicks an article card just like you did. Data prefetched with `await`. User near-instantly starts observing the content of the page. This is the _happenning_ when it comes to the snippet above.
 
-## Bottom line 
+## Bottom line
 
-In a nutshell, *intelligently define the strategy* for your next project before you/your team starts. Then, depending on the project's requirements and goals, *choose the right implementation*. The outcome will *indicate what to avoid and what to use*. It always **matters** the amount of the *people that you're working with*, *the scope of the project*, *the budget*, *the given time and the level of the passion you feel*. *It always depends* and its all about asking. *Assessing the parameters at best* is the key. **Your boring client will always have their boring question**. Never intoxicated by them. It's not easy being a developer/programmer/engineer in this life and I believe we have 10-15 years left until before AI completely replaces us. Let's just enjoy ourselves until then. See you in the next one. 
-
+In a nutshell, _intelligently define the strategy_ for your next project before you/your team starts. Then, depending on the project's requirements and goals, _choose the right implementation_. The outcome will _indicate what to avoid and what to use_. It always **matters** the amount of the _people that you're working with_, _the scope of the project_, _the budget_, _the given time and the level of the passion you feel_. _It always depends_ and its all about asking. _Assessing the parameters at best_ is the key. **Your boring client will always have their boring question**. Never intoxicated by them. It's not easy being a developer/programmer/engineer in this life and I believe we have 10-15 years left until before AI completely replaces us. Let's just enjoy ourselves until then. See you in the next one.
 
 ## What next on chapter 2?
 
-I will probably publish the second part in the last week of this November. My intention is to cover react query comprehensively with more technical terms. The table of contents are shown below. If you do not want to miss, then subscribe to the newsletter to get instant updates.    
+I will probably publish the second part in the first week of this December. My intention is to cover react query comprehensively with more technical terms. The table of contents are shown below. If you do not want to miss, then subscribe to the newsletter to get instant updates.
 
-- CRUD app using React Query 
-- Why does even a tiny front-end app need React Query? 
-- Sophisticated React compiler problems with React Query 
+- CRUD app using React Query
+- Why does even a tiny front-end app need React Query?
+- Sophisticated React compiler problems with React Query
 
-> [id=success] Session 00{id} is over. Today we were talking about *{title}*. Subscribe to the newsletter to get instant updates. No ads, no fluffs `just_c0de`. If you want to support me in order to keep these looong sessions coming, [you can buy me a coffee](https://buymeacoffee.com/bilenburakf) — every cup genuinely helps. Thanks from now for your all supports!        ]]></content:encoded>
+Today we were talking about _{title}_. Subscribe to the newsletter to get instant updates. If you want to support me in order to keep these long sessions coming, [you can buy me a coffee](https://buymeacoffee.com/bilenburakf) — thanks from now for your all supports!
+]]></content:encoded>
 </item>
     </channel>
 </rss>

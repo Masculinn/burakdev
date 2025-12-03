@@ -1,12 +1,13 @@
-import { CONSENT_KEY, HISTORY_KEY } from "../data";
-import type { ConsentRecord } from "../types";
+import config from "../config/index";
+import type { ConsentRecord, ConsentState } from "../types";
 
-function readStoredConsent(): ConsentRecord | null {
+const { CONSENT_KEY, HISTORY_KEY } = config;
+
+function readStoredConsent(): ConsentState | null {
   try {
-    const raw =
-      typeof window !== "undefined" ? localStorage.getItem(CONSENT_KEY) : null;
+    const raw = localStorage.getItem(CONSENT_KEY);
     if (!raw) return null;
-    return JSON.parse(raw) as ConsentRecord;
+    return (JSON.parse(raw) as ConsentRecord).consents;
   } catch {
     return null;
   }

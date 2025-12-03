@@ -1,3 +1,4 @@
+import Cookie from "@/cookie";
 import type { ThemeType } from "@/interfaces";
 import AppProvider from "@/providers/app-provider";
 import "@/styles/globals.css";
@@ -43,6 +44,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppProvider>
       <Component {...pageProps} />
+      <Cookie />
     </AppProvider>
   );
 }

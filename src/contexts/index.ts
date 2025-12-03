@@ -6,13 +6,13 @@
 import { createContext } from "react";
 
 const BlogSearchContext = createContext<BlogSearchContextProps | undefined>(
-  undefined
+  undefined,
 );
 const BlogSortContext = createContext<BlogSortContextProps | undefined>(
-  undefined
+  undefined,
 );
 const BlogTagsContext = createContext<BlogTagsContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 export { BlogSearchContext, BlogSortContext, BlogTagsContext };
