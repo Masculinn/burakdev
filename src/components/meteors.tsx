@@ -1,26 +1,40 @@
-﻿import dynamic from "next/dynamic";
+﻿import { cn, getRandomColor } from "@/lib/utils";
+import dynamic from "next/dynamic";
 
-const Meteor_s = () => (
-  <div className="absolute top-0 left-0 size-full -z-10">
-    {Array.from({ length: 20 }).map((_, idx) => {
-      const position = idx * 40;
-      return (
-        <span
-          key={`meteor-${idx}`}
-          className={
-            "animate-meteor-effect absolute h-0.5 w-0.5 rotate-45 rounded-[9999px] bg-slate-500 shadow-[0_0_0_1px_#ffffff10] before:absolute before:top-1/2 before:h-px before:w-[50px] before:-translate-y-[50%] before:transform before:bg-linear-to-r before:from-[#64748b] before:to-transparent before:content-['']"
-          }
-          style={{
-            top: "-40px",
-            left: `${position}px`,
-            animationDelay: `${Math.random() * 5}s`,
-            animationDuration: `${Math.floor(Math.random() * (10 - 2) + 5)}s`,
-          }}
-        />
-      );
-    })}
-  </div>
+const meteorCount = 20,
+  createMeteors = Array.from({ length: meteorCount }).map(getRandomColor);
+
+const Meteors = dynamic(
+  () =>
+    Promise.resolve(() => (
+      <div className="absolute top-0 left-0 size-full -z-10">
+        {createMeteors.map((c, idx) => {
+          const position = idx * 40;
+          const bg = `before:from-[${c}]`;
+          console.log(bg);
+          return (
+            <span
+              key={`meteor-${idx}`}
+              className={cn(
+                "animate-meteor-effect absolute size-0.5 rotate-45 rounded-full",
+                "before:absolute before:top-1/2 before:h-px before:w-12.5 before:-translate-y-[50%] before:transform before:content-['']",
+                "before:bg-linear-to-r before:from-(--meteor-color) before:to-transparent"
+              )}
+              style={{
+                top: "-40px",
+                left: `${position}px`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${Math.floor(
+                  Math.random() * (10 - 2) + 5
+                )}s`,
+                ["--meteor-color" as string]: c,
+              }}
+            />
+          );
+        })}
+      </div>
+    )),
+  { ssr: false }
 );
 
-const Meteors = dynamic(() => Promise.resolve(Meteor_s), { ssr: false });
 export default Meteors;

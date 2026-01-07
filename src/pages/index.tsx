@@ -41,13 +41,12 @@ export default function Home() {
             duration: 0.08,
             delayLogic: "linear",
           }}
-          wrapperClassName="md:text-7xl text-6xl text-start font-extrabold tracking-tighter line-clamp-5"
+          wrapperClassName="md:text-7xl text-6xl text-start font-extrabold tracking-tighter line-clamp-5 pb-6 pt-2"
         >
           Hi there!
         </MotionText>
-        <br />
-        <p className="text-start leading-relaxed pt-6 inline">
-          I'm proud to be a{" "}
+        <p className="text-start leading-relaxed inline text-blog-muted">
+          I'm proud to be{" "}
           <MotionText
             elementType="span"
             wrapperClassName="inline text-shadow-2xs"
@@ -66,29 +65,31 @@ export default function Home() {
             full-stack software engineer
           </MotionText>
           over <Mq1 delay={2} /> of immersive experience in the agile industries
-          based on Warsaw. Crafting clean, reliable codebases and intuitive
-          interfaces designed to meet and exceed organizational goals.
+          based on Warsaw.
         </p>
-        <p className="text-start leading-relaxed  pt-4">
+        <p className="text-start leading-relaxed text-blog-muted pt-2">
+          Over the years, I've honed my skills in crafting clean, reliable
+          codebases and intuitive interfaces designed to meet and exceed
+          organizational goals.
+        </p>
+        <p className="text-start leading-relaxed text-blog-muted pt-2">
           I’ve worked at Atlantic and EDM refining my skills as a lead SWE.
           Today, I dedicate my time to maintaining an{" "}
           <Link
             href="https://github.com/Motion-Provider"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline text-primary font-bold tracking-tighter hover:text-primary transition-colors underline-offset-2"
+            className="underline text-muted-foreground font-bold tracking-tighter hover:text-primary transition-colors underline-offset-3 "
           >
-            open-source animation library
+            open source animation library
           </Link>{" "}
-          called Motion-Provider. Outside of engineering, I spend my time
-          composing/playing on the piano and writing about latest web trends and
-          tricks.
+          called Motion-Provider.
         </p>
         <section className="md:pt-14 pt-10 relative w-full">
           <h2 className="text-3xl md:text-4xl tracking-tight">
             Timeline Of My Journey
           </h2>
-          <p className="text-sm md:text-base md:max-w-md max-w-2xs pt-4 font-extralight">
+          <p className="text-sm md:text-base md:max-w-md text-blog-muted max-w-2xs pt-4 font-extralight">
             Here is my carreer timeline in a nutshell for the past 5 years.
             Including the major project assets and useful links with associated
             descriptions.

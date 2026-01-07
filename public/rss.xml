@@ -6,8 +6,8 @@
         <description>Stay up to date with my latest blog posts</description>
         <language>en-us</language>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-        <copyright>Copyright 2025, justc0de_sessions author Burak Bilen</copyright>
-        <lastBuildDate>2025-12-02T23:51:56.289Z</lastBuildDate>
+        <copyright>Copyright 2026, justc0de_sessions author Burak Bilen</copyright>
+        <lastBuildDate>2026-01-07T22:17:38.598Z</lastBuildDate>
           <item>
     <title>TypeScript Discriminated Unions and Generics: Complete Guide with Examples</title>
     <link>https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples</link>
@@ -792,9 +792,6 @@ A user types into a search engine in order to find information on the web. The s
 
 ![Serp illustration 1. Credit goes to sitechecker.pro](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/serp-illustration.webp)
 
----
-
-![Serp illustration 2. Credit goes to seobility.net](https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/serp-illustration2.webp)
 
 All of these above contribute to **SEO** directly. I couldn't move on without mentioning these things especially when it comes to **query**.
 

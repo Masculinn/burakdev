@@ -25,7 +25,6 @@ export const MdImage: FC<MdImageProps> = ({
   if (!shouldBeFigure) {
     return (
       <LqipImage
-        method="base64"
         src={src}
         alt={alt ?? "Unknown image"}
         loading="lazy"
@@ -38,7 +37,6 @@ export const MdImage: FC<MdImageProps> = ({
   return (
     <figure className="flex flex-col items-center justify-center md:gap-4 gap-2 text-center md:my-8 my-4 rounded-md relative">
       <LqipImage
-        method="base64"
         src={src}
         alt={alt ?? "Noname image"}
         loading="lazy"

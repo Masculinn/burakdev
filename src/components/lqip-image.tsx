@@ -1,118 +1,76 @@
 ﻿import { getImagePlaceholder } from "@/lib/getImagePlaceholder";
-import { cn } from "@/lib/utils";
 import NextImage from "next/image";
-import { useEffect, useState, type FC, type HTMLAttributes } from "react";
-import { Skeleton } from "./ui/skeleton";
+import type { FC, HTMLAttributes } from "react";
 
-type LqipImageType = {
+interface LqipImageProps extends HTMLAttributes<HTMLImageElement> {
   src: string;
   alt: string;
   fill?: boolean;
-  method?: "base64" | "skeleton";
   loading?: "eager" | "lazy";
   className?: string;
   fetchPriority?: "high" | "low" | "auto";
-} & HTMLAttributes<HTMLImageElement>;
+}
 
-export const LqipImage: FC<LqipImageType> = ({
+// metadata = false => fill
+// metadata = true => base64
+
+export const LqipImage: FC<LqipImageProps> = ({
   alt,
   src,
   loading,
-  method,
   fill,
   className,
   fetchPriority,
   ...props
 }) => {
-  if (!src || !method) return null;
-
-  switch (method) {
-    case "skeleton": {
-      return (
-        <ViewSkeleton src={src} alt={alt} fill={fill} className={className} />
-      );
-    }
-    case "base64": {
-      const placeholder = !fill
-        ? getImagePlaceholder(src, "base64", true)
-        : getImagePlaceholder(src, "base64");
-      if (!placeholder) return null;
-      if (typeof placeholder === "object") {
-        return (
-          <NextImage
-            alt={alt}
-            src={src}
-            width={placeholder.width}
-            height={placeholder.height}
-            blurDataURL={placeholder.base64}
-            placeholder="blur"
-            loading={loading}
-            title={alt}
-            fetchPriority={fetchPriority}
-            className={className}
-            {...props}
-          />
-        );
-      }
-      return (
-        <NextImage
-          fill
-          alt={alt}
-          src={src}
-          placeholder="blur"
-          title={alt}
-          blurDataURL={placeholder}
-          loading={loading}
-          className={className}
-          fetchPriority={fetchPriority}
-          {...props}
-        />
-      );
-    }
-    default:
-      return null;
+  if (!src) {
+    console.warn("⚠️ Returning null, not found src prop for lqip-image fn.");
+    return null;
   }
-};
 
-function ViewSkeleton({
-  src,
-  alt,
-  fill,
-  className,
-}: Omit<LqipImageType, "method">) {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const placeholder = fill
+    ? getImagePlaceholder(src, false)
+    : getImagePlaceholder(src, true);
 
-  useEffect(() => {
-    if (!src) return;
-    const img = new Image();
-    img.src = src;
-    img.onload = () => setIsLoaded(true);
+  if (!placeholder) {
+    console.warn(
+      "⚠️ Returning null, not found placeholder for",
+      src,
+      "at lqip-image fn."
+    );
+    return null;
+  }
 
-    return () => {
-      img.onload = null;
-      img.onerror = null;
-    };
-  }, [src]);
+  if (typeof placeholder === "object") {
+    return (
+      <NextImage
+        alt={alt}
+        src={src}
+        width={placeholder.width}
+        height={placeholder.height}
+        blurDataURL={placeholder.base64}
+        placeholder="blur"
+        loading={loading}
+        title={alt}
+        fetchPriority={fetchPriority}
+        className={className}
+        {...props}
+      />
+    );
+  }
 
   return (
-    <div className={cn("relative overflow-hidden", className)}>
-      {!isLoaded ? (
-        <Skeleton
-          aria-hidden
-          className={cn("size-full", fill ? "absolute inset-0" : "block")}
-        />
-      ) : (
-        <NextImage
-          src={src}
-          fill={fill}
-          alt={alt}
-          loading="lazy"
-          fetchPriority="low"
-          className={cn("object-cover", fill && "absolute inset-0")}
-          title={alt}
-          {...(fill && { sizes: "100vw" })}
-        />
-      )}
-    </div>
+    <NextImage
+      fill
+      alt={alt}
+      src={src}
+      placeholder="blur"
+      title={alt}
+      blurDataURL={placeholder}
+      loading={loading}
+      className={className}
+      fetchPriority={fetchPriority}
+      {...props}
+    />
   );
-}
+};

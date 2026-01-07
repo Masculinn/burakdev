@@ -56,7 +56,7 @@ function Recommendation({
 
 function ViewAllCard({ blogs }: { blogs: BlogType[] }) {
   return (
-    <Card className="md:max-h-[400px] shrink-0 md:h-auto h-60 py-0 bg-bg md:w-96 w-full items-center justify-center flex relative overflow-hidden">
+    <Card className="md:max-h-100 shrink-0 md:h-auto h-60 py-0 bg-bg md:w-96 w-full items-center justify-center flex relative overflow-hidden">
       <div className="absolute top-0 left-0 size-full grid grid-cols-3 -z-20">
         {[0, 1].map(() =>
           blogs.map(({ banner_image }, idx) => (
@@ -84,14 +84,13 @@ function ViewAllCard({ blogs }: { blogs: BlogType[] }) {
               >
                 <LqipImage
                   fill
-                  method="base64"
                   className="object-cover rounded-md"
                   alt="banner"
                   src={banner_image}
                 />
               </AspectRatio>
             </MotionContainer>
-          )),
+          ))
         )}
       </div>
       <div className="size-full bg-linear-to-b from-background to-background/50 items-center justify-center flex flex-col text-center ">

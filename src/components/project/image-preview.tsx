@@ -76,7 +76,6 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
             loading="lazy"
             alt={getImgAltName(img)}
             src={img}
-            method="base64"
             fill
             className="object-cover rounded-lg z-0"
           />

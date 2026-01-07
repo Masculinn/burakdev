@@ -7,7 +7,7 @@ export const MdContents: FC<PropsWithChildren<Record<string, unknown>>> = ({
   children,
 }) => {
   return (
-    <Card className="md:px-8 px-4 my-4 overflow-hidden relative w-full dark:bg-muted/10 bg-transparent md:text-base text-sm">
+    <Card className="md:px-8 px-4 my-4 overflow-hidden relative w-full dark:bg-muted/10 bg-transparent md:text-base text-sm **:no-underline">
       <h2 className="font-bold text-3xl tracking-tighter z-50">
         Table of Contents
       </h2>

@@ -28,10 +28,11 @@ const BlogCard = ({ ...props }: BlogCardProps & { isEager: boolean }) => {
   } = props;
 
   const date = getDate(published_at).toLocaleDateString();
-  const slug = convertToSlug(title);
+  const slug = `/blogs/${convertToSlug(title)}`;
+
   return (
-    <Link href={`/blogs/${slug}`}>
-      <Card className="overflow-hidden relative md:max-h-[400px] h-auto py-0 bg-bg group cursor-pointer">
+    <Link href={slug} className="hover:scale-105 transition-all ">
+      <Card className="overflow-hidden relative md:max-h-100 h-auto py-0 bg-bg group cursor-pointer">
         <PostDifficulty
           level={level}
           clasName="z-50 text-xs top-4 left-4 absolute"
@@ -44,7 +45,6 @@ const BlogCard = ({ ...props }: BlogCardProps & { isEager: boolean }) => {
         <CardHeader className="p-0 m-0 relative h-60 w-full">
           <LqipImage
             fill
-            method="base64"
             loading="lazy"
             fetchPriority={isEager ? "high" : "auto"}
             src={banner_image}
@@ -70,7 +70,7 @@ const BlogCard = ({ ...props }: BlogCardProps & { isEager: boolean }) => {
           <CardTitle className="text-lg font-semibold tracking-tighter">
             {title}
           </CardTitle>
-          <p className="text-sm text-muted-foreground md:line-clamp-2">
+          <p className="text-sm text-muted-foreground md:line-clamp-2 md:pt-0 pt-2">
             {description}
           </p>
         </CardContent>

@@ -6,15 +6,19 @@ import { twMerge } from "tailwind-merge";
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
 function normalize(arr?: string[]) {
   return (arr || []).map((t) => String(t).trim().toLowerCase());
 }
+
 function areSameSet(a: string[], b: string[]) {
   return a.length === b.length && a.every((v) => b.includes(v));
 }
+
 function getDate(date: string): Date {
   return new Date(date);
 }
+
 function checkIsRecent(date: string, days: number = 3): boolean {
   const now = Date.now();
   const _date = getDate(date).getTime();
@@ -22,6 +26,7 @@ function checkIsRecent(date: string, days: number = 3): boolean {
   const diff = now - _date;
   return diff >= 0 && diff < days * msperDay;
 }
+
 function convertToSlug(t: string) {
   return t
     .trim()
@@ -62,7 +67,7 @@ function getReadingTime(content: string): number {
     s = s.replace(/<!--[\s\S]*?-->/g, " ");
 
     s = s.replace(/!\[([^\]]*)\]\((?:[^)]+)\)/g, (_, alt) =>
-      alt ? `${alt} ` : " ",
+      alt ? `${alt} ` : " "
     );
 
     s = s.replace(
@@ -70,17 +75,17 @@ function getReadingTime(content: string): number {
       (_, a1, a2, a3) => {
         const alt = a1 ?? a2 ?? a3 ?? "";
         return alt ? `${alt} ` : " ";
-      },
+      }
     );
 
     s = s.replace(/<img\b[^>]*>/gi, " ");
 
     s = s.replace(/\[([^\]]+)\]\((?:[^)]+)\)/g, (_, text) =>
-      text ? `${text} ` : " ",
+      text ? `${text} ` : " "
     );
 
     s = s.replace(/\[([^\]]+)\]\s*\[[^\]]*\]/g, (_, text) =>
-      text ? `${text} ` : " ",
+      text ? `${text} ` : " "
     );
 
     s = s.replace(/^[ \t]*\[[^\]]+\]:.*$/gm, " ");
@@ -108,7 +113,7 @@ function getReadingTime(content: string): number {
   const secondsFromWords = (words / wordsPerMinute) * 60;
   const totalSeconds = Math.max(
     0,
-    Math.round(secondsFromWords + images * imageSeconds),
+    Math.round(secondsFromWords + images * imageSeconds)
   );
   const minutes = totalSeconds / 60;
   return Math.ceil(minutes);
@@ -117,6 +122,7 @@ function getReadingTime(content: string): number {
 function getChild(children: React.ReactNode) {
   return Children.toArray(children).find((c) => isValidElement(c));
 }
+
 function ensureChildExist(child: React.ReactNode | undefined) {
   if (!child) return "";
   const c = (child as { props: { children?: unknown } }).props?.children;
@@ -124,11 +130,20 @@ function ensureChildExist(child: React.ReactNode | undefined) {
   if (Array.isArray(c)) return c.join("");
   return String(c ?? "");
 }
+
 function getImgAltName(img: string) {
   if (!img) return "image";
   return img.split("/")[img.split("/").length - 1].split(".")[0];
 }
 
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
 export {
   areSameSet,
   checkIsRecent,
@@ -138,6 +153,7 @@ export {
   getChild,
   getDate,
   getImgAltName,
+  getRandomColor,
   getReadingTime,
   normalize,
 };

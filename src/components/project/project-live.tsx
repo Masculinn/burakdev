@@ -19,6 +19,7 @@ type ProjectLiveProps = {
   plainLink: string;
   placeholder: string;
 };
+
 export const ProjectLive: FC<ProjectLiveProps> = ({
   placeholder,
   plainLink,
@@ -27,8 +28,8 @@ export const ProjectLive: FC<ProjectLiveProps> = ({
   const [open, setOpen] = useState(false);
 
   const placeholderImg = useMemo(
-    () => getImagePlaceholder(placeholder, "base64"),
-    [placeholder],
+    () => getImagePlaceholder(placeholder),
+    [placeholder]
   );
 
   const handlePreconnect = useCallback(() => {

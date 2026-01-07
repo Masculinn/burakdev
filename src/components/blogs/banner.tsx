@@ -20,12 +20,13 @@ export default function Banner() {
         justc0de_sessions
       </MotionText>
       <p className="text-muted-foreground pt-4 tracking-tight max-w-2xl leading-snug">
-        I would love to give back to the community what I've received from it.
-        The intention is simple: to create a positive karma cycle, returning
-        that goodwill to the wonderful community where it has always belonged. I
-        divided posts into the sessions under the name of{" "}
-        <span className="font-bold font-secondary">justc0de_sessions</span>.
-        Subscribe to my newsletter to get instant updates. Enjoy reading!
+        Sometimes, fairies come and whisper in my ear, inspiring me. For some
+        reason, I found myself typing something on the keyboard. That's why I
+        named it "Sessions." 😅
+      </p>
+      <p className="text-muted-foreground pt-4 tracking-tight max-w-2xl leading-snug ">
+        Don't forget to subscribe to my newsletter for instant updates! Enjoy
+        reading!
       </p>
     </section>
   );
