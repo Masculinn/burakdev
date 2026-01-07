@@ -31,7 +31,7 @@ export const MdAnchor = ({ href, ...props }: AnchorProps) => {
   return (
     <Link
       href={finalHref}
-      className="underline underline-offset-2 hover:text-muted-foreground transition-colors duration-200"
+      className="underline underline-offset-4 hover:text-primary transition-colors duration-200"
       {...defaultExternalAttrs}
       {...props}
     />

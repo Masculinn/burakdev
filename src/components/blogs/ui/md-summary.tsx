@@ -6,7 +6,7 @@
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { BrainCircuit } from "lucide-react";
+import { BrainCog } from "lucide-react";
 import React, {
   Children,
   isValidElement,
@@ -16,20 +16,14 @@ import React, {
   type ReactElement,
 } from "react";
 
-// converts MDX <Summary>...</Summary> into an AccordionTrigger
 export const MdSummary: FC<PropsWithChildren<Record<string, unknown>>> = ({
   children,
-}) => {
-  return children;
-};
+}) => children;
 
 type DetailsProps = PropsWithChildren<Record<string, unknown>> & {
   className?: string;
 };
 
-/**
- * Converts MDX <Details><Summary>...</Summary>body</Details>
- */
 export const MdDetails: FC<DetailsProps> = ({
   children,
   className,
@@ -50,6 +44,7 @@ export const MdDetails: FC<DetailsProps> = ({
   }
 
   const first = meaningful[0] as ReactElement | string | number;
+
   let triggerContent: React.ReactNode;
   let contentChildren: React.ReactNode[] = [];
 
@@ -80,8 +75,10 @@ export const MdDetails: FC<DetailsProps> = ({
       <Accordion type="single" collapsible {...rest}>
         <AccordionItem value={id}>
           <AccordionTrigger className="relative">
-            <BrainCircuit className="rotate-90 shrink-0 size-6 absolute -left-8 -top-2 transition-transform will-change-transform duration-500 ease-in-out text-rose-500" />
-            <div className="inline-block">{triggerContent}</div>
+            <BrainCog className="rotate-90 shrink-0 size-6 absolute -left-8 -top-2 transition-transform will-change-transform duration-500 ease-in-out text-rose-500" />
+            <div className="inline-block text-primary text-base">
+              {triggerContent}
+            </div>
           </AccordionTrigger>
           <AccordionContent>{contentChildren}</AccordionContent>
         </AccordionItem>

@@ -119,7 +119,7 @@ export default function Page({
   return (
     <>
       <Meta {...meta} />
-      <article>
+      <article className="leading-snug text-blog-muted tracking-tight">
         <Cover {...meta} readingTime={readingTime} />
         <Hydrate {...mdxSource} />
       </article>

@@ -11,28 +11,19 @@ import type * as React from "react";
 import { NavBlogs } from "./nav-blogs";
 import { NavProjects } from "./nav-projects";
 
-const items = [
-  {
-    title: "Motion Playgrounds",
-    url: "https://playground.motionprovider.dev/",
-  },
-  {
-    title: "Motion Docs",
-    url: "https://docs.motionprovider.dev",
-  },
-];
+const { projects, socials, user } = data;
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain />
         <NavBlogs />
-        <NavProjects items={items} />
-        <NavBasic items={data.socials} name="Socials" />
+        <NavProjects items={projects} />
+        <NavBasic items={socials} name="Socials" />
       </SidebarContent>
     </Sidebar>
   );

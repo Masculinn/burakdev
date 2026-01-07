@@ -7,7 +7,6 @@
   X,
 } from "@/components/icons/svg-icons";
 import type { NavBasicType } from "@/interfaces";
-import { Box } from "lucide-react";
 
 export type DataType = {
   user: {
@@ -15,7 +14,7 @@ export type DataType = {
     email: string;
     avatar: string;
   };
-  projects: NavBasicType[];
+  projects: Omit<NavBasicType, "icon">[];
   socials: NavBasicType[];
 };
 
@@ -27,9 +26,12 @@ const data = {
   },
   projects: [
     {
-      title: "Motion Provider",
-      icon: Box,
-      url: "https://motionprovider.dev",
+      title: "Motion Playgrounds",
+      url: "https://playground.motionprovider.dev/",
+    },
+    {
+      title: "Motion Docs",
+      url: "https://docs.motionprovider.dev",
     },
   ],
   socials: [

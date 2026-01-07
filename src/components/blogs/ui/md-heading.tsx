@@ -7,18 +7,21 @@ type HeadingProps = {
 } & HTMLAttributes<HTMLHeadingElement> &
   VariantProps<typeof headingVariants>;
 
-const headingVariants = cva("font-bold leading-tight tracking-tighter ", {
-  variants: {
-    variant: {
-      h1: "text-4xl md:text-5xl pb-4 pt-6",
-      h2: "text-3xl md:text-4xl pb-3 pt-5",
-      h3: "text-2xl md:text-3xl pb-2 pt-8",
-      h4: "text-xl md:text-2xl py-1",
-      h5: "text-lg md:text-xl",
-      h6: "text-base md:text-lg",
+const headingVariants = cva(
+  "font-bold leading-tight tracking-tighter text-primary",
+  {
+    variants: {
+      variant: {
+        h1: "text-5xl pb-4 pt-6",
+        h2: "text-4xl pt-5",
+        h3: "text-3xl pt-4",
+        h4: "text-2xl",
+        h5: "text-xl ",
+        h6: "text-lg ",
+      },
     },
   },
-});
+);
 
 export const MdHeading = ({
   as: Component = "h1",

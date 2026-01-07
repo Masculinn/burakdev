@@ -8,7 +8,7 @@ type LqipImageType = {
   src: string;
   alt: string;
   fill?: boolean;
-  method?: "css" | "base64" | "skeleton";
+  method?: "base64" | "skeleton";
   loading?: "eager" | "lazy";
   className?: string;
   fetchPriority?: "high" | "low" | "auto";
@@ -67,63 +67,6 @@ export const LqipImage: FC<LqipImageType> = ({
           fetchPriority={fetchPriority}
           {...props}
         />
-      );
-    }
-    case "css": {
-      if (!fill) {
-        const placeholder = getImagePlaceholder(src, "css", true);
-        if (!placeholder) return null;
-        const { css, ...props } = placeholder;
-        return (
-          <div
-            className={cn(
-              "relative aspect-auto block overflow-hidden",
-              className,
-            )}
-          >
-            <div
-              className={cn(
-                "absolute inset-1 scale-150 transform filter blur-2xl  object-cover",
-              )}
-              style={css}
-            />
-            <NextImage
-              alt={alt}
-              src={src}
-              loading={loading}
-              title={alt}
-              fetchPriority={fetchPriority}
-              {...props}
-            />
-          </div>
-        );
-      }
-
-      const placeholder = getImagePlaceholder(src, "css");
-      if (!placeholder) return null;
-      return (
-        <div
-          className={cn(
-            "relative aspect-auto block overflow-hidden",
-            className,
-          )}
-        >
-          <div
-            className={cn(
-              "absolute inset-1 scale-150 transform filter blur-2xl object-cover",
-            )}
-            style={placeholder}
-          />
-          <NextImage
-            alt={alt}
-            src={src}
-            loading={loading}
-            title={alt}
-            fetchPriority={fetchPriority}
-            fill
-            {...props}
-          />
-        </div>
       );
     }
     default:

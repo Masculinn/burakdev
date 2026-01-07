@@ -31,42 +31,80 @@ function convertToSlug(t: string) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
 }
+
 function getReadingTime(content: string): number {
-  const wordsPerMinute = 200,
-    imageSeconds = 12;
+  const wordsPerMinute = 250;
+  const imageSeconds = 12;
 
   const raw = (content ?? "").toString();
+  if (!raw.trim()) return 0;
 
-  if (!raw.trim()) {
-    return 0;
-  }
+  const countImages = (input: string) => {
+    const imgHtml = (input.match(/<img\b[^>]*>/gi) || []).length;
+    const mdImgs = (input.match(/!\[[^\]]*\]\([^)]+\)/g) || []).length;
+    return imgHtml + mdImgs;
+  };
 
-  const stripHtml = (input: string) =>
-    input
-      .replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, "")
-      .replace(/<style[\s\S]*?>[\s\S]*?<\/style>/gi, "")
-      .replace(/<!--[\s\S]*?-->/g, "")
-      .replace(/<[^>]+>/g, " ")
-      .replace(/\s+/g, " ")
-      .trim();
+  const images = countImages(raw);
+
+  const stripMarkdownAndHtml = (input: string) => {
+    let s = input;
+
+    s = s.replace(/^\s*---[\s\S]*?---\s*/m, "");
+
+    s = s.replace(/```[\s\S]*?```/g, " ");
+    s = s.replace(/~~~[\s\S]*?~~~/g, " ");
+
+    s = s.replace(/`[^`]*`/g, " ");
+
+    s = s.replace(/<script[\s\S]*?>[\s\S]*?<\/script>/gi, " ");
+    s = s.replace(/<style[\s\S]*?>[\s\S]*?<\/style>/gi, " ");
+    s = s.replace(/<!--[\s\S]*?-->/g, " ");
+
+    s = s.replace(/!\[([^\]]*)\]\((?:[^)]+)\)/g, (_, alt) =>
+      alt ? `${alt} ` : " ",
+    );
+
+    s = s.replace(
+      /<img\b[^>]*\salt=(?:'([^']*)'|"([^"]*)"|([^\s>]+))[^>]*>/gi,
+      (_, a1, a2, a3) => {
+        const alt = a1 ?? a2 ?? a3 ?? "";
+        return alt ? `${alt} ` : " ";
+      },
+    );
+
+    s = s.replace(/<img\b[^>]*>/gi, " ");
+
+    s = s.replace(/\[([^\]]+)\]\((?:[^)]+)\)/g, (_, text) =>
+      text ? `${text} ` : " ",
+    );
+
+    s = s.replace(/\[([^\]]+)\]\s*\[[^\]]*\]/g, (_, text) =>
+      text ? `${text} ` : " ",
+    );
+
+    s = s.replace(/^[ \t]*\[[^\]]+\]:.*$/gm, " ");
+
+    s = s.replace(/^[ \t]*[#>*+-]+[ \t]*/gm, " ");
+
+    s = s.replace(/[*_~]{1,3}/g, " ");
+
+    s = s.replace(/<[^>]+>/g, " ");
+
+    s = s.replace(/\s+/g, " ").trim();
+
+    return s;
+  };
 
   const countWords = (text: string) => {
     if (!text) return 0;
+
     const matches = text.match(/[\p{L}\p{N}]+(?:['’\-\u2019][\p{L}\p{N}]+)*/gu);
     return matches ? matches.length : 0;
   };
 
-  const countImages = (rawInput: string) => {
-    const imgHtml = (rawInput.match(/<img\b[^>]*>/gi) || []).length;
-    const mdImgs = (rawInput.match(/!\[[^\]]*\]\([^)]+\)/g) || []).length;
-    return imgHtml + mdImgs;
-  };
-
-  const looksLikeHtml = /<[^>]+>/.test(raw);
-  const textForWords = looksLikeHtml ? stripHtml(raw) : raw;
-  const words = countWords(textForWords);
-  const images = countImages(raw);
-
+  const cleaned = stripMarkdownAndHtml(raw);
+  const words = countWords(cleaned);
   const secondsFromWords = (words / wordsPerMinute) * 60;
   const totalSeconds = Math.max(
     0,
@@ -75,6 +113,7 @@ function getReadingTime(content: string): number {
   const minutes = totalSeconds / 60;
   return Math.ceil(minutes);
 }
+
 function getChild(children: React.ReactNode) {
   return Children.toArray(children).find((c) => isValidElement(c));
 }
@@ -89,15 +128,16 @@ function getImgAltName(img: string) {
   if (!img) return "image";
   return img.split("/")[img.split("/").length - 1].split(".")[0];
 }
+
 export {
   areSameSet,
   checkIsRecent,
   cn,
   convertToSlug,
+  ensureChildExist,
+  getChild,
   getDate,
+  getImgAltName,
   getReadingTime,
   normalize,
-  getChild,
-  ensureChildExist,
-  getImgAltName,
 };

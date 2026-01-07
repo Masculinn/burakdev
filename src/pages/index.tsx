@@ -1,13 +1,9 @@
 import { Mq1 } from "@/components/custom-animated-texts";
 import Timeline from "@/components/timeline";
-import textConfig from "@/constants/text.config";
-import type { TextAnimatorProps } from "@/interfaces";
-import { cn } from "@/lib/utils";
 import MotionText from "@/motion/motion-text";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
-import type { FC } from "react";
 
 const Cta = dynamic(() => import("@/components/cta"), {
   ssr: false,
@@ -51,29 +47,42 @@ export default function Home() {
         </MotionText>
         <br />
         <p className="text-start leading-relaxed pt-6 inline">
-          I'm proud to be a <TextAnimator {...textConfig[0]} />
+          I'm proud to be a{" "}
+          <MotionText
+            elementType="span"
+            wrapperClassName="inline text-shadow-2xs"
+            controller={{
+              trigger: true,
+            }}
+            animation={{
+              mode: ["fadeIn"],
+              transition: "smooth",
+              duration: 1,
+              delay: 1,
+            }}
+            config={{ duration: 0.016, mode: "chars", delayLogic: "linear" }}
+            className="inline text-rose-500"
+          >
+            full-stack software engineer
+          </MotionText>
           over <Mq1 delay={2} /> of immersive experience in the agile industries
-          based on <TextAnimator {...textConfig[1]} />. Dedicated to delivering{" "}
-          <TextAnimator {...textConfig[2]} />{" "}
-          <span className="text-muted-foreground">- kinda like a psycho -</span>{" "}
-          and <TextAnimator {...textConfig[3]} /> that align with{" "}
-          <TextAnimator {...textConfig[4]} />.
+          based on Warsaw. Crafting clean, reliable codebases and intuitive
+          interfaces designed to meet and exceed organizational goals.
         </p>
-        <br />
-        <br />
-        <p className="text-start leading-relaxed  inline">
-          I was a lead SWE at Atlantic and EDM. I'm open to new challenges and
-          currently working on <TextAnimator {...textConfig[5]} /> that scale. I
-          also maintain an{" "}
+        <p className="text-start leading-relaxed  pt-4">
+          I’ve worked at Atlantic and EDM refining my skills as a lead SWE.
+          Today, I dedicate my time to maintaining an{" "}
           <Link
             href="https://github.com/Motion-Provider"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline text-muted-foreground hover:text-primary transition-colors"
+            className="underline text-primary font-bold tracking-tighter hover:text-primary transition-colors underline-offset-2"
           >
             open-source animation library
-          </Link>
-          . In my free time, I play the piano 🎹, write articles about the web.
+          </Link>{" "}
+          called Motion-Provider. Outside of engineering, I spend my time
+          composing/playing on the piano and writing about latest web trends and
+          tricks.
         </p>
         <section className="md:pt-14 pt-10 relative w-full">
           <h2 className="text-3xl md:text-4xl tracking-tight">
@@ -91,21 +100,3 @@ export default function Home() {
     </>
   );
 }
-
-export const TextAnimator: FC<TextAnimatorProps> = ({
-  children,
-  className,
-  elementType,
-  ...props
-}) => (
-  <MotionText
-    elementType={elementType ?? "span"}
-    wrapperClassName={cn("inline text-shadow-2xs", className)}
-    controller={{
-      trigger: true,
-    }}
-    {...props}
-  >
-    {children}
-  </MotionText>
-);

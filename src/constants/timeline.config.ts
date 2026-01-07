@@ -4,25 +4,9 @@ export default [
   {
     title: "Q4 2025",
     content: {
-      title: "Documentation App",
       status: "ongoing",
       role: "Entrepreneurship/Engineering",
-      desc: "In short, maintaining documentation of my open-source animation provider library. Working on API guides, MDX tutorials, and interactive playgrounds; keeping docs aligned with the motion-provider package and examples, you can try with 'npm i motion-provider'",
-      techs: ["astro", "mdx", "netlify", "react", "nodejs", "typescript"],
-      gitLink: "https://github.com/Motion-Provider/docs",
-      plainLink: "https://docs.motionprovider.dev/",
-      images: [
-        "/assets/timeline/motion-docs/1.webp",
-        "/assets/timeline/motion-docs/2.webp",
-      ],
-    },
-  },
-  {
-    title: "Q4 2025",
-    content: {
-      status: "ongoing",
-      role: "Entrepreneurship/Engineering",
-      desc: "Simply put, it offers everything needed to push the boundaries of animation, empowering developers to create with freedom and creativity among 16K pre-defined animation combinations.",
+      desc: "The playground is a full stack web project allowing develeopers to design with pre-defined motions which can be used in their React app components in one click.",
       techs: [
         "typescript",
         "react",
@@ -35,8 +19,8 @@ export default [
       images: [
         "/assets/timeline/motion-playgrounds/1.webp",
         "/assets/timeline/motion-playgrounds/2.webp",
-        "/assets/timeline/motion-playgrounds/3.webp",
-        "/assets/timeline/motion-playgrounds/4.webp",
+        "/assets/timeline/motion-docs/1.webp",
+        "/assets/timeline/motion-docs/2.webp",
       ],
       gitLink: "https://github.com/Motion-Provider/motion-provider-playgrounds",
       plainLink: "https://playground.motionprovider.dev/",
@@ -46,7 +30,7 @@ export default [
     title: "Q3 2025",
     content: {
       status: "done",
-      desc: "Developed and maintained E2E OCR app for Polish archaeologists. The project aims to interpret the handwritten surface of paper-works and transforming it into a colorful projection/profile models collectively by using computer vision.",
+      desc: "Maintained E2E OCR app for Polish archaeologists. The project aims to interpret the handwritten surface of paper-works and transforming it collectively into a colorful projection/profile models by using computer vision.",
       images: [],
       role: "Software engineering",
       techs: ["nodejs", "python", "javascript", "json", "yaml"],

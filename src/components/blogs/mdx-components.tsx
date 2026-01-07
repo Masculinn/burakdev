@@ -34,7 +34,7 @@ export const MDXComponents = createMDXComponents({
   img: (props) => <MdImage {...props} />,
   a: (props) => <MdAnchor {...props} />,
   code: (props) => <MdCode {...props} />,
-  li: (props) => <MdList {...props} />,
+  li: (props) => <MdList className="text-[1.15rem]" {...props} />,
   ol: (props) => <MdOl {...props} />,
   ul: (props) => <MdUl {...props} />,
   table: (props) => <MdTable {...props} />,

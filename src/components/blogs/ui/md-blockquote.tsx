@@ -21,7 +21,7 @@ type BlockquoteProps = JSX.IntrinsicElements["blockquote"] & {
 type VariantProps = Record<AlertType, string>;
 
 const blockquoteVariants = cva(
-  "border-l-2 my-6 flex gap-3 flex-row items-center p-4 rounded-r-xl relative overflow-hidden z-50",
+  "border-l-2 my-8 flex gap-3 flex-row items-center p-4 rounded-r-xl relative overflow-hidden z-50",
   {
     variants: {
       variant: {

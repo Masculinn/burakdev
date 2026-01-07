@@ -34,7 +34,7 @@ export default function Cover({
 
   return (
     <header className="overflow-hidden md:h-auto md:min-h-80 h-auto w-full flex items-center-safe justify-center relative rounded-t-2xl md:p-12 p-6 mb-8">
-      <h1 className="font-bold tracking-tighter max-w-2xl text-shadow-2xs z-50 text-4xl md:text-5xl my-16">
+      <h1 className="font-bold tracking-tighter max-w-2xl text-shadow-2xs z-50 text-4xl md:text-5xl my-16 text-primary">
         {title}
       </h1>
       <Badge

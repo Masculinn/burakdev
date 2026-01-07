@@ -40,7 +40,7 @@ export const MdImage: FC<MdImageProps> = ({
       <LqipImage
         method="base64"
         src={src}
-        alt={alt ?? "Unknown image"}
+        alt={alt ?? "Noname image"}
         loading="lazy"
         className={cn("rounded-md shadow-xl", className)}
         {...props}
