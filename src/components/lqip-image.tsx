@@ -36,7 +36,7 @@ export const LqipImage: FC<LqipImageProps> = ({
     console.warn(
       "⚠️ Returning null, not found placeholder for",
       src,
-      "at lqip-image fn."
+      "at lqip-image fn.",
     );
     return null;
   }

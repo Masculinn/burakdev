@@ -9,6 +9,5 @@ export function CookieAnalytics() {
   useConsent(isProd);
 
   if (!isProd) return null;
-  console.info("Google Analytics loaded on 'CookieAnalytics'");
   return <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID ?? ""} />;
 }

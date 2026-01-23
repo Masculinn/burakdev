@@ -90,7 +90,7 @@ function ViewAllCard({ blogs }: { blogs: BlogType[] }) {
                 />
               </AspectRatio>
             </MotionContainer>
-          ))
+          )),
         )}
       </div>
       <div className="size-full bg-linear-to-b from-background to-background/50 items-center justify-center flex flex-col text-center ">

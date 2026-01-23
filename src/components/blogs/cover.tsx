@@ -107,7 +107,7 @@ function DraggableCurved({
 
   const onDragEnd = (
     _: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo
+    info: PanInfo,
   ) => {
     const endRotation = rotation.get() + info.velocity.x * dragFactor;
     controls.start({
@@ -160,7 +160,7 @@ function DraggableCurved({
               key={item}
               className={cn(
                 "absolute tracking-tighter  transition-all text-background flex items-center justify-center flex-col pointer-events-none",
-                item === middleItem && "text-foreground"
+                item === middleItem && "text-foreground",
               )}
               style={{
                 transform: `rotate(${rotate}deg) translateX(-120px)`,

@@ -67,7 +67,7 @@ function getReadingTime(content: string): number {
     s = s.replace(/<!--[\s\S]*?-->/g, " ");
 
     s = s.replace(/!\[([^\]]*)\]\((?:[^)]+)\)/g, (_, alt) =>
-      alt ? `${alt} ` : " "
+      alt ? `${alt} ` : " ",
     );
 
     s = s.replace(
@@ -75,17 +75,17 @@ function getReadingTime(content: string): number {
       (_, a1, a2, a3) => {
         const alt = a1 ?? a2 ?? a3 ?? "";
         return alt ? `${alt} ` : " ";
-      }
+      },
     );
 
     s = s.replace(/<img\b[^>]*>/gi, " ");
 
     s = s.replace(/\[([^\]]+)\]\((?:[^)]+)\)/g, (_, text) =>
-      text ? `${text} ` : " "
+      text ? `${text} ` : " ",
     );
 
     s = s.replace(/\[([^\]]+)\]\s*\[[^\]]*\]/g, (_, text) =>
-      text ? `${text} ` : " "
+      text ? `${text} ` : " ",
     );
 
     s = s.replace(/^[ \t]*\[[^\]]+\]:.*$/gm, " ");
@@ -113,7 +113,7 @@ function getReadingTime(content: string): number {
   const secondsFromWords = (words / wordsPerMinute) * 60;
   const totalSeconds = Math.max(
     0,
-    Math.round(secondsFromWords + images * imageSeconds)
+    Math.round(secondsFromWords + images * imageSeconds),
   );
   const minutes = totalSeconds / 60;
   return Math.ceil(minutes);
