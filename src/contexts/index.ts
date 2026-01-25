@@ -2,6 +2,7 @@
   BlogSearchContextProps,
   BlogSortContextProps,
   BlogTagsContextProps,
+  CarouselContextProps,
 } from "@/interfaces";
 import { createContext } from "react";
 
@@ -15,4 +16,5 @@ const BlogTagsContext = createContext<BlogTagsContextProps | undefined>(
   undefined,
 );
 
-export { BlogSearchContext, BlogSortContext, BlogTagsContext };
+const CarouselContext = createContext<CarouselContextProps | null>(null);
+export { BlogSearchContext, BlogSortContext, BlogTagsContext, CarouselContext };

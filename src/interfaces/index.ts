@@ -1,8 +1,10 @@
-﻿/** interfaces */
-
-import type { IconName } from "@/lib/getIcon";
+﻿import type { IconName } from "@/lib/getIcon";
 import type { MotionTextProps } from "@/motion/types";
+import type { UseEmblaCarouselType } from "embla-carousel-react";
+import type useEmblaCarousel from "embla-carousel-react";
 import type { ComponentType, JSX, SetStateAction, SVGProps } from "react";
+
+/** interfaces */
 
 export interface WrapperProps {
   children: React.ReactNode;
@@ -83,6 +85,20 @@ export type TimelineContentItem = {
 
 export type SetStateProps<T> = React.Dispatch<SetStateAction<T>>;
 
+/** ========= carousel ========= */
+export type CarouselApi = UseEmblaCarouselType[1];
+type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
+type CarouselOptions = UseCarouselParameters[0];
+type CarouselPlugin = UseCarouselParameters[1];
+
+export type CarouselProps = {
+  opts?: CarouselOptions;
+  plugins?: CarouselPlugin;
+  orientation?: "horizontal" | "vertical";
+  setApi?: (api: CarouselApi) => void;
+};
+/** ============================ */
+
 // mdx
 
 type IntrinsicComponentMap = {
@@ -109,3 +125,11 @@ export interface BlogTagsContextProps {
   setSelectedTags: SetStateProps<Tag[]>;
   selectedTags: Tag[];
 }
+export type CarouselContextProps = {
+  carouselRef: ReturnType<typeof useEmblaCarousel>[0];
+  api: ReturnType<typeof useEmblaCarousel>[1];
+  scrollPrev: () => void;
+  scrollNext: () => void;
+  canScrollPrev: boolean;
+  canScrollNext: boolean;
+} & CarouselProps;
