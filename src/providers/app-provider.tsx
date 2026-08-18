@@ -8,6 +8,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { primaryFont, secondaryFont } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import Head from "next/head";
@@ -42,29 +43,31 @@ export default function AppProvider({
       <SidebarProvider
         className={cn(`${primaryFont.className} ${secondaryFont.variable}`)}
       >
-        <AppSidebar collapsible="icon" />
-        <SidebarInset>
-          <AppNav>
-            <div className="flex items-center gap-2 md:px-8 px-6">
-              <SidebarTrigger className="cursor-pointer " />
-              <div className="h-4 w-px bg-muted-foreground -ml-0.5 md:mr-2 md:ml-0.5 mr-1" />
-              <NavigationBreadCrumb className="z-50" />
-              <ThemeSwitch className="absolute right-8" />
+        <TooltipProvider>
+          <AppSidebar collapsible="icon" />
+          <SidebarInset>
+            <AppNav>
+              <div className="flex items-center gap-2 md:px-8 px-6">
+                <SidebarTrigger className="cursor-pointer " />
+                <div className="h-4 w-px bg-muted-foreground -ml-0.5 md:mr-2 md:ml-0.5 mr-1" />
+                <NavigationBreadCrumb className="z-50" />
+                <ThemeSwitch className="absolute right-8" />
+              </div>
+            </AppNav>
+            <div className="w-full lg:max-w-4xl max-w-[20.8rem] mx-auto h-full py-8 relative z-0">
+              {children}
             </div>
-          </AppNav>
-          <div className="w-full lg:max-w-4xl max-w-[20.8rem] mx-auto h-full py-8 relative z-0">
-            {children}
-          </div>
-          <footer className="pb-3">
-            <div className="w-full h-12 flex items-center justify-center">
-              <p className="text-muted-foreground text-xs">
-                &copy; {new Date().getFullYear()} Burak Bilen, all rights
-                reserved.
-              </p>
-            </div>
-          </footer>
-        </SidebarInset>
-        <Toaster position="top-center" />
+            <footer className="pb-3">
+              <div className="w-full h-12 flex items-center justify-center">
+                <p className="text-muted-foreground text-xs">
+                  &copy; {new Date().getFullYear()} Burak Bilen, all rights
+                  reserved.
+                </p>
+              </div>
+            </footer>
+          </SidebarInset>
+          <Toaster position="top-center" />
+        </TooltipProvider>
       </SidebarProvider>
     </>
   );

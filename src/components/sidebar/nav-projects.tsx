@@ -38,37 +38,48 @@ export function NavProjects({ items }: { items: NavProjectsProps[] }) {
               <span>{item.title}</span>
             </SidebarMenuButton>
             <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <SidebarMenuAction showOnHover>
-                  <MoreHorizontal />
-                  <span className="sr-only">More</span>
-                </SidebarMenuAction>
-              </DropdownMenuTrigger>
+              <DropdownMenuTrigger
+                render={
+                  <SidebarMenuAction showOnHover>
+                    <MoreHorizontal />
+                    <span className="sr-only">More</span>
+                  </SidebarMenuAction>
+                }
+              />
               <DropdownMenuContent
                 className="w-48 rounded-lg"
                 side={isMobile ? "bottom" : "right"}
                 align={isMobile ? "end" : "start"}
               >
-                <DropdownMenuItem asChild>
-                  <Link target="_blank" href={item.url} className="flex gap-2">
-                    <Folder className="text-muted-foreground" />
-                    <span>View Project</span>
-                  </Link>
-                </DropdownMenuItem>
+                <DropdownMenuItem
+                  render={
+                    <Link
+                      target="_blank"
+                      href={item.url}
+                      className="flex gap-2"
+                    >
+                      <Folder className="text-muted-foreground" />
+                      <span>View Project</span>
+                    </Link>
+                  }
+                />
                 <ShareMenuItem url={item.url} />
                 <DropdownMenuSeparator />
-                <DropdownMenuItem className="group" asChild>
-                  <Link
-                    target="_blank"
-                    href="https://buymeacoffee.com/bilenburakf"
-                  >
-                    <Heart
-                      className="md:group-hover:text-rose-500 text-rose-500"
-                      fill="currentColor"
-                    />
-                    <span>Support Project</span>
-                  </Link>
-                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="group"
+                  render={
+                    <Link
+                      target="_blank"
+                      href="https://buymeacoffee.com/bilenburakf"
+                    >
+                      <Heart
+                        className="md:group-hover:text-rose-500 text-rose-500"
+                        fill="currentColor"
+                      />
+                      <span>Support Project</span>
+                    </Link>
+                  }
+                />
               </DropdownMenuContent>
             </DropdownMenu>
           </SidebarMenuItem>
@@ -89,15 +100,17 @@ function ShareMenuItem({ url }: { url: string }) {
   }, [copyToClipboard, url]);
 
   return (
-    <DropdownMenuItem asChild>
-      <button
-        type="button"
-        onClick={handleClick}
-        className="w-full items-center justify-start decoration-0 "
-      >
-        <Forward />
-        <span className="font-normal">Share Project</span>
-      </button>
-    </DropdownMenuItem>
+    <DropdownMenuItem
+      render={
+        <button
+          type="button"
+          onClick={handleClick}
+          className="w-full items-center justify-start decoration-0 "
+        >
+          <Forward />
+          <span className="font-normal">Share Project</span>
+        </button>
+      }
+    />
   );
 }

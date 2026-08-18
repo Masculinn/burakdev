@@ -1,5 +1,4 @@
-﻿import Meteors from "@/components/meteors";
-import { Card } from "@/components/ui/card";
+﻿import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import type { FC, PropsWithChildren } from "react";
 
@@ -13,7 +12,6 @@ export const MdContents: FC<PropsWithChildren<Record<string, unknown>>> = ({
       </h2>
       <Separator className="-mt-4 -mb-3 z-0" />
       {children}
-      <Meteors />
     </Card>
   );
 };

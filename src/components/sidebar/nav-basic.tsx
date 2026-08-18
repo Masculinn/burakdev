@@ -12,18 +12,21 @@ type NavBasicProps = {
   items: NavBasicType[];
   name: string;
 };
+
 export const NavBasic = ({ items, name }: NavBasicProps) => (
   <SidebarGroup className="group-data-[collapsible=icon]:hidden">
     <SidebarGroupLabel>{name}</SidebarGroupLabel>
     <SidebarMenu>
       {items.map((item) => (
         <SidebarMenuItem key={item.title}>
-          <SidebarMenuButton asChild>
-            <Link href={item.url} target="_blank">
-              <item.icon />
-              <span>{item.title}</span>
-            </Link>
-          </SidebarMenuButton>
+          <SidebarMenuButton
+            render={
+              <Link href={item.url} target="_blank">
+                <item.icon />
+                <span>{item.title}</span>
+              </Link>
+            }
+          />
         </SidebarMenuItem>
       ))}
     </SidebarMenu>

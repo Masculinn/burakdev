@@ -1,5 +1,4 @@
 ﻿import type { BlogType } from "@/interfaces";
-import { getDate } from "@/lib/utils";
 import Head from "next/head";
 
 type MetaProps = Pick<
@@ -14,6 +13,7 @@ export default function Meta({
   tags,
   title,
 }: MetaProps) {
+  const date = new Date(published_at).toISOString();
   return (
     <Head>
       <title>{`justc0de_sessions | ${title}`}</title>
@@ -24,10 +24,7 @@ export default function Meta({
       <meta property="og:locale" content="en_US" />
       <meta property="og:type" content="article" />
       <meta property="og:image" content={banner_image} />
-      <meta
-        property="article:published_time"
-        content={getDate(published_at).toISOString()}
-      />
+      <meta property="article:published_time" content={date} />
       <meta property="article:tag" content={tags.join(",")} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={title} />

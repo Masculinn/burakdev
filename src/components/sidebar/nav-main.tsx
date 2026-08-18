@@ -15,12 +15,14 @@ export function NavMain() {
       <SidebarGroupLabel>Platform</SidebarGroupLabel>
       <SidebarMenu>
         <SidebarMenuItem>
-          <SidebarMenuButton asChild>
-            <Link href="/">
-              <Home />
-              <span>Home</span>
-            </Link>
-          </SidebarMenuButton>
+          <SidebarMenuButton
+            render={
+              <Link href="/">
+                <Home />
+                <span>Home</span>
+              </Link>
+            }
+          ></SidebarMenuButton>
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>

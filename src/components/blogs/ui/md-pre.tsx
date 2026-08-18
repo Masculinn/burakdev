@@ -2,10 +2,9 @@
 import themeSchema from "@/constants/theme-schema";
 import { useElementSize } from "@/hooks/use-element-size";
 import type { HTMLAttributes } from "@/interfaces";
-import { ensureChildExist, getChild } from "@/lib/utils";
 import { useInView } from "motion/react";
 import { Highlight, type Language } from "prism-react-renderer";
-import { useMemo, type FC } from "react";
+import { Children, isValidElement, useMemo, type FC } from "react";
 import { CopyCode } from "../copy-code";
 import HighlightCodeSnippet from "../highlight-code-snippet";
 
@@ -53,7 +52,6 @@ export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
         className="absolute z-20 top-4 right-4 text-muted"
       />
       <ScrollArea
-        type="scroll"
         className="rounded-xl border shadow-xl relative w-full"
         style={{
           height: wrapperHeight ? `${wrapperHeight}px` : "auto",
@@ -89,3 +87,15 @@ export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
     </div>
   );
 };
+
+function ensureChildExist(child: React.ReactNode | undefined) {
+  if (!child) return "";
+  const c = (child as { props: { children?: unknown } }).props?.children;
+  if (typeof c === "string") return c.replace(/\n$/, "");
+  if (Array.isArray(c)) return c.join("");
+  return String(c ?? "");
+}
+
+function getChild(children: React.ReactNode) {
+  return Children.toArray(children).find((c) => isValidElement(c));
+}

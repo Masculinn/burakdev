@@ -1,4 +1,5 @@
-﻿import { cn, getImgAltName } from "@/lib/utils";
+﻿import { cn } from "@/lib/utils";
+import { getImgAlt } from "@/utils/getImgAlt";
 import { useCallback, useEffect, useMemo, useState, type FC } from "react";
 import { LqipImage } from "../lqip-image";
 import { AspectRatio } from "../ui/aspect-ratio";
@@ -66,7 +67,7 @@ export const Slider: FC<SliderProps> = ({ images, selected, plainLink }) => {
             ) : (
               <LqipImage
                 loading="lazy"
-                alt={getImgAltName(images[idx])}
+                alt={getImgAlt(images[idx])}
                 src={images[idx]}
                 fill
                 className="absolute object-cover rounded-md"

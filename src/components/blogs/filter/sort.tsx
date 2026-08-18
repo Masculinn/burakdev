@@ -45,14 +45,14 @@ export default function Sort({ className }: { className?: string }) {
       <Select onValueChange={handleValueChange} name="blog sort by date">
         <Button
           variant="ghost"
-          asChild
           className="bg-muted/50"
           aria-label="Sort"
-        >
-          <SelectTrigger className="w-auto">
-            <SelectValue placeholder={<Filter className="size-4" />} />
-          </SelectTrigger>
-        </Button>
+          render={
+            <SelectTrigger className="w-auto">
+              <SelectValue placeholder={<Filter className="size-4" />} />
+            </SelectTrigger>
+          }
+        />
         <SelectContent>
           {sortItems.map((val) => (
             <SelectItem key={val.value} value={val.value}>

@@ -1,7 +1,7 @@
 ﻿import { useIsMobile } from "@/hooks/use-mobile";
 import type { BlogType } from "@/interfaces";
 import getIcon from "@/lib/getIcon";
-import { cn, getDate } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import MotionText from "@/motion/motion-text";
 import { Timer } from "lucide-react";
 import {
@@ -31,6 +31,7 @@ export default function Cover({
   readingTime,
 }: CoverProps) {
   const sessionId = `JUSTC0DE_SESSION${id.toString().padStart(3, "0")}`;
+  const date = new Date(published_at).toLocaleDateString();
 
   return (
     <header className="overflow-hidden md:h-auto md:min-h-80 h-auto w-full flex items-center-safe justify-center relative rounded-t-2xl md:p-12 p-6 mb-8">
@@ -44,7 +45,7 @@ export default function Cover({
         {sessionId}
       </Badge>
       <time className="font-secondary text-xs absolute md:bottom-6 md:right-6 bottom-4 right-4 z-50">
-        {getDate(published_at).toLocaleDateString()}
+        {date}
       </time>
       <LqipImage
         alt={title}

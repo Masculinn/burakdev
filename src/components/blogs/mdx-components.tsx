@@ -1,9 +1,11 @@
 ﻿import { createMDXComponents } from "@/lib/create-mdx-components";
+import type { SeparatorProps } from "@base-ui/react";
 import {
   MdAnchor,
   MdBlockquote,
   MdCaption,
   MdCode,
+  MdContents,
   MdDetails,
   MdHeading,
   MdHr,
@@ -20,7 +22,6 @@ import {
   MdThead,
   MdTr,
   MdUl,
-  MdContents,
 } from "./ui";
 
 export const MDXComponents = createMDXComponents({
@@ -44,7 +45,7 @@ export const MDXComponents = createMDXComponents({
   th: (props) => <MdTh {...props} />,
   td: (props) => <MdTd {...props} />,
   caption: (props) => <MdCaption {...props} />,
-  hr: (props) => <MdHr {...props} />,
+  hr: (props: SeparatorProps) => <MdHr {...props} />,
   p: (props) => <MdParagraph {...props} />,
   pre: (props) => <MdPre {...props} />,
   Details: (props) => <MdDetails {...props} />,

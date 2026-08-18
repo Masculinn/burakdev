@@ -1,5 +1,6 @@
 ﻿import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { isProd } from "@/utils/isProd";
 import { useCallback } from "react";
 import { createPortal } from "react-dom";
 import config from "../config";
@@ -80,6 +81,8 @@ const Banner = () => {
 
 export function CookieBanner() {
   const { bannerVisible } = useCookie();
-  if (!bannerVisible) return null;
+  const prod = isProd();
+
+  if (!bannerVisible || !prod) return null;
   return createPortal(<Banner />, document.body);
 }

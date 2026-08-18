@@ -13,11 +13,9 @@ import { useBlogTags } from "@/hooks/use-posts";
 import type { Tag } from "@/interfaces";
 import getIcon from "@/lib/getIcon";
 import { cn } from "@/lib/utils";
-import type { DropdownMenuCheckboxItemProps } from "@radix-ui/react-dropdown-menu";
 import { Boxes, ListFilterPlus } from "lucide-react";
 import { memo, useCallback } from "react";
 
-type Checked = DropdownMenuCheckboxItemProps["checked"];
 type TagsProps = {
   isCheckbox?: boolean;
   className?: string;
@@ -27,7 +25,7 @@ function Tags({ isCheckbox, className }: TagsProps) {
   const { initialTags, selectedTags, setSelectedTags } = useBlogTags();
 
   const handleCheckedChange = useCallback(
-    (tag: Tag, checked: Checked) => {
+    (tag: Tag, checked: boolean) => {
       const isChecked = Boolean(checked);
 
       setSelectedTags((prev = []) => {
@@ -78,14 +76,16 @@ function Tags({ isCheckbox, className }: TagsProps) {
   if (isCheckbox) {
     return (
       <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            className={cn("w-full bg-muted/50", className)}
-          >
-            <ListFilterPlus className=" size-4" /> Category
-          </Button>
-        </DropdownMenuTrigger>
+        <DropdownMenuTrigger
+          render={
+            <Button
+              variant="outline"
+              className={cn("w-full bg-muted/50", className)}
+            >
+              <ListFilterPlus className=" size-4" /> Category
+            </Button>
+          }
+        ></DropdownMenuTrigger>
         <DropdownMenuContent className="md:w-56">
           <DropdownMenuLabel>Select categories</DropdownMenuLabel>
           <DropdownMenuSeparator />
@@ -97,7 +97,7 @@ function Tags({ isCheckbox, className }: TagsProps) {
                 <DropdownMenuCheckboxItem
                   key={tag}
                   checked={(selectedTags || []).includes(tag)}
-                  onCheckedChange={(c: Checked) => handleCheckedChange(tag, c)}
+                  onCheckedChange={(c: boolean) => handleCheckedChange(tag, c)}
                 >
                   <Icon
                     className="md:size-4 size-4"
@@ -125,21 +125,21 @@ function Tags({ isCheckbox, className }: TagsProps) {
             variant="ghost"
             onClick={() => handleOnChange(tag)}
             className="mr-2"
-            asChild
-          >
-            <Badge
-              variant={
-                (selectedTags || []).includes(tag) ? "default" : "outline"
-              }
-            >
-              <Icon
-                className="md:size-4 size-4"
-                fill="currentColor"
-                stroke="none"
-              />
-              <span className="capitalize">{tag}</span>
-            </Badge>
-          </Button>
+            render={
+              <Badge
+                variant={
+                  (selectedTags || []).includes(tag) ? "default" : "outline"
+                }
+              >
+                <Icon
+                  className="md:size-4 size-4"
+                  fill="currentColor"
+                  stroke="none"
+                />
+                <span className="capitalize">{tag}</span>
+              </Badge>
+            }
+          />
         );
       })}
       <ScrollBar orientation="horizontal" className="z-50" />

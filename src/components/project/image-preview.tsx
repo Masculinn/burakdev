@@ -1,5 +1,5 @@
-﻿import { getImgAltName } from "@/lib/utils";
-import MotionContainer from "@/motion/motion-container";
+﻿import MotionContainer from "@/motion/motion-container";
+import { getImgAlt } from "@/utils/getImgAlt";
 import { Expand } from "lucide-react";
 import { type FC, useCallback, useState } from "react";
 import { LqipImage } from "../lqip-image";
@@ -74,7 +74,7 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
           </MotionContainer>
           <LqipImage
             loading="lazy"
-            alt={getImgAltName(img)}
+            alt={getImgAlt(img)}
             src={img}
             fill
             className="object-cover rounded-lg z-0"

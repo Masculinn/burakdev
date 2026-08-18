@@ -1,7 +1,7 @@
 ﻿import type { IconName } from "@/lib/getIcon";
 import type { MotionTextProps } from "@/motion/types";
-import type { UseEmblaCarouselType } from "embla-carousel-react";
 import type useEmblaCarousel from "embla-carousel-react";
+import type { UseEmblaCarouselType } from "embla-carousel-react";
 import type { ComponentType, JSX, SetStateAction, SVGProps } from "react";
 
 /** interfaces */
@@ -106,9 +106,8 @@ type IntrinsicComponentMap = {
     JSX.IntrinsicElements[K]
   >;
 };
-export type MDXComponentsMap = IntrinsicComponentMap & {
-  [custom: string]: React.ComponentType;
-};
+export type MDXComponentsMap = IntrinsicComponentMap &
+  Record<string, ComponentType>;
 
 /** Contexts */
 

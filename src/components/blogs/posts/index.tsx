@@ -1,7 +1,6 @@
 ﻿import { BLOG_CONTEXT } from "@/constants/ctx.config";
 import { useBlogSearch, useBlogSort, useBlogTags } from "@/hooks/use-posts";
 import type { BlogType } from "@/interfaces";
-import { areSameSet, checkIsRecent } from "@/lib/utils";
 import MotionChain from "@/motion/motion-chain";
 import type { MotionAnimationProps } from "@/motion/types";
 import { useDebounce } from "@uidotdev/usehooks";
@@ -10,6 +9,18 @@ import BlogCard from "./card";
 import NotFound from "./not-found";
 
 const { tags: defaultTags } = BLOG_CONTEXT;
+
+function areSameSet(a: string[], b: string[]) {
+  return a.length === b.length && a.every((v) => b.includes(v));
+}
+
+export function isRecent(date: string, days: number = 3): boolean {
+  const now = Date.now();
+  const _date = new Date(date).getTime();
+  const msperDay = 24 * 60 * 60 * 1000;
+  const diff = now - _date;
+  return diff >= 0 && diff < days * msperDay;
+}
 
 function BlogPosts({ posts }: { posts: BlogType[] }) {
   const { selectedTags } = useBlogTags();
@@ -69,7 +80,7 @@ function BlogPosts({ posts }: { posts: BlogType[] }) {
 
     for (const p of filteredPosts) {
       try {
-        if (checkIsRecent(p.published_at, days)) ids.add(p.id);
+        if (isRecent(p.published_at, days)) ids.add(p.id);
       } catch {}
     }
 

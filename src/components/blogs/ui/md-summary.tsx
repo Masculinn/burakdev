@@ -72,7 +72,7 @@ export const MdDetails: FC<DetailsProps> = ({
         className,
       )}
     >
-      <Accordion type="single" collapsible {...rest}>
+      <Accordion multiple={false} {...rest}>
         <AccordionItem value={id}>
           <AccordionTrigger className="relative">
             <BrainCog className="rotate-90 shrink-0 size-6 absolute -left-8 -top-2 transition-transform will-change-transform duration-500 ease-in-out text-rose-500" />

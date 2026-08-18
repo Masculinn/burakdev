@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import type { BlogType } from "@/interfaces";
-import { convertToSlug, getDate } from "@/lib/utils";
+import { convertToSlug } from "@/utils/convertToSlug";
 import Link from "next/link";
 import { memo } from "react";
 import { PostDifficulty } from "../post-difficulty";
@@ -27,7 +27,7 @@ const BlogCard = ({ ...props }: BlogCardProps & { isEager: boolean }) => {
     isEager,
   } = props;
 
-  const date = getDate(published_at).toLocaleDateString();
+  const date = new Date(published_at).toLocaleDateString();
   const slug = `/blogs/${convertToSlug(title)}`;
 
   return (
