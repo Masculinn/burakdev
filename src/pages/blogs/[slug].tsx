@@ -1,13 +1,15 @@
 import Cover from "@/components/blogs/cover";
+import { MDXComponents } from "@/components/blogs/mdx-components";
 import Meta from "@/components/blogs/meta";
 import type { BlogType } from "@/interfaces";
 import { convertToSlug } from "@/utils/convertToSlug";
 import clientService from "@/utils/db";
 import type {
-  GetStaticPaths,
-  GetStaticProps,
   InferGetStaticPropsType,
+  GetStaticPaths as NextGetStaticPaths,
+  GetStaticProps as NextGetStaticProps,
 } from "next";
+import { MDXClient } from "next-mdx-remote-client";
 import type { SerializeResult } from "next-mdx-remote-client/serialize";
 import { serialize } from "next-mdx-remote-client/serialize";
 import dynamic from "next/dynamic";
@@ -19,15 +21,15 @@ import remarkUnwrapImageParagraphs from "../../../scripts/custom-remark-plugins/
 type MetaProps = Omit<BlogType, "content">;
 type Scope = Record<string, unknown>;
 
-interface GetStaticPropsType
-  extends GetStaticProps<{
+interface GetStaticProps
+  extends NextGetStaticProps<{
     meta: MetaProps;
     mdxSource: SerializeResult<Record<string, unknown>, Scope>;
     blogs: BlogType[];
     readingTime: number;
   }> {}
 
-interface GetStaticPathsType extends GetStaticPaths<{ slug: string }> {}
+interface GetStaticPaths extends NextGetStaticPaths<{ slug: string }> {}
 
 const [Recommendation, Newsletter, SessionOver] = await Promise.all([
   dynamic(() => import("@/components/blogs/recommendation"), { ssr: false }),
@@ -74,7 +76,7 @@ export const getStaticProps = (async ({ params }) => {
       readingTime,
     },
   };
-}) satisfies GetStaticPropsType;
+}) satisfies GetStaticProps;
 
 export const getStaticPaths = (async () => {
   const { data, error } = (await clientService()
@@ -99,7 +101,7 @@ export const getStaticPaths = (async () => {
     paths: slugs,
     fallback: false,
   };
-}) satisfies GetStaticPathsType;
+}) satisfies GetStaticPaths;
 
 export default function Page({
   meta,
@@ -116,11 +118,11 @@ export default function Page({
       <Meta {...meta} />
       <article className="leading-snug text-blog-muted tracking-tight">
         <Cover {...meta} readingTime={readingTime} />
-        {/* <MDXClient
+        <MDXClient
           frontmatter={mdxSource.frontmatter}
           compiledSource={mdxSource.compiledSource}
           components={MDXComponents}
-        /> */}
+        />
       </article>
       <SessionOver sessionId={meta.id} />
       <Newsletter className="mt-12" />

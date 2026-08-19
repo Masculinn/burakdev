@@ -77,9 +77,7 @@ function getRecentPostIds(posts: BlogType[], days = 3): Set<number> {
   for (const p of posts) {
     try {
       if (isRecent(p.published_at, days)) ids.add(p.id);
-    } catch {
-      // malformed published_at, treat as not recent
-    }
+    } catch {}
   }
   return ids;
 }

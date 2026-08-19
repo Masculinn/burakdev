@@ -118,6 +118,7 @@ function Tags({ isCheckbox, className }: TagsProps) {
             variant="ghost"
             onClick={() => handleOnChange(tag)}
             className="mr-2"
+            nativeButton={false}
             render={
               <Badge
                 variant={

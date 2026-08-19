@@ -38,16 +38,20 @@ const sortItems = [
 export default function Sort({ className }: { className?: string }) {
   const { setSort } = useBlogSort();
 
-  const handleValueChange = (val: BlogPostSortProps) => setSort(val);
+  const handleValueChange = (val: BlogPostSortProps | null) => {
+    if (val !== null) setSort(val);
+  };
 
   return (
     <div className={cn("relative", className)}>
-      <Select onValueChange={handleValueChange} name="blog sort by date">
+      <Select<BlogPostSortProps>
+        onValueChange={handleValueChange}
+        name="blog sort by date"
+      >
         <Button
           variant="ghost"
           className="bg-muted/50"
           aria-label="Sort"
-          nativeButton={false}
           render={
             <SelectTrigger className="w-auto">
               <SelectValue placeholder={<Filter className="size-4" />} />

@@ -38,7 +38,6 @@ export function NavProjects({ items }: { items: NavProjectsProps[] }) {
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger
-                nativeButton={false}
                 render={
                   <SidebarMenuAction showOnHover>
                     <MoreHorizontal />
