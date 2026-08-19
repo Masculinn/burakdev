@@ -143,7 +143,7 @@ body {
   --chart-3: oklch(0.444 0.011 73.639);
   --chart-4: oklch(0.374 0.01 67.558);
   --chart-5: oklch(0.268 0.007 34.298);
-  --sidebar: oklch(0.216 0.006 56.043);
+  --sidebar: oklch(21.612% 0.00611 55.916 / 0.01);
   --sidebar-foreground: oklch(0.985 0.001 106.423);
   --sidebar-primary: oklch(0.795 0.184 86.047);
   --sidebar-primary-foreground: oklch(0.987 0.026 102.212);
@@ -508,7 +508,7 @@ button {
 
 .mdx-ul,
 .mdx-ol {
-  margin: 0 0 1rem 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -518,8 +518,8 @@ button {
 
 .mdx-ul > li {
   position: relative;
-  padding-left: 1.35rem;
-  margin: 0.35rem 0;
+  padding-left: 1.25rem;
+  margin: 0.25rem 0;
   line-height: 1.45;
 }
 
@@ -529,7 +529,7 @@ button {
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 0.95rem;
+  font-size: 0.7rem;
   color: var(--color-muted-foreground);
   pointer-events: none;
   user-select: none;

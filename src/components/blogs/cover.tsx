@@ -30,7 +30,7 @@ export default function Cover({
   title,
   readingTime,
 }: CoverProps) {
-  const sessionId = `JUSTC0DE_SESSION${id.toString().padStart(3, "0")}`;
+  const sessionId = `SESSION_NO_#${id.toString().padStart(3, "0")}`;
 
   const date = new Date(published_at).toLocaleDateString("en-US", {
     day: "2-digit",
@@ -45,7 +45,7 @@ export default function Cover({
       </h1>
       <Badge
         variant={"default"}
-        className="text-xs absolute top-4 right-4 z-50 font-secondary font-extralight"
+        className="text-xs absolute top-4 right-4 z-50 font-secondary font-bold"
       >
         {sessionId}
       </Badge>

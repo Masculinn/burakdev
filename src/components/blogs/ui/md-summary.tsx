@@ -6,7 +6,6 @@
 } from "@/components/ui/accordion";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import { BrainCog } from "lucide-react";
 import React, {
   Children,
   isValidElement,
@@ -75,8 +74,7 @@ export const MdDetails: FC<DetailsProps> = ({
       <Accordion multiple={false} {...rest}>
         <AccordionItem value={id}>
           <AccordionTrigger className="relative">
-            <BrainCog className="rotate-90 shrink-0 size-6 absolute -left-8 -top-2 transition-transform will-change-transform duration-500 ease-in-out text-rose-500" />
-            <div className="inline-block text-primary text-base">
+            <div className="inline-block text-foreground text-base">
               {triggerContent}
             </div>
           </AccordionTrigger>

@@ -4,6 +4,7 @@ import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
@@ -24,12 +25,10 @@ function Tags({ isCheckbox, className }: TagsProps) {
   const { initialTags, selectedTags, setSelectedTags } = useBlogTags();
 
   function handleCheckedChange(tag: Tag, checked: boolean) {
-    const isChecked = Boolean(checked);
-
     setSelectedTags((prev = []) => {
       let init: Tag[];
 
-      if (isChecked) {
+      if (checked) {
         if (tag === "all") init = ["all"];
         else {
           init = [...prev.filter((t) => t !== "all")];
@@ -70,38 +69,40 @@ function Tags({ isCheckbox, className }: TagsProps) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger
+          className={"w-full bg-muted/50"}
           render={
-            <Button
-              variant="outline"
-              className={cn("w-full bg-muted/50", className)}
-            >
+            <Button variant="outline" className={cn("", className)}>
               <ListFilterPlus className=" size-4" /> Category
             </Button>
           }
-        ></DropdownMenuTrigger>
+        />
         <DropdownMenuContent className="md:w-56">
-          <DropdownMenuLabel>Select categories</DropdownMenuLabel>
-          <DropdownMenuSeparator />
-          <ScrollArea className="max-h-24 md:max-h-48">
-            {initialTags.map((tag) => {
-              const Icon =
-                tag === "all" ? Boxes : getIcon(String(tag).toLowerCase());
-              return (
-                <DropdownMenuCheckboxItem
-                  key={tag}
-                  checked={(selectedTags || []).includes(tag)}
-                  onCheckedChange={(c: boolean) => handleCheckedChange(tag, c)}
-                >
-                  <Icon
-                    className="md:size-4 size-4"
-                    fill="currentColor"
-                    stroke="none"
-                  />
-                  <span className="capitalize">{tag}</span>
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </ScrollArea>
+          <DropdownMenuGroup>
+            <DropdownMenuLabel>Select categories</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <ScrollArea className="max-h-24 md:max-h-48">
+              {initialTags.map((tag) => {
+                const Icon =
+                  tag === "all" ? Boxes : getIcon(String(tag).toLowerCase());
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={tag}
+                    checked={(selectedTags ?? []).includes(tag)}
+                    onCheckedChange={(checked: boolean) =>
+                      handleCheckedChange(tag, checked)
+                    }
+                  >
+                    <Icon
+                      className="md:size-4 size-4"
+                      fill="currentColor"
+                      stroke="none"
+                    />
+                    <span className="capitalize">{tag}</span>
+                  </DropdownMenuCheckboxItem>
+                );
+              })}
+            </ScrollArea>
+          </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
     );
@@ -122,7 +123,7 @@ function Tags({ isCheckbox, className }: TagsProps) {
             render={
               <Badge
                 variant={
-                  (selectedTags || []).includes(tag) ? "default" : "outline"
+                  (selectedTags ?? []).includes(tag) ? "default" : "outline"
                 }
               >
                 <Icon
