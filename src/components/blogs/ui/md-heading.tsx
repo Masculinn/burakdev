@@ -8,7 +8,7 @@ type HeadingProps = {
   VariantProps<typeof headingVariants>;
 
 const headingVariants = cva(
-  "font-bold leading-tight tracking-tighter text-primary",
+  "font-bold leading-tight tracking-tighter text-foreground",
   {
     variants: {
       variant: {

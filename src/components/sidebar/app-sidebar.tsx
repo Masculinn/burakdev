@@ -9,9 +9,8 @@ import {
 import data from "@/constants/sidebar.data";
 import type * as React from "react";
 import { NavBlogs } from "./nav-blogs";
-import { NavProjects } from "./nav-projects";
 
-const { projects, socials, user } = data;
+const { socials, user } = data;
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -22,7 +21,6 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarContent>
         <NavMain />
         <NavBlogs />
-        <NavProjects items={projects} />
         <NavBasic items={socials} name="Socials" />
       </SidebarContent>
     </Sidebar>

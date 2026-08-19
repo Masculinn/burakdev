@@ -31,11 +31,16 @@ export default function Cover({
   readingTime,
 }: CoverProps) {
   const sessionId = `JUSTC0DE_SESSION${id.toString().padStart(3, "0")}`;
-  const date = new Date(published_at).toLocaleDateString();
+
+  const date = new Date(published_at).toLocaleDateString("en-US", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
 
   return (
     <header className="overflow-hidden md:h-auto md:min-h-80 h-auto w-full flex items-center-safe justify-center relative rounded-t-2xl md:p-12 p-6 mb-8">
-      <h1 className="font-bold tracking-tighter max-w-2xl text-shadow-2xs z-50 text-4xl md:text-5xl my-16 text-primary">
+      <h1 className="font-bold tracking-tighter max-w-2xl text-shadow-2xs z-50 text-4xl md:text-5xl my-16 text-foreground">
         {title}
       </h1>
       <Badge

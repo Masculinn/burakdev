@@ -137,7 +137,7 @@ function normalizeRawAsset(a: RawAsset): string | null {
 async function readServerSideAssets(): Promise<string[] | undefined> {
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+    !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY ||
     !process.env.BUCKET_NAME
   ) {
     console.log("⚠️ Missing database env vars, Returning undefined.");

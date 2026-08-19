@@ -28,7 +28,7 @@ async function ensureDirExist() {
 async function readServerSideSlugs(): Promise<Item[] | null> {
   if (
     !process.env.NEXT_PUBLIC_SUPABASE_URL ||
-    !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+    !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_DEFAULT_KEY
   ) {
     console.log(
       "⚠️ Missing database env vars: check either, returning 'null' in 'serverSideSlugs()'",

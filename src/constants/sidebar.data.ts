@@ -14,7 +14,6 @@ export type DataType = {
     email: string;
     avatar: string;
   };
-  projects: Omit<NavBasicType, "icon">[];
   socials: NavBasicType[];
 };
 
@@ -24,16 +23,6 @@ const data = {
     email: "hello@burakdev.com",
     avatar: "/burak-bilen.webp",
   },
-  projects: [
-    {
-      title: "Motion Playgrounds",
-      url: "https://playground.motionprovider.dev/",
-    },
-    {
-      title: "Motion Docs",
-      url: "https://docs.motionprovider.dev",
-    },
-  ],
   socials: [
     {
       title: "Github",

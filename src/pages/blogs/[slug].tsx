@@ -122,6 +122,7 @@ export default function Page({
           frontmatter={mdxSource.frontmatter}
           compiledSource={mdxSource.compiledSource}
           components={MDXComponents}
+          scope={meta}
         />
       </article>
       <SessionOver sessionId={meta.id} />
