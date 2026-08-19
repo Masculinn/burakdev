@@ -10,7 +10,6 @@
     "prebuild": "tsx scripts/generate-lqip.ts && tsx scripts/generate-slugs.ts && tsx scripts/generate-xml.ts",
     "lint:types": "tsc --noEmit",
     "gen:lqip": "tsx scripts/generate-lqip.ts",
-    "gen:icons": "npx @svgr/cli src/components/icons/temp --out-dir src/components/icons/generated --ext tsx --filename-case kebab",
     "gen:slugs": "tsx scripts/generate-slugs.ts",
     "gen:xml": "tsx scripts/generate-xml.ts",
     "start": "next start",
@@ -48,7 +47,6 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.0",
-    "@svgr/cli": "^8.1.0",
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20.19.19",
