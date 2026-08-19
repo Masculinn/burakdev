@@ -1,9 +1,8 @@
-﻿import { useBlogSearch } from "@/hooks/use-posts";
+﻿import { Button } from "@/components/ui/button";
+import { useBlogSearch } from "@/hooks/use-posts";
 import { cn } from "@/lib/utils";
-import { Input } from "../../ui/input";
 import { Search as IconSearch, X } from "lucide-react";
-import { memo } from "react";
-import { Button } from "@/components/ui/button";
+import { Input } from "../../ui/input";
 
 function Search({ className }: { className?: string }) {
   const { search, setSearch } = useBlogSearch();
@@ -40,4 +39,4 @@ function Search({ className }: { className?: string }) {
   );
 }
 
-export default memo(Search);
+export default Search;

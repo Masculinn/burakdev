@@ -23,6 +23,7 @@ function useElementSize<T extends HTMLElement>() {
     const ro = new ResizeObserver(() => {
       measure();
     });
+
     ro.observe(el);
 
     window.addEventListener("resize", measure);

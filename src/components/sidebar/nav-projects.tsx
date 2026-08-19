@@ -2,7 +2,6 @@
 import { useCopyToClipboard } from "@uidotdev/usehooks";
 import { Box, Folder, Forward, Heart, MoreHorizontal } from "lucide-react";
 import Link from "next/link";
-import { useCallback } from "react";
 import { toast } from "sonner";
 import {
   DropdownMenu,
@@ -39,6 +38,7 @@ export function NavProjects({ items }: { items: NavProjectsProps[] }) {
             </SidebarMenuButton>
             <DropdownMenu>
               <DropdownMenuTrigger
+                nativeButton={false}
                 render={
                   <SidebarMenuAction showOnHover>
                     <MoreHorizontal />
@@ -52,6 +52,7 @@ export function NavProjects({ items }: { items: NavProjectsProps[] }) {
                 align={isMobile ? "end" : "start"}
               >
                 <DropdownMenuItem
+                  nativeButton={false}
                   render={
                     <Link
                       target="_blank"
@@ -67,6 +68,7 @@ export function NavProjects({ items }: { items: NavProjectsProps[] }) {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem
                   className="group"
+                  nativeButton={false}
                   render={
                     <Link
                       target="_blank"
@@ -92,15 +94,16 @@ export function NavProjects({ items }: { items: NavProjectsProps[] }) {
 function ShareMenuItem({ url }: { url: string }) {
   const [_, copyToClipboard] = useCopyToClipboard();
 
-  const handleClick = useCallback(() => {
+  function handleClick() {
     copyToClipboard(url);
     toast.success("Project link copied to clipboard.", {
       richColors: true,
     });
-  }, [copyToClipboard, url]);
+  }
 
   return (
     <DropdownMenuItem
+      nativeButton={false}
       render={
         <button
           type="button"

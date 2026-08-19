@@ -74,12 +74,10 @@ export type NavBasicType = {
 
 export type TimelineContentItem = {
   status: ProjectStatus;
-  role: string;
   title: string;
   techs: readonly IconName[];
   desc: string;
   gitLink?: string;
-  plainLink?: string;
   images: string[];
 };
 

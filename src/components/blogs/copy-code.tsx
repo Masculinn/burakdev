@@ -2,14 +2,7 @@
 import { useCopyToClipboard } from "@uidotdev/usehooks";
 import type { VariantProps } from "class-variance-authority";
 import { Check, Copy } from "lucide-react";
-import {
-  type FC,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { type FC, useEffect, useRef, useState } from "react";
 import { Button, type buttonVariants } from "../ui/button";
 
 interface CopyCodeButtonProps {
@@ -28,15 +21,15 @@ export const CopyCode: FC<CopyCodeButtonProps> = ({
 
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const handleClick = useCallback(() => {
+  function handleClick() {
     if (copied) return;
+
     copyToClipboard(data);
     setCopied(true);
 
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-
     timeoutRef.current = setTimeout(() => setCopied(false), 1000);
-  }, [copyToClipboard, data, copied]);
+  }
 
   useEffect(() => {
     return () => {
@@ -46,7 +39,7 @@ export const CopyCode: FC<CopyCodeButtonProps> = ({
     };
   }, []);
 
-  const Icon = useMemo(() => (copied ? Check : Copy), [copied]);
+  const Icon = copied ? Check : Copy;
 
   return (
     <Button

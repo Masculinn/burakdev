@@ -14,7 +14,6 @@ import type { Tag } from "@/interfaces";
 import getIcon from "@/lib/getIcon";
 import { cn } from "@/lib/utils";
 import { Boxes, ListFilterPlus } from "lucide-react";
-import { memo, useCallback } from "react";
 
 type TagsProps = {
   isCheckbox?: boolean;
@@ -24,54 +23,48 @@ type TagsProps = {
 function Tags({ isCheckbox, className }: TagsProps) {
   const { initialTags, selectedTags, setSelectedTags } = useBlogTags();
 
-  const handleCheckedChange = useCallback(
-    (tag: Tag, checked: boolean) => {
-      const isChecked = Boolean(checked);
+  function handleCheckedChange(tag: Tag, checked: boolean) {
+    const isChecked = Boolean(checked);
 
-      setSelectedTags((prev = []) => {
-        let init: Tag[];
+    setSelectedTags((prev = []) => {
+      let init: Tag[];
 
-        if (isChecked) {
-          if (tag === "all") init = ["all"];
-          else {
-            init = [...prev.filter((t) => t !== "all")];
-            if (!init.includes(tag)) init.push(tag);
-          }
-        } else {
-          if (tag === "all") init = [];
-          else {
-            init = prev.filter((t) => t !== tag);
-            if (init.length === 0) init = ["all"];
-          }
-        }
-
-        return init;
-      });
-    },
-    [setSelectedTags],
-  );
-
-  const handleOnChange = useCallback(
-    (tag: Tag) => {
-      setSelectedTags((prev = []) => {
-        if (tag === "all") return ["all"];
-
-        const isIncluded = prev.includes(tag);
-        let init: Tag[];
-
-        if (isIncluded) {
-          init = prev.filter((t): t is Tag => t !== tag);
-          if (init.length === 0) init = ["all"];
-        } else {
-          init = [...prev.filter((t): t is Tag => t !== "all")];
+      if (isChecked) {
+        if (tag === "all") init = ["all"];
+        else {
+          init = [...prev.filter((t) => t !== "all")];
           if (!init.includes(tag)) init.push(tag);
         }
+      } else {
+        if (tag === "all") init = [];
+        else {
+          init = prev.filter((t) => t !== tag);
+          if (init.length === 0) init = ["all"];
+        }
+      }
 
-        return init;
-      });
-    },
-    [setSelectedTags],
-  );
+      return init;
+    });
+  }
+
+  function handleOnChange(tag: Tag) {
+    setSelectedTags((prev = []) => {
+      if (tag === "all") return ["all"];
+
+      const isIncluded = prev.includes(tag);
+      let init: Tag[];
+
+      if (isIncluded) {
+        init = prev.filter((t): t is Tag => t !== tag);
+        if (init.length === 0) init = ["all"];
+      } else {
+        init = [...prev.filter((t): t is Tag => t !== "all")];
+        if (!init.includes(tag)) init.push(tag);
+      }
+
+      return init;
+    });
+  }
 
   if (isCheckbox) {
     return (
@@ -147,4 +140,4 @@ function Tags({ isCheckbox, className }: TagsProps) {
   );
 }
 
-export default memo(Tags);
+export default Tags;

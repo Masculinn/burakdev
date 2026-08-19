@@ -1,16 +1,16 @@
-﻿import { cn } from "@/lib/utils";
+﻿import slugs from "@/generated/slugs.json" with { type: "json" };
+import { cn } from "@/lib/utils";
 import { useWindowScroll } from "@uidotdev/usehooks";
 import { ChevronRight } from "lucide-react";
 import { useRouter } from "next/router";
-import { Fragment, useMemo } from "react";
+import { Fragment } from "react";
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbSeparator,
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbSeparator,
 } from "../ui/breadcrumb";
-import slugs from "@/generated/slugs.json" with { type: "json" };
 
 type PathObjType = { href: string; children: string };
 const SCROLL_THRESHOLD = 50;
@@ -20,7 +20,7 @@ export const NavigationBreadCrumb = ({ className }: { className?: string }) => {
   const [{ y }] = useWindowScroll();
 
   const scrolled = typeof y === "number" && y >= SCROLL_THRESHOLD;
-  const paths = useMemo(() => extractPaths(asPath), [asPath]);
+  const paths = extractPaths(asPath);
 
   if (paths === null) return null;
 

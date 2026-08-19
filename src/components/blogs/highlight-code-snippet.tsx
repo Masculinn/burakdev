@@ -10,7 +10,6 @@ import type {
   TokenInputProps,
   TokenOutputProps,
 } from "prism-react-renderer";
-import { memo, useMemo } from "react";
 
 type TokenLinesProps = {
   tokens: Token[][];
@@ -34,17 +33,13 @@ function HighlightCodeSnippet({
 }: TokenLinesProps) {
   const tokenCount = tokens.length;
 
-  const animations = useMemo(
+  const animations = Array.from({ length: tokenCount }).map(
     () =>
-      Array.from({ length: tokenCount }).map(
-        () =>
-          ({
-            mode: ["fadeIn", "filterBlurIn"],
-            transition: "gentle",
-            duration: 1,
-          }) as MotionAnimationProps,
-      ),
-    [tokenCount],
+      ({
+        mode: ["fadeIn", "filterBlurIn"],
+        transition: "gentle",
+        duration: 1,
+      } as MotionAnimationProps),
   );
 
   if (shouldAnimate) {
@@ -81,4 +76,4 @@ function HighlightCodeSnippet({
   ));
 }
 
-export default memo(HighlightCodeSnippet);
+export default HighlightCodeSnippet;

@@ -4,7 +4,7 @@ import { useElementSize } from "@/hooks/use-element-size";
 import type { HTMLAttributes } from "@/interfaces";
 import { useInView } from "motion/react";
 import { Highlight, type Language } from "prism-react-renderer";
-import { Children, isValidElement, useMemo, type FC } from "react";
+import { Children, isValidElement, type FC } from "react";
 import { CopyCode } from "../copy-code";
 import HighlightCodeSnippet from "../highlight-code-snippet";
 
@@ -14,6 +14,23 @@ const MAX_HEIGHT = 560;
 const ANIMATION_TRIGGER_THRESHOLD = 900;
 const LANG_RE = /language-(\w+)/;
 
+function getLanguage(child: unknown): Language | "text" {
+  if (!child) return "text";
+
+  const className: string | undefined = (
+    child as { props: { className?: string } }
+  ).props?.className;
+
+  const m = className?.match(LANG_RE);
+
+  let lang = m?.[1] ?? "text";
+
+  if (lang === "ts" || lang === "typescript") lang = "tsx";
+  if (lang === "js" || lang === "javascript") lang = "jsx";
+  if (lang === "bash" || lang === "sh") lang = "bash";
+
+  return (lang as Language) ?? "text";
+}
 export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
   const { ref: preRef, size } = useElementSize<HTMLPreElement>();
   const isInView = useInView(preRef, { once: false });
@@ -24,25 +41,9 @@ export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
     measuredHeight > 0 ? Math.min(measuredHeight, MAX_HEIGHT) : undefined;
 
   const child = getChild(props.children);
-  const code = useMemo(() => ensureChildExist(child), [child]);
+  const code = ensureChildExist(child);
 
-  const language = useMemo<Language | "text">(() => {
-    if (!child) return "text";
-
-    const className: string | undefined = (
-      child as { props: { className?: string } }
-    ).props?.className;
-
-    const m = className?.match(LANG_RE);
-
-    let lang = m?.[1] ?? "text";
-
-    if (lang === "ts" || lang === "typescript") lang = "tsx";
-    if (lang === "js" || lang === "javascript") lang = "jsx";
-    if (lang === "bash" || lang === "sh") lang = "bash";
-
-    return (lang as Language) ?? "text";
-  }, [child]);
+  const language = getLanguage(child);
 
   return (
     <div className="w-full my-4 flex justify-center relative">

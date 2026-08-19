@@ -1,7 +1,6 @@
 ﻿import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { isProd } from "@/utils/isProd";
-import { useCallback } from "react";
 import { createPortal } from "react-dom";
 import config from "../config";
 import { useCookie } from "../hooks";
@@ -20,26 +19,23 @@ const Banner = () => {
 
   const handleOpenPreferences = () => setPreferencesModalOpen(true);
 
-  const handleCookies = useCallback(
-    (c: boolean) => {
-      const newConsent: ConsentState = {
-        necessary: true,
-        analytics: c && Boolean(consent?.analytics),
-      };
+  const handleCookies = (c: boolean) => {
+    const newConsent: ConsentState = {
+      necessary: true,
+      analytics: c && Boolean(consent?.analytics),
+    };
 
-      const r: ConsentRecord = {
-        version: CONSENT_VERSION,
-        consents: newConsent,
-        timestamp: new Date().toISOString(),
-        source: newConsent.analytics ? "accept_all" : "reject_all",
-      };
+    const r: ConsentRecord = {
+      version: CONSENT_VERSION,
+      consents: newConsent,
+      timestamp: new Date().toISOString(),
+      source: newConsent.analytics ? "accept_all" : "reject_all",
+    };
 
-      setConsentState(newConsent);
-      writeStoredConsent(r);
-      setBannerVisible(false);
-    },
-    [setBannerVisible, setConsentState, consent],
-  );
+    setConsentState(newConsent);
+    writeStoredConsent(r);
+    setBannerVisible(false);
+  };
 
   return (
     <div className="fixed inset-x-4 bottom-4 md:bottom-8 md:left-8 md:right-auto md:w-96 z-50">

@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   bundlePagesRouterDependencies: true,
   devIndicators: false,
+  reactCompiler: true,
+  experimental: {
+    useTypeScriptCli: true,
+    turbopackRustReactCompiler: true,
+  },
 };
 
 export default nextConfig;

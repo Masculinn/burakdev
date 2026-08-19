@@ -4,14 +4,8 @@ import {
   BlogSortContext,
   BlogTagsContext,
 } from "@/contexts";
-import type {
-  BlogPostSortProps,
-  BlogSearchContextProps,
-  BlogSortContextProps,
-  BlogTagsContextProps,
-  Tag,
-} from "@/interfaces";
-import { useMemo, useState } from "react";
+import type { BlogPostSortProps, Tag } from "@/interfaces";
+import { useState } from "react";
 
 type ProviderProps = {
   children: React.ReactNode;
@@ -26,23 +20,26 @@ export default function BlogPostProvider({
   const [sort, setSort] = useState<BlogPostSortProps>(BLOG_CONTEXT.sort);
   const [selectedTags, setSelectedTags] = useState<Tag[]>(BLOG_CONTEXT.tags);
 
-  const searchValue = useMemo<BlogSearchContextProps>(
-    () => ({ search, setSearch }),
-    [search],
-  );
-  const sortValue = useMemo<BlogSortContextProps>(
-    () => ({ sort, setSort }),
-    [sort],
-  );
-  const tagsValue = useMemo<BlogTagsContextProps>(
-    () => ({ initialTags, selectedTags, setSelectedTags }),
-    [selectedTags, initialTags],
-  );
-
   return (
-    <BlogSearchContext.Provider value={searchValue}>
-      <BlogSortContext.Provider value={sortValue}>
-        <BlogTagsContext.Provider value={tagsValue}>
+    <BlogSearchContext.Provider
+      value={{
+        search,
+        setSearch,
+      }}
+    >
+      <BlogSortContext.Provider
+        value={{
+          sort,
+          setSort,
+        }}
+      >
+        <BlogTagsContext.Provider
+          value={{
+            initialTags,
+            selectedTags,
+            setSelectedTags,
+          }}
+        >
           {children}
         </BlogTagsContext.Provider>
       </BlogSortContext.Provider>

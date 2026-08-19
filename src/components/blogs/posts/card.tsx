@@ -10,7 +10,6 @@ import {
 import type { BlogType } from "@/interfaces";
 import { convertToSlug } from "@/utils/convertToSlug";
 import Link from "next/link";
-import { memo } from "react";
 import { PostDifficulty } from "../post-difficulty";
 
 type BlogCardProps = BlogType & { isRecent?: boolean };
@@ -89,4 +88,4 @@ const BlogCard = ({ ...props }: BlogCardProps & { isEager: boolean }) => {
   );
 };
 
-export default memo(BlogCard);
+export default BlogCard;

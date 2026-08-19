@@ -1,6 +1,5 @@
 ﻿import { useIsMobile } from "@/hooks/use-mobile";
-import { useCallback, useState } from "react";
-import { Badge } from "../ui/badge";
+import { useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -23,15 +22,14 @@ type ProjectProps = {
   images: string[];
   desc: string;
   title: string;
-  role: string;
-  plainLink?: string;
 };
 
 export default function Project(props: ProjectProps) {
   const isMobile = useIsMobile();
-  const { desc, images, role, title, plainLink } = props;
+  const { desc, images, title } = props;
   const [selected, setSelected] = useState<string>(images[0]);
-  const handleSelected = useCallback((img: string) => setSelected(img), []);
+
+  const handleSelected = (img: string) => setSelected(img);
 
   if (isMobile)
     return (
@@ -47,18 +45,13 @@ export default function Project(props: ProjectProps) {
           ))}
           <DrawerContent>
             <DrawerHeader>
-              <Badge variant={"outline"}>My role: {role}</Badge>
               <DrawerTitle className="text-xl font-secondary tracking-tighter">
                 <ProjectTitle title={title} />
               </DrawerTitle>
               <DrawerDescription className="text-start tracking-tighter text-xs">
                 {desc}
               </DrawerDescription>
-              <Slider
-                images={images}
-                selected={selected}
-                plainLink={plainLink}
-              />
+              <Slider images={images} selected={selected} />
             </DrawerHeader>
           </DrawerContent>
         </Drawer>
@@ -78,13 +71,12 @@ export default function Project(props: ProjectProps) {
         ))}
         <DialogContent>
           <DialogHeader>
-            <Badge variant={"outline"}>My role: {role}</Badge>
             <DialogTitle className="text-xl font-secondary tracking-tighter text-muted-foreground">
               <ProjectTitle title={title} />
             </DialogTitle>
             <DialogDescription>{desc}</DialogDescription>
           </DialogHeader>
-          <Slider selected={selected} images={images} plainLink={plainLink} />
+          <Slider selected={selected} images={images} />
         </DialogContent>
       </Dialog>
     </div>

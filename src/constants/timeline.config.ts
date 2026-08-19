@@ -5,7 +5,6 @@ export default [
     title: "Q4 2025",
     content: {
       status: "ongoing",
-      role: "Entrepreneurship/Engineering",
       desc: "The playground is a full stack web project allowing develeopers to design with pre-defined motions which can be used in their React app components in one click.",
       techs: [
         "typescript",
@@ -23,7 +22,6 @@ export default [
         "/assets/timeline/motion-docs/2.webp",
       ],
       gitLink: "https://github.com/Motion-Provider/motion-provider-playgrounds",
-      plainLink: "https://playground.motionprovider.dev/",
     },
   },
   {
@@ -32,7 +30,6 @@ export default [
       status: "done",
       desc: "Maintained E2E OCR app for Polish archaeologists. The project aims to interpret the handwritten surface of paper-works and transforming it collectively into a colorful projection/profile models by using computer vision.",
       images: [],
-      role: "Software engineering",
       techs: ["nodejs", "python", "javascript", "json", "yaml"],
       title: "Geo-OCR App",
     },
@@ -41,7 +38,6 @@ export default [
     title: "Q3 2025",
     content: {
       status: "paused",
-      role: "Entrepreneurship",
       title: "modulith.app",
       techs: [
         "react",
@@ -69,7 +65,6 @@ export default [
         "/assets/timeline/beyazkose/gif-beyaz-kose.gif",
         "/assets/timeline/beyazkose/beyaz-kose-patiserrie-landing.png",
       ],
-      role: "Software development",
       status: "done",
       title: "beyazkose.com",
       techs: [
@@ -82,7 +77,6 @@ export default [
       ],
       desc: "A one-day gig project aimed at developing restaurant QR menu app designed to showcase product listings to the end-customers.",
       gitLink: "https://github.com/Masculinn/qr-menu-restaurant-app",
-      plainLink: "https://beyazkosepatisserie.netlify.app/",
     },
   },
   {
@@ -90,7 +84,6 @@ export default [
     content: {
       status: "done",
       title: "izisarcheologia.com",
-      role: "Software development",
       techs: [
         "react",
         "tailwindcss",
@@ -101,7 +94,6 @@ export default [
       ],
       desc: "Full-stack archeology web app covering E2E enterprise development featuring: 25 years company portfolio, media presses, project areas as well as visual excavational fields with mapbox renderers.",
       gitLink: "https://github.com/Masculinn/izis",
-      plainLink: "https://izisarcheologia.netlify.app/",
       images: [
         "/assets/timeline/izis/1.webp",
         "/assets/timeline/izis/2.webp",
@@ -115,11 +107,9 @@ export default [
     content: {
       status: "done",
       title: "ovensandwich.com",
-      role: "Software development",
       techs: ["react", "tailwindcss", "typescript", "nextjs"],
       desc: "A carefully crafted SPA by valuing design and responsiveness. It contains various information about the restaurant, menu, and contact details.",
       gitLink: "https://github.com/Masculinn/ovensandwich",
-      plainLink: "https://ovensandwich.netlify.app/",
       images: [
         "/assets/timeline/ovensandwich/1.webp",
         "/assets/timeline/ovensandwich/2.webp",
@@ -133,7 +123,6 @@ export default [
     content: {
       status: "done",
       title: "Motion Provider",
-      role: "Entrepreneurship/Engineering",
       gitLink: "https://github.com/Masculinn/motion-provider",
       techs: ["react", "tailwindcss", "typescript", "nextjs"],
       desc: "Accelerating the development of react component animations up to 4x with seamless performance and precision, built entirely with typescript for a smooth, type-safe development experience.",
@@ -150,10 +139,8 @@ export default [
     content: {
       status: "done",
       title: "burak.dev",
-      role: "Entrepreneurship/Development",
       desc: "First version of my portfolio app that you are currently visiting 😀",
       images: [],
-      plainLink: "https://burakdev.com",
       techs: [
         "react",
         "redux",
@@ -170,7 +157,6 @@ export default [
     content: {
       status: "paused",
       title: "teezy.com",
-      role: "Entrepreneurship/Engineering",
       desc: "Self-initiated social music platform where users can listen to music, create profiles, upload and share tracks, explore other profiles, and enjoy AI-modified versions of tracks. It aimed to be a more interactive and community-driven version of Spotify.",
       images: [
         "/assets/timeline/teezy/1.webp",
@@ -194,13 +180,11 @@ export default [
     content: {
       status: "done",
       title: "ERP Cloudy",
-      role: "Engineering Lead/Integrator",
       desc: "Promoted as a team lead for a high-stakes project integrating the Polish government invoice system (Krajowy System e-Faktur - KSEF) into company's ERP architecture. Collaborated with accountants, digitized processes, and managed team development.",
       images: [
         "/assets/timeline/erp-cloudy/1.webp",
         "/assets/timeline/erp-cloudy/2.webp",
       ],
-      plainLink: "https://merkur.erpcloudy.com/",
       techs: ["javascript", "xml", "sap"],
     },
   },
@@ -209,7 +193,6 @@ export default [
     content: {
       status: "done",
       title: "Dashboard App",
-      role: "Software development",
       desc: "Developed and maintained all-in-one E2E foreign student platform, allowing Turkish students studying in Poland to track visa statuses, accommodations, appointments, and documents, with secure business logic as well as real-time communication channels.",
       images: [
         "/assets/timeline/olympos-dashboard/1.webp",
@@ -217,7 +200,6 @@ export default [
         "/assets/timeline/olympos-dashboard/3.webp",
         "/assets/timeline/olympos-dashboard/4.webp",
       ],
-      plainLink: "https://olymposedu.com/login/",
       gitLink: "https://github.com/Masculinn/education-crm",
       techs: ["nextjs", "remix", "react", "redux", "supabase", "tailwindcss"],
     },
@@ -227,7 +209,6 @@ export default [
     content: {
       status: "done",
       title: "atlanticmedi.com",
-      role: "Software Development",
       desc: "Built a static medical tourism web app consisting over 165 pages with internationalization(EN/PL). Scraped comprehensive informations from partner's knowledge-house containing medical treatments and services and combined all into a single monorepo with real-time chat-bot support.",
       images: [
         "/assets/timeline/atlanticmedi/1.webp",
@@ -235,7 +216,6 @@ export default [
         "/assets/timeline/atlanticmedi/3.webp",
         "/assets/timeline/atlanticmedi/4.webp",
       ],
-      plainLink: "https://atlanticmedi.com/",
       techs: ["nextjs", "react", "redux", "threejs", "tailwindcss"],
     },
   },
@@ -244,7 +224,6 @@ export default [
     content: {
       status: "done",
       title: "olymposedu.com",
-      role: "Software Development",
       desc: "Developed a company portfolio web app where students can learn about their educational opportunities by aspiring them to study in Poland, including information on universities, pricing, articles, and more.",
       images: [
         "/assets/timeline/olymposedu/1.webp",
@@ -252,7 +231,6 @@ export default [
         "/assets/timeline/olymposedu/3.webp",
         "/assets/timeline/olymposedu/4.webp",
       ],
-      plainLink: "https://olymposedu.com/",
       gitLink: "https://github.com/Masculinn/olymposedu",
       techs: ["nextjs", "remix", "react", "redux", "supabase"],
     },
@@ -262,7 +240,6 @@ export default [
     content: {
       status: "done",
       title: "finfluencer.com",
-      role: "Software Development",
       desc: "Developed a SPA integrated into the company's website for business analytics for Turkish financial influencers.",
       images: [
         "/assets/timeline/finfluencer/1.webp",
@@ -270,8 +247,6 @@ export default [
         "/assets/timeline/finfluencer/3.webp",
         "/assets/timeline/finfluencer/4.webp",
       ],
-      plainLink:
-        "https://atlanticvalleypartners.com/tr/finfluencer-ajansimiz.html",
       gitLink: "https://github.com/Masculinn/olymposedu",
       techs: ["nextjs", "react", "redux"],
     },
@@ -281,7 +256,6 @@ export default [
     content: {
       status: "done",
       title: "santaesmeraldas.com",
-      role: "Software Development",
       desc: "Developed a cross-platform for Etsy one of the top seller jewelry e-commerce brand from scratch, listing over 150+ highly-valued products that made over $1M. Focused on improving UX, SEO optimization by caring LCP, CLS, TTFB, A/B testing. Mainly focused on converting the business model to feasible online sales.",
       images: [
         "/assets/timeline/santa-esmeralda/1.webp",
@@ -289,7 +263,6 @@ export default [
         "/assets/timeline/santa-esmeralda/3.webp",
         "/assets/timeline/santa-esmeralda/4.webp",
       ],
-      plainLink: "https://santaesmeraldas.com/",
       techs: ["shopify", "javascript", "css", "html"],
     },
   },
@@ -297,12 +270,10 @@ export default [
     title: "Q3 2023",
     content: {
       images: [],
-      role: "Software development/integrator",
       status: "done",
       title: "ERP Cloudy",
       techs: ["javascript", "xml", "sap"],
       desc: "Joined the largest e-transformation software firm based on Turkey, serving over 370K+ clients. Simultaneously worked at a consulting firm. Focused on understanding and implementing solutions for the government e-invoice system (Krajowy System e-Faktur - KSEF). Primarily worked as an integrator developer by focusing system-based solutions and supporting the team.",
-      plainLink: "https://merkur.erpcloudy.com/",
     },
   },
   {
@@ -312,13 +283,11 @@ export default [
         "/assets/timeline/atlantic/1.webp",
         "/assets/timeline/atlantic/2.webp",
       ],
-      role: "Software Development",
       status: "done",
       title: "atlanticvalleypartners.com",
       techs: ["nextjs", "react", "redux", "tailwindcss"],
       desc: "Developed the company's portfolio with internationalization(EN/PL/TR) website with a focus on optimization, accessibility, and user experience. Collaborated with the design team to ensure the website met accessibility standards and provided a smooth user experience.",
       gitLink: "https://github.com/Masculinn/atlanticvalleypartners",
-      plainLink: "https://atlanticvalleypartners.com",
     },
   },
   {
@@ -326,7 +295,6 @@ export default [
     content: {
       status: "done",
       title: "The Last Human",
-      role: "Game Development(internship)",
       desc: "Finished my internship at Insider where I worked on a mobile non-stop survival game using the Unity game engine.",
       images: [],
       techs: ["unity"],
@@ -337,7 +305,6 @@ export default [
     content: {
       status: "done",
       title: "Freelancer",
-      role: "Web development",
       desc: "Worked on various freelancing platforms like Fiverr and Upwork, creating web applications based on client requirements. Gained experience in understanding client needs and delivering tailored solutions.",
       images: [],
       techs: ["php", "html", "css", "javascript", "jquery", "mysql"],

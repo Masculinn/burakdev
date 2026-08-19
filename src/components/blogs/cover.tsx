@@ -12,7 +12,7 @@ import {
   useMotionValueEvent,
   useTransform,
 } from "motion/react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { LqipImage } from "../lqip-image";
 import { Badge } from "../ui/badge";
 import { PostDifficulty } from "./post-difficulty";
@@ -91,7 +91,7 @@ function DraggableCurved({
   const controls = useAnimation();
   const rotation = useMotionValue(0);
   const [middleItem, setMiddleItem] = useState(items[0]);
-  const angleIncrement = useMemo(() => 360 / items.length, [items.length]);
+  const angleIncrement = 360 / items.length;
 
   useMotionValueEvent(rotation, "change", (value) => {
     const adjustedRotation = ((value % 360) + 350) % 360;

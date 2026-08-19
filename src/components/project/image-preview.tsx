@@ -1,7 +1,7 @@
 ﻿import MotionContainer from "@/motion/motion-container";
 import { getImgAlt } from "@/utils/getImgAlt";
 import { Expand } from "lucide-react";
-import { type FC, useCallback, useState } from "react";
+import { type FC, useState } from "react";
 import { LqipImage } from "../lqip-image";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { DialogTrigger } from "../ui/dialog";
@@ -19,7 +19,7 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
   triggerMode,
 }) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
-  const handleClick = useCallback(() => onSelect(img), [img, onSelect]);
+  const handleClick = () => onSelect(img);
 
   const Trigger = triggerMode === "dialog" ? DialogTrigger : DrawerTrigger;
 

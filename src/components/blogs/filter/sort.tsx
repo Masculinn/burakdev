@@ -47,6 +47,7 @@ export default function Sort({ className }: { className?: string }) {
           variant="ghost"
           className="bg-muted/50"
           aria-label="Sort"
+          nativeButton={false}
           render={
             <SelectTrigger className="w-auto">
               <SelectValue placeholder={<Filter className="size-4" />} />

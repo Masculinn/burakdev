@@ -1,28 +1,43 @@
 ﻿import Link from "next/link";
 import type { JSX } from "react";
-import { useMemo } from "react";
 
 export type AnchorProps = JSX.IntrinsicElements["a"];
 
-export const MdAnchor = ({ href, ...props }: AnchorProps) => {
-  const refSource = "burakdev.com";
+const refSource = "burakdev.com";
+
+function getHref(href: string | undefined): {
+  finalHref: string;
+  isExternal: boolean;
+} {
+  let finalHref = "";
+
   const safeHref = typeof href === "string" ? href.trim() : "";
   const isExternal = /^https?:\/\//i.test(safeHref);
 
-  const finalHref = useMemo(() => {
-    if (!isExternal || !safeHref) return safeHref;
-    try {
-      const url = new URL(safeHref);
-      if (!url.searchParams.has("ref")) {
-        url.searchParams.append("ref", refSource);
-      }
-      return url.toString();
-    } catch {
-      return safeHref;
+  if (!isExternal || !safeHref)
+    return {
+      finalHref: safeHref,
+      isExternal,
+    };
+  try {
+    const url = new URL(safeHref);
+    if (!url.searchParams.has("ref")) {
+      url.searchParams.append("ref", refSource);
     }
-  }, [safeHref, isExternal]);
+    finalHref = url.toString();
+  } catch {
+    finalHref = safeHref;
+  }
 
+  return {
+    finalHref,
+    isExternal,
+  };
+}
+
+export const MdAnchor = ({ href, ...props }: AnchorProps) => {
   if (!href) return null;
+  const { finalHref, isExternal } = getHref(href);
 
   const defaultExternalAttrs = isExternal
     ? { target: "_blank", rel: "noopener noreferrer" }

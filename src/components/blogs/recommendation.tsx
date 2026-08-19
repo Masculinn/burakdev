@@ -3,7 +3,6 @@ import MotionContainer from "@/motion/motion-container";
 import MotionText from "@/motion/motion-text";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { memo } from "react";
 import { LqipImage } from "../lqip-image";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { Button } from "../ui/button";
@@ -147,4 +146,4 @@ function ViewAllCard({ blogs }: { blogs: BlogType[] }) {
     </Card>
   );
 }
-export default memo(Recommendation);
+export default Recommendation;

@@ -3,7 +3,6 @@ import type { ProjectStatus, TimelineContentItem } from "@/interfaces";
 import getIcon from "@/lib/getIcon";
 import { cn } from "@/lib/utils";
 import MotionContainer from "@/motion/motion-container";
-import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import type { FC } from "react";
 import { Github } from "./icons/svg-icons";
@@ -64,11 +63,9 @@ const Timeline = ({ className }: { className?: string }) => {
 const TimelineItem: FC<TimelineContentItem> = ({
   status,
   title,
-  role,
   techs,
   images,
   desc,
-  plainLink,
   gitLink,
 }) => {
   return (
@@ -77,13 +74,10 @@ const TimelineItem: FC<TimelineContentItem> = ({
         <PingWrapper status={status} />
         <span className="capitalize">{status}</span>
       </Badge>
-      <h2 className="text-2xl h-auto truncate lg:text-4xl mb-4 font-bold tracking-tight pt-4 lg:mt-0 -mt-3 font-secondary">
+      <h2 className="text-2xl h-auto truncate lg:text-4xl mb-4 font-bold tracking-tight lg:mt-0 -mt-3 font-secondary">
         {title}
       </h2>
-      <p className="text-neutral-800 dark:text-neutral-400 text-sm md:text-sm lg:text-base -mt-4">
-        My Role: <span className="">{role}</span>
-      </p>
-      <Marquee className="w-full md:w-108 py-4">
+      <Marquee className="w-full md:w-108 py-2">
         {techs.map((tech, idx) => {
           const Icon = getIcon(tech.toLowerCase());
           return (
@@ -99,36 +93,27 @@ const TimelineItem: FC<TimelineContentItem> = ({
       <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm lg:text-base font-normal lg:pt-3 pt-2">
         {desc}
       </p>
-      <div className="flex items-center justify-center lg:gap-2 gap-1 flex-row-reverse lg:pb-8 pb-6 lg:pt-4 pt-2 w-full">
+      <div className="flex items-center justify-center lg:pb-8 pb-6 lg:pt-4 pt-2 w-full">
         <Button
-          className="w-1/2 h-auto"
-          variant={"outline"}
+          className="w-full"
+          variant="outline"
+          size="lg"
           disabled={!gitLink}
+          nativeButton={false}
+          render={
+            <Link
+              aria-disabled={!gitLink}
+              href={gitLink ?? ""}
+              rel="noopener noreferrer"
+              target="_blank"
+            />
+          }
         >
-          <Link
-            aria-disabled={!gitLink}
-            href={gitLink ?? ""}
-            rel="noopener noreferrer"
-            target="_blank"
-            className="w-full h-full items-center justify-center flex flex-row gap-2"
-          >
-            <Github className="w-6 h-6 lg:w-8 lg:h-8" />
-            <span className="text-xs lg:text-base">Github</span>
-          </Link>
-        </Button>
-        <Button className="w-1/2 h-auto" disabled={!plainLink}>
-          <Link
-            href={plainLink ?? ""}
-            rel="noopener noreferrer"
-            target="_blank"
-            className="w-full h-full items-center justify-center flex flex-row gap-2"
-          >
-            <span className="text-xs lg:text-base">Visit</span>
-            <ArrowUpRight className="w-6 h-6 lg:w-8 lg:h-8" />
-          </Link>
+          <Github className="w-6 h-6 lg:w-8 lg:h-8" />
+          <span className="text-xs lg:text-base">Github</span>
         </Button>
       </div>
-      {images && <Project {...{ images, desc, role, title, plainLink }} />}
+      {images && <Project {...{ images, desc, title }} />}
     </div>
   );
 };

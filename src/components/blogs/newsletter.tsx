@@ -5,7 +5,6 @@ import MotionImage from "@/motion/motion-image";
 import MotionText from "@/motion/motion-text";
 import { Mail } from "lucide-react";
 import dynamic from "next/dynamic";
-import { memo } from "react";
 import { Badge } from "../ui/badge";
 import Subscribe from "./subscribe";
 
@@ -89,4 +88,4 @@ const Newsletter = dynamic(() => Promise.resolve(NewsletterComponent), {
   ),
 });
 
-export default memo(Newsletter);
+export default Newsletter;
