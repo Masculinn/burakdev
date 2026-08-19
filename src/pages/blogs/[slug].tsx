@@ -116,7 +116,7 @@ export default function Page({
   return (
     <>
       <Meta {...meta} />
-      <article className="leading-snug text-blog-muted tracking-tight">
+      <article className="leading-snug text-blog-muted tracking-tight container laptop:px-16 desktop:px-0">
         <Cover {...meta} readingTime={readingTime} />
         <MDXClient
           frontmatter={mdxSource.frontmatter}

@@ -41,6 +41,8 @@
 }
 
 @theme inline {
+  --breakpoint-laptop: 88rem;
+  --breakpoint-desktop: 108rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-primary: var(--font-primary);

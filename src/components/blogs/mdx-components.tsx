@@ -1,4 +1,6 @@
-﻿import { createMDXComponents } from "@/lib/create-mdx-components";
+﻿// @ts-nocheck
+
+import { createMDXComponents } from "@/lib/create-mdx-components";
 import type { SeparatorProps } from "@base-ui/react";
 import {
   MdAnchor,

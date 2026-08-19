@@ -1,6 +1,4 @@
-import { Mq1 } from "@/components/custom-animated-texts";
 import Timeline from "@/components/timeline";
-import MotionText from "@/motion/motion-text";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 import Link from "next/link";
@@ -26,60 +24,24 @@ export default function Home() {
         />
       </Head>
       <div>
-        <MotionText
-          elementType="h1"
-          controller={{
-            trigger: true,
-          }}
-          animation={{
-            mode: ["filterBlurIn", "fadeUp", "clipUp"],
-            transition: "cubicElastic",
-            duration: 1,
-          }}
-          config={{
-            mode: "chars",
-            duration: 0.08,
-            delayLogic: "linear",
-          }}
-          wrapperClassName="md:text-7xl text-6xl text-start font-extrabold tracking-tighter line-clamp-5 pb-6 pt-2"
-        >
-          Hi there!
-        </MotionText>
         <p className="text-start leading-relaxed inline text-blog-muted">
-          I'm proud to be{" "}
-          <MotionText
-            elementType="span"
-            wrapperClassName="inline text-shadow-2xs"
-            controller={{
-              trigger: true,
-            }}
-            animation={{
-              mode: ["fadeIn"],
-              transition: "smooth",
-              duration: 1,
-              delay: 1,
-            }}
-            config={{ duration: 0.016, mode: "chars", delayLogic: "linear" }}
-            className="inline text-rose-500"
-          >
-            full-stack software engineer
-          </MotionText>
-          over <Mq1 delay={2} /> of immersive experience in the agile industries
-          based on Warsaw.
+          Hi 👋 I&apos;m a full-stack software engineer with 5+ years of
+          experience delivering resilient, production-grade web platforms across
+          fast-paced industries — based in Warsaw.
         </p>
         <p className="text-start leading-relaxed text-blog-muted pt-2">
-          Over the years, I've honed my skills in crafting clean, reliable
-          codebases and intuitive interfaces designed to meet and exceed
+          Over the years, I&apos;ve honed my craft in building clean, reliable
+          codebases and intuitive interfaces that meet — and exceed —
           organizational goals.
         </p>
         <p className="text-start leading-relaxed text-blog-muted pt-2">
-          I’ve worked at Atlantic and EDM refining my skills as a lead SWE.
-          Today, I dedicate my time to maintaining an{" "}
+          I&apos;ve sharpened my skills as a lead SWE at Atlantic and EDM.
+          Today, I maintain an{" "}
           <Link
             href="https://github.com/Motion-Provider"
             target="_blank"
             rel="noopener noreferrer"
-            className="underline text-muted-foreground font-bold tracking-tighter hover:text-primary transition-colors underline-offset-3 "
+            className="underline text-blog-muted font-bold tracking-tighter hover:text-primary transition-colors underline-offset-[3px]"
           >
             open source animation library
           </Link>{" "}
