@@ -39,7 +39,7 @@ async function readServerSideSlugs(): Promise<Item[] | null> {
   try {
     const dbFile = path.join(ROOT, "src", "utils", "db.ts").replace(/\\/g, "/");
     const utilFile = path
-      .join(ROOT, "src", "lib", "utils.ts")
+      .join(ROOT, "src", "utils", "convertToSlug.ts")
       .replace(/\\/g, "/");
 
     const dbMod = await import(`file://${dbFile}`);

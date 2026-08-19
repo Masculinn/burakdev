@@ -1,10 +1,10 @@
 [
   {
-    "url": "typescript-discriminated-unions-and-generics-complete-guide-with-examples",
-    "title": "TypeScript Discriminated Unions and Generics: Complete Guide with Examples"
-  },
-  {
     "url": "is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1",
     "title": "Is React(tanstack) Query Too Biased? Deep dive: Real Life Data Fetching Practices — Chapter 1"
+  },
+  {
+    "url": "typescript-discriminated-unions-and-generics-complete-guide-with-examples",
+    "title": "TypeScript Discriminated Unions and Generics: Complete Guide with Examples"
   }
 ]
