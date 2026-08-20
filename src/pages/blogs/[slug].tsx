@@ -48,7 +48,7 @@ export const getStaticProps = (async ({ params }) => {
   if (!data || error) throw error;
 
   const post = data.find(({ title }) => convertToSlug(title) === slug);
-  if (!post || !post.content) return { notFound: true };
+  if (!post?.content) return { notFound: true };
 
   const { content, ...meta } = post;
   const readingTime = getReadingTime(content.toString());

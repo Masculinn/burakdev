@@ -5,11 +5,11 @@ import { ChevronRight } from "lucide-react";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
 import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-    BreadcrumbList,
-    BreadcrumbSeparator,
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
 } from "../ui/breadcrumb";
 
 type PathObjType = { href: string; children: string };

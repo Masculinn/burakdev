@@ -1,8 +1,8 @@
 ﻿import { getImagePlaceholder } from "@/lib/getImagePlaceholder";
 import NextImage from "next/image";
-import type { FC, HTMLAttributes } from "react";
+import type { ComponentProps, FC } from "react";
 
-interface LqipImageProps extends HTMLAttributes<HTMLImageElement> {
+interface LqipImageProps extends ComponentProps<typeof NextImage> {
   src: string;
   alt: string;
   fill?: boolean;
@@ -10,9 +10,6 @@ interface LqipImageProps extends HTMLAttributes<HTMLImageElement> {
   className?: string;
   fetchPriority?: "high" | "low" | "auto";
 }
-
-// metadata = false => fill
-// metadata = true => base64
 
 export const LqipImage: FC<LqipImageProps> = ({
   alt,
@@ -23,37 +20,26 @@ export const LqipImage: FC<LqipImageProps> = ({
   fetchPriority,
   ...props
 }) => {
-  if (!src) {
-    console.warn("⚠️ Returning null, not found src prop for lqip-image fn.");
-    return null;
-  }
+  if (!src) return null;
 
   const placeholder = fill
     ? getImagePlaceholder(src, false)
     : getImagePlaceholder(src, true);
 
-  if (!placeholder) {
-    console.warn(
-      "⚠️ Returning null, not found placeholder for",
-      src,
-      "at lqip-image fn.",
-    );
-    return null;
-  }
+  if (!placeholder) return null;
 
   if (typeof placeholder === "object") {
     return (
       <NextImage
         alt={alt}
         src={src}
-        width={placeholder.width}
-        height={placeholder.height}
         blurDataURL={placeholder.base64}
         placeholder="blur"
         loading={loading}
         title={alt}
         fetchPriority={fetchPriority}
         className={className}
+        {...placeholder}
         {...props}
       />
     );

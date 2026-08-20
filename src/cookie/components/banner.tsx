@@ -1,6 +1,6 @@
 ﻿import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { isProd } from "@/utils/isProd";
+import { isProd } from "@/lib/env";
 import { createPortal } from "react-dom";
 import config from "../config";
 import { useCookie } from "../hooks";

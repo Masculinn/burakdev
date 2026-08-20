@@ -1,4 +1,4 @@
-﻿import { BLOG_CONTEXT } from "@/constants/ctx.config";
+﻿import CONTEXT from "@/constants/blog.config";
 import { useBlogSearch, useBlogSort, useBlogTags } from "@/hooks/use-posts";
 import type { BlogPostSortProps, BlogType } from "@/interfaces";
 import MotionChain from "@/motion/motion-chain";
@@ -7,7 +7,7 @@ import { useDebounce } from "@uidotdev/usehooks";
 import BlogCard from "./card";
 import NotFound from "./not-found";
 
-const { tags: defaultTags } = BLOG_CONTEXT;
+const { tags: defaultTags } = CONTEXT;
 
 function areSameSet(a: string[], b: string[]) {
   return a.length === b.length && a.every((v) => b.includes(v));
@@ -117,13 +117,8 @@ function BlogPosts({ posts }: { posts: BlogType[] }) {
         }}
         elementType="div"
       >
-        {filteredPosts.map((post, idx) => (
-          <BlogCard
-            {...post}
-            key={post.id}
-            isEager={idx === 0 || idx === 1}
-            isRecent={recentIds.has(post.id)}
-          />
+        {filteredPosts.map((post) => (
+          <BlogCard key={post.id} isRecent={recentIds.has(post.id)} {...post} />
         ))}
       </MotionChain>
     </section>

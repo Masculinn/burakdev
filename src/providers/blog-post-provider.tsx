@@ -1,4 +1,4 @@
-﻿import { BLOG_CONTEXT } from "@/constants/ctx.config";
+﻿import CONTEXT from "@/constants/blog.config";
 import {
   BlogSearchContext,
   BlogSortContext,
@@ -6,43 +6,40 @@ import {
 } from "@/contexts";
 import type { BlogPostSortProps, Tag } from "@/interfaces";
 import { useState } from "react";
-
-type ProviderProps = {
-  children: React.ReactNode;
-  initialTags: Tag[];
-};
+import { composeProviders } from ".";
 
 export default function BlogPostProvider({
   children,
   initialTags,
-}: ProviderProps) {
+}: {
+  children: React.ReactNode;
+  initialTags: Tag[];
+}) {
   const [search, setSearch] = useState<string>("");
-  const [sort, setSort] = useState<BlogPostSortProps>(BLOG_CONTEXT.sort);
-  const [selectedTags, setSelectedTags] = useState<Tag[]>(BLOG_CONTEXT.tags);
+  const [sort, setSort] = useState<BlogPostSortProps>(CONTEXT.sort);
+  const [selectedTags, setSelectedTags] = useState<Tag[]>(CONTEXT.tags);
 
-  return (
-    <BlogSearchContext.Provider
-      value={{
-        search,
-        setSearch,
-      }}
-    >
-      <BlogSortContext.Provider
-        value={{
-          sort,
-          setSort,
-        }}
-      >
-        <BlogTagsContext.Provider
-          value={{
-            initialTags,
-            selectedTags,
-            setSelectedTags,
-          }}
-        >
-          {children}
-        </BlogTagsContext.Provider>
-      </BlogSortContext.Provider>
-    </BlogSearchContext.Provider>
+  const _search = {
+    search,
+    setSearch,
+  };
+
+  const _sort = {
+    sort,
+    setSort,
+  };
+
+  const _tags = {
+    initialTags,
+    selectedTags,
+    setSelectedTags,
+  };
+  return composeProviders(
+    [
+      [BlogSearchContext, _search, "search-provider"],
+      [BlogSortContext, _sort, "sort-provider"],
+      [BlogTagsContext, _tags, "tags-provider"],
+    ],
+    children,
   );
 }

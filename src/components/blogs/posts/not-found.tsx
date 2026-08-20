@@ -1,19 +1,8 @@
-import {
-  Item,
-  ItemActions,
-  ItemContent,
-  ItemDescription,
-  ItemTitle,
-} from "@/components/ui/item";
-import slugs from "@/generated/slugs.json" with { type: "json" };
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import MotionChain from "@/motion/motion-chain";
-import MotionContainer from "@/motion/motion-container";
 import MotionText from "@/motion/motion-text";
 import type { MotionAnimationProps } from "@/motion/types";
-import { Dice6 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const items = Array.from({ length: 12 }, (_, i) => {
@@ -43,12 +32,6 @@ const animations = items.map(() => ({
 export default function NotFound({ className }: { className?: string }) {
   const [trigger, setTrigger] = useState<boolean>(false);
   const isMobile = useIsMobile();
-  const router = useRouter();
-
-  const redirectUserToRandomPage = () => {
-    const post = slugs[Math.floor(Math.random() * slugs.length)].url;
-    router.push(`/blogs/${post}`);
-  };
 
   return (
     <div
@@ -77,46 +60,6 @@ export default function NotFound({ className }: { className?: string }) {
       <p className="text-muted-foreground max-w-md pb-2">
         Oops, you have likely searched something that I have not written yet..
       </p>
-      <Item variant="default" size="sm">
-        <button
-          type="button"
-          onClick={redirectUserToRandomPage}
-          onMouseEnter={() => setTrigger(true)}
-          onMouseLeave={() => setTrigger(false)}
-          className="max-w-2xl flex backdrop-blur-xs md:w-96 w-full overflow-hidden p-4"
-        >
-          <ItemContent>
-            <ItemTitle>Tomorrow is a brand new day 🤞</ItemTitle>
-            <ItemDescription className="text-start">
-              Get a random post instead
-            </ItemDescription>
-          </ItemContent>
-          <ItemActions>
-            {isMobile ? (
-              <Dice6 className="size-6 " />
-            ) : (
-              <MotionContainer
-                animation={{
-                  mode: ["translate3dRotate", "filterBlurIn"],
-                  transition: "gentle",
-                  duration: 1,
-                }}
-                elementType="div"
-                controller={{
-                  trigger,
-                  configView: {
-                    once: false,
-                    amount: 0.5,
-                  },
-                }}
-                className="relative"
-              >
-                <Dice6 className="size-7 " />
-              </MotionContainer>
-            )}
-          </ItemActions>
-        </button>
-      </Item>
     </div>
   );
 }

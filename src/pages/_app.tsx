@@ -1,45 +1,42 @@
 import Cookie from "@/cookie";
 import type { ThemeType } from "@/interfaces";
+import { navigateWithTransition } from "@/lib/view-transition";
 import AppProvider from "@/providers/app-provider";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 
-function syncThemeFromStorage() {
-  if (typeof window === "undefined") return;
-
-  let t: ThemeType | null = null;
-
-  try {
-    const raw = window.localStorage.getItem("theme");
-    if (raw) t = raw as ThemeType;
-  } catch (e) {
-    console.error(`Error reading localStorage on syncThemeFromStorage: ${e}`);
-  }
-
-  if (!t && typeof window.__theme !== "undefined") t = window.__theme ?? null;
-
-  if (!t)
-    t =
-      (process.env.NEXT_PUBLIC_DEFAULT_THEME as ThemeType) ??
-      ("light" as ThemeType);
-
-  if (window.__setTheme) {
-    window.__setTheme(t);
-  } else {
-    document.documentElement.classList.toggle("dark", t === "dark");
-    window.__theme = t;
-    window.dispatchEvent(new CustomEvent("theme-change", { detail: t }));
-  }
-}
+const isThemeType = (value: string): value is ThemeType =>
+  value === "light" || value === "dark";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   useEffect(() => {
-    syncThemeFromStorage();
-    Router.events.on("routeChangeComplete", syncThemeFromStorage);
-    return () => Router.events.off("routeChangeComplete", syncThemeFromStorage);
+    function handleStorage(event: StorageEvent) {
+      if (event.key !== "theme" || !event.newValue) return;
+      if (!isThemeType(event.newValue)) return;
+      window.__setTheme?.(event.newValue);
+    }
+
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
   }, []);
+
+  useEffect(() => {
+    router.beforePopState(({ url, as, options }) => {
+      void navigateWithTransition(
+        () => router.prefetch(url, as),
+        () => router.replace(url, as, options),
+      );
+      return false;
+    });
+
+    return () => {
+      router.beforePopState(() => true);
+    };
+  }, [router]);
 
   return (
     <AppProvider>

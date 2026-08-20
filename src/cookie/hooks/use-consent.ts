@@ -1,11 +1,14 @@
+import { isProd } from "@/lib/env";
 import { useEffect } from "react";
 import { useCookie } from "./use-cookie";
 
-export const useConsent = (isProd: boolean) => {
+const _isProd = isProd();
+
+export const useConsent = () => {
   const { consent } = useCookie();
 
   useEffect(() => {
-    if (!consent || !consent.analytics || !isProd) return;
+    if (!consent?.analytics || !_isProd) return;
     if ((window as Window).gtag) {
       try {
         (window as Window).gtag("consent", "update", {
@@ -13,5 +16,5 @@ export const useConsent = (isProd: boolean) => {
         });
       } catch {}
     }
-  }, [consent, isProd]);
+  }, [consent, _isProd]);
 };

@@ -7,7 +7,7 @@
         <language>en-us</language>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <copyright>Copyright 2026, justc0de_sessions author Burak Bilen</copyright>
-        <lastBuildDate>2026-08-19T02:12:51.703Z</lastBuildDate>
+        <lastBuildDate>2026-08-19T23:34:23.821Z</lastBuildDate>
           <item>
     <title>TypeScript Discriminated Unions and Generics: Complete Guide with Examples</title>
     <link>https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples</link>
@@ -26,14 +26,12 @@ Enjoy reading!
 
 1. [What are the terms 'discrimination' and 'generic'?](#what-are-the-terms-discrimination-and-generic)
 2. [Practicing with discriminated union](#practicing-with-discriminated-unions)
-
    - [First bottleneck: Deduplication of tuples](#first-bottleneck-deduplication-of-tuples)
    - [Second bottleneck: The hidden unresolved union types](#second-bottleneck-the-hidden-unresolved-union-types)
    - [The root cause of deduplicated tuples](#the-root-cause-of-deduplicated-tuples)
    - [Solution for the hidden unresolved union types](#solution-for-the-hidden-unresolved-union-types)
 
 3. [Making a generic type](#making-a-generic-type)
-
    - [Creating basic generics](#creating-basic-generics)
    - [Typescript conditional types](#typescript-conditional-types)
    - [Using infer keyword to extract something from a matched type](#using-infer-keyword-to-extract-something-from-a-matched-type)

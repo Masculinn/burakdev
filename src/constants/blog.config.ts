@@ -1,8 +1,6 @@
 ﻿import type { BlogPostSortProps, BlogTagsContextProps } from "@/interfaces";
 
-const BLOG_CONTEXT = {
+export default {
   tags: ["all"] as unknown as BlogTagsContextProps["initialTags"],
   sort: "new-to-old" as BlogPostSortProps,
-};
-
-export { BLOG_CONTEXT };
+} as const;

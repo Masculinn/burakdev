@@ -6,7 +6,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import type { NavBasicType } from "@/interfaces";
-import Link from "next/link";
+import { TransitionLink } from "../transition-link";
 
 type NavBasicProps = {
   items: NavBasicType[];
@@ -21,10 +21,10 @@ export const NavBasic = ({ items, name }: NavBasicProps) => (
         <SidebarMenuItem key={item.title}>
           <SidebarMenuButton
             render={
-              <Link href={item.url} target="_blank">
+              <TransitionLink href={item.url} target="_blank">
                 <item.icon />
                 <span>{item.title}</span>
-              </Link>
+              </TransitionLink>
             }
           />
         </SidebarMenuItem>

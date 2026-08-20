@@ -39,7 +39,7 @@ function HighlightCodeSnippet({
         mode: ["fadeIn", "filterBlurIn"],
         transition: "gentle",
         duration: 1,
-      } as MotionAnimationProps),
+      }) as MotionAnimationProps,
   );
 
   if (shouldAnimate) {

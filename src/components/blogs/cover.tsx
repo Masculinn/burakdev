@@ -31,7 +31,6 @@ export default function Cover({
   readingTime,
 }: CoverProps) {
   const sessionId = `SESSION_NO_#${id.toString().padStart(3, "0")}`;
-
   const date = new Date(published_at).toLocaleDateString("en-US", {
     day: "2-digit",
     month: "2-digit",
@@ -39,8 +38,18 @@ export default function Cover({
   });
 
   return (
-    <header className="overflow-hidden md:h-auto md:min-h-80 h-auto w-full flex items-center-safe justify-center relative rounded-t-2xl md:p-12 p-6 mb-8">
-      <h1 className="font-bold tracking-tighter max-w-2xl text-shadow-2xs z-50 text-4xl md:text-5xl my-16 text-foreground">
+    <header
+      className={cn(
+        "md:h-auto md:min-h-80 h-auto w-full",
+        "overflow-hidden relative md:p-12 p-6 mb-8",
+        "flex items-center-safe justify-center rounded-t-2xl",
+      )}
+      tabIndex={-1}
+    >
+      <h1
+        className="font-bold tracking-tighter max-w-2xl text-shadow-2xs z-50 text-4xl md:text-5xl my-16 text-foreground"
+        style={{ viewTransitionName: `post-title-${id}` }}
+      >
         {title}
       </h1>
       <Badge
@@ -57,10 +66,12 @@ export default function Cover({
         src={banner_image}
         loading="lazy"
         className="absolute inset-0 object-cover md:object-center size-full -z-10 rounded-2xl"
+        style={{ viewTransitionName: `post-cover-${id}` }}
       />
       <PostDifficulty
         level={level}
         clasName="z-50 text-xs top-4 left-4 absolute"
+        style={{ viewTransitionName: `post-badge-${id}` }}
       />
       <div className="bg-linear-to-b from-transparent dark:to-80% to-background size-full object-contain absolute inset-0" />
       <DraggableCurved items={tags} spinInertia={0.98} />
