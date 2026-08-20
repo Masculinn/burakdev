@@ -4,10 +4,10 @@ import { useWindowScroll } from "@uidotdev/usehooks";
 import { ChevronRight } from "lucide-react";
 import { useRouter } from "next/router";
 import { Fragment } from "react";
+import { TransitionLink } from "../transition-link";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "../ui/breadcrumb";
@@ -29,7 +29,12 @@ export const NavigationBreadCrumb = ({ className }: { className?: string }) => {
       <Breadcrumb className={cn("w-full h-auto", className)}>
         <BreadcrumbList>
           <BreadcrumbItem className="capitalize truncate">
-            <BreadcrumbLink href="/">Home</BreadcrumbLink>
+            <TransitionLink
+              className="transition-colors hover:text-foreground"
+              href="/"
+            >
+              Home
+            </TransitionLink>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
@@ -53,9 +58,13 @@ export const NavigationBreadCrumb = ({ className }: { className?: string }) => {
                   hidden ? "opacity-0 pointer-events-none" : "opacity-100",
                 )}
               >
-                <BreadcrumbLink tabIndex={hidden ? -1 : 0} href={props.href}>
+                <TransitionLink
+                  className="transition-colors hover:text-foreground"
+                  tabIndex={hidden ? -1 : 0}
+                  href={props.href}
+                >
                   {props.children}
-                </BreadcrumbLink>
+                </TransitionLink>
               </BreadcrumbItem>
               {idx + 1 !== paths.length && (
                 <BreadcrumbSeparator

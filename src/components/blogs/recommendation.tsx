@@ -7,7 +7,6 @@ import { LqipImage } from "../lqip-image";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
-import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import BlogCard from "./posts/card";
 
 function Recommendation({
@@ -40,15 +39,14 @@ function Recommendation({
       >
         Continue reading.
       </MotionText>
-      <ScrollArea className="w-full h-max relative">
+      <div className="w-full h-max relative scrollbar-custom overflow-x-scroll overflow-y-hidden">
         <div className="flex md:flex-row flex-col gap-4 w-full">
           {filteredBlogs.map((val) => (
-            <BlogCard isEager={false} {...val} key={val.id} isRecent={false} />
+            <BlogCard {...val} key={val.id} isRecent={false} />
           ))}
           <ViewAllCard blogs={blogs} />
         </div>
-        <ScrollBar orientation="horizontal" className="md:flex hidden" />
-      </ScrollArea>
+      </div>
     </section>
   );
 }

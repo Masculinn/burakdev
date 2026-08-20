@@ -64,7 +64,7 @@ export default function BlogsPage({
         />
       </Head>
       <section>
-        <Banner />
+        <Banner animationKey={posts.length} />
         <BlogPostProvider initialTags={tags}>
           <BlogFilter />
           <BlogPosts posts={posts} />

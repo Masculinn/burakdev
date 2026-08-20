@@ -1,7 +1,8 @@
 ﻿import { cn } from "@/lib/utils";
-
+import type { VariantProps } from "class-variance-authority";
+import type { Badge } from "./ui/badge";
 type PingProps = {
-  mode: "success" | "error" | "warning";
+  mode: VariantProps<typeof Badge>["variant"];
   size: "sm" | "md" | "lg";
   className?: string;
   isAnimated?: boolean;
@@ -15,7 +16,7 @@ export default function Ping(props: PingProps) {
   const modeClass =
     mode === "success"
       ? "bg-green-400"
-      : mode === "error"
+      : mode === "destructive"
         ? "bg-red-400"
         : "bg-amber-500";
 

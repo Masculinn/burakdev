@@ -1,8 +1,8 @@
 ﻿import MotionText from "@/motion/motion-text";
 
-export default function Banner() {
+export default function Banner({ animationKey }: { animationKey: number }) {
   return (
-    <section className="relative flex flex-col overflow-ellipsis md:pb-6">
+    <section className="relative flex flex-col text-ellipsis md:pb-6">
       <MotionText
         wrapperClassName="md:text-5xl text-3xl font-secondary"
         animation={{
@@ -16,6 +16,7 @@ export default function Banner() {
           duration: 0.06,
           mode: "chars",
         }}
+        key={animationKey}
       >
         justc0de_sessions
       </MotionText>

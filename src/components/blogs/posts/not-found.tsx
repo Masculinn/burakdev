@@ -1,9 +1,6 @@
-import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import MotionChain from "@/motion/motion-chain";
-import MotionText from "@/motion/motion-text";
 import type { MotionAnimationProps } from "@/motion/types";
-import { useState } from "react";
 
 const items = Array.from({ length: 12 }, (_, i) => {
   const size = 16 + i * 36;
@@ -30,33 +27,17 @@ const animations = items.map(() => ({
 })) as MotionAnimationProps[];
 
 export default function NotFound({ className }: { className?: string }) {
-  const [trigger, setTrigger] = useState<boolean>(false);
-  const isMobile = useIsMobile();
-
   return (
     <div
       className={cn(
-        "w-full h-80 flex flex-col items-center justify-center absolute text-center  overflow-hidden",
+        "w-full md:h-80 flex flex-col items-center justify-center absolute text-center  overflow-hidden h-full",
         className,
       )}
     >
       <NotFoundCircle className="-z-10 absolute bottom-0 md:scale-100 scale-75" />
-      <MotionText
-        elementType="h2"
-        animation={{
-          mode: ["fadeIn", "filterBlurIn", "flash"],
-          transition: "fadeRotate",
-          duration: 1,
-        }}
-        config={{
-          duration: 0.08,
-          mode: "chars",
-          delayLogic: "linear",
-        }}
-        wrapperClassName="md:text-5xl text-3xl font-extrabold tracking-tighter leading pb-2 z-10"
-      >
+      <h2 className="md:text-5xl text-3xl font-extrabold tracking-tighter leading pb-2 z-10">
         - 404 -
-      </MotionText>
+      </h2>
       <p className="text-muted-foreground max-w-md pb-2">
         Oops, you have likely searched something that I have not written yet..
       </p>

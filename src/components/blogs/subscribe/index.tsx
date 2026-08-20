@@ -40,7 +40,13 @@ const meta = {
     </p>
   ),
 };
-export default function Subscribe({ isIcon }: { isIcon: boolean }) {
+export default function Subscribe({
+  isIcon,
+  className,
+}: {
+  isIcon: boolean;
+  className?: string;
+}) {
   const isMobile = useIsMobile();
 
   const [open, setOpen] = useState<boolean>(false);
@@ -49,7 +55,11 @@ export default function Subscribe({ isIcon }: { isIcon: boolean }) {
   if (isMobile) {
     return (
       <Drawer onOpenChange={setOpen} open={open}>
-        <SubscribeButton handleOpen={handleOpen} isIcon={isIcon} />
+        <SubscribeButton
+          handleOpen={handleOpen}
+          isIcon={isIcon}
+          className={className}
+        />
         <DrawerContent className="overflow-hidden">
           <DrawerHeader className="text-center justify-center relative">
             <SubscribeBlur />
@@ -67,7 +77,11 @@ export default function Subscribe({ isIcon }: { isIcon: boolean }) {
 
   return (
     <Dialog onOpenChange={setOpen} open={open} modal>
-      <SubscribeButton handleOpen={handleOpen} isIcon={isIcon} />
+      <SubscribeButton
+        handleOpen={handleOpen}
+        isIcon={isIcon}
+        className={className}
+      />
       <DialogContent className="overflow-hidden">
         <DialogHeader className="relative">
           <SubscribeBlur />

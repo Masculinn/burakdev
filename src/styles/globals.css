@@ -43,6 +43,7 @@
 @theme inline {
   --breakpoint-laptop: 88rem;
   --breakpoint-desktop: 108rem;
+  --breakpoint-mobile: 32rem;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-primary: var(--font-primary);
@@ -164,6 +165,25 @@ body {
   }
 }
 
+.scrollbar-custom::-webkit-scrollbar {
+  width: 6px;
+  z-index: 999;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
 button {
   cursor: pointer;
 }
@@ -181,9 +201,7 @@ button {
   --moon-bg: #c4c9d1;
   --spot-color: #959db1;
   --circle-container-offset: calc(
-    (var(--circle-container-diameter) - var(--container-height)) /
-    2 *
-    -1
+    (var(--circle-container-diameter) - var(--container-height)) / 2 * -1
   );
   --stars-color: #fff;
   --clouds-color: #f3fdff;
@@ -401,9 +419,7 @@ button {
   + .theme-switch__container
   .theme-switch__circle-container {
   left: calc(
-    100% -
-    var(--circle-container-offset) -
-    var(--circle-container-diameter)
+    100% - var(--circle-container-offset) - var(--circle-container-diameter)
   );
 }
 
@@ -414,10 +430,8 @@ button {
   + .theme-switch__container
   .theme-switch__circle-container:hover {
   left: calc(
-    100% -
-    var(--circle-container-offset) -
-    var(--circle-container-diameter) -
-    0.187em
+    100% - var(--circle-container-offset) - var(--circle-container-diameter) -
+      0.187em
   );
 }
 

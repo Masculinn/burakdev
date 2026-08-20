@@ -69,10 +69,10 @@ function Tags({ isCheckbox, className }: TagsProps) {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger
-          className={"w-full bg-muted/50"}
+          className={cn("w-auto bg-muted/50", className)}
           render={
-            <Button variant="outline" className={cn("", className)}>
-              <ListFilterPlus className=" size-4" /> Category
+            <Button variant="outline" className={className}>
+              <ListFilterPlus className="size-4" /> Category
             </Button>
           }
         />

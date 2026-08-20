@@ -57,7 +57,7 @@ export default function AppProvider({
             <div className="w-full lg:max-w-4xl max-w-[20.8rem] mx-auto h-full py-8 relative z-0">
               {children}
             </div>
-            <footer className="pb-3">
+            <footer className="absolute bottom-3 w-full z-50">
               <div className="w-full h-12 flex items-center justify-center">
                 <p className="text-muted-foreground text-xs">
                   &copy; {new Date().getFullYear()} Burak Bilen, all rights

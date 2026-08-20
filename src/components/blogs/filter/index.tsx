@@ -22,9 +22,9 @@ export default function BlogFilter() {
           <Search className="md:flex-1 w-full" />
           <Sort />
         </div>
-        <div className="flex flex-row items-center justify-center-safe w-full gap-2 md:w-auto px-1">
-          <Tags isCheckbox className="md:w-auto w-1/3" />
-          <Subscribe isIcon={false} />
+        <div className="flex flex-row items-center justify-center w-full gap-2 md:w-auto">
+          <Tags isCheckbox className="md:w-auto w-1/2" />
+          <Subscribe isIcon={false} className="md:w-auto w-1/2" />
         </div>
       </div>
       <Tags className="max-w-full rounded-md md:my-4 mt-3" />

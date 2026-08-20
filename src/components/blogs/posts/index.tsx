@@ -1,8 +1,6 @@
 ﻿import CONTEXT from "@/constants/blog.config";
 import { useBlogSearch, useBlogSort, useBlogTags } from "@/hooks/use-posts";
 import type { BlogPostSortProps, BlogType } from "@/interfaces";
-import MotionChain from "@/motion/motion-chain";
-import type { MotionAnimationProps } from "@/motion/types";
 import { useDebounce } from "@uidotdev/usehooks";
 import BlogCard from "./card";
 import NotFound from "./not-found";
@@ -94,33 +92,13 @@ function BlogPosts({ posts }: { posts: BlogType[] }) {
     sort,
   );
   const recentIds = getRecentPostIds(filteredPosts);
-
-  const animations: MotionAnimationProps[] = filteredPosts.map(() => ({
-    mode: ["fadeIn", "filterBlurIn"],
-    transition: "gentle",
-    duration: 1,
-  }));
-
   if (!filteredPosts.length) return <NotFound />;
 
   return (
     <section className="w-full h-auto grid md:grid-cols-2 grid-cols-1 my-4 gap-4 relative z-10">
-      <MotionChain
-        animations={animations}
-        config={{
-          duration: 0.5,
-          delayLogic: "linear",
-          customLogic: (index: number) => index * 0.1,
-        }}
-        controller={{
-          configView: { once: true, amount: 0.25 },
-        }}
-        elementType="div"
-      >
-        {filteredPosts.map((post) => (
-          <BlogCard key={post.id} isRecent={recentIds.has(post.id)} {...post} />
-        ))}
-      </MotionChain>
+      {filteredPosts.map((post) => (
+        <BlogCard key={post.id} isRecent={recentIds.has(post.id)} {...post} />
+      ))}
     </section>
   );
 }
