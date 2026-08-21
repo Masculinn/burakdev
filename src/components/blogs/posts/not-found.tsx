@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
-import MotionChain from "@/motion/motion-chain";
+import { MotionChain } from "@/motion/components/motion-chain";
 import type { MotionAnimationProps } from "@/motion/types";
 
 const items = Array.from({ length: 12 }, (_, i) => {
   const size = 16 + i * 36;
   return (
     <div
-      key={i}
+      key={size}
       className={cn(
         "rounded-full bg-transparent border",
         `${i % 2 === 0 ? "border-blue-500/50" : "border-rose-500/50"}`,

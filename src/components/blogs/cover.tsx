@@ -2,7 +2,7 @@
 import type { BlogType } from "@/interfaces";
 import getIcon from "@/lib/getIcon";
 import { cn } from "@/lib/utils";
-import MotionText from "@/motion/motion-text";
+import { MotionText } from "@/motion/components/motion-text";
 import { Timer } from "lucide-react";
 import {
   type PanInfo,

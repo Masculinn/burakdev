@@ -1,4 +1,4 @@
-﻿const delays = [
+﻿export default [
   "linear",
   "exponential",
   "sinusoidal",
@@ -21,8 +21,3 @@
   "harmonic",
   "randomWalk",
 ] as const;
-
-export default delays;
-
-type Values<T extends readonly string[]> = T[number];
-export type DelayLogic = Values<typeof delays>;

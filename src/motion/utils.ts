@@ -1,4 +1,11 @@
-import type { CalculateDelayProps } from "../types";
+﻿import type { DelayLogic } from "./types";
+
+type CalculateDelayProps = {
+  delayLogic: DelayLogic | undefined;
+  index: number;
+  baseDuration: number;
+  customLogic?: (index: number) => number;
+};
 
 const mulberry32 = (seed: number) => {
   return () => {
@@ -13,8 +20,8 @@ const mulberry32 = (seed: number) => {
 function fibonacci(n: number): number {
   if (n <= 0) return 0;
   if (n === 1) return 1;
-  let a = 0;
-  let b = 1;
+  let a = 0,
+    b = 1;
   for (let i = 2; i <= n; i++) {
     const c = a + b;
     a = b;
@@ -41,15 +48,12 @@ function seededRank(index: number, total = 100) {
   return Math.floor(rnd * Math.max(1, total));
 }
 
-/**
- * Calculates the delay based on the provided delay logic.
- */
-export const calculateDelay = ({
+function calculateDelay({
   baseDuration,
   index,
   delayLogic,
   customLogic,
-}: CalculateDelayProps): number => {
+}: CalculateDelayProps): number {
   const i = Math.max(0, Math.floor(index || 0));
   const bd = Number(baseDuration) || 1;
 
@@ -156,9 +160,9 @@ export const calculateDelay = ({
 
     case "harmonic": {
       const waves = [
-        { f: 0.18, a: 1 },
-        { f: 0.45, a: 0.45 },
-        { f: 0.9, a: 0.2 },
+        { a: 1, f: 0.18 },
+        { a: 0.45, f: 0.45 },
+        { a: 0.2, f: 0.9 },
       ];
       let v = 0;
       for (const w of waves) v += Math.sin(i * w.f) * w.a;
@@ -176,6 +180,6 @@ export const calculateDelay = ({
     default:
       return i * bd;
   }
-};
+}
 
-export default calculateDelay;
+export { calculateDelay };

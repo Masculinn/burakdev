@@ -1,4 +1,5 @@
-﻿import MotionContainer from "@/motion/motion-container";
+﻿import { getAnimation } from "@/lib/motion/getAnimation";
+import { MotionContainer } from "@/motion/components/motion-container";
 import { getImgAlt } from "@/utils/getImgAlt";
 import { Expand } from "lucide-react";
 import { type FC, useState } from "react";
@@ -26,13 +27,6 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
   return (
     <Trigger onClick={handleClick}>
       <MotionContainer
-        animation={{
-          mode: "microWobble",
-          transition: "gentle",
-          duration: 1,
-        }}
-        elementType="div"
-        className="relative hover:z-50 shadow-2xl"
         onMouseEnter={() => setIsHovered(true)}
         onTouchStart={() => setIsHovered(true)}
         onTouchEnd={() => setIsHovered(false)}
@@ -40,6 +34,7 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
         controller={{
           trigger: !isHovered,
         }}
+        {...getAnimation("imagePreview")}
       >
         <AspectRatio
           ratio={1 / 1}

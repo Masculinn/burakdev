@@ -46,7 +46,7 @@ export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
   const language = getLanguage(child);
 
   return (
-    <div className="w-full my-4 flex justify-center relative">
+    <div className="w-full my-4 flex justify-center relative overflow-y-hidden">
       <CopyCode
         data={code}
         variant="ghost"

@@ -1,6 +1,7 @@
 ﻿import type { BlogType } from "@/interfaces";
-import MotionContainer from "@/motion/motion-container";
-import MotionText from "@/motion/motion-text";
+import { getAnimation } from "@/lib/motion/getAnimation";
+import { MotionContainer } from "@/motion/components/motion-container";
+import { MotionText } from "@/motion/components/motion-text";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { LqipImage } from "../lqip-image";
@@ -8,6 +9,8 @@ import { AspectRatio } from "../ui/aspect-ratio";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
 import BlogCard from "./posts/card";
+
+const recommendationAnimation = getAnimation("recommendation");
 
 function Recommendation({
   blogs,
@@ -23,35 +26,24 @@ function Recommendation({
   if (filteredBlogs.length === 0) return null;
   return (
     <section className="w-full h-auto my-6">
-      <MotionText
-        animation={{
-          mode: ["fadeUp", "filterBlurIn"],
-          transition: "cubicBounce",
-          duration: 1,
-        }}
-        config={{
-          duration: 0.08,
-          mode: "words",
-          delayLogic: "linear",
-        }}
-        elementType="h2"
-        className="font-bold tracking-tighter max-w-2xl text-shadow-2xs text-4xl md:text-5xl md:pt-12 md:pb-8 py-6"
-      >
-        Continue reading.
-      </MotionText>
+      <MotionText {...recommendationAnimation}>Continue reading.</MotionText>
       <div className="w-full h-max relative scrollbar-custom overflow-x-scroll overflow-y-hidden">
         <div className="flex md:flex-row flex-col gap-4 w-full">
           {filteredBlogs.map((val) => (
             <BlogCard {...val} key={val.id} isRecent={false} />
           ))}
-          <ViewAllCard blogs={blogs} />
+          <PromoCard blogs={blogs} />
         </div>
       </div>
     </section>
   );
 }
 
-function ViewAllCard({ blogs }: { blogs: BlogType[] }) {
+const { animation, ...animationProps } = getAnimation("promoCard");
+const textAnimation = getAnimation("promoCardText");
+const btnAnimation = getAnimation("promoCardBtn");
+
+function PromoCard({ blogs }: { blogs: BlogType[] }) {
   return (
     <Card className="md:max-h-100 shrink-0 md:h-auto h-60 py-0 bg-bg md:w-96 w-full items-center justify-center flex relative overflow-hidden">
       <div className="absolute top-0 left-0 size-full grid grid-cols-3 -z-20">
@@ -60,19 +52,10 @@ function ViewAllCard({ blogs }: { blogs: BlogType[] }) {
             <MotionContainer
               key={banner_image}
               animation={{
-                mode: ["fadeUp", "filterBlurIn"],
-                transition: "cubicBounce",
-                duration: 1,
                 delay: 0.1 * idx,
+                ...animation,
               }}
-              controller={{
-                configView: {
-                  once: false,
-                  amount: 0.25,
-                },
-              }}
-              elementType="div"
-              className="scale-110"
+              {...animationProps}
             >
               <AspectRatio
                 ratio={1 / 1}
@@ -91,54 +74,18 @@ function ViewAllCard({ blogs }: { blogs: BlogType[] }) {
         )}
       </div>
       <div className="size-full bg-linear-to-b from-background to-background/50 items-center justify-center flex flex-col text-center ">
-        <MotionContainer
-          animation={{
-            mode: ["fadeIn", "filterBlurIn"],
-            transition: "gentle",
-            duration: 1,
-            delay: 2.5,
-          }}
-          elementType={"div"}
-          controller={{
-            configView: {
-              once: false,
-              amount: 0.25,
-            },
-          }}
-        >
-          <span className="font-secondary text-xs">by Burak Bilen</span>
-        </MotionContainer>
-        <MotionText
-          wrapperClassName=" text-3xl font-secondary"
-          animation={{
-            mode: ["textShimmer", "transformTextGlow"],
-            transition: "linear",
-            duration: 1,
-            delay: 0.5,
-          }}
-          elementType="h1"
-          config={{
-            duration: 0.06,
-            mode: "chars",
-          }}
-          controller={{
-            configView: {
-              once: false,
-              amount: 0.25,
-            },
-          }}
-        >
-          justc0de_sessions
-        </MotionText>
+        <MotionText {...textAnimation}>justc0de_sessions</MotionText>
         <Link href="/blogs" className="mt-3">
-          <Button
-            size="lg"
-            className="z-50"
-            variant={"outline"}
-            aria-label="View all posts"
-          >
-            View All Posts <ArrowRight />
-          </Button>
+          <MotionContainer {...btnAnimation}>
+            <Button
+              size="lg"
+              className="z-50"
+              variant={"outline"}
+              aria-label="View all posts"
+            >
+              <span>View All Posts</span> <ArrowRight />
+            </Button>
+          </MotionContainer>
         </Link>
       </div>
     </Card>

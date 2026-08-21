@@ -1,7 +1,8 @@
 ﻿import { useIsMobile } from "@/hooks/use-mobile";
 import { iconsMap } from "@/lib/getIcon";
+import { getAnimation } from "@/lib/motion/getAnimation";
 import { cn } from "@/lib/utils";
-import MotionContainer from "@/motion/motion-container";
+import { MotionContainer } from "@/motion/components/motion-container";
 import { ArrowRight, BookOpen } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
@@ -14,6 +15,8 @@ import {
   ItemDescription,
   ItemTitle,
 } from "./ui/item";
+
+const { elementType, animation, className } = getAnimation("cta");
 
 export default function Cta() {
   const [trigger, setTrigger] = useState<boolean>(false);
@@ -30,16 +33,11 @@ export default function Cta() {
       >
         <MotionContainer
           animation={{
-            mode: trigger ? "typingEffect" : "fadeIn",
-            transition: "cubicElastic",
-            duration: 1,
-            delay: 0,
+            ...animation,
+            mode: trigger ? "typingEffect" : animation.mode,
           }}
-          elementType="div"
-          className={cn(
-            "absolute top-0 left-2 size-16 object-cover blur-xl -z-20 bg-linear-to-r from-blue-500",
-            trigger ? " to-rose-500/10" : "to-blue-500",
-          )}
+          elementType={elementType}
+          className={cn(className, trigger ? " to-rose-500/10" : "to-blue-500")}
         />
         <ItemContent>
           <ItemTitle className="text-2xl tracking-tighter">

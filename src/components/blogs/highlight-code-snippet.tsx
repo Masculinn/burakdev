@@ -1,4 +1,4 @@
-﻿import MotionChain from "@/motion/motion-chain";
+﻿import { MotionChain } from "@/motion/components/motion-chain";
 import type {
   MotionAnimationProps,
   MotionChainConfigProps,
@@ -51,11 +51,13 @@ function HighlightCodeSnippet({
         config={ANIMATION_CONFIG}
       >
         {tokens.map((line, i) => (
+          // biome-ignore lint/suspicious/noArrayIndexKey: static data
           <div key={i} {...getLineProps({ line })} className="flex">
             <span className="mr-6 dark:text-muted text-muted-foreground font-secondary">
               {i + 1}
             </span>
             {line.map((v, idx) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: static data
               <span key={idx} {...getTokenProps({ token: v })} />
             ))}
           </div>
@@ -65,11 +67,13 @@ function HighlightCodeSnippet({
   }
 
   return tokens.map((line, i) => (
+    // biome-ignore lint/suspicious/noArrayIndexKey: static data
     <div key={i} {...getLineProps({ line })} className="flex">
       <span className="mr-6 dark:text-muted text-muted-foreground">
         {i + 1}
       </span>
       {line.map((v, idx) => (
+        // biome-ignore lint/suspicious/noArrayIndexKey: static data
         <span key={idx} {...getTokenProps({ token: v })} />
       ))}
     </div>

@@ -10,9 +10,12 @@ import {
 } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 import type { BlogType } from "@/interfaces";
-import MotionContainer from "@/motion/motion-container";
+import { getAnimation } from "@/lib/motion/getAnimation";
+import { MotionContainer } from "@/motion/components/motion-container";
 import { convertToSlug } from "@/utils/convertToSlug";
 import { PostDifficulty } from "../post-difficulty";
+
+const { animation, controller, elementType } = getAnimation("blogCard");
 
 export function BlogCard({
   banner_image,
@@ -41,18 +44,13 @@ export function BlogCard({
         animation={{
           mode: [
             !isMobile ? "fadeUp" : id % 2 === 0 ? "fadeRight" : "fadeLeft",
-            "filterBlurIn",
+            animation.mode,
           ],
-          transition: "gentle",
+          transition: animation.transition,
           delay,
         }}
-        controller={{
-          configView: {
-            amount: 0.25,
-            once: false,
-          },
-        }}
-        elementType="div"
+        controller={controller}
+        elementType={elementType}
         className="relative"
       >
         <Card className="overflow-hidden relative md:max-h-100 h-auto py-0 bg-bg group cursor-pointer fade-in">

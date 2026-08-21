@@ -1,4 +1,5 @@
-﻿import MotionContainer from "@/motion/motion-container";
+﻿import { getAnimation } from "@/lib/motion/getAnimation";
+import { MotionContainer } from "@/motion/components/motion-container";
 import { useCopyToClipboard } from "@uidotdev/usehooks";
 import type { VariantProps } from "class-variance-authority";
 import { Check, Copy } from "lucide-react";
@@ -10,6 +11,8 @@ interface CopyCodeButtonProps {
   variant?: VariantProps<typeof buttonVariants>["variant"];
   data: string;
 }
+
+const { animation, elementType } = getAnimation("copyCode");
 
 export const CopyCode: FC<CopyCodeButtonProps> = ({
   className,
@@ -50,14 +53,13 @@ export const CopyCode: FC<CopyCodeButtonProps> = ({
     >
       <MotionContainer
         animation={{
-          mode: ["fadeIn", "filterBlurIn"],
-          transition: "gentle",
           delay: !copied ? 0 : 0.33,
+          ...animation,
         }}
         controller={{
           trigger: !copied,
         }}
-        elementType="div"
+        elementType={elementType}
       >
         <Icon className="size-5" />
       </MotionContainer>

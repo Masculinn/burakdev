@@ -1,8 +1,26 @@
-import type { EasingDefinition, UseInViewOptions } from "motion/react";
-import type { HTMLAttributes } from "react";
-import type { AnimationKeys } from "../constants/animations";
-import type { DelayLogic } from "../constants/delays";
-import type { TransitionKeys } from "../constants/transitions";
+﻿import type { EasingDefinition, UseInViewOptions } from "motion/react";
+import type { HTMLAttributes, HTMLElementType, ImgHTMLAttributes } from "react";
+import type animations from "./constants/animations";
+import type delays from "./constants/delays";
+import type transitions from "./constants/transitions";
+
+/* ============== BASE ============== */
+
+export interface Animations {
+  [key: string]: {
+    initial: AnimationObjProps;
+    animate: AnimationObjProps;
+  };
+}
+export interface Transitions {
+  [key: string]: TransitionConfig;
+}
+
+export type AnimationKeys = keyof typeof animations;
+export type DelayLogic = (typeof delays)[number];
+export type TransitionKeys = keyof typeof transitions;
+export type MotionElementType = HTMLElementType | keyof SVGElementTagNameMap;
+/* ================================== */
 
 export interface MotionControllerProps {
   /**
@@ -231,13 +249,23 @@ export interface MotionTextConfigProps extends MotionChainConfigProps {
    * Indicates the space between each word or character.
    *
    * @default 0
-   * @type {MotionTextConfigSpaceProps}
+   * @type {number | string}
    *
    */
-  space?: MotionTextConfigSpaceProps;
+  space?: number | string;
 }
 
 export interface MotionImageConfigProps extends MotionChainConfigProps {
+  /**
+   * @description
+   * The path to the image that is going to be
+   * used through MotionImage components
+   * in order to fill the grid.
+   *
+   * @default undefined
+   * @type {string}
+   */
+  img: string;
   /**
    * @description
    * The amount of pieces that is going to
@@ -265,83 +293,22 @@ export interface MotionImageConfigProps extends MotionChainConfigProps {
    * - `"click"`: clicking triggers the neighborhood for the clicked cell.
    *
    * @default undefined
-   * @type {ImageMotionFnTypes}
+   * @type {"hover" | "click"}
    *
    */
-  fn?: ImageMotionFnTypes;
-  /**
-   * @description
-   * The path to the image that is going to be
-   * used through MotionImage components
-   * in order to fill the grid.
-   *
-   * @default undefined
-   * @type {string}
-   */
-  img?: string;
-}
-
-type MotionMovieConfigProps = Omit<
-  MotionImageConfigProps,
-  "duration" | "img"
-> & {
-  /**
-   * @description
-   * A list of path that is going to be
-   * used through MotionMovie components
-   * in order to fill the grid and make the
-   * transition between the provided slides.
-   *
-   * @default undefined
-   * @type {string}
-   */
-  images: string[];
-  /**
-   *
-   * @description
-   * Total animation duration of the slide
-   * transition process in seconds(s). It has
-   * to be bigger than the base duration in order
-   * to create a smooth transition otherwise the MotionMovie
-   * error logger will be triggered with a warn in your console.
-   *
-   * @default 2
-   * @type {number}
-   */
-  animationDuration: number;
-};
-
-export interface MotionMovieAnimationsProps
-  extends Omit<MotionAnimationProps, "mode"> {
-  /**
-   * @description
-   * Enter animations are covering the start point
-   * of the animation process per slide which
-   * means the user will see each slide within
-   * the enter animations.
-   *
-   * @default undefined
-   * @type {AnimationKeys[] | AnimationKeys}
-   */
-  enter: AnimationKeys[] | AnimationKeys;
-  /**
-   * @description
-   * Exit animations are covering the end point
-   * of the animation process per slide which
-   * means the user will end seeing the slide with
-   * the exit prop's animations.
-   *
-   * @default undefined
-   * @type {AnimationKeys[] | AnimationKeys}
-   */
-  exit: AnimationKeys[] | AnimationKeys;
+  fn?: "hover" | "click";
 }
 
 // Core
 
-type GeneralHTMLAttributes = Omit<HTMLAttributes<HTMLElement>, "children">;
+type GeneralHTMLAttributes = Omit<
+  HTMLAttributes<HTMLElement | SVGElement>,
+  "children"
+>;
 
-export interface MotionContainerProps extends GeneralHTMLAttributes {
+export interface MotionContainerProps
+  extends GeneralHTMLAttributes,
+    SVGAttributes {
   /**
    * @description
    * Defines properties that can be
@@ -373,9 +340,9 @@ export interface MotionContainerProps extends GeneralHTMLAttributes {
    * that will be used as the root element for the MotionContainer.
    *
    * @default "div"
-   * @type {React.ElementType}
+   * @type {HTMLElementType}
    */
-  elementType: React.ElementType;
+  elementType: MotionElementType;
   /**
    * @description
    * The children prop is a React node that will be rendered inside
@@ -464,9 +431,9 @@ export interface MotionChainProps extends GeneralHTMLAttributes {
    * MotionChain encapsulates as its children.
    *
    * @default "div"
-   * @type {React.ElementType}
+   * @type {HTMLElementType}
    */
-  elementType: React.ElementType;
+  elementType: MotionElementType;
   /**
    * @description
    * The children prop is a React nodes that will be rendered inside
@@ -558,9 +525,9 @@ export interface MotionTextProps extends GeneralHTMLAttributes {
    * that will be used as the root element for the MotionContainer.
    *
    * @default "div"
-   * @type {React.ElementType}
+   * @type {HTMLElementType}
    */
-  elementType: React.ElementType;
+  elementType: MotionElementType;
   config: MotionTextConfigProps;
   /**
    * @description
@@ -574,14 +541,15 @@ export interface MotionTextProps extends GeneralHTMLAttributes {
   children: React.ReactNode;
   /**
    * @description
-   * This is the central scaffold part that you might see as
-   * a god of CAS(Centralized Animation System). It's actually
-   * standing on the top of each MP components to control
-   * and manage the animation process by managing the flow.
+   * This is the central scaffolding that you might see as
+   * the god of CAS (Centralized Animation System). The
+   * animation process is actually controlled and managed
+   * from the top of each MP component.
    *
    * Highly recommended to use with both
    * @type {UseAnimationControlProps}
-   * and @type {UseAnimationProps}
+   * and @type {UseAnimationProps} for full control over
+   * your MP components
    *
    * @default undefined
    * @typedef {Object} MotionControllerProps
@@ -631,7 +599,24 @@ export interface MotionTextProps extends GeneralHTMLAttributes {
   wrapperClassName?: string;
 }
 
-export interface MotionImageProps extends GeneralHTMLAttributes {
+export type ImageHTMLProps = Pick<
+  ImgHTMLAttributes<HTMLImageElement>,
+  | "loading" // "eager" | "lazy"
+  | "decoding" // "auto" | "async" | "sync"
+  | "fetchPriority" // "high" | "low" | "auto"
+  | "crossOrigin" // "anonymous" | "use-credentials"
+  | "referrerPolicy"
+  | "sizes"
+  | "srcSet"
+  | "alt"
+  | "draggable"
+  | "onLoad"
+  | "onError"
+>;
+
+export interface MotionImageProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, "onLoad" | "onError">,
+    ImageHTMLProps {
   /**
    * Defines properties that can be
    * mandatoryly used across MP components. It includes animation modes,
@@ -724,10 +709,76 @@ export interface MotionImageProps extends GeneralHTMLAttributes {
    *
    */
   controller?: MotionControllerProps;
-  imageLoading?: "eager" | "lazy";
+  className?: string;
 }
 
-export interface MotionMovieProps extends GeneralHTMLAttributes {
+export interface MotionLinkProps {
+  timer: number;
+  href: string;
+  className?: string;
+  onReverse: () => void;
+  children: React.ReactNode;
+}
+
+export interface MotionMovieAnimationsProps
+  extends Omit<MotionAnimationProps, "mode"> {
+  /**
+   * @description
+   * Enter animations are covering the start point
+   * of the animation process per slide which
+   * means the user will see each slide within
+   * the enter animations.
+   *
+   * @default undefined
+   * @type {AnimationKeys[] | AnimationKeys}
+   */
+  enter: AnimationKeys[] | AnimationKeys;
+  /**
+   * @description
+   * Exit animations are covering the end point
+   * of the animation process per slide which
+   * means the user will end seeing the slide with
+   * the exit prop's animations.
+   *
+   * @default undefined
+   * @type {AnimationKeys[] | AnimationKeys}
+   */
+  exit: AnimationKeys[] | AnimationKeys;
+}
+
+type MotionMovieConfigProps = Omit<
+  MotionImageConfigProps,
+  "duration" | "img"
+> & {
+  /**
+   * @description
+   * A list of path that is going to be
+   * used through MotionMovie components
+   * in order to fill the grid and make the
+   * transition between the provided slides.
+   *
+   * @default undefined
+   * @type {string}
+   */
+  images: string[];
+  /**
+   *
+   * @description
+   * Total animation duration of the slide
+   * transition process in seconds(s). It has
+   * to be bigger than the base duration in order
+   * to create a smooth transition otherwise the MotionMovie
+   * error logger will be triggered with a warn in your console.
+   *
+   * @default 2
+   * @type {number}
+   */
+  animationDuration: number;
+};
+
+export interface MotionMovieProps
+  extends Omit<HTMLAttributes<HTMLDivElement>, "onLoad" | "onError">,
+    ImageHTMLProps {
   /**
    * @description
    * A superset of @type {MotionImageProps} that enables you
@@ -806,48 +857,39 @@ export interface MotionMovieProps extends GeneralHTMLAttributes {
    * @type {string}
    */
   wrapperClassName?: string;
+  /**
+   * @description
+   * The prefetch prop is a boolean that specifies whether
+   * to prefetch the image data for the next slide.
+   *
+   * @default undefined
+   * @type {boolean}
+   */
+  prefetch?: boolean;
+  /**
+   * @description
+   * Callback fired whenever the active slide index changes.
+   * Use this to sync `currImgIdx` into a parent component's state
+   * without needing an imperative ref on `MotionMovie` itself.
+   *
+   * @example
+   * const [slide, setSlide] = useState(0);
+   *
+   * <MotionMovie
+   *   onIndexChange={setSlide}
+   *   ...
+   * />
+   * <p>Active slide: {slide}</p>
+   */
+  onIndexChange?: (index: number) => void;
 }
-
-export interface MotionLinkProps {
-  timer: number;
-  href: string;
-  className?: string;
-  onReverse: () => void;
-  children: React.ReactNode;
-}
-
-/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+**/
-
-// Utils
-
-export interface CalculateDelayProps {
-  delayLogic: DelayLogic | undefined;
-  index: number;
-  baseDuration: number;
-  customLogic?: (index: number) => number;
-}
-
-export interface GetErrorLogsProps {
-  msg: string;
-  src: MotionComponentSources | MotionHooksSources | MotionUtilsSources;
-  mod: "error" | "warn";
-}
-
-export interface GetSplittedTextProps {
-  text: string;
-  mode?: SplittedTextModes;
-}
-export type GetSplittedTextOutputProps = string[];
 
 /*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+**/
 
 // Constants
 
-export interface AnimationLibraryProps {
-  [key: string]: {
-    initial: AnimationObjProps;
-    animate: AnimationObjProps;
-  };
+export interface AnimationObjProps {
+  [key: string]: unknown;
 }
 export type AnimationModule = {
   initial: AnimationObjProps;
@@ -858,85 +900,7 @@ export interface TransitionConfig {
   ease?: EasingDefinition | number[];
   delay?: number;
 }
-export interface TransitionsLib {
-  [key: string]: TransitionConfig;
-}
-/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+**/
-
-// Defaults
-
-type ComponentPropsMap = {
-  MotionContainer: MotionContainerProps;
-  MotionChain: MotionChainProps;
-  MotionImage: MotionImageProps;
-  MotionText: MotionTextProps;
-  MotionLink: MotionLinkProps;
-  MotionMovie: MotionMovieProps;
-  CoreMotion: Record<string, unknown>;
-};
-
-export type MotionDefaultsProps = {
-  [K in keyof ComponentPropsMap]?: Partial<ComponentPropsMap[K]>;
-};
-
-/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+**/
-
-// Hooks
-
-export interface UseAnimationProps {
-  stopAnimation: boolean;
-  reverseAnimation?: boolean;
-}
-
-export interface UseAnimationStateProps {
-  isAnimationStopped: boolean;
-  reverse: boolean;
-}
-
-export type UseAnimationActionTypes =
-  | { type: "IMMEDIATE_STOP" }
-  | { type: "FOLLOW_STOP" }
-  | { type: "IMMEDIATE_RESET" }
-  | { type: "FOLLOW_RESET" }
-  | { type: "UPDATE"; payload: { reverseAnimation: boolean } };
-
-export interface AnimationObjProps {
-  [key: string]: unknown;
-}
-
-export interface UseAnimationMixerProps {
-  animations: AnimationModule[] | AnimationModule;
-  reverse?: boolean;
-}
-
-export interface UseOutputAnimationMixerProps {
-  initial: AnimationObjProps;
-  animate: AnimationObjProps;
-}
-
-export type UseAnimationControlProps = Partial<UseAnimationProps>;
-
-/*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+*+**/
-
-// Namespaces
-
-export type MotionComponentSources =
-  | "MotionContainer"
-  | "MotionImage"
-  | "MotionMovie"
-  | "MotionChain"
-  | "MotionText"
-  | "CoreMotion";
-export type MotionHooksSources = "useAnimationMixer" | "useAnimation";
-export type MotionUtilsSources =
-  | "getSplittedText"
-  | "getRandomAnimation"
-  | "calculateDelay";
-export type MotionEngineType = "container" | "text" | "queue";
-export type ImageMotionFnTypes = "hover" | "click";
 export type SplittedTextModes = "words" | "chars";
-
-export type MotionTextConfigSpaceProps = number | string;
 
 // Number unions
 
@@ -958,3 +922,269 @@ export type ImageMotionPieces =
   | 324
   | 361
   | 400;
+
+interface SVGAttributes {
+  accentHeight?: AnyResolvedKeyframe | undefined;
+  accumulate?: "none" | "sum" | undefined;
+  additive?: "replace" | "sum" | undefined;
+  alignmentBaseline?:
+    | "auto"
+    | "baseline"
+    | "before-edge"
+    | "text-before-edge"
+    | "middle"
+    | "central"
+    | "after-edge"
+    | "text-after-edge"
+    | "ideographic"
+    | "alphabetic"
+    | "hanging"
+    | "mathematical"
+    | "inherit"
+    | undefined;
+  allowReorder?: "no" | "yes" | undefined;
+  alphabetic?: AnyResolvedKeyframe | undefined;
+  amplitude?: AnyResolvedKeyframe | undefined;
+  arabicForm?: "initial" | "medial" | "terminal" | "isolated" | undefined;
+  ascent?: AnyResolvedKeyframe | undefined;
+  attributeName?: string | undefined;
+  attributeType?: string | undefined;
+  autoReverse?: boolean | undefined;
+  azimuth?: AnyResolvedKeyframe | undefined;
+  baseFrequency?: AnyResolvedKeyframe | undefined;
+  baselineShift?: AnyResolvedKeyframe | undefined;
+  baseProfile?: AnyResolvedKeyframe | undefined;
+  bbox?: AnyResolvedKeyframe | undefined;
+  begin?: AnyResolvedKeyframe | undefined;
+  bias?: AnyResolvedKeyframe | undefined;
+  by?: AnyResolvedKeyframe | undefined;
+  calcMode?: AnyResolvedKeyframe | undefined;
+  capHeight?: AnyResolvedKeyframe | undefined;
+  clip?: AnyResolvedKeyframe | undefined;
+  clipPath?: string | undefined;
+  clipPathUnits?: AnyResolvedKeyframe | undefined;
+  clipRule?: AnyResolvedKeyframe | undefined;
+  colorInterpolation?: AnyResolvedKeyframe | undefined;
+  colorInterpolationFilters?:
+    | "auto"
+    | "sRGB"
+    | "linearRGB"
+    | "inherit"
+    | undefined;
+  colorProfile?: AnyResolvedKeyframe | undefined;
+  colorRendering?: AnyResolvedKeyframe | undefined;
+  contentScriptType?: AnyResolvedKeyframe | undefined;
+  contentStyleType?: AnyResolvedKeyframe | undefined;
+  cursor?: AnyResolvedKeyframe | undefined;
+  cx?: AnyResolvedKeyframe | undefined;
+  cy?: AnyResolvedKeyframe | undefined;
+  d?: string | undefined;
+  decelerate?: AnyResolvedKeyframe | undefined;
+  descent?: AnyResolvedKeyframe | undefined;
+  diffuseConstant?: AnyResolvedKeyframe | undefined;
+  direction?: AnyResolvedKeyframe | undefined;
+  display?: AnyResolvedKeyframe | undefined;
+  divisor?: AnyResolvedKeyframe | undefined;
+  dominantBaseline?: AnyResolvedKeyframe | undefined;
+  dur?: AnyResolvedKeyframe | undefined;
+  dx?: AnyResolvedKeyframe | undefined;
+  dy?: AnyResolvedKeyframe | undefined;
+  edgeMode?: AnyResolvedKeyframe | undefined;
+  elevation?: AnyResolvedKeyframe | undefined;
+  enableBackground?: AnyResolvedKeyframe | undefined;
+  end?: AnyResolvedKeyframe | undefined;
+  exponent?: AnyResolvedKeyframe | undefined;
+  externalResourcesRequired?: boolean | undefined;
+  fill?: string | undefined;
+  fillOpacity?: AnyResolvedKeyframe | undefined;
+  fillRule?: "nonzero" | "evenodd" | "inherit" | undefined;
+  filter?: string | undefined;
+  filterRes?: AnyResolvedKeyframe | undefined;
+  filterUnits?: AnyResolvedKeyframe | undefined;
+  floodColor?: AnyResolvedKeyframe | undefined;
+  floodOpacity?: AnyResolvedKeyframe | undefined;
+  focusable?: boolean | "auto" | undefined;
+  fontFamily?: string | undefined;
+  fontSize?: AnyResolvedKeyframe | undefined;
+  fontSizeAdjust?: AnyResolvedKeyframe | undefined;
+  fontStretch?: AnyResolvedKeyframe | undefined;
+  fontStyle?: AnyResolvedKeyframe | undefined;
+  fontVariant?: AnyResolvedKeyframe | undefined;
+  fontWeight?: AnyResolvedKeyframe | undefined;
+  format?: AnyResolvedKeyframe | undefined;
+  fr?: AnyResolvedKeyframe | undefined;
+  from?: AnyResolvedKeyframe | undefined;
+  fx?: AnyResolvedKeyframe | undefined;
+  fy?: AnyResolvedKeyframe | undefined;
+  g1?: AnyResolvedKeyframe | undefined;
+  g2?: AnyResolvedKeyframe | undefined;
+  glyphName?: AnyResolvedKeyframe | undefined;
+  glyphOrientationHorizontal?: AnyResolvedKeyframe | undefined;
+  glyphOrientationVertical?: AnyResolvedKeyframe | undefined;
+  glyphRef?: AnyResolvedKeyframe | undefined;
+  gradientTransform?: string | undefined;
+  gradientUnits?: string | undefined;
+  hanging?: AnyResolvedKeyframe | undefined;
+  horizAdvX?: AnyResolvedKeyframe | undefined;
+  horizOriginX?: AnyResolvedKeyframe | undefined;
+  href?: string | undefined;
+  ideographic?: AnyResolvedKeyframe | undefined;
+  imageRendering?: AnyResolvedKeyframe | undefined;
+  in2?: AnyResolvedKeyframe | undefined;
+  in?: string | undefined;
+  intercept?: AnyResolvedKeyframe | undefined;
+  k1?: AnyResolvedKeyframe | undefined;
+  k2?: AnyResolvedKeyframe | undefined;
+  k3?: AnyResolvedKeyframe | undefined;
+  k4?: AnyResolvedKeyframe | undefined;
+  k?: AnyResolvedKeyframe | undefined;
+  kernelMatrix?: AnyResolvedKeyframe | undefined;
+  kernelUnitLength?: AnyResolvedKeyframe | undefined;
+  kerning?: AnyResolvedKeyframe | undefined;
+  keyPoints?: AnyResolvedKeyframe | undefined;
+  keySplines?: AnyResolvedKeyframe | undefined;
+  keyTimes?: AnyResolvedKeyframe | undefined;
+  lengthAdjust?: AnyResolvedKeyframe | undefined;
+  letterSpacing?: AnyResolvedKeyframe | undefined;
+  lightingColor?: AnyResolvedKeyframe | undefined;
+  limitingConeAngle?: AnyResolvedKeyframe | undefined;
+  local?: AnyResolvedKeyframe | undefined;
+  markerEnd?: string | undefined;
+  markerHeight?: AnyResolvedKeyframe | undefined;
+  markerMid?: string | undefined;
+  markerStart?: string | undefined;
+  markerUnits?: AnyResolvedKeyframe | undefined;
+  markerWidth?: AnyResolvedKeyframe | undefined;
+  mask?: string | undefined;
+  maskContentUnits?: AnyResolvedKeyframe | undefined;
+  maskUnits?: AnyResolvedKeyframe | undefined;
+  mathematical?: AnyResolvedKeyframe | undefined;
+  mode?: AnyResolvedKeyframe | undefined;
+  numOctaves?: AnyResolvedKeyframe | undefined;
+  offset?: AnyResolvedKeyframe | undefined;
+  opacity?: AnyResolvedKeyframe | undefined;
+  operator?: AnyResolvedKeyframe | undefined;
+  order?: AnyResolvedKeyframe | undefined;
+  orient?: AnyResolvedKeyframe | undefined;
+  orientation?: AnyResolvedKeyframe | undefined;
+  origin?: AnyResolvedKeyframe | undefined;
+  overflow?: AnyResolvedKeyframe | undefined;
+  overlinePosition?: AnyResolvedKeyframe | undefined;
+  overlineThickness?: AnyResolvedKeyframe | undefined;
+  paintOrder?: AnyResolvedKeyframe | undefined;
+  panose1?: AnyResolvedKeyframe | undefined;
+  path?: string | undefined;
+  pathLength?: AnyResolvedKeyframe | undefined;
+  patternContentUnits?: string | undefined;
+  patternTransform?: AnyResolvedKeyframe | undefined;
+  patternUnits?: string | undefined;
+  pointerEvents?: AnyResolvedKeyframe | undefined;
+  points?: string | undefined;
+  pointsAtX?: AnyResolvedKeyframe | undefined;
+  pointsAtY?: AnyResolvedKeyframe | undefined;
+  pointsAtZ?: AnyResolvedKeyframe | undefined;
+  preserveAlpha?: boolean | undefined;
+  preserveAspectRatio?: string | undefined;
+  primitiveUnits?: AnyResolvedKeyframe | undefined;
+  r?: AnyResolvedKeyframe | undefined;
+  radius?: AnyResolvedKeyframe | undefined;
+  refX?: AnyResolvedKeyframe | undefined;
+  refY?: AnyResolvedKeyframe | undefined;
+  renderingIntent?: AnyResolvedKeyframe | undefined;
+  repeatCount?: AnyResolvedKeyframe | undefined;
+  repeatDur?: AnyResolvedKeyframe | undefined;
+  requiredExtensions?: AnyResolvedKeyframe | undefined;
+  requiredFeatures?: AnyResolvedKeyframe | undefined;
+  restart?: AnyResolvedKeyframe | undefined;
+  result?: string | undefined;
+  rotate?: AnyResolvedKeyframe | undefined;
+  rx?: AnyResolvedKeyframe | undefined;
+  ry?: AnyResolvedKeyframe | undefined;
+  scale?: AnyResolvedKeyframe | undefined;
+  seed?: AnyResolvedKeyframe | undefined;
+  shapeRendering?: AnyResolvedKeyframe | undefined;
+  slope?: AnyResolvedKeyframe | undefined;
+  spacing?: AnyResolvedKeyframe | undefined;
+  specularConstant?: AnyResolvedKeyframe | undefined;
+  specularExponent?: AnyResolvedKeyframe | undefined;
+  speed?: AnyResolvedKeyframe | undefined;
+  spreadMethod?: string | undefined;
+  startOffset?: AnyResolvedKeyframe | undefined;
+  stdDeviation?: AnyResolvedKeyframe | undefined;
+  stemh?: AnyResolvedKeyframe | undefined;
+  stemv?: AnyResolvedKeyframe | undefined;
+  stitchTiles?: AnyResolvedKeyframe | undefined;
+  stopColor?: string | undefined;
+  stopOpacity?: AnyResolvedKeyframe | undefined;
+  strikethroughPosition?: AnyResolvedKeyframe | undefined;
+  strikethroughThickness?: AnyResolvedKeyframe | undefined;
+  string?: AnyResolvedKeyframe | undefined;
+  stroke?: string | undefined;
+  strokeDasharray?: AnyResolvedKeyframe | undefined;
+  strokeDashoffset?: AnyResolvedKeyframe | undefined;
+  strokeLinecap?: "butt" | "round" | "square" | "inherit" | undefined;
+  strokeLinejoin?: "miter" | "round" | "bevel" | "inherit" | undefined;
+  strokeMiterlimit?: AnyResolvedKeyframe | undefined;
+  strokeOpacity?: AnyResolvedKeyframe | undefined;
+  strokeWidth?: AnyResolvedKeyframe | undefined;
+  surfaceScale?: AnyResolvedKeyframe | undefined;
+  systemLanguage?: AnyResolvedKeyframe | undefined;
+  tableValues?: AnyResolvedKeyframe | undefined;
+  targetX?: AnyResolvedKeyframe | undefined;
+  targetY?: AnyResolvedKeyframe | undefined;
+  textAnchor?: string | undefined;
+  textDecoration?: AnyResolvedKeyframe | undefined;
+  textLength?: AnyResolvedKeyframe | undefined;
+  textRendering?: AnyResolvedKeyframe | undefined;
+  to?: AnyResolvedKeyframe | undefined;
+  transform?: string | undefined;
+  u1?: AnyResolvedKeyframe | undefined;
+  u2?: AnyResolvedKeyframe | undefined;
+  underlinePosition?: AnyResolvedKeyframe | undefined;
+  underlineThickness?: AnyResolvedKeyframe | undefined;
+  unicode?: AnyResolvedKeyframe | undefined;
+  unicodeBidi?: AnyResolvedKeyframe | undefined;
+  unicodeRange?: AnyResolvedKeyframe | undefined;
+  unitsPerEm?: AnyResolvedKeyframe | undefined;
+  vAlphabetic?: AnyResolvedKeyframe | undefined;
+  values?: string | undefined;
+  vectorEffect?: AnyResolvedKeyframe | undefined;
+  version?: string | undefined;
+  vertAdvY?: AnyResolvedKeyframe | undefined;
+  vertOriginX?: AnyResolvedKeyframe | undefined;
+  vertOriginY?: AnyResolvedKeyframe | undefined;
+  vHanging?: AnyResolvedKeyframe | undefined;
+  vIdeographic?: AnyResolvedKeyframe | undefined;
+  viewBox?: string | undefined;
+  viewTarget?: AnyResolvedKeyframe | undefined;
+  visibility?: AnyResolvedKeyframe | undefined;
+  vMathematical?: AnyResolvedKeyframe | undefined;
+  widths?: AnyResolvedKeyframe | undefined;
+  wordSpacing?: AnyResolvedKeyframe | undefined;
+  writingMode?: AnyResolvedKeyframe | undefined;
+  x1?: AnyResolvedKeyframe | undefined;
+  x2?: AnyResolvedKeyframe | undefined;
+  x?: AnyResolvedKeyframe | undefined;
+  xChannelSelector?: string | undefined;
+  xHeight?: AnyResolvedKeyframe | undefined;
+  xlinkActuate?: string | undefined;
+  xlinkArcrole?: string | undefined;
+  xlinkHref?: string | undefined;
+  xlinkRole?: string | undefined;
+  xlinkShow?: string | undefined;
+  xlinkTitle?: string | undefined;
+  xlinkType?: string | undefined;
+  xmlBase?: string | undefined;
+  xmlLang?: string | undefined;
+  xmlns?: string | undefined;
+  xmlnsXlink?: string | undefined;
+  xmlSpace?: string | undefined;
+  y1?: AnyResolvedKeyframe | undefined;
+  y2?: AnyResolvedKeyframe | undefined;
+  y?: AnyResolvedKeyframe | undefined;
+  yChannelSelector?: string | undefined;
+  z?: AnyResolvedKeyframe | undefined;
+  zoomAndPan?: string | undefined;
+}
+
+type AnyResolvedKeyframe = string | number;

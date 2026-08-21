@@ -13,8 +13,10 @@ export interface WrapperProps {
 export interface ThemeProps {
   theme: ThemeType;
 }
-export interface TextAnimatorProps
-  extends Pick<MotionTextProps, "config" | "animation" | "children"> {
+export interface TextAnimatorProps extends Pick<
+  MotionTextProps,
+  "config" | "animation" | "children"
+> {
   elementType?: React.ElementType;
   className?: string;
 }
@@ -73,6 +75,7 @@ export type NavBasicType = {
 };
 
 export type TimelineContentItem = {
+  id: number;
   status: ProjectStatus;
   title: string;
   techs: readonly IconName[];

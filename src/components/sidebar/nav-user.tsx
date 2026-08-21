@@ -5,7 +5,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import MotionText from "@/motion/motion-text";
+import { MotionText } from "@/motion/components/motion-text";
 
 export function NavUser({
   user,

@@ -1,8 +1,9 @@
 ﻿import timelineConfig from "@/constants/timeline.config";
 import type { ProjectStatus, TimelineContentItem } from "@/interfaces";
 import getIcon from "@/lib/getIcon";
+import { getAnimation } from "@/lib/motion/getAnimation";
 import { cn } from "@/lib/utils";
-import MotionContainer from "@/motion/motion-container";
+import { MotionContainer } from "@/motion/components/motion-container";
 import Link from "next/link";
 import type { FC } from "react";
 import { Github } from "./icons/svg-icons";
@@ -17,12 +18,13 @@ const Timeline = ({ className }: { className?: string }) => {
     <div className={cn("relative", className)}>
       {timelineConfig.map((item, idx) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: static data
           key={idx}
           className="flex justify-start pt-10 md:pt-40 md:gap-10 w-full"
         >
           <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-            <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
-              <div className="h-4 w-4 rounded-full bg-neutral-600 dark:bg-neutral-800 border-2 border-neutral-500 dark:border-neutral-700 p-2" />
+            <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-background flex items-center justify-center">
+              <div className="size-4 rounded-full bg-muted border-2 border-border p-2" />
             </div>
             <h3 className="hidden md:block pl-20 text-5xl text-muted-foreground tracking-tighter">
               {item.title}
@@ -32,26 +34,7 @@ const Timeline = ({ className }: { className?: string }) => {
             <h3 className="md:hidden block text-3xl lg:mb-4 mb-6 text-left text-muted-foreground">
               {item.title}
             </h3>
-            <MotionContainer
-              elementType="article"
-              animation={{
-                mode: [
-                  idx % 2 === 0 ? "fadeRight" : "fadeLeft",
-                  "filterBlurIn",
-                ],
-                transition: "gentle",
-                duration: 1,
-                delay: 0.25,
-              }}
-              controller={{
-                configView: {
-                  once: false,
-                  amount: 0.5,
-                },
-              }}
-            >
-              <TimelineItem {...item.content} />
-            </MotionContainer>
+            <TimelineItem {...item.content} id={idx} />
           </div>
         </div>
       ))}
@@ -60,6 +43,8 @@ const Timeline = ({ className }: { className?: string }) => {
   );
 };
 
+const animation = getAnimation("timelineItem");
+
 const TimelineItem: FC<TimelineContentItem> = ({
   status,
   title,
@@ -67,30 +52,38 @@ const TimelineItem: FC<TimelineContentItem> = ({
   images,
   desc,
   gitLink,
+  id,
 }) => {
   return (
-    <div className="tracking-tight">
-      <Badge variant={"outline"} className="px-2 py-1 ">
+    <MotionContainer
+      {...animation}
+      animation={{
+        ...animation.animation,
+        mode: [id % 2 === 0 ? "fadeRight" : "fadeLeft", "filterBlurIn"],
+      }}
+      className="tracking-tight"
+    >
+      <Badge variant="outline" className="px-2 py-1">
         <PingWrapper status={status} />
         <span className="capitalize">{status}</span>
       </Badge>
-      <h2 className="text-2xl h-auto truncate lg:text-4xl mb-4 font-bold tracking-tight lg:mt-0 -mt-3 font-secondary">
+      <h2 className="text-2xl h-auto truncate md:text-4xl mb-4 font-bold tracking-tight lg:mt-0 font-secondary">
         {title}
       </h2>
       <Marquee className="w-full md:w-108 py-2">
-        {techs.map((tech, idx) => {
+        {techs.map((tech) => {
           const Icon = getIcon(tech.toLowerCase());
           return (
             <Icon
               className="md:size-5 size-4"
               fill="currentColor"
               stroke="none"
-              key={idx}
+              key={tech}
             />
           );
         })}
       </Marquee>
-      <p className="text-neutral-800 dark:text-neutral-200 text-xs md:text-sm lg:text-base font-normal lg:pt-3 pt-2">
+      <p className="text-muted-foreground dark:text-neutral-200 text-xs md:text-sm lg:text-base font-normal lg:pt-3 pt-2">
         {desc}
       </p>
       <div className="flex items-center justify-center lg:pb-8 pb-6 lg:pt-4 pt-2 w-full">
@@ -114,18 +107,18 @@ const TimelineItem: FC<TimelineContentItem> = ({
         </Button>
       </div>
       {images && <Project {...{ images, desc, title }} />}
-    </div>
+    </MotionContainer>
   );
 };
 
 function PingWrapper({ status }: { status: ProjectStatus }) {
   switch (status) {
     case "ongoing":
-      return <Ping isAnimated mode="warning" size="sm" className="mr-2" />;
+      return <Ping isAnimated mode="primary" size="sm" className="mr-0.5" />;
     case "done":
-      return <Ping mode="success" size="sm" className="mr-2" />;
+      return <Ping mode="success" size="sm" className="mr-0.5" />;
     case "paused":
-      return <Ping mode="error" size="sm" className="mr-2" />;
+      return <Ping mode="destructive" size="sm" className="mr-0.5" />;
     default:
       return null;
   }

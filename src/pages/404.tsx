@@ -1,5 +1,5 @@
 ﻿import { NotFoundCircle } from "@/components/blogs/posts/not-found";
-import MotionText from "@/motion/motion-text";
+import { MotionText } from "@/motion/components/motion-text";
 import Head from "next/head";
 
 export default function NotFound() {

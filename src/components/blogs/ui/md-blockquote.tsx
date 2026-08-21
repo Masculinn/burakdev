@@ -1,5 +1,5 @@
 ﻿import { cn } from "@/lib/utils";
-import MotionContainer from "@/motion/motion-container";
+import { MotionContainer } from "@/motion/components/motion-container";
 import { cva } from "class-variance-authority";
 import {
   CheckCheck,

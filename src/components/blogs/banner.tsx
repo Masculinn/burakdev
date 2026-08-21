@@ -1,4 +1,4 @@
-﻿import MotionText from "@/motion/motion-text";
+﻿import { MotionText } from "@/motion/components/motion-text";
 
 export default function Banner({ animationKey }: { animationKey: number }) {
   return (

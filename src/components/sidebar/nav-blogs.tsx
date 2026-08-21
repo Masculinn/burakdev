@@ -1,6 +1,7 @@
 ﻿import slugs from "@/generated/slugs.json" with { type: "json" };
 
-import MotionContainer from "@/motion/motion-container";
+import { getAnimation } from "@/lib/motion/getAnimation";
+import { MotionContainer } from "@/motion/components/motion-container";
 import { Book, BookOpenText, ChevronRight, Library } from "lucide-react";
 import Link from "next/link";
 import {
@@ -19,6 +20,7 @@ import {
   SidebarMenuSubItem,
 } from "../ui/sidebar";
 
+const animation = getAnimation("navBlogs");
 export function NavBlogs() {
   return (
     <SidebarGroup>
@@ -52,13 +54,11 @@ export function NavBlogs() {
                 {slugs.map((item, idx) => (
                   <SidebarMenuSubItem key={item.title}>
                     <MotionContainer
+                      {...animation}
                       animation={{
-                        mode: ["fadeLeft", "filterBlurIn"],
-                        transition: "gentle",
+                        ...animation.animation,
                         delay: 0.25 * idx,
-                        duration: 0.8,
                       }}
-                      elementType="div"
                     >
                       <SidebarMenuSubButton
                         render={

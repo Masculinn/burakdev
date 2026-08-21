@@ -1,8 +1,8 @@
 ﻿import { Skeleton } from "@/components/ui/skeleton";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
-import MotionImage from "@/motion/motion-image";
-import MotionText from "@/motion/motion-text";
+import { MotionImage } from "@/motion/components/motion-image";
+import { MotionText } from "@/motion/components/motion-text";
 import { Mail } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Badge } from "../ui/badge";
@@ -11,7 +11,7 @@ import Subscribe from "./subscribe";
 function NewsletterComponent({ className }: { className?: string }) {
   const isMobile = useIsMobile();
   return (
-    <section
+    <div
       className={cn(
         "w-full h-auto md:h-88 overflow-hidden relative rounded-xl flex md:flex-row flex-col-reverse md:mb-0 mb-4",
         className,
@@ -23,7 +23,7 @@ function NewsletterComponent({ className }: { className?: string }) {
             "rotateRoll",
             "scaleZoomIn",
             "rotateFlipY",
-            !isMobile ? "opacityHalf" : "flash",
+            !isMobile ? "opacity" : "flash",
           ],
           transition: "cubicElastic",
           duration: isMobile ? 3 : 1,
@@ -48,7 +48,7 @@ function NewsletterComponent({ className }: { className?: string }) {
           <Subscribe isIcon />
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -81,11 +81,17 @@ function CardHeader() {
   );
 }
 
-const Newsletter = dynamic(() => Promise.resolve(NewsletterComponent), {
-  ssr: false,
-  loading: () => (
-    <Skeleton className="w-full h-60 md:h-88 my-8 overflow-hidden rounded-l-none border-l-0 relative " />
-  ),
-});
+const Newsletter = dynamic(
+  () =>
+    Promise.resolve({
+      default: NewsletterComponent,
+    }),
+  {
+    ssr: false,
+    loading: () => (
+      <Skeleton className="w-full h-60 md:h-88 my-8 overflow-hidden rounded-l-none border-l-0 relative " />
+    ),
+  },
+);
 
 export default Newsletter;

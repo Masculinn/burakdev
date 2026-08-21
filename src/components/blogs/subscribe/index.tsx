@@ -15,9 +15,10 @@ import {
   DrawerTitle,
 } from "@/components/ui/drawer";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { getAnimation } from "@/lib/motion/getAnimation";
+import { MotionContainer } from "@/motion/components/motion-container";
 import Link from "next/link";
 import { useState } from "react";
-import SubscribeBlur from "./blur";
 import SubscribeButton from "./button";
 import SubscribeForm from "./form";
 
@@ -95,4 +96,8 @@ export default function Subscribe({
       </DialogContent>
     </Dialog>
   );
+}
+
+function SubscribeBlur() {
+  return <MotionContainer {...getAnimation("subscribeBlur")} />;
 }

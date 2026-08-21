@@ -1,10 +1,8 @@
 ﻿import {
   Bluesky,
-  Buymeacoffee,
   Dailydotdev,
   Github,
   Linkedin,
-  X,
 } from "@/components/icons/svg-icons";
 import type { NavBasicType } from "@/interfaces";
 
@@ -35,19 +33,9 @@ const data = {
       icon: Linkedin,
     },
     {
-      title: "X",
-      url: "https://x.com/devvburak",
-      icon: X,
-    },
-    {
       title: "DailyDev",
       url: "https://app.daily.dev/masculin",
       icon: Dailydotdev,
-    },
-    {
-      title: "Buy Me a Coffee",
-      url: "https://buymeacoffee.com/bilenburakf",
-      icon: Buymeacoffee,
     },
     {
       title: "Blusky",

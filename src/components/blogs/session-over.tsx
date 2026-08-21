@@ -1,6 +1,6 @@
 import { Card } from "@/components/ui/card";
 import type { BlogType } from "@/interfaces";
-import MotionText from "@/motion/motion-text";
+import { MotionText } from "@/motion/components/motion-text";
 import { NotFoundCircle } from "./posts/not-found";
 
 export default function SessionOver({
