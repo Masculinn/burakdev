@@ -47,10 +47,10 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
               duration: 2,
             }}
             elementType="div"
+            className="object-cover text-white size-full z-20 absolute top-0 left-0 bg-black/25 grid place-items-center-safe rounded-lg backdrop-blur-md"
             controller={{
               trigger: isHovered,
             }}
-            className="object-cover text-white size-full z-20 absolute top-0 left-0 bg-black/25 grid place-items-center-safe rounded-lg backdrop-blur-md"
           >
             <MotionContainer
               animation={{

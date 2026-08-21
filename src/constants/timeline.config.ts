@@ -4,6 +4,7 @@ export default [
   {
     title: "Q4 2025",
     content: {
+      id: 1,
       status: "ongoing",
       desc: "The playground is a full stack web project allowing develeopers to design with pre-defined motions which can be used in their React app components in one click.",
       techs: [
@@ -27,6 +28,7 @@ export default [
   {
     title: "Q3 2025",
     content: {
+      id: 2,
       status: "done",
       desc: "Maintained E2E OCR app for Polish archaeologists. The project aims to interpret the handwritten surface of paper-works and transforming it collectively into a colorful projection/profile models by using computer vision.",
       images: [],
@@ -37,6 +39,7 @@ export default [
   {
     title: "Q3 2025",
     content: {
+      id: 3,
       status: "paused",
       title: "modulith.app",
       techs: [
@@ -61,6 +64,7 @@ export default [
   {
     title: "Q2 2025",
     content: {
+      id: 4,
       images: [
         "/assets/timeline/beyazkose/gif-beyaz-kose.gif",
         "/assets/timeline/beyazkose/beyaz-kose-patiserrie-landing.png",
@@ -82,6 +86,7 @@ export default [
   {
     title: "Q2 2025",
     content: {
+      id: 5,
       status: "done",
       title: "izisarcheologia.com",
       techs: [
@@ -105,6 +110,7 @@ export default [
   {
     title: "Q2 2025",
     content: {
+      id: 6,
       status: "done",
       title: "ovensandwich.com",
       techs: ["react", "tailwindcss", "typescript", "nextjs"],
@@ -121,6 +127,7 @@ export default [
   {
     title: "Q1 2025",
     content: {
+      id: 7,
       status: "done",
       title: "Motion Provider",
       gitLink: "https://github.com/Masculinn/motion-provider",
@@ -137,6 +144,7 @@ export default [
   {
     title: "Q1 2025",
     content: {
+      id: 8,
       status: "done",
       title: "burak.dev",
       desc: "First version of my portfolio app that you are currently visiting 😀",
@@ -155,6 +163,7 @@ export default [
   {
     title: "Q4 2024",
     content: {
+      id: 9,
       status: "paused",
       title: "teezy.com",
       desc: "Self-initiated social music platform where users can listen to music, create profiles, upload and share tracks, explore other profiles, and enjoy AI-modified versions of tracks. It aimed to be a more interactive and community-driven version of Spotify.",
@@ -178,6 +187,7 @@ export default [
   {
     title: "Q3 2024",
     content: {
+      id: 10,
       status: "done",
       title: "ERP Cloudy",
       desc: "Promoted as a team lead for a high-stakes project integrating the Polish government invoice system (Krajowy System e-Faktur - KSEF) into company's ERP architecture. Collaborated with accountants, digitized processes, and managed team development.",
@@ -191,6 +201,7 @@ export default [
   {
     title: "Q3 2024",
     content: {
+      id: 11,
       status: "done",
       title: "Dashboard App",
       desc: "Developed and maintained all-in-one E2E foreign student platform, allowing Turkish students studying in Poland to track visa statuses, accommodations, appointments, and documents, with secure business logic as well as real-time communication channels.",
@@ -207,6 +218,7 @@ export default [
   {
     title: "Q2 2024",
     content: {
+      id: 12,
       status: "done",
       title: "atlanticmedi.com",
       desc: "Built a static medical tourism web app consisting over 165 pages with internationalization(EN/PL). Scraped comprehensive informations from partner's knowledge-house containing medical treatments and services and combined all into a single monorepo with real-time chat-bot support.",
@@ -222,6 +234,7 @@ export default [
   {
     title: "Q1 2024",
     content: {
+      id: 13,
       status: "done",
       title: "olymposedu.com",
       desc: "Developed a company portfolio web app where students can learn about their educational opportunities by aspiring them to study in Poland, including information on universities, pricing, articles, and more.",
@@ -238,6 +251,7 @@ export default [
   {
     title: "Q4 2023",
     content: {
+      id: 14,
       status: "done",
       title: "finfluencer.com",
       desc: "Developed a SPA integrated into the company's website for business analytics for Turkish financial influencers.",
@@ -254,6 +268,7 @@ export default [
   {
     title: "Q4 2023",
     content: {
+      id: 15,
       status: "done",
       title: "santaesmeraldas.com",
       desc: "Developed a cross-platform for Etsy one of the top seller jewelry e-commerce brand from scratch, listing over 150+ highly-valued products that made over $1M. Focused on improving UX, SEO optimization by caring LCP, CLS, TTFB, A/B testing. Mainly focused on converting the business model to feasible online sales.",
@@ -269,6 +284,7 @@ export default [
   {
     title: "Q3 2023",
     content: {
+      id: 16,
       images: [],
       status: "done",
       title: "ERP Cloudy",
@@ -279,6 +295,7 @@ export default [
   {
     title: "Q2 2023",
     content: {
+      id: 17,
       images: [
         "/assets/timeline/atlantic/1.webp",
         "/assets/timeline/atlantic/2.webp",
@@ -293,6 +310,7 @@ export default [
   {
     title: "2022",
     content: {
+      id: 18,
       status: "done",
       title: "The Last Human",
       desc: "Finished my internship at Insider where I worked on a mobile non-stop survival game using the Unity game engine.",
@@ -303,6 +321,7 @@ export default [
   {
     title: "2021",
     content: {
+      id: 19,
       status: "done",
       title: "Freelancer",
       desc: "Worked on various freelancing platforms like Fiverr and Upwork, creating web applications based on client requirements. Gained experience in understanding client needs and delivering tailored solutions.",
