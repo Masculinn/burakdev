@@ -1,6 +1,7 @@
 ﻿import { cn } from "@/lib/utils";
 import type { VariantProps } from "class-variance-authority";
 import type { Badge } from "./ui/badge";
+
 type PingProps = {
   mode: VariantProps<typeof Badge>["variant"];
   size: "sm" | "md" | "lg";

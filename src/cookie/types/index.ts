@@ -1,10 +1,8 @@
-import type { SetStateProps } from "@/interfaces";
+import type { Dispatch, SetStateAction } from "react";
 
 export type ConsentCategories = "necessary" | "analytics";
-export type ConsentState = {
-  necessary: true;
-  analytics: boolean;
-};
+export type ConsentState = { necessary: true; analytics: boolean };
+export type ConsentSource = "accept_all" | "reject_all" | "preferences";
 export type ConsentRecord = {
   version: number;
   consents: ConsentState;
@@ -14,9 +12,9 @@ export type ConsentRecord = {
 
 export interface CookieContextValue {
   consent: ConsentState | null;
-  setConsentState: SetStateProps<ConsentState | null>;
-  preferencesModalOpen: boolean;
-  setPreferencesModalOpen: SetStateProps<boolean>;
+  ready: boolean;
   bannerVisible: boolean;
-  setBannerVisible: SetStateProps<boolean>;
+  preferencesModalOpen: boolean;
+  setPreferencesModalOpen: Dispatch<SetStateAction<boolean>>;
+  saveConsent: (analytics: boolean, source: ConsentSource) => boolean;
 }

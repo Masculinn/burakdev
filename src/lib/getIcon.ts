@@ -42,6 +42,7 @@ import { Box } from "lucide-react";
 import type { SVGProps } from "react";
 
 type IconType = React.ComponentType<SVGProps<SVGSVGElement>>;
+
 export const iconsMap = {
   react: React,
   tailwindcss: Tailwindcss,
@@ -86,6 +87,7 @@ export const iconsMap = {
 export type IconName = keyof typeof iconsMap;
 
 const fallbackIcon = Box;
+
 export default function getIcon(iconName: string): IconType {
   const loweredIcon = iconName.toLowerCase();
   return iconsMap[loweredIcon as IconName] || fallbackIcon;

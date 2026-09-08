@@ -6,7 +6,7 @@
 } from "@/components/icons/svg-icons";
 import type { NavBasicType } from "@/interfaces";
 
-export type DataType = {
+type DataType = {
   user: {
     name: string;
     email: string;

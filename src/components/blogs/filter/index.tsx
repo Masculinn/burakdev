@@ -1,6 +1,8 @@
+import { Button } from "@/components/ui/button";
 import { getAnimation } from "@/lib/motion/getAnimation";
 import { MotionContainer } from "@/motion/components/motion-container";
-import Subscribe from "../subscribe";
+import { RssIcon } from "lucide-react";
+import Link from "next/link";
 import Search from "./search";
 import Sort from "./sort";
 import Tags from "./tags";
@@ -18,7 +20,18 @@ export default function BlogFilter() {
         </div>
         <div className="flex flex-row items-center justify-center w-full gap-2 md:w-auto">
           <Tags isCheckbox className="md:w-auto w-1/2" />
-          <Subscribe isIcon={false} className="md:w-auto w-1/2" />
+          <Button
+            variant="default"
+            nativeButton={false}
+            render={
+              <Link href="/rss.xml" target="_blank" rel="noopener noreferrer" />
+            }
+            aria-label="Subscribe button"
+            className="md:w-auto w-1/2"
+          >
+            <RssIcon className="size-4" />
+            <span>RSS</span>
+          </Button>
         </div>
       </div>
       <Tags className="max-w-full rounded-md md:my-4 mt-3" />

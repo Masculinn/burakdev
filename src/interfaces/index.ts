@@ -1,25 +1,10 @@
 ﻿import type { IconName } from "@/lib/getIcon";
-import type { MotionTextProps } from "@/motion/types";
 import type useEmblaCarousel from "embla-carousel-react";
 import type { UseEmblaCarouselType } from "embla-carousel-react";
 import type { ComponentType, JSX, SetStateAction, SVGProps } from "react";
 
 /** interfaces */
 
-export interface WrapperProps {
-  children: React.ReactNode;
-  className?: string;
-}
-export interface ThemeProps {
-  theme: ThemeType;
-}
-export interface TextAnimatorProps extends Pick<
-  MotionTextProps,
-  "config" | "animation" | "children"
-> {
-  elementType?: React.ElementType;
-  className?: string;
-}
 export interface TimelineItem {
   title: string;
   content: TimelineContentItem;
@@ -54,7 +39,7 @@ export interface SlugType {
 export type Tag = string;
 export type ThemeType = "light" | "dark";
 export type ProjectStatus = "ongoing" | "done" | "paused";
-export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
+type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 export type IconProps = SVGProps<SVGSVGElement>;
 export type BlogPostSortProps = "old-to-new" | "new-to-old" | "a-z" | "z-a";
 export type HTMLAttributes<T> = React.HTMLAttributes<T>;

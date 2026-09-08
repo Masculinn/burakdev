@@ -5,6 +5,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
+import { getAnimation } from "@/lib/motion/getAnimation";
 import { MotionText } from "@/motion/components/motion-text";
 
 export function NavUser({
@@ -31,17 +32,7 @@ export function NavUser({
           </Avatar>
           <div className="grid text-left text-sm leading-tight">
             <MotionText
-              animation={{
-                mode: ["fadeUp", "filterBlurIn", "flash"],
-                transition: "gentle",
-                delay: 0.25,
-                duration: 0.8,
-              }}
-              config={{
-                duration: 0.05,
-                delayLogic: "linear",
-                mode: "chars",
-              }}
+              {...getAnimation("navUserName")}
               controller={{
                 configView: {
                   amount: 0.5,
@@ -49,28 +40,14 @@ export function NavUser({
                 },
                 trigger: state === "expanded",
               }}
-              wrapperClassName="truncate font-medium text-md flex-1"
-              elementType="p"
             >
               {user.name}
             </MotionText>
             <MotionText
-              elementType="p"
-              animation={{
-                mode: ["fadeDown", "filterBlurIn", "flash"],
-                transition: "gentle",
-                delay: 0.75,
-                duration: 0.8,
-              }}
-              config={{
-                duration: 0.05,
-                delayLogic: "linear",
-                mode: "chars",
-              }}
+              {...getAnimation("navUserEmail")}
               controller={{
                 trigger: state === "expanded",
               }}
-              wrapperClassName="truncate text-xs"
             >
               {user.email}
             </MotionText>

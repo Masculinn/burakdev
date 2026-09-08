@@ -1,4 +1,5 @@
-﻿import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+﻿import { ChartRenderer, type ChartPayload } from "@/components/chart-renderer";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import themeSchema from "@/constants/theme-schema";
 import { useElementSize } from "@/hooks/use-element-size";
 import type { HTMLAttributes } from "@/interfaces";
@@ -31,6 +32,7 @@ function getLanguage(child: unknown): Language | "text" {
 
   return (lang as Language) ?? "text";
 }
+
 export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
   const { ref: preRef, size } = useElementSize<HTMLPreElement>();
   const isInView = useInView(preRef, { once: false });
@@ -45,6 +47,9 @@ export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
 
   const language = getLanguage(child);
 
+  if (language === "chart") {
+    return <ChartRenderer chart={JSON.parse(code) as ChartPayload} />;
+  }
   return (
     <div className="w-full my-4 flex justify-center relative overflow-y-hidden">
       <CopyCode

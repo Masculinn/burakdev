@@ -26,7 +26,6 @@ const Marquee: FC<MarqueeProps> = ({
       {Array.from({ length: repeat }).map((_, i) => (
         <div
           key={i}
-          // toggle animation-direction via inline style so it affects the running animation
           style={{ animationDirection: reverse ? "reverse" : "normal" }}
           className={cn("flex shrink-0 justify-around gap-(--gap)", {
             "animate-marquee flex-row": !vertical,

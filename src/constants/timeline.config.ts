@@ -2,10 +2,72 @@
 
 export default [
   {
+    title: "Q3 2026",
+    content: {
+      id: 21,
+      status: "done",
+      desc: "An open-source Ultimate Blog Editor App brings together the Markdown editing experience of Obsidian and the publishing flexibility of Substack in a single workspace.",
+      images: [
+        "/assets/timeline/blog-editor/1.webp",
+        "/assets/timeline/blog-editor/2.webp",
+        "/assets/timeline/blog-editor/3.webp",
+        "/assets/timeline/blog-editor/4.webp",
+      ],
+      techs: [
+        "nextjs",
+        "react",
+        "typescript",
+        "supabase",
+        "shadcn",
+        "tailwindcss",
+        "nodejs",
+        "postgresql",
+      ],
+      title: "Editor App",
+      gitLink: "https://github.com/Masculinn/blog-editor",
+    },
+  },
+  {
+    title: "Q1 2026",
+    content: {
+      id: 20,
+      desc: "An agentic, end-to-end scalable web app analysis scraping platform that turns a submitted URL into insights on performance, SEO, underlying technologies and many more within seconds.",
+      images: [
+        "/assets/timeline/scrapelined/1.webp",
+        "/assets/timeline/scrapelined/2.webp",
+        "/assets/timeline/scrapelined/3.webp",
+        "/assets/timeline/scrapelined/4.webp",
+        "/assets/timeline/scrapelined/5.webp",
+        "/assets/timeline/scrapelined/6.webp",
+        "/assets/timeline/scrapelined/7.webp",
+        "/assets/timeline/scrapelined/8.webp",
+      ],
+      status: "ongoing",
+      techs: [
+        "react",
+        "nextjs",
+        "typescript",
+        "drizzle",
+        "docker",
+        "express",
+        "javascript",
+        "jest",
+        "nodejs",
+        "postgresql",
+        "redux",
+        "shadcn",
+        "supabase",
+        "tailwindcss",
+        "threejs",
+      ],
+      title: "Scrapelined",
+    },
+  },
+  {
     title: "Q4 2025",
     content: {
       id: 1,
-      status: "ongoing",
+      status: "done",
       desc: "The playground is a full stack web project allowing develeopers to design with pre-defined motions which can be used in their React app components in one click.",
       techs: [
         "typescript",

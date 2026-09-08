@@ -8,7 +8,7 @@ import { LqipImage } from "../lqip-image";
 import { AspectRatio } from "../ui/aspect-ratio";
 import { Button } from "../ui/button";
 import { Card } from "../ui/card";
-import BlogCard from "./posts/card";
+import { BlogCard } from "./posts/card";
 
 const recommendationAnimation = getAnimation("recommendation");
 
@@ -25,12 +25,12 @@ function Recommendation({
 
   if (filteredBlogs.length === 0) return null;
   return (
-    <section className="w-full h-auto my-6">
+    <section className="w-full h-auto my-6 md:px-8">
       <MotionText {...recommendationAnimation}>Continue reading.</MotionText>
       <div className="w-full h-max relative scrollbar-custom overflow-x-scroll overflow-y-hidden">
         <div className="flex md:flex-row flex-col gap-4 w-full">
           {filteredBlogs.map((val) => (
-            <BlogCard {...val} key={val.id} isRecent={false} />
+            <BlogCard {...val} key={val.id} />
           ))}
           <PromoCard blogs={blogs} />
         </div>
@@ -45,7 +45,7 @@ const btnAnimation = getAnimation("promoCardBtn");
 
 function PromoCard({ blogs }: { blogs: BlogType[] }) {
   return (
-    <Card className="md:max-h-100 shrink-0 md:h-auto h-60 py-0 bg-bg md:w-96 w-full items-center justify-center flex relative overflow-hidden">
+    <Card className="md:max-h-100 shrink-0 md:h-auto h-60 py-0 bg-bg md:w-96 w-full items-center justify-center flex relative overflow-hidden md:mt-0 mt-8">
       <div className="absolute top-0 left-0 size-full grid grid-cols-3 -z-20">
         {[0, 1].map(() =>
           blogs.map(({ banner_image }, idx) => (

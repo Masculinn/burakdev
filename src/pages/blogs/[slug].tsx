@@ -1,6 +1,7 @@
 import Cover from "@/components/blogs/cover";
 import { MDXComponents } from "@/components/blogs/mdx-components";
 import Meta from "@/components/blogs/meta";
+import PostComments from "@/components/post-comments";
 import type { BlogType } from "@/interfaces";
 import { convertToSlug } from "@/utils/convertToSlug";
 import clientService from "@/utils/db";
@@ -21,20 +22,18 @@ import remarkUnwrapImageParagraphs from "../../../scripts/custom-remark-plugins/
 type MetaProps = Omit<BlogType, "content">;
 type Scope = Record<string, unknown>;
 
-interface GetStaticProps
-  extends NextGetStaticProps<{
-    meta: MetaProps;
-    mdxSource: SerializeResult<Record<string, unknown>, Scope>;
-    blogs: BlogType[];
-    readingTime: number;
-  }> {}
+interface GetStaticProps extends NextGetStaticProps<{
+  meta: MetaProps;
+  mdxSource: SerializeResult<Record<string, unknown>, Scope>;
+  blogs: BlogType[];
+  readingTime: number;
+}> {}
 
 interface GetStaticPaths extends NextGetStaticPaths<{ slug: string }> {}
 
-const [Recommendation, Newsletter, SessionOver] = await Promise.all([
+const [Recommendation, Socials] = await Promise.all([
   dynamic(() => import("@/components/blogs/recommendation"), { ssr: false }),
-  dynamic(() => import("@/components/blogs/newsletter"), { ssr: false }),
-  dynamic(() => import("@/components/blogs/session-over"), { ssr: false }),
+  dynamic(() => import("@/components/blogs/socials"), { ssr: false }),
 ]);
 
 export const getStaticProps = (async ({ params }) => {
@@ -116,8 +115,8 @@ export default function Page({
   return (
     <>
       <Meta {...meta} />
-      <article className="leading-snug text-blog-muted tracking-tight container laptop:px-16 desktop:px-0">
-        <Cover {...meta} readingTime={readingTime} />
+      <Cover {...meta} readingTime={readingTime} className="max-w-3xl" />
+      <article className="leading-snug text-blog-muted tracking-tight container max-w-3xl md:px-8 pr-0 grid place-content-center-safe">
         <MDXClient
           frontmatter={mdxSource.frontmatter}
           compiledSource={mdxSource.compiledSource}
@@ -125,8 +124,8 @@ export default function Page({
           scope={meta}
         />
       </article>
-      <SessionOver sessionId={meta.id} />
-      <Newsletter className="mt-12" />
+      <Socials className="mt-12 md:px-8" />
+      <PostComments />
       <Recommendation currentBlogID={meta.id} blogs={blogs} />
     </>
   );

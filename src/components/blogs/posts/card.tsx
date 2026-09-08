@@ -60,10 +60,7 @@ export function BlogCard({
             style={{ viewTransitionName: `post-badge-${id}` }}
           />
           {isRecent && (
-            <Badge
-              className="absolute top-4 right-4 z-50"
-              variant="destructive"
-            >
+            <Badge className="absolute top-4 right-4 z-50" variant="success">
               New Session!
             </Badge>
           )}
@@ -122,5 +119,3 @@ export function BlogCard({
     </TransitionLink>
   );
 }
-
-export default BlogCard;

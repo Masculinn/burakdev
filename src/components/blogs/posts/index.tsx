@@ -2,7 +2,7 @@
 import { useBlogSearch, useBlogSort, useBlogTags } from "@/hooks/use-posts";
 import type { BlogPostSortProps, BlogType } from "@/interfaces";
 import { useDebounce } from "@uidotdev/usehooks";
-import BlogCard from "./card";
+import { BlogCard } from "./card";
 import NotFound from "./not-found";
 
 const { tags: defaultTags } = CONTEXT;
@@ -11,7 +11,7 @@ function areSameSet(a: string[], b: string[]) {
   return a.length === b.length && a.every((v) => b.includes(v));
 }
 
-export function isRecent(date: string, days: number = 3): boolean {
+function isRecent(date: string, days: number = 3): boolean {
   const now = Date.now();
   const _date = new Date(date).getTime();
   const msperDay = 24 * 60 * 60 * 1000;

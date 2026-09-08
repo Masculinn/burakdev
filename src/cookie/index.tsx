@@ -1,12 +1,9 @@
-import { useIsClient } from "@uidotdev/usehooks";
-
 import { CookieAnalytics, CookieBanner, CookiePreferences } from "./components";
 import CookieProvider from "./providers";
 
-export default function Cookie() {
-  const isClient = useIsClient();
+export { openCookiePreferences } from "./lib";
 
-  if (!isClient) return null;
+export default function Cookie() {
   return (
     <CookieProvider>
       <CookieBanner />

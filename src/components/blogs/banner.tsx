@@ -1,23 +1,10 @@
-﻿import { MotionText } from "@/motion/components/motion-text";
+﻿import { getAnimation } from "@/lib/motion/getAnimation";
+import { MotionText } from "@/motion/components/motion-text";
 
 export default function Banner({ animationKey }: { animationKey: number }) {
   return (
     <section className="relative flex flex-col text-ellipsis md:pb-6">
-      <MotionText
-        wrapperClassName="md:text-5xl text-3xl font-secondary"
-        animation={{
-          mode: ["textShimmer", "transformTextGlow"],
-          transition: "linear",
-          duration: 1,
-          delay: 0.5,
-        }}
-        elementType="h1"
-        config={{
-          duration: 0.06,
-          mode: "chars",
-        }}
-        key={animationKey}
-      >
+      <MotionText {...getAnimation("banner")} key={animationKey}>
         justc0de_sessions
       </MotionText>
       <p className="text-muted-foreground pt-4 tracking-tight max-w-2xl leading-snug">

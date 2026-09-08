@@ -1,7 +1,9 @@
 ﻿import { useIsMobile } from "@/hooks/use-mobile";
 import type { BlogType } from "@/interfaces";
 import getIcon from "@/lib/getIcon";
+import { getAnimation } from "@/lib/motion/getAnimation";
 import { cn } from "@/lib/utils";
+import { MotionContainer } from "@/motion/components/motion-container";
 import { MotionText } from "@/motion/components/motion-text";
 import { Timer } from "lucide-react";
 import {
@@ -19,6 +21,7 @@ import { PostDifficulty } from "./post-difficulty";
 
 type CoverProps = Omit<BlogType, "content" | "description"> & {
   readingTime: number | null;
+  className?: string;
 };
 
 export default function Cover({
@@ -29,8 +32,8 @@ export default function Cover({
   published_at,
   title,
   readingTime,
+  className,
 }: CoverProps) {
-  const sessionId = `SESSION_NO_#${id.toString().padStart(3, "0")}`;
   const date = new Date(published_at).toLocaleDateString("en-US", {
     day: "2-digit",
     month: "2-digit",
@@ -43,6 +46,7 @@ export default function Cover({
         "md:h-auto md:min-h-80 h-auto w-full",
         "overflow-hidden relative md:p-12 p-6 mb-8",
         "flex items-center-safe justify-center rounded-t-2xl",
+        className,
       )}
       tabIndex={-1}
     >
@@ -52,12 +56,6 @@ export default function Cover({
       >
         {title}
       </h1>
-      <Badge
-        variant={"default"}
-        className="text-xs absolute top-4 right-4 z-50 font-secondary font-bold"
-      >
-        {sessionId}
-      </Badge>
       <time className="font-secondary text-xs absolute md:bottom-6 md:right-6 bottom-4 right-4 z-50">
         {date}
       </time>
@@ -73,7 +71,7 @@ export default function Cover({
         clasName="z-50 text-xs top-4 left-4 absolute"
         style={{ viewTransitionName: `post-badge-${id}` }}
       />
-      <div className="bg-linear-to-b from-transparent dark:to-80% to-background size-full object-contain absolute inset-0" />
+      <MotionContainer {...getAnimation("coverOverlay")} />
       <DraggableCurved items={tags} spinInertia={0.98} />
       {readingTime && (
         <Badge
@@ -190,20 +188,7 @@ function DraggableCurved({
                 stroke="none"
               />
               {item === middleItem ? (
-                <MotionText
-                  animation={{
-                    mode: ["fadeUp", "filterBlurIn"],
-                    transition: "gentle",
-                    delay: 0.25,
-                    duration: 1,
-                  }}
-                  config={{
-                    duration: 0.06,
-                    mode: "chars",
-                  }}
-                  key={item}
-                  elementType={"span"}
-                >
+                <MotionText {...getAnimation("draggableCurved")} key={item}>
                   {item}
                 </MotionText>
               ) : (

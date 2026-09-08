@@ -1,4 +1,5 @@
-﻿import { cn } from "@/lib/utils";
+﻿import { getAnimation } from "@/lib/motion/getAnimation";
+import { cn } from "@/lib/utils";
 import { MotionContainer } from "@/motion/components/motion-container";
 import { cva } from "class-variance-authority";
 import {
@@ -39,7 +40,7 @@ const motionBlurVariants = cva(
   {
     variants: {
       variant: {
-        success: "from-emerald-400/50 ",
+        success: "from-emerald-400/50",
         info: "from-sky-400/50",
         error: "from-rose-400/50",
         warning: "from-amber-400/50",
@@ -103,23 +104,9 @@ export const MdBlockquote = (props: BlockquoteProps) => {
       {Icon && <Icon className={iconVariants({ variant })} />}
       {children}
       <MotionContainer
-        animation={{
-          mode: ["fadeIn", "typingEffect"],
-          transition: "gentle",
-          duration: 2,
-          delay: 0.5,
-        }}
-        controller={{
-          configView: {
-            once: false,
-            amount: 0.5,
-          },
-        }}
+        {...getAnimation("mdBlockquote")}
         className={cn(motionBlurVariants({ variant }))}
-        elementType="div"
       />
     </blockquote>
   );
 };
-
-export default MdBlockquote;

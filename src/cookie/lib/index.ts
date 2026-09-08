@@ -1,35 +1,63 @@
-import config from "../config/index";
+import config from "../config";
 import type { ConsentRecord, ConsentState } from "../types";
 
-const { CONSENT_KEY, HISTORY_KEY } = config;
+const { CONSENT_KEY, HISTORY_KEY, CONSENT_VERSION } = config;
+export const OPEN_PREFERENCES_EVENT = "site:open-cookie-preferences";
 
-function readStoredConsent(): ConsentState | null {
+export function parseStoredConsent(raw: string | null): ConsentState | null {
+  if (!raw) return null;
   try {
-    const raw = localStorage.getItem(CONSENT_KEY);
-    if (!raw) return null;
-    return (JSON.parse(raw) as ConsentRecord).consents;
+    const record: unknown = JSON.parse(raw);
+    if (!record || typeof record !== "object") return null;
+    const value = record as Partial<ConsentRecord>;
+    if (
+      value.version !== CONSENT_VERSION ||
+      !value.consents || value.consents.necessary !== true ||
+      typeof value.consents.analytics !== "boolean" ||
+      typeof value.timestamp !== "string" ||
+      !Number.isFinite(Date.parse(value.timestamp))
+    ) return null;
+    return { necessary: true, analytics: value.consents.analytics };
   } catch {
     return null;
   }
 }
 
-function writeStoredConsent(rec: ConsentRecord) {
+export function readStoredConsent(): ConsentState | null {
+  if (typeof window === "undefined") return null;
   try {
-    localStorage.setItem(CONSENT_KEY, JSON.stringify(rec));
-    const rawHistory = localStorage.getItem(HISTORY_KEY);
-    const history = rawHistory
-      ? (JSON.parse(rawHistory) as ConsentRecord[])
-      : [];
-    history.unshift(rec);
-    const trimmed = history.slice(0, 10);
-    localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmed));
-  } catch {}
+    return parseStoredConsent(window.localStorage.getItem(CONSENT_KEY));
+  } catch {
+    return null;
+  }
 }
 
-function clearStoredConsent() {
+export function writeStoredConsent(record: ConsentRecord): boolean {
+  if (typeof window === "undefined") return false;
   try {
-    localStorage.removeItem(CONSENT_KEY);
-  } catch {}
+    window.localStorage.setItem(CONSENT_KEY, JSON.stringify(record));
+  } catch {
+    return false;
+  }
+  // An optional history failure must never invalidate the saved choice.
+  try {
+    let history: unknown;
+    try {
+      history = JSON.parse(window.localStorage.getItem(HISTORY_KEY) ?? "[]");
+    } catch {
+      history = [];
+    }
+    window.localStorage.setItem(
+      HISTORY_KEY,
+      JSON.stringify([record, ...(Array.isArray(history) ? history : [])].slice(0, 10)),
+    );
+  } catch { /* Consent itself was saved successfully. */ }
+  return true;
 }
 
-export { clearStoredConsent, readStoredConsent, writeStoredConsent };
+/** Can be called from a footer button outside Cookie's internal provider. */
+export function openCookiePreferences(): void {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new Event(OPEN_PREFERENCES_EVENT));
+  }
+}

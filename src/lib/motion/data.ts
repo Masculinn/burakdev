@@ -80,7 +80,7 @@ export default createMotionConfig({
           amount: 0.25,
         },
       },
-      elementType: "metadata",
+      elementType: "p",
       wrapperClassName: "text-3xl font-secondary",
     },
   },
@@ -117,7 +117,7 @@ export default createMotionConfig({
       },
       elementType: "h2",
       className:
-        "font-bold tracking-tighter max-w-2xl text-shadow-2xs text-4xl md:text-5xl md:pt-12 md:pb-8 py-6",
+        "font-bold tracking-tighter max-w-2xl text-shadow-2xs text-4xl md:text-5xl md:pt-12 md:pb-8 pt-6 pb-0 z-10",
     },
   },
   blogFilter: {
@@ -185,6 +185,198 @@ export default createMotionConfig({
       },
       elementType: "div",
       className: "relative hover:z-50 shadow-2xl",
+    },
+  },
+  imagePreviewIconWrapper: {
+    type: "MotionContainer",
+    props: {
+      animation: {
+        mode: ["clipPop", "fadeIn"],
+        transition: "smoothFast",
+        duration: 2,
+      },
+      elementType: "div",
+      className:
+        "object-cover text-white size-full z-20 absolute top-0 left-0 bg-black/25 grid place-items-center-safe rounded-lg backdrop-blur-md",
+    },
+  },
+  imagePreviewIcon: {
+    type: "MotionContainer",
+    props: {
+      animation: {
+        mode: "scaleZoomIn",
+        transition: "gentle",
+        duration: 0.88,
+      },
+      elementType: "div",
+    },
+  },
+  mdBlockquote: {
+    type: "MotionContainer",
+    props: {
+      animation: {
+        mode: ["fadeIn", "typingEffect"],
+        transition: "gentle",
+        duration: 2,
+        delay: 0.5,
+      },
+      controller: {
+        configView: {
+          once: false,
+          amount: 0.5,
+        },
+      },
+      elementType: "div",
+    },
+  },
+  banner: {
+    type: "MotionText",
+    props: {
+      wrapperClassName: "md:text-5xl text-3xl font-secondary",
+      animation: {
+        mode: ["textShimmer", "transformTextGlow"],
+        transition: "linear",
+        duration: 1,
+        delay: 0.5,
+      },
+      elementType: "h1",
+      config: {
+        duration: 0.06,
+        mode: "chars",
+      },
+    },
+  },
+  draggableCurved: {
+    type: "MotionText",
+    props: {
+      animation: {
+        mode: ["fadeUp", "filterBlurIn"],
+        transition: "gentle",
+        delay: 0.25,
+        duration: 1,
+      },
+      config: {
+        duration: 0.06,
+        mode: "chars",
+      },
+      elementType: "span",
+    },
+  },
+  cardHeader: {
+    type: "MotionText",
+    props: {
+      animation: {
+        mode: ["filterBlurIn", "fadeUp"],
+        transition: "gentle",
+        delay: 0.5,
+        duration: 1,
+      },
+      config: {
+        duration: 0.5,
+        mode: "words",
+        delayLogic: "cosine",
+      },
+      controller: {
+        configView: {
+          once: false,
+          amount: 0.25,
+        },
+      },
+      elementType: "h2",
+      className: "text-center",
+      wrapperClassName:
+        "md:text-3xl text-xl tracking-tighter max-w-sm text-center text-shadow-2xs text-4xl md:text-5xl",
+    },
+  },
+  projectTitle: {
+    type: "MotionText",
+    props: {
+      elementType: "span",
+      animation: {
+        mode: ["textShimmer", "transformRevealRight"],
+        transition: "gentle",
+        delay: 0.15,
+        duration: 0.8,
+      },
+      config: {
+        mode: "chars",
+        duration: 0.05,
+        delayLogic: "linear",
+      },
+    },
+  },
+  navUserName: {
+    type: "MotionText",
+    props: {
+      animation: {
+        mode: ["fadeUp", "filterBlurIn", "flash"],
+        transition: "gentle",
+        delay: 0.25,
+        duration: 0.8,
+      },
+      config: {
+        duration: 0.05,
+        delayLogic: "linear",
+        mode: "chars",
+      },
+      controller: {
+        configView: {
+          amount: 0.5,
+          once: false,
+        },
+      },
+      wrapperClassName: "truncate font-medium text-md flex-1",
+      elementType: "p",
+    },
+  },
+  navUserEmail: {
+    type: "MotionText",
+    props: {
+      elementType: "p",
+      animation: {
+        mode: ["fadeDown", "filterBlurIn", "flash"],
+        transition: "gentle",
+        delay: 0.75,
+        duration: 0.8,
+      },
+      config: {
+        duration: 0.05,
+        delayLogic: "linear",
+        mode: "chars",
+      },
+      wrapperClassName: "truncate text-xs",
+    },
+  },
+  notFound: {
+    type: "MotionText",
+    props: {
+      elementType: "h2",
+      animation: {
+        mode: ["fadeIn", "filterBlurIn", "flash"],
+        transition: "fadeRotate",
+        duration: 1,
+      },
+      config: {
+        duration: 0.08,
+        mode: "chars",
+        delayLogic: "linear",
+      },
+      wrapperClassName:
+        "md:text-5xl text-3xl font-extrabold tracking-tighter leading pb-2 z-10",
+    },
+  },
+  coverOverlay: {
+    type: "MotionContainer",
+    props: {
+      animation: {
+        mode: "fadeIn",
+        transition: "gentle",
+        delay: 0.6,
+        duration: 0.8,
+      },
+      elementType: "div",
+      className:
+        "bg-linear-to-b from-transparent dark:to-80% to-background size-full object-contain absolute inset-0",
     },
   },
 });

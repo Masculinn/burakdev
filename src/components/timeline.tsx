@@ -9,7 +9,7 @@ import type { FC } from "react";
 import { Github } from "./icons/svg-icons";
 import Marquee from "./marquee";
 import Ping from "./ping";
-import Project from "./project";
+import { Project } from "./project";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -87,24 +87,25 @@ const TimelineItem: FC<TimelineContentItem> = ({
         {desc}
       </p>
       <div className="flex items-center justify-center lg:pb-8 pb-6 lg:pt-4 pt-2 w-full">
-        <Button
-          className="w-full"
-          variant="outline"
-          size="lg"
-          disabled={!gitLink}
-          nativeButton={false}
-          render={
-            <Link
-              aria-disabled={!gitLink}
-              href={gitLink ?? ""}
-              rel="noopener noreferrer"
-              target="_blank"
-            />
-          }
-        >
-          <Github className="w-6 h-6 lg:w-8 lg:h-8" />
-          <span className="text-xs lg:text-base">Github</span>
-        </Button>
+        {gitLink && (
+          <Button
+            className="w-full"
+            variant="outline"
+            size="lg"
+            nativeButton={false}
+            render={
+              <Link
+                aria-disabled={!gitLink}
+                href={gitLink ?? ""}
+                rel="noopener noreferrer"
+                target="_blank"
+              />
+            }
+          >
+            <Github className="w-6 h-6 lg:w-8 lg:h-8" />
+            <span className="text-xs lg:text-base">Github</span>
+          </Button>
+        )}
       </div>
       {images && <Project {...{ images, desc, title }} />}
     </MotionContainer>

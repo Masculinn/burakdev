@@ -220,7 +220,7 @@ ${yayOrNay(Boolean(tableAssets))} Table assets: ${tableAssets?.length ?? 0}
       .filter(Boolean) as string[];
 
     const fromBucket: string[] = [];
-    if (bucketURL && bucketPaths && bucketPaths.length) {
+    if (bucketURL && bucketPaths?.length) {
       for (const p of bucketPaths) {
         try {
           const full = new URL(p, bucketURL).toString();

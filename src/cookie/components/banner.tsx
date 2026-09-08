@@ -1,40 +1,16 @@
-﻿import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { isProd } from "@/lib/env";
 import { createPortal } from "react-dom";
-import config from "../config";
-import { useCookie } from "../hooks";
-import { writeStoredConsent } from "../lib";
-import type { ConsentRecord, ConsentState } from "../types";
-
-const { CONSENT_VERSION } = config;
+import { toast } from "sonner";
+import { useCookie } from "../use-cookie";
 
 const Banner = () => {
-  const {
-    setPreferencesModalOpen,
-    setBannerVisible,
-    setConsentState,
-    consent,
-  } = useCookie();
-
+  const { setPreferencesModalOpen, saveConsent } = useCookie();
   const handleOpenPreferences = () => setPreferencesModalOpen(true);
-
-  const handleCookies = (c: boolean) => {
-    const newConsent: ConsentState = {
-      necessary: true,
-      analytics: c && Boolean(consent?.analytics),
-    };
-
-    const r: ConsentRecord = {
-      version: CONSENT_VERSION,
-      consents: newConsent,
-      timestamp: new Date().toISOString(),
-      source: newConsent.analytics ? "accept_all" : "reject_all",
-    };
-
-    setConsentState(newConsent);
-    writeStoredConsent(r);
-    setBannerVisible(false);
+  const handleCookies = (analytics: boolean) => {
+    const persisted = saveConsent(analytics, analytics ? "accept_all" : "reject_all");
+    if (!persisted) toast.warning("Your choice applies in this tab, but browser storage is unavailable. It may be requested again after refresh.");
   };
 
   return (
@@ -77,8 +53,6 @@ const Banner = () => {
 
 export function CookieBanner() {
   const { bannerVisible } = useCookie();
-  const prod = isProd();
-
-  if (!bannerVisible || !prod) return null;
+  if (!bannerVisible || !isProd()) return null;
   return createPortal(<Banner />, document.body);
 }

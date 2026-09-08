@@ -5,7 +5,6 @@ type Attrs = Record<string, string | number | boolean>;
 
 function parseAttrList(raw: string): Attrs {
   const attrs: Attrs = {};
-  // key=("value with spaces"|'value'|unquoted)
   const re = /([A-Za-z0-9:_-]+)=("([^"]*)"|'([^']*)'|([^"\s]+))/g;
 
   let execResult: RegExpExecArray | null = re.exec(raw);
@@ -65,7 +64,7 @@ export default function remarkAttrsBrackets() {
       if (first.type !== "paragraph") return;
       const firstText = first?.children[0];
 
-      if (!firstText || firstText.type !== "text") return;
+      if (firstText?.type !== "text") return;
       const m = firstText.value.match(LEADING_BRACKET_RE);
 
       if (!m) return;
@@ -84,11 +83,15 @@ export default function remarkAttrsBrackets() {
 
     visit(tree, "heading", (node: Heading) => {
       if (!node.children?.length) return;
+
       const firstText = node.children[0];
-      if (!firstText || firstText.type !== "text") return;
+      if (firstText?.type !== "text") return;
+
       const m = firstText.value.match(LEADING_BRACKET_RE);
       if (!m) return;
+
       const attrsRaw = m[1];
+
       firstText.value = m[2];
       node.data ??= {};
       node.data.hProperties = Object.assign(

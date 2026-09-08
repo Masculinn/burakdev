@@ -41,27 +41,16 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
           className="rounded-md outline-muted outline-1 relative overflow-hidden"
         >
           <MotionContainer
-            animation={{
-              mode: ["clipPop", "fadeIn"],
-              transition: "smoothFast",
-              duration: 2,
-            }}
-            elementType="div"
-            className="object-cover text-white size-full z-20 absolute top-0 left-0 bg-black/25 grid place-items-center-safe rounded-lg backdrop-blur-md"
+            {...getAnimation("imagePreviewIconWrapper")}
             controller={{
               trigger: isHovered,
             }}
           >
             <MotionContainer
-              animation={{
-                mode: "scaleZoomIn",
-                transition: "gentle",
-                duration: 0.88,
-              }}
+              {...getAnimation("imagePreviewIcon")}
               controller={{
                 trigger: isHovered,
               }}
-              elementType="div"
             >
               <Expand className="md:size-10 size-7" />
             </MotionContainer>

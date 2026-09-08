@@ -1,4 +1,6 @@
 ﻿import { useIsMobile } from "@/hooks/use-mobile";
+import { getAnimation } from "@/lib/motion/getAnimation";
+import { MotionText } from "@/motion/components/motion-text";
 import { useState } from "react";
 import {
   Dialog,
@@ -16,7 +18,6 @@ import {
 } from "../ui/drawer";
 import { ImagePreview } from "./image-preview";
 import { Slider } from "./image-slider";
-import { ProjectTitle } from "./project-title";
 
 type ProjectProps = {
   images: string[];
@@ -24,7 +25,7 @@ type ProjectProps = {
   title: string;
 };
 
-export default function Project(props: ProjectProps) {
+export function Project(props: ProjectProps) {
   const isMobile = useIsMobile();
   const { desc, images, title } = props;
   const [selected, setSelected] = useState<string>(images[0]);
@@ -81,4 +82,8 @@ export default function Project(props: ProjectProps) {
       </Dialog>
     </div>
   );
+}
+
+function ProjectTitle({ title }: { title: string }) {
+  return <MotionText {...getAnimation("projectTitle")}>{title}</MotionText>;
 }

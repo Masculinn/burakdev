@@ -27,12 +27,14 @@ export default function Home() {
         <div className="max-w-3xl">
           <p className="text-start leading-relaxed inline text-blog-muted">
             Hi 👋 I&apos;m a full-stack software engineer with 5+ years of
-            experience delivering resilient, production-grade web platforms
-            across fast-paced industries, based in Warsaw.
+            experience based in Warsaw delivering state-of-art, production-grade
+            solutions on the web across fast-paced industries within TDD and
+            agile approaches.
           </p>
           <p className="text-start leading-relaxed text-blog-muted pt-2">
-            Over the years, I&apos;ve honed my craft in building clean, reliable
-            codebases and intuitive interfaces that meet organizational goals.
+            Over the years, I&apos;ve dedicated myself to build clean, reliable
+            codebases and intuitive interfaces that meet project scopes and the
+            goals.
           </p>
           <p className="text-start leading-relaxed text-blog-muted pt-2">
             I&apos;ve worked at{" "}
@@ -75,9 +77,9 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl tracking-tight">
             Timeline Of My Journey
           </h2>
-          <p className="text-sm md:text-base md:max-w-md text-blog-muted max-w-2xs pt-4 font-extralight">
-            Here is my career timeline briefly for the past 5 years. Including
-            the major project assets and useful links with descriptions.
+          <p className="text-sm md:text-base md:max-w-md text-blog-muted max-w-2xs pt-4 tracking-tight">
+            Here are pretty much all my career experiences from the last 5 years
+            along with brief details.
           </p>
           <Timeline />
         </section>

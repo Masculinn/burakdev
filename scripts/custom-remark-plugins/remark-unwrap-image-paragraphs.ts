@@ -1,11 +1,6 @@
 ﻿import type { Image, Link, Paragraph, Parent, Root } from "mdast";
 import { visit } from "unist-util-visit";
 
-/**
- * Unwrap paragraphs that contain only an image OR a single link whose only child is an image.
- * When we replace the paragraph we also set `data-unwrap="1"` on the resulting node so downstream
- * rendering can decide to render a block <figure> :)
- */
 export default function remarkUnwrapImageParagraphs() {
   return function transformer(tree: Root, _file?: unknown) {
     (visit as unknown as typeof visit)(
@@ -19,7 +14,7 @@ export default function remarkUnwrapImageParagraphs() {
         if (!parent || typeof index !== "number") return;
 
         const children = node.children;
-        if (!children || children.length !== 1) return;
+        if (children?.length !== 1) return;
 
         const only = children[0];
 

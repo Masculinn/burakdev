@@ -17,8 +17,13 @@ const OUT_DIR = path.join(ROOT, "public");
 const RSS_OUT = path.join(OUT_DIR, "rss.xml");
 const SITEMAP_OUT = path.join(OUT_DIR, "sitemap.xml");
 
-function escapeCdata(str = "") {
-  return str.replace(/]]>/g, "]]]]><![CDATA[>");
+function createContent({
+  description,
+  url,
+}: Pick<BlogType, "description"> & { url: string }) {
+  const desc = `<p>${description}</p>`;
+  const link = `<div style="margin-top: 50px; font-style: italic;"><strong><a href="${url}">Keep reading</a>.</strong></div>`;
+  return `${desc}${link}`;
 }
 
 function createItem(post: BlogType & { slug?: SlugType }) {
@@ -34,7 +39,10 @@ function createItem(post: BlogType & { slug?: SlugType }) {
     <guid isPermaLink="true">${url}</guid>
     <pubDate>${date}</pubDate>
     <description>${post.description}</description>
-    <content:encoded><![CDATA[${escapeCdata(post.content)}]]></content:encoded>
+    <content:encoded>${createContent({
+      description: post.description,
+      url,
+    })}</content:encoded>
 </item>`;
 
   const sitemap = `<url>
