@@ -1,5 +1,6 @@
 import "@/styles/globals.css";
 
+import Cookie from "@/cookie";
 import type { ThemeType } from "@/interfaces";
 import { navigateWithTransition } from "@/lib/view-transition";
 import AppProvider from "@/providers/app-provider";
@@ -41,7 +42,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AppProvider>
       <Component {...pageProps} />
-      {/* <Cookie /> */}
+      <Cookie />
     </AppProvider>
   );
 }

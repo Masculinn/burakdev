@@ -9,8 +9,14 @@ const Banner = () => {
   const { setPreferencesModalOpen, saveConsent } = useCookie();
   const handleOpenPreferences = () => setPreferencesModalOpen(true);
   const handleCookies = (analytics: boolean) => {
-    const persisted = saveConsent(analytics, analytics ? "accept_all" : "reject_all");
-    if (!persisted) toast.warning("Your choice applies in this tab, but browser storage is unavailable. It may be requested again after refresh.");
+    const persisted = saveConsent(
+      analytics,
+      analytics ? "accept_all" : "reject_all",
+    );
+    if (!persisted)
+      toast.warning(
+        "Your choice applies in this tab, but browser storage is unavailable. It may be requested again after refresh.",
+      );
   };
 
   return (
