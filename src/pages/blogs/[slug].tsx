@@ -22,12 +22,13 @@ import remarkUnwrapImageParagraphs from "../../../scripts/custom-remark-plugins/
 type MetaProps = Omit<BlogType, "content">;
 type Scope = Record<string, unknown>;
 
-interface GetStaticProps extends NextGetStaticProps<{
-  meta: MetaProps;
-  mdxSource: SerializeResult<Record<string, unknown>, Scope>;
-  blogs: BlogType[];
-  readingTime: number;
-}> {}
+interface GetStaticProps
+  extends NextGetStaticProps<{
+    meta: MetaProps;
+    mdxSource: SerializeResult<Record<string, unknown>, Scope>;
+    blogs: BlogType[];
+    readingTime: number;
+  }> {}
 
 interface GetStaticPaths extends NextGetStaticPaths<{ slug: string }> {}
 

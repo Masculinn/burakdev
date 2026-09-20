@@ -1,10 +1,11 @@
-// Kept on window so Strict Mode and component remounts do not configure GA twice.
 type Gtag = (...args: unknown[]) => void;
+
 type AnalyticsRuntime = {
   configured: boolean;
   allowed: boolean;
   lastPage: string | null;
 };
+
 type AnalyticsWindow = Window & {
   dataLayer?: unknown[];
   gtag?: Gtag;
@@ -36,7 +37,7 @@ export function updateAnalyticsConsent(id: string, allowed: boolean): void {
   }
   target.dataLayer ??= [];
   target.gtag ??= function () {
-    target.dataLayer!.push(arguments);
+    target.dataLayer?.push(arguments);
   };
   if (!state.configured) {
     target.gtag("consent", "default", {
@@ -60,15 +61,18 @@ export function updateAnalyticsConsent(id: string, allowed: boolean): void {
 export function trackPageView(id: string, url: string): void {
   const { target, state } = runtime(id);
   if (!state.allowed || !target.gtag) return;
+
   const page = new URL(url, window.location.origin);
-  // Hash-only navigation is not a new page; query-string changes are.
   const path = page.pathname + page.search;
+
   if (state.lastPage === path) return;
+
   target.gtag("event", "page_view", {
     send_to: id,
     page_path: path,
     page_location: page.origin + path,
     page_title: document.title,
   });
+
   state.lastPage = path;
 }
