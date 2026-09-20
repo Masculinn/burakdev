@@ -17,7 +17,13 @@ import { PostDifficulty } from "../post-difficulty";
 
 const { animation, controller, elementType } = getAnimation("blogCard");
 
+type Props = Omit<BlogType, "content"> & {
+  isRecent?: boolean;
+  idx: number;
+};
+
 export function BlogCard({
+  idx,
   banner_image,
   description,
   published_at,
@@ -26,8 +32,7 @@ export function BlogCard({
   title,
   level,
   isRecent = false,
-  idx,
-}: Omit<BlogType, "content"> & { isRecent?: boolean; idx: number }) {
+}: Props) {
   const isMobile = useIsMobile();
 
   const date = new Date(published_at).toLocaleDateString("en-US", {

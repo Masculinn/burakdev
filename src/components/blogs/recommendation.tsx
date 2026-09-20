@@ -29,8 +29,8 @@ function Recommendation({
       <MotionText {...recommendationAnimation}>Continue reading.</MotionText>
       <div className="w-full h-max relative scrollbar-custom overflow-x-scroll overflow-y-hidden">
         <div className="flex md:flex-row flex-col gap-4 w-full">
-          {filteredBlogs.map((val) => (
-            <BlogCard {...val} key={val.id} />
+          {filteredBlogs.map((val, idx) => (
+            <BlogCard idx={idx + 1} key={val.id} {...val} />
           ))}
           <PromoCard blogs={blogs} />
         </div>
