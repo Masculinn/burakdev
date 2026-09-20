@@ -12,11 +12,13 @@ export function parseStoredConsent(raw: string | null): ConsentState | null {
     const value = record as Partial<ConsentRecord>;
     if (
       value.version !== CONSENT_VERSION ||
-      !value.consents || value.consents.necessary !== true ||
+      !value.consents ||
+      value.consents.necessary !== true ||
       typeof value.consents.analytics !== "boolean" ||
       typeof value.timestamp !== "string" ||
       !Number.isFinite(Date.parse(value.timestamp))
-    ) return null;
+    )
+      return null;
     return { necessary: true, analytics: value.consents.analytics };
   } catch {
     return null;
@@ -49,9 +51,13 @@ export function writeStoredConsent(record: ConsentRecord): boolean {
     }
     window.localStorage.setItem(
       HISTORY_KEY,
-      JSON.stringify([record, ...(Array.isArray(history) ? history : [])].slice(0, 10)),
+      JSON.stringify(
+        [record, ...(Array.isArray(history) ? history : [])].slice(0, 10),
+      ),
     );
-  } catch { /* Consent itself was saved successfully. */ }
+  } catch {
+    /* Consent itself was saved successfully. */
+  }
   return true;
 }
 

@@ -26,15 +26,14 @@ function PreferencesDialog() {
   const handleSavePreferences = () => {
     const persisted = saveConsent(checked, "preferences");
     if (persisted) toast.success("Your preferences have been saved.");
-    else toast.warning("Your choice applies in this tab, but browser storage is unavailable. It may be requested again after refresh.");
+    else
+      toast.warning(
+        "Your choice applies in this tab, but browser storage is unavailable. It may be requested again after refresh.",
+      );
   };
 
   return (
-    <Dialog
-      open={true}
-      onOpenChange={setPreferencesModalOpen}
-      modal
-    >
+    <Dialog open={true} onOpenChange={setPreferencesModalOpen} modal>
       <DialogContent className="dark:bg-transparent backdrop-blur-xl">
         <DialogHeader>
           <DialogTitle>Cookie preferences</DialogTitle>
@@ -52,7 +51,12 @@ function PreferencesDialog() {
               </p>
             </div>
             <div className="text-sm text-slate-500">
-              <Switch id="necessary-switch" aria-label="Necessary cookies (required)" disabled checked={true} />
+              <Switch
+                id="necessary-switch"
+                aria-label="Necessary cookies (required)"
+                disabled
+                checked={true}
+              />
             </div>
           </div>
           <div className="flex items-center justify-between border rounded-md p-3">

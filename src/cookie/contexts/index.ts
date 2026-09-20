@@ -1,4 +1,6 @@
 import { createContext } from "react";
 import type { CookieContextValue } from "../types";
 
-export const CookieContext = createContext<CookieContextValue | undefined>(undefined);
+export const CookieContext = createContext<CookieContextValue | undefined>(
+  undefined,
+);

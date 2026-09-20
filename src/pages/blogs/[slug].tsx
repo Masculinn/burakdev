@@ -116,7 +116,7 @@ export default function Page({
     <>
       <Meta {...meta} />
       <Cover {...meta} readingTime={readingTime} className="max-w-3xl" />
-      <article className="leading-snug text-blog-muted tracking-tight container max-w-3xl md:px-8 pr-0 grid place-content-center-safe">
+      <article className="leading-snug text-blog-muted tracking-tight container max-w-3xl md:px-8 pr-0 grid place-content-center-safe text-ellipsis">
         <MDXClient
           frontmatter={mdxSource.frontmatter}
           compiledSource={mdxSource.compiledSource}

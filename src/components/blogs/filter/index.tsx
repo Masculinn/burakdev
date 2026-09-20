@@ -11,7 +11,7 @@ const animation = getAnimation("blogFilter");
 
 export default function BlogFilter() {
   return (
-    <section className="sticky top-0 md:pt-4 pt-16 w-full h-auto max-h-min flex flex-col z-50 bg-background">
+    <section className="sticky top-0 md:pt-4 pt-16 w-full h-auto max-h-min flex flex-col z-999 bg-background">
       <MotionContainer {...animation} />
       <div className="w-full h-auto flex md:flex-row flex-col-reverse items-center gap-2 relative justify-around">
         <div className="flex items-center gap-2 w-full">

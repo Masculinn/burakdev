@@ -1,6 +1,7 @@
 ﻿import dotenv from "dotenv";
 import { existsSync } from "node:fs";
 import path from "node:path";
+
 const p = path.join(process.cwd(), ".env");
 
 if (existsSync(p)) {
@@ -17,6 +18,29 @@ const OUT_DIR = path.join(ROOT, "public");
 const RSS_OUT = path.join(OUT_DIR, "rss.xml");
 const SITEMAP_OUT = path.join(OUT_DIR, "sitemap.xml");
 
+function escapeXml(unsafe: string): string {
+  return unsafe.replace(/[<>&'"]/g, (char) => {
+    switch (char) {
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case "&":
+        return "&amp;";
+      case "'":
+        return "&apos;";
+      case '"':
+        return "&quot;";
+      default:
+        return char;
+    }
+  });
+}
+
+function toRfc822(date: Date): string {
+  return date.toUTCString();
+}
+
 function createContent({
   description,
   url,
@@ -32,22 +56,25 @@ function createItem(post: BlogType & { slug?: SlugType }) {
   }
 
   const url = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${post.slug}`;
-  const date = new Date(post.published_at).toISOString();
+  const publishedDate = new Date(post.published_at);
+  const isoDate = publishedDate.toISOString();
+  const rfc822Date = toRfc822(publishedDate);
+
   const rss = `<item>
-    <title>${post.title}</title>
+    <title>${escapeXml(post.title)}</title>
     <link>${url}</link>
     <guid isPermaLink="true">${url}</guid>
-    <pubDate>${date}</pubDate>
-    <description>${post.description}</description>
-    <content:encoded>${createContent({
+    <pubDate>${rfc822Date}</pubDate>
+    <description>${escapeXml(post.description)}</description>
+    <content:encoded><![CDATA[${createContent({
       description: post.description,
       url,
-    })}</content:encoded>
+    })}]]></content:encoded>
 </item>`;
 
   const sitemap = `<url>
   <loc>${url}</loc>
-  <lastmod>${date}</lastmod>
+  <lastmod>${isoDate}</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.5</priority>
 </url>`;
@@ -121,15 +148,16 @@ async function main() {
   const mergeSitemapItems = sitemapItems.length ? sitemapItems.join("\n") : "";
 
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>justc0de_sessions RSS field by Burak Bilen</title>
+        <title>justc0de_sessions RSS feed by Burak Bilen</title>
         <link>${process.env.NEXT_PUBLIC_SITE_URL}/blogs</link>
+        <atom:link href="${process.env.NEXT_PUBLIC_SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
         <description>Stay up to date with my latest blog posts</description>
         <language>en-us</language>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <copyright>Copyright ${new Date().getFullYear()}, justc0de_sessions author Burak Bilen</copyright>
-        <lastBuildDate>${new Date().toISOString()}</lastBuildDate>
+        <lastBuildDate>${toRfc822(new Date())}</lastBuildDate>
           ${mergeRssItems}
     </channel>
 </rss>`;

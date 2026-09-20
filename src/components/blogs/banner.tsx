@@ -7,15 +7,16 @@ export default function Banner({ animationKey }: { animationKey: number }) {
       <MotionText {...getAnimation("banner")} key={animationKey}>
         justc0de_sessions
       </MotionText>
-      <p className="text-muted-foreground pt-4 tracking-tight max-w-2xl leading-snug">
-        Sometimes, fairies come and whisper in my ear, inspiring me. For some
-        reason, I found myself typing something on the keyboard. That's why I
-        named it "Sessions." 😅
-      </p>
-      <p className="text-muted-foreground pt-4 tracking-tight max-w-2xl leading-snug ">
-        Don't forget to subscribe to my newsletter for instant updates! Enjoy
-        reading!
-      </p>
+      <div className="text-muted-foreground max-w-2xl text-ellipsis leading-snug">
+        <p className="pt-4 tracking-tight">
+          I write occasionally about full-stack development. I like to deep dive
+          in such topics with ease, mention the potential bottlenecks, pros and
+          cons.
+        </p>
+        <p className="pt-4 tracking-tight">
+          Pretty much everything about the web using cutting-edge techs.
+        </p>
+      </div>
     </section>
   );
 }

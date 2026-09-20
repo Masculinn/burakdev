@@ -26,7 +26,8 @@ export function BlogCard({
   title,
   level,
   isRecent = false,
-}: BlogType & { isRecent?: boolean }) {
+  idx,
+}: Omit<BlogType, "content"> & { isRecent?: boolean; idx: number }) {
   const isMobile = useIsMobile();
 
   const date = new Date(published_at).toLocaleDateString("en-US", {
@@ -36,24 +37,30 @@ export function BlogCard({
   });
   const slug = `/blogs/${convertToSlug(title)}`;
 
-  const delay = (id % 0.22) + (isMobile ? 0.15 : 0.25);
+  const delay = isMobile ? 0.22 : (idx % 0.22) + 0.25;
+  const isEager = idx <= 2;
 
   return (
     <TransitionLink href={slug} className="relative">
       <MotionContainer
         animation={{
-          mode: [
-            !isMobile ? "fadeUp" : id % 2 === 0 ? "fadeRight" : "fadeLeft",
-            animation.mode,
-          ],
+          mode: [isMobile ? "fadeIn" : "fadeUp", animation.mode],
           transition: animation.transition,
           delay,
         }}
-        controller={controller}
+        controller={{
+          trigger: isMobile ? true : undefined,
+          ...controller,
+        }}
         elementType={elementType}
         className="relative"
       >
-        <Card className="overflow-hidden relative md:max-h-100 h-auto py-0 bg-bg group cursor-pointer fade-in">
+        <Card
+          className="overflow-hidden relative md:max-h-100 h-auto py-0 bg-bg group cursor-pointer border-0 border-none"
+          style={{
+            border: "none",
+          }}
+        >
           <PostDifficulty
             level={level}
             clasName="z-50 text-xs top-4 left-4 absolute"
@@ -67,8 +74,9 @@ export function BlogCard({
           <CardHeader className="p-0 m-0 relative h-60 w-full">
             <LqipImage
               fill
-              loading="lazy"
+              loading={isEager ? "eager" : "lazy"}
               fetchPriority="auto"
+              priority={isEager}
               src={banner_image}
               alt={title}
               className="object-cover inset-0 z-0 object-center absolute top-0 left-0 size-full"

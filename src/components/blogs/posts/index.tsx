@@ -79,6 +79,7 @@ function getRecentPostIds(posts: BlogType[], days = 3): Set<number> {
   }
   return ids;
 }
+
 function BlogPosts({ posts }: { posts: BlogType[] }) {
   const { selectedTags } = useBlogTags();
   const { search } = useBlogSearch();
@@ -95,9 +96,14 @@ function BlogPosts({ posts }: { posts: BlogType[] }) {
   if (!filteredPosts.length) return <NotFound />;
 
   return (
-    <section className="w-full h-auto grid md:grid-cols-2 grid-cols-1 my-4 gap-4 relative z-10">
-      {filteredPosts.map((post) => (
-        <BlogCard key={post.id} isRecent={recentIds.has(post.id)} {...post} />
+    <section className="w-full h-auto grid md:grid-cols-2 grid-cols-1 md:my-4 my-2 gap-4 relative ">
+      {filteredPosts.map((post, idx) => (
+        <BlogCard
+          key={post.id}
+          isRecent={recentIds.has(post.id)}
+          idx={idx + 1}
+          {...post}
+        />
       ))}
     </section>
   );

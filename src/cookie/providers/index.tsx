@@ -4,5 +4,7 @@ import { useCookieStates } from "../use-cookie";
 
 export default function CookieProvider({ children }: { children: ReactNode }) {
   const value = useCookieStates();
-  return <CookieContext.Provider value={value}>{children}</CookieContext.Provider>;
+  return (
+    <CookieContext.Provider value={value}>{children}</CookieContext.Provider>
+  );
 }
