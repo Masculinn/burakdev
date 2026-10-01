@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import {
   Area,
   AreaChart,
@@ -49,95 +50,106 @@ interface ChartRendererProps {
   isAnimationActive?: boolean;
 }
 
+const CHART_MARGIN = { top: 8, right: 8, bottom: 0, left: 0 } as const;
+
+function buildConfig(series: readonly ChartSeries[]): ChartConfig {
+  const config: ChartConfig = {};
+  for (const { dataKey, label, color } of series) {
+    config[dataKey] = { label, color };
+  }
+  return config;
+}
+
 export function ChartRenderer({
   chart,
   className,
-  isAnimationActive,
+  isAnimationActive = false,
 }: ChartRendererProps) {
-  const config = Object.fromEntries(
-    chart.series.map((series) => [
-      series.dataKey,
-      {
-        label: series.label,
-        color: series.color,
-      },
-    ]),
-  ) as ChartConfig;
+  const {
+    type,
+    data,
+    series,
+    xKey,
+    height,
+    showGrid,
+    showLegend,
+    showTooltip,
+  } = chart;
 
-  const common = (
+  const config = useMemo(() => buildConfig(series), [series]);
+
+  const axes = (
     <>
-      {chart.showGrid && (
-        <CartesianGrid vertical={false} strokeDasharray="3 3" />
-      )}
+      {showGrid && <CartesianGrid vertical={false} strokeDasharray="3 3" />}
 
       <XAxis
-        dataKey={chart.xKey}
+        dataKey={xKey}
         tickLine={false}
         axisLine={false}
         tickMargin={8}
+        minTickGap={24}
+        interval="preserveStartEnd"
       />
 
       <YAxis width="auto" tickLine={false} axisLine={false} />
 
-      {chart.showTooltip && (
+      {showTooltip && (
         <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
       )}
 
-      {chart.showLegend && <ChartLegend content={<ChartLegendContent />} />}
+      {showLegend && <ChartLegend content={<ChartLegendContent />} />}
     </>
   );
 
   return (
     <ChartContainer
       config={config}
-      className={cn("w-full min-h-50", className)}
-      style={{
-        height: chart.height,
-      }}
+      className={cn(
+        "aspect-auto block w-full min-w-0 max-w-full overflow-hidden",
+        className,
+      )}
+      style={{ height }}
     >
-      {chart.type === "bar" ? (
-        <BarChart accessibilityLayer data={chart.data}>
-          {common}
-
-          {chart.series.map((series) => (
+      {type === "bar" ? (
+        <BarChart accessibilityLayer data={data} margin={CHART_MARGIN}>
+          {axes}
+          {series.map((s) => (
             <Bar
-              isAnimationActive={isAnimationActive}
-              key={series.dataKey}
-              dataKey={series.dataKey}
-              fill={series.color}
+              key={s.dataKey}
+              dataKey={s.dataKey}
+              fill={s.color}
               radius={4}
+              isAnimationActive={isAnimationActive}
             />
           ))}
         </BarChart>
-      ) : chart.type === "area" ? (
-        <AreaChart accessibilityLayer data={chart.data}>
-          {common}
-
-          {chart.series.map((series) => (
+      ) : type === "area" ? (
+        <AreaChart accessibilityLayer data={data} margin={CHART_MARGIN}>
+          {axes}
+          {series.map((s) => (
             <Area
-              isAnimationActive={isAnimationActive}
-              key={series.dataKey}
-              dataKey={series.dataKey}
-              stroke={series.color}
-              fill={series.color}
+              key={s.dataKey}
+              dataKey={s.dataKey}
+              stroke={s.color}
+              fill={s.color}
               fillOpacity={0.18}
               type="monotone"
+              isAnimationActive={isAnimationActive}
             />
           ))}
         </AreaChart>
       ) : (
-        <LineChart accessibilityLayer data={chart.data}>
-          {common}
-
-          {chart.series.map((series) => (
+        <LineChart accessibilityLayer data={data} margin={CHART_MARGIN}>
+          {axes}
+          {series.map((s) => (
             <Line
-              isAnimationActive={isAnimationActive}
-              key={series.dataKey}
-              dataKey={series.dataKey}
-              stroke={series.color}
+              key={s.dataKey}
+              dataKey={s.dataKey}
+              stroke={s.color}
               strokeWidth={2}
               dot={false}
               type="monotone"
+              isAnimationActive={isAnimationActive}
             />
           ))}
         </LineChart>
