@@ -319,6 +319,11 @@
     "height": 3648,
     "width": 5472
   },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/react-debounce-banner-0fc789bb.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAIAAAC+zks0AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAA4klEQVQImWOo7ZrTNnFh/5TFs+cvX7Ni/dHNm+8d2fvh4qE/d0/8f36Ooayup7lz6qTpczeuXfPgzP7/j47/f37k/6/L/7+d/f9sA0N8RmVBWUtr5+QFs+ZsXT5n35JJt9f3Hl9atm9+5bKuAgYHd39XD/+Q8PjwmISc3LLMzJyEuHgzMyNjA01DfW0GAWkmITk2KXVWBX1eDUMxYwtpC1s5UWlmBk4GGSUBBgZRBk5JBkFZBiE5BhFFBgltZkFlBjlNFglVFlF5BgYGbgYGdgYGMQZWCQZ2cZBSTkkQl4EThACLH0zNwuAQ/gAAAABJRU5ErkJggg==",
+    "height": 4480,
+    "width": 6720
+  },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/black-hole.webp": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAc0lEQVQImWPgYWEBI0YBFiYeFkYwYuFiZeRiBTEY4NL6rOzRwqIhAiKiTAwQOZA0hMXLwhgtLPp/Sti/bMcQARGIGQhpHhbGEAGR/xfL/j+qA0uDzIcazsUKUijGwmTKxmnMzikPdQSKbhDihYlCEBcrIwCqOg9xfsgFCgAAAABJRU5ErkJggg==",
     "height": 931,
@@ -363,6 +368,11 @@
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAIAAAC+zks0AAAACXBIWXMAAAsSAAALEgHS3X78AAAAjElEQVQImVWNIQ4FIQwFN8FWYdAVa1bVYDAYDFfgCKh6FLfgCj0AioOhSH4Cm/zsmCbz2r5LbwDgvm+3QUQAOP46QykVQui9i4i1Vin1iY0xMcYxhoh474/8x1prZl5rzTlTSp/nAOCcY+ZSSs6ZmYnobLzXOefWWiml1ioiKaVT/8aISETPhogQ8fgf9csu6m7MFJYAAAAASUVORK5CYII=",
     "height": 1024,
     "width": 1536
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/debounce-vs-throttle-3b3e506b.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAHCAYAAAAxrNxjAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAA6ElEQVQYlWNgIBa0Vq4vWbn0wpLW9hVL7JzSlrh75M668/P/zEmLDy0JTGle4hFWucTEKa6MISdjztb+3hN/q6q2/q1v2P23s/Xo+z0X/7+dvfrp3xmrHvxdsPHN3/z61TsY3D1yt3a0HPhbWb7574zJl/5uXP3+/fTlj96u2fXn78ZD//+u2vftb2Xv9h0MPv6FWwsqFv3NKJjzNzZ18t+svAXvu+effdsx4+zfms59f5v6j/1NLpy7g0FLz63R1Dp8m75p0DYru6RtUbGdqz3CKlc7+BVudwko3x6fM2O7R1hlC9GeBgARzngdtcXCFAAAAABJRU5ErkJggg==",
+    "height": 1073,
+    "width": 1466
   },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/deduplication-of-sections.gif": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAADCAYAAACqPZ51AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAXUlEQVQImWOozy/+v2rhov/fvn74f+DA/v9hwcH/y6ur/9s6OPxnYGBA4IqCvP/vfn773zWh97+vn99/Fw/3/z4BAf8tra1RFdYUF/63s7D67+bq9p+Pjw9VEgkDAPgfNa3ds0MMAAAAAElFTkSuQmCC",

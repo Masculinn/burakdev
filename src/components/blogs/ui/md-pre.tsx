@@ -30,7 +30,7 @@ function getLanguage(child: unknown): Language | "text" {
   if (lang === "js" || lang === "javascript") lang = "jsx";
   if (lang === "bash" || lang === "sh") lang = "bash";
 
-  return (lang as Language) ?? "text";
+  return lang as Language;
 }
 
 export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {

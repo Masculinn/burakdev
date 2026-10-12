@@ -1,36 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>justc0de_sessions RSS field by Burak Bilen</title>
+        <title>justc0de_sessions RSS feed by Burak Bilen</title>
         <link>https://burakdev.com/blogs</link>
+        <atom:link href="https://burakdev.com/rss.xml" rel="self" type="application/rss+xml" />
         <description>Stay up to date with my latest blog posts</description>
         <language>en-us</language>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <copyright>Copyright 2026, justc0de_sessions author Burak Bilen</copyright>
-        <lastBuildDate>2026-09-07T23:34:11.408Z</lastBuildDate>
+        <lastBuildDate>Thu, 01 Oct 2026 01:13:37 GMT</lastBuildDate>
           <item>
-    <title>I have built an ultimate blogging workspace and open sourced it.</title>
+    <title>Preventing The React Context From Turning Into Pyramids with Typesafe Composer</title>
+    <link>https://burakdev.com/blogs/preventing-the-react-context-from-turning-into-pyramids-with-typesafe-composer</link>
+    <guid isPermaLink="true">https://burakdev.com/blogs/preventing-the-react-context-from-turning-into-pyramids-with-typesafe-composer</guid>
+    <pubDate>Thu, 01 Oct 2026 00:34:27 GMT</pubDate>
+    <description>Practicing with the type-safe reusable composers to organize the existing pyramid-like React context providers into something readable</description>
+    <content:encoded><![CDATA[<p>Practicing with the type-safe reusable composers to organize the existing pyramid-like React context providers into something readable</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="https://burakdev.com/blogs/preventing-the-react-context-from-turning-into-pyramids-with-typesafe-composer">Keep reading</a>.</strong></div>]]></content:encoded>
+</item>
+<item>
+    <title>The Complete Guide to Higher-Order Components in Next.js React With Typescript</title>
+    <link>https://burakdev.com/blogs/the-complete-guide-to-higher-order-components-in-next-js-react-with-typescript</link>
+    <guid isPermaLink="true">https://burakdev.com/blogs/the-complete-guide-to-higher-order-components-in-next-js-react-with-typescript</guid>
+    <pubDate>Sun, 20 Sep 2026 02:42:34 GMT</pubDate>
+    <description>In this article we&apos;re going to have a look at the HOC in practice, not only the Server-Side but also the Client-Side React patterns.</description>
+    <content:encoded><![CDATA[<p>In this article we're going to have a look at the HOC in practice, not only the Server-Side but also the Client-Side React patterns.</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="https://burakdev.com/blogs/the-complete-guide-to-higher-order-components-in-next-js-react-with-typescript">Keep reading</a>.</strong></div>]]></content:encoded>
+</item>
+<item>
+    <title>I have built an ultimate blogging workspace and open sourced it</title>
     <link>https://burakdev.com/blogs/i-have-built-an-ultimate-blogging-workspace-and-open-sourced-it</link>
     <guid isPermaLink="true">https://burakdev.com/blogs/i-have-built-an-ultimate-blogging-workspace-and-open-sourced-it</guid>
-    <pubDate>2026-09-07T00:20:33.071Z</pubDate>
+    <pubDate>Mon, 07 Sep 2026 00:20:33 GMT</pubDate>
     <description>A writing and publishing workspace built with Lexical and Supabase, combining rich-text editing, Markdown mode, and on demand pre-compiled MDX previews.</description>
-    <content:encoded><p>A writing and publishing workspace built with Lexical and Supabase, combining rich-text editing, Markdown mode, and on demand pre-compiled MDX previews.</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="https://burakdev.com/blogs/i-have-built-an-ultimate-blogging-workspace-and-open-sourced-it">Keep reading</a>.</strong></div></content:encoded>
+    <content:encoded><![CDATA[<p>A writing and publishing workspace built with Lexical and Supabase, combining rich-text editing, Markdown mode, and on demand pre-compiled MDX previews.</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="https://burakdev.com/blogs/i-have-built-an-ultimate-blogging-workspace-and-open-sourced-it">Keep reading</a>.</strong></div>]]></content:encoded>
 </item>
 <item>
     <title>TypeScript Discriminated Unions and Generics: Complete Guide with Examples</title>
     <link>https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples</link>
     <guid isPermaLink="true">https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples</guid>
-    <pubDate>2025-12-01T21:57:10.000Z</pubDate>
+    <pubDate>Mon, 01 Dec 2025 21:57:10 GMT</pubDate>
     <description>Master advanced TypeScript patterns: Learn discriminated unions for precise type narrowing and generic types for building scalable, type-safe systems with practical RBAC examples and custom utility implementations.</description>
-    <content:encoded><p>Master advanced TypeScript patterns: Learn discriminated unions for precise type narrowing and generic types for building scalable, type-safe systems with practical RBAC examples and custom utility implementations.</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples">Keep reading</a>.</strong></div></content:encoded>
+    <content:encoded><![CDATA[<p>Master advanced TypeScript patterns: Learn discriminated unions for precise type narrowing and generic types for building scalable, type-safe systems with practical RBAC examples and custom utility implementations.</p><div style="margin-top: 50px; font-style: italic;"><strong><a href="https://burakdev.com/blogs/typescript-discriminated-unions-and-generics-complete-guide-with-examples">Keep reading</a>.</strong></div>]]></content:encoded>
 </item>
 <item>
     <title>Is React(tanstack) Query Too Biased? Deep dive: Real Life Data Fetching Practices — Chapter 1</title>
     <link>https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1</link>
     <guid isPermaLink="true">https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1</guid>
-    <pubDate>2025-11-19T00:56:20.000Z</pubDate>
-    <description>The hidden gem behind the React query is revealed. Take a gigantic dive into the traditional ways of data fetching vs newfangled ways where the term "query" is mentioned. </description>
-    <content:encoded><p>The hidden gem behind the React query is revealed. Take a gigantic dive into the traditional ways of data fetching vs newfangled ways where the term "query" is mentioned. </p><div style="margin-top: 50px; font-style: italic;"><strong><a href="https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1">Keep reading</a>.</strong></div></content:encoded>
+    <pubDate>Wed, 19 Nov 2025 00:56:20 GMT</pubDate>
+    <description>The hidden gem behind the React query is revealed. Take a gigantic dive into the traditional ways of data fetching vs newfangled ways where the term &quot;query&quot; is mentioned. </description>
+    <content:encoded><![CDATA[<p>The hidden gem behind the React query is revealed. Take a gigantic dive into the traditional ways of data fetching vs newfangled ways where the term "query" is mentioned. </p><div style="margin-top: 50px; font-style: italic;"><strong><a href="https://burakdev.com/blogs/is-react-tanstack-query-too-biased-deep-dive-real-life-data-fetching-practices-chapter-1">Keep reading</a>.</strong></div>]]></content:encoded>
 </item>
     </channel>
 </rss>

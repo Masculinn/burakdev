@@ -1,17 +1,29 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://burakdev.com</loc>
-    <lastmod>2026-09-07T23:34:11.408Z</lastmod>
+    <lastmod>2026-10-01T01:13:37.468Z</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1</priority>
   </url>
   <url>
     <loc>https://burakdev.com/blogs</loc>
-    <lastmod>2026-09-07T23:34:11.408Z</lastmod>
+    <lastmod>2026-10-01T01:13:37.468Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+  <loc>https://burakdev.com/blogs/preventing-the-react-context-from-turning-into-pyramids-with-typesafe-composer</loc>
+  <lastmod>2026-10-01T00:34:27.770Z</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
+  <loc>https://burakdev.com/blogs/the-complete-guide-to-higher-order-components-in-next-js-react-with-typescript</loc>
+  <lastmod>2026-09-20T02:42:34.051Z</lastmod>
+  <changefreq>yearly</changefreq>
+  <priority>0.5</priority>
+</url>
+<url>
   <loc>https://burakdev.com/blogs/i-have-built-an-ultimate-blogging-workspace-and-open-sourced-it</loc>
   <lastmod>2026-09-07T00:20:33.071Z</lastmod>
   <changefreq>yearly</changefreq>
