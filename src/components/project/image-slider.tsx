@@ -16,67 +16,84 @@ type SliderProps = {
 };
 
 export const Slider: FC<SliderProps> = ({ images, selected }) => {
-  const [current, setCurrent] = useState<number>(images.indexOf(selected));
+  const selectedIndex: number = Math.max(0, images.indexOf(selected));
+
   const [api, setApi] = useState<CarouselApi | null>(null);
-  const [count, setCount] = useState<number>(0);
+  const [current, setCurrent] = useState<number>(selectedIndex);
+  const [count, setCount] = useState<number>(images.length);
 
   useEffect(() => {
     if (!api) return;
-    setCount(api.scrollSnapList().length);
-    const handleSelect = () => setCurrent(api.selectedScrollSnap());
 
-    api.on("select", handleSelect);
+    const sync = (): void => {
+      setCount(api.scrollSnapList().length);
+      setCurrent(api.selectedScrollSnap());
+    };
+
+    sync();
+    api.on("select", sync);
+    api.on("reInit", sync);
 
     return () => {
-      api.off("select", handleSelect);
+      api.off("select", sync);
+      api.off("reInit", sync);
     };
   }, [api]);
 
   useEffect(() => {
     if (!api) return;
+    if (api.selectedScrollSnap() === selectedIndex) return;
 
-    api.scrollTo(images.indexOf(selected));
-  }, [selected, images, api]);
+    api.scrollTo(selectedIndex);
+  }, [api, selectedIndex]);
 
-  const handleSlideTo = (idx: number) => {
-    if (!api) return;
-    api.scrollTo(idx);
+  const handleSlideTo = (idx: number): void => {
+    api?.scrollTo(idx);
   };
 
   return (
-    <Carousel setApi={setApi} className="relative">
-      <CarouselContent className="snap-x snap-mandatory size-full">
-        {images.map((img, idx) => (
-          <CarouselItem
-            key={idx}
-            className="snap-center max-h-max h-auto md:my-auto"
-          >
+    <Carousel
+      setApi={setApi}
+      opts={{ startIndex: selectedIndex, align: "center" }}
+      className="relative"
+      data-base-ui-swipe-ignore=""
+    >
+      <CarouselContent className="touch-pan-y touch-pinch-zoom select-none">
+        {images.map((img) => (
+          <CarouselItem key={img} className="h-auto max-h-max md:my-auto">
             <AspectRatio
               ratio={1 / 1}
               className="relative md:my-0 my-8 rounded-md"
             >
               <LqipImage
-                loading="lazy"
                 alt={getImgAlt(img)}
                 src={img}
                 fill
-                className="absolute object-cover rounded-md"
+                draggable={false}
+                className="absolute object-cover rounded-md pointer-events-none [-webkit-touch-callout:none]"
               />
             </AspectRatio>
           </CarouselItem>
         ))}
       </CarouselContent>
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1">
+      <div
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1"
+        role="tablist"
+        aria-label="Slide navigation"
+      >
         {Array.from({ length: count }).map((_, idx) => (
           <button
-            className={cn(
-              "cursor-pointer w-2.5 h-1.5 dark:bg-white/10 shadow-2xs bg-slate-600/20 backdrop-blur-sm border-[0.5px] rounded-full",
-              idx === current &&
-                "dark:bg-muted bg-muted-foreground w-5 transition-all",
-            )}
+            // biome-ignore lint/suspicious/noArrayIndexKey: static data
             key={idx}
-            onClick={() => handleSlideTo(idx)}
             type="button"
+            role="tab"
+            aria-selected={idx === current}
+            aria-label={`Go to slide ${idx + 1}`}
+            onClick={() => handleSlideTo(idx)}
+            className={cn(
+              "cursor-pointer w-2.5 h-1.5 dark:bg-white/10 shadow-2xs bg-slate-600/20 backdrop-blur-sm border-[0.5px] rounded-full transition-all",
+              idx === current && "dark:bg-muted bg-muted-foreground w-5",
+            )}
           />
         ))}
       </div>

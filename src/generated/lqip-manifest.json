@@ -10,14 +10,14 @@
     "width": 961
   },
   "/assets/timeline/blog-editor/3.webp": {
-    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAkUlEQVQYla3OMQrCQBCF4emmm+Y1uxllQAMjBAwIIossCNvvFYS0ua83yAW8gKISA9Z+7Q+PR8ysqswsM1Wtteac6XjYP+63drOlmbuP4zgMVwJQSun7vus6AERkZqWUlBKJiJmpqojgjZmXhWma3F1VQ4yny3lpzJxzNjMAO2/Xq9evpX2mvv7SfjQhNDECeAIIgxuIs89t4QAAAABJRU5ErkJggg==",
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAABD0lEQVQYlR2OTUsCQRiAJ1xQpldnfNtxnG2dUJvVtvzabcW+KMoQsfbcTSKKguxQ0AfU7wuia/8i7NxpY3uuz3N4iOd5jDEAWMwD5xwR+RJqrWumSlzXFUIgYknK1/uLx9n529PMqTjtVo0opfg/iGkuhKCUdjveyWFAtNaUUgBgRSZsRERKqY1gXE4Q0ZjVaCuK4/HxZDwajaKgBwAbHZ8oJftR62Z6/XL78Hx39fnx/v0zt7KWdCRpNPXRXi+ZJ79fSd00pErX7HKhsrJM/HWzGbZPD4bDwY4qSwa0ZBc8o/fDOhkE7e1+0PQajAvOMG8ttFRxretfTs9SF3b9qnZzuRwAWJksIZma0XG8+we+mi/faS5LEAAAAABJRU5ErkJggg==",
     "height": 1080,
-    "width": 961
+    "width": 960
   },
   "/assets/timeline/blog-editor/4.webp": {
-    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAW0lEQVQYlWPo6OhwsXewMDK2MzKVlpLi4+PT19ePiYnh4+Nj+Pvr27RJE2srK/ra2mJiYjJSEvT19eXl5UFy8vLy4mAgDwYMDAxS0tIODnYqikoMQwWA/IEDAAAmjhQkvvONXgAAAABJRU5ErkJggg==",
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAABAklEQVQYlT3PTUrDQBgA0GFSkkBMMvMlzXwTm2S06aitpPYHrdIKsViRgoggiBsRhOLSgwheQ28gXklxq24qRPDd4BEQHDGYHR+2ewVKbFW01gBAtAIpnF53S6WScy6EQMQoigzDIEfDbNzBcjJAwSDwVQURXdclndjZSZ3+Rpw1YMUyn8Mh+ZdlDZWuXpzP1ze1V7OW7euXcG9hqn6NkWamEllvqsR1bc80v1pnb3jwKvaf/ILEGPZzGBVrsfQtm1JKbds2DINSSsYaZtvBrmaAHkqR5zmr+L5PpifTj8/37+XP48PNSGNS+ZuQ07J7f3e1uL0sJ4MYhahHAMAY45z/AkbUKfp1X4DQAAAAAElFTkSuQmCC",
     "height": 1080,
-    "width": 961
+    "width": 960
   },
   "/assets/timeline/scrapelined/1.webp": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAqklEQVQYlW2OwQqCQBCGB0bHFXNcWcVsKUSCiDwkHXusBN/Dc3Tw3aKL77ChK1nQdxmYb/7hB0+4myw+7PNLtTsft4VOOfQBABEBABwXZRSkKlLxKvC9cfVxSqmu65rm1rZtXdfWCSHmkzxL8iwRE9Yx8ziIiJmJCCesI6I5J6W0Qoa+IGdxeh2boTevh3nezdBfT8VPjpm11mVZ2gdLz7+MzmZ54rsnIr4BRHcXBnNAw+wAAAAASUVORK5CYII=",
@@ -348,6 +348,16 @@
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAwUlEQVQImWOQlJTk5OQ0MtRWU1NRVVWWlRaLj4tUVVU1NjaWlJRk4OXlZWVllZeVVlGWM9NX8LVSszDR5eXlFhYWZmZmZhATE9PQUNUzNFSSl5eUEFFTlowI8Y6WUnsSlqTMwMmgram0ad6OmODgrv4+PmEBJXlZfU1VDR7BTXb+FUpGIOmM8CRJcQkhfk4TfcXcGPeizDBpGUkxMTFeXl4GMyNdcVExZgZmBgYGL0+7A3s2/f/zwd1MR1JSUlhYGAAmJiNTW2yQuAAAAABJRU5ErkJggg==",
     "height": 1080,
     "width": 1920
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/blog-thumb-1-17fc3553.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAABD0lEQVQYlR2OTUsCQRiAJ1xQpldnfNtxnG2dUJvVtvzabcW+KMoQsfbcTSKKguxQ0AfU7wuia/8i7NxpY3uuz3N4iOd5jDEAWMwD5xwR+RJqrWumSlzXFUIgYknK1/uLx9n529PMqTjtVo0opfg/iGkuhKCUdjveyWFAtNaUUgBgRSZsRERKqY1gXE4Q0ZjVaCuK4/HxZDwajaKgBwAbHZ8oJftR62Z6/XL78Hx39fnx/v0zt7KWdCRpNPXRXi+ZJ79fSd00pErX7HKhsrJM/HWzGbZPD4bDwY4qSwa0ZBc8o/fDOhkE7e1+0PQajAvOMG8ttFRxretfTs9SF3b9qnZzuRwAWJksIZma0XG8+we+mi/faS5LEAAAAABJRU5ErkJggg==",
+    "height": 1080,
+    "width": 960
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/blog-thumb-2-14e94d23.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAAKCAIAAADpZ+PpAAAACXBIWXMAAAPoAAAD6AG1e1JrAAABAklEQVQYlT3PTUrDQBgA0GFSkkBMMvMlzXwTm2S06aitpPYHrdIKsViRgoggiBsRhOLSgwheQ28gXklxq24qRPDd4BEQHDGYHR+2ewVKbFW01gBAtAIpnF53S6WScy6EQMQoigzDIEfDbNzBcjJAwSDwVQURXdclndjZSZ3+Rpw1YMUyn8Mh+ZdlDZWuXpzP1ze1V7OW7euXcG9hqn6NkWamEllvqsR1bc80v1pnb3jwKvaf/ILEGPZzGBVrsfQtm1JKbds2DINSSsYaZtvBrmaAHkqR5zmr+L5PpifTj8/37+XP48PNSGNS+ZuQ07J7f3e1uL0sJ4MYhahHAMAY45z/AkbUKfp1X4DQAAAAAElFTkSuQmCC",
+    "height": 1080,
+    "width": 960
   },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/context-with-composer-a3df9920.webp": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAqUlEQVQImWMI8fb9nx+f/F9TQfm/ianVf1fv0P/i4hL/GRgYUHGQt8//vVvW/Y9PSfvv7Rv8X0REGLtCaXGJ/94efv8jkgv/O7v7/1dWVvovLy//n4eXB1UhHx/f/3MXLvx/++7j/+6env9btmz7X9Pc+N/H3/c/FycnQqG4uPj/c+fP/V+zZt3/wsLC/62tbf/buzr++4YE/VdRVUUoBFkjLS2D6SY0DAD2TmC+NSyMrQAAAABJRU5ErkJggg==",
