@@ -2,6 +2,7 @@
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import themeSchema from "@/constants/theme-schema";
 import { useElementSize } from "@/hooks/use-element-size";
+import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 import type { HTMLAttributes } from "@/interfaces";
 import { useInView } from "motion/react";
 import { Highlight, type Language } from "prism-react-renderer";
@@ -37,6 +38,8 @@ export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
   const { ref: preRef, size } = useElementSize<HTMLPreElement>();
   const isInView = useInView(preRef, { once: false });
 
+  const isReducedMotion = usePrefersReducedMotion();
+
   const measuredHeight = size.height || 0;
 
   const wrapperHeight =
@@ -68,7 +71,8 @@ export const MdPre: FC<MdPreProps> = ({ lang, ...props }) => {
       >
         <Highlight theme={themeSchema} code={code} language={language}>
           {({ style, tokens, getLineProps, getTokenProps }) => {
-            const shouldAnimate = code.length <= ANIMATION_TRIGGER_THRESHOLD;
+            const shouldAnimate =
+              code.length <= ANIMATION_TRIGGER_THRESHOLD && !isReducedMotion;
 
             return (
               <pre

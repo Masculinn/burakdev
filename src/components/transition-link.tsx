@@ -1,5 +1,4 @@
-﻿// components/transition-link.tsx
-import { navigateWithTransition } from "@/lib/view-transition";
+﻿import { navigateWithTransition } from "@/lib/view-transition";
 import NextLink, { type LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import {
