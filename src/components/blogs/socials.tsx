@@ -3,11 +3,11 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { MotionImage } from "@/motion/components/motion-image";
 import {
-  CheckIcon,
-  CopyIcon,
-  LinkIcon,
-  RssIcon,
-  Share2Icon,
+    CheckIcon,
+    CopyIcon,
+    LinkIcon,
+    RssIcon,
+    Share2Icon,
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -54,7 +54,7 @@ function SharePage() {
   return (
     <div className="flex w-full max-w-auto flex-col gap-4 text-left">
       <div className="space-y-1.5">
-        <h2 className="text-xl tracking-tighter text-foreground md:text-4xl">
+        <h2 className="text-3xl tracking-tight text-foreground font-semibold md:text-4xl">
           Worth sharing?
         </h2>
         <p className="text-sm leading-relaxed text-muted-foreground">
@@ -165,11 +165,11 @@ function SocialsComponent({ className }: { className?: string }) {
             !isMobile ? "opacity" : "flash",
           ],
           transition: "cubicElastic",
-          duration: isMobile ? 3 : 1,
+          duration: isMobile ? 2 : 1,
           delay: 0,
         }}
         config={{
-          duration: isMobile ? 2 : 1.2,
+          duration: isMobile ? 1.5 : 1.2,
           img: "/assets/newsletter.svg",
           delayLogic: isMobile ? "jitter" : "pendulum",
           fn: !isMobile ? "hover" : undefined,

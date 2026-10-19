@@ -17,6 +17,7 @@ import { mergeProps } from "@base-ui/react/merge-props";
 import { useRender } from "@base-ui/react/use-render";
 import { cva, type VariantProps } from "class-variance-authority";
 import { PanelLeftIcon } from "lucide-react";
+import { useSearchParams } from "next/navigation";
 import * as React from "react";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
@@ -46,6 +47,17 @@ function useSidebar() {
   return context;
 }
 
+const parseBoolParam = (value: string | null): boolean | undefined => {
+  switch (value) {
+    case "true":
+      return true;
+    case "false":
+      return false;
+    default:
+      return undefined;
+  }
+};
+
 function SidebarProvider({
   defaultOpen = true,
   open: openProp,
@@ -60,24 +72,32 @@ function SidebarProvider({
   onOpenChange?: (open: boolean) => void;
 }) {
   const isMobile = useIsMobile();
+  const searchParams = useSearchParams();
+
   const [openMobile, setOpenMobile] = React.useState(false);
 
   const [_open, _setOpen] = React.useState(defaultOpen);
   const open = openProp ?? _open;
 
+  const sidebarParam = parseBoolParam(searchParams.get("sidebar"));
+
   const setOpen = React.useCallback(
     (value: boolean | ((value: boolean) => boolean)) => {
       const openState = typeof value === "function" ? value(open) : value;
-      if (setOpenProp) {
-        setOpenProp(openState);
-      } else {
-        _setOpen(openState);
-      }
+      if (setOpenProp) setOpenProp(openState);
+      else _setOpen(openState);
 
       document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
     },
     [setOpenProp, open],
   );
+
+  const toggleSidebarEvent = React.useEffectEvent((ev: boolean) => setOpen(ev));
+
+  React.useEffect(() => {
+    if (typeof sidebarParam === "undefined") return;
+    toggleSidebarEvent(sidebarParam);
+  }, [sidebarParam]);
 
   const toggleSidebar = () =>
     isMobile ? setOpenMobile((open) => !open) : setOpen((open) => !open);

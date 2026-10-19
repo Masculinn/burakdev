@@ -52,19 +52,19 @@ export default function BlogsPage({
   return (
     <>
       <Head>
-        <title>justc0de_sessions</title>
+        <title>Javascript Sessions | Articles by Burak Bilen</title>
         <meta
           name="description"
-          content="justc0de_sessions is a collection of my blog posts where I share my programming knowledge with practical examples and insights — widely."
+          content="javascript_sessions is a collection of my articles where I share my programming knowledge with practical examples and insights — widely."
         />
-        <meta name="og:title" content="justc0de_sessions" />
+        <meta name="og:title" content="javascript_sessions" />
         <meta
           name="og:description"
-          content="justc0de_sessions is a collection of my blog posts where I share my programming knowledge with practical examples and insights — widely."
+          content="javascript_sessions is a collection of my articles where I share my programming knowledge with practical examples and insights — widely."
         />
       </Head>
       <section>
-        <Banner animationKey={posts.length} />
+        <Banner />
         <BlogPostProvider initialTags={tags}>
           <BlogFilter />
           <BlogPosts posts={posts} />

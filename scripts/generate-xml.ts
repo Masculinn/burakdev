@@ -150,13 +150,13 @@ async function main() {
   const rss = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>justc0de_sessions RSS feed by Burak Bilen</title>
+        <title>javascript_sessions RSS feed by Burak Bilen</title>
         <link>${process.env.NEXT_PUBLIC_SITE_URL}/blogs</link>
         <atom:link href="${process.env.NEXT_PUBLIC_SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />
         <description>Stay up to date with my latest blog posts</description>
         <language>en-us</language>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-        <copyright>Copyright ${new Date().getFullYear()}, justc0de_sessions author Burak Bilen</copyright>
+        <copyright>Copyright ${new Date().getFullYear()}, javascript_sessions author Burak Bilen</copyright>
         <lastBuildDate>${toRfc822(new Date())}</lastBuildDate>
           ${mergeRssItems}
     </channel>

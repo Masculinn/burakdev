@@ -99,6 +99,7 @@ function BlogPosts({ posts }: { posts: BlogType[] }) {
     <section className="w-full h-auto grid md:grid-cols-2 grid-cols-1 md:my-4 my-2 gap-4 relative ">
       {filteredPosts.map((post, idx) => (
         <BlogCard
+          isAnimated
           key={post.id}
           isRecent={recentIds.has(post.id)}
           idx={idx + 1}

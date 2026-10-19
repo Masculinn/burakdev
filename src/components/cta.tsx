@@ -3,7 +3,7 @@ import { iconsMap } from "@/lib/getIcon";
 import { getAnimation } from "@/lib/motion/getAnimation";
 import { cn } from "@/lib/utils";
 import { MotionContainer } from "@/motion/components/motion-container";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowUpRightIcon, LibraryBigIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import Marquee from "./marquee";
@@ -16,9 +16,13 @@ import {
   ItemTitle,
 } from "./ui/item";
 
-const { elementType, animation, className } = getAnimation("cta");
+const {
+  elementType,
+  animation,
+  className: animationClassName,
+} = getAnimation("cta");
 
-export default function Cta() {
+export default function Cta({ className }: { className?: string }) {
   const [trigger, setTrigger] = useState<boolean>(false);
   const isMobile = useIsMobile();
 
@@ -26,7 +30,9 @@ export default function Cta() {
   const handleReset = () => setTrigger(false);
 
   return (
-    <section className="w-full h-max z-50 backdrop-blur-sm relative ">
+    <section
+      className={cn("w-full h-max z-50 backdrop-blur-sm relative", className)}
+    >
       <Item
         variant="outline"
         className="flex-col md:flex-row overflow-hidden relative"
@@ -37,30 +43,32 @@ export default function Cta() {
             mode: trigger ? "typingEffect" : animation.mode,
           }}
           elementType={elementType}
-          className={cn(className, trigger ? " to-rose-500/10" : "to-blue-500")}
+          className={cn(
+            animationClassName,
+            trigger ? " to-rose-500/10" : "to-blue-500/50",
+          )}
         />
         <ItemContent>
           <ItemTitle className="text-2xl tracking-tighter">
-            <BookOpen /> Continue with the articles
+            <LibraryBigIcon /> Continue with the articles
           </ItemTitle>
-          <ItemDescription className="tracking-tight max-w-2xl ">
+          <ItemDescription className="tracking-tight max-w-2xl z-50 line-clamp-3">
             Covering the web: no stale material — all fresh, cutting-edge in
             newflanged ways. Curated for community, by creators.
           </ItemDescription>
         </ItemContent>
         <ItemActions className="md:w-auto w-full z-50">
-          <Link href="/blogs">
-            <Button
-              variant="outline"
-              size="sm"
-              className="md:w-auto w-full"
-              onMouseEnter={handleTrigger}
-              onMouseLeave={handleReset}
-            >
-              Start reading
-              <ArrowRight />
-            </Button>
-          </Link>
+          <Button
+            variant="outline"
+            size="sm"
+            render={<Link href="/blogs" className="relative" />}
+            className="md:w-auto w-full"
+            onMouseEnter={handleTrigger}
+            onMouseLeave={handleReset}
+          >
+            Start reading
+            <ArrowUpRightIcon />
+          </Button>
         </ItemActions>
       </Item>
       {!isMobile && <VerticalMarquee />}

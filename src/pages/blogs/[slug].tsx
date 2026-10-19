@@ -43,7 +43,11 @@ export const getStaticProps = (async ({ params }) => {
 
   const { data, error } = (await clientService()
     .from("blog_posts")
-    .select("*")) as { data: BlogType[] | null; error: Error | unknown };
+    .select("*")
+    .order("published_at", { ascending: false })) as {
+    data: BlogType[] | null;
+    error: Error | unknown;
+  };
 
   if (!data || error) throw error;
 

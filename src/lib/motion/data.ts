@@ -51,55 +51,8 @@ export default createMotionConfig({
         transition: "cubicBounce",
         duration: 1,
       },
-      controller: {
-        configView: {
-          once: false,
-          amount: 0.25,
-        },
-      },
       elementType: "div",
       className: "scale-110",
-    },
-  },
-  promoCardText: {
-    type: "MotionText",
-    props: {
-      animation: {
-        mode: ["textShimmer", "transformTextGlow"],
-        transition: "linear",
-        duration: 1,
-        delay: 0.5,
-      },
-      config: {
-        duration: 0.06,
-        mode: "chars",
-      },
-      controller: {
-        configView: {
-          once: false,
-          amount: 0.25,
-        },
-      },
-      elementType: "p",
-      wrapperClassName: "text-3xl font-secondary",
-    },
-  },
-  promoCardBtn: {
-    type: "MotionContainer",
-    props: {
-      animation: {
-        mode: ["fadeUp", "filterBlurIn"],
-        transition: "gentle",
-        delay: 0.35,
-        duration: 0.8,
-      },
-      controller: {
-        configView: {
-          once: false,
-        },
-      },
-      elementType: "div",
-      className: "relative",
     },
   },
   recommendation: {
@@ -116,8 +69,6 @@ export default createMotionConfig({
         delayLogic: "linear",
       },
       elementType: "h2",
-      className:
-        "font-bold tracking-tighter max-w-2xl text-shadow-2xs text-4xl md:text-5xl md:pt-12 md:pb-8 pt-6 pb-0 z-10",
     },
   },
   blogFilter: {
@@ -232,7 +183,7 @@ export default createMotionConfig({
   banner: {
     type: "MotionText",
     props: {
-      wrapperClassName: "md:text-5xl text-3xl font-secondary",
+      wrapperClassName: "text-5xl font-secondary",
       animation: {
         mode: ["textShimmer", "transformTextGlow"],
         transition: "linear",
@@ -296,11 +247,11 @@ export default createMotionConfig({
         mode: ["textShimmer", "transformRevealRight"],
         transition: "gentle",
         delay: 0.15,
-        duration: 0.8,
+        duration: 1.2,
       },
       config: {
         mode: "chars",
-        duration: 0.05,
+        duration: 0.11,
         delayLogic: "linear",
       },
     },

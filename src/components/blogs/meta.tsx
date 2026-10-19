@@ -14,9 +14,10 @@ export default function Meta({
   title,
 }: MetaProps) {
   const date = new Date(published_at).toISOString();
+  const metaTitle = `javascript_sessions | ${title}`;
   return (
     <Head>
-      <title>{`justc0de_sessions | ${title}`}</title>
+      <title>{metaTitle}</title>
       <meta name="description" content={description} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content="burakdev" />

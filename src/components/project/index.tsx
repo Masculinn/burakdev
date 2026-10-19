@@ -44,12 +44,12 @@ export function Project(props: ProjectProps) {
               triggerMode="drawer"
             />
           ))}
-          <DrawerContent>
+          <DrawerContent className="dark:bg-background/50 dark:backdrop-blur-3xl">
             <DrawerHeader>
               <DrawerTitle className="text-xl font-secondary tracking-tighter">
                 <ProjectTitle title={title} />
               </DrawerTitle>
-              <DrawerDescription className="text-start tracking-tighter text-xs">
+              <DrawerDescription className="text-start tracking-tighter text-sm pr-3 text-ellipsis">
                 {desc}
               </DrawerDescription>
               <Slider images={images} selected={selected} />
@@ -70,7 +70,7 @@ export function Project(props: ProjectProps) {
             triggerMode="dialog"
           />
         ))}
-        <DialogContent>
+        <DialogContent className="dark:bg-background/50 dark:backdrop-blur-3xl md:min-w-lg rounded-4xl">
           <DialogHeader>
             <DialogTitle className="text-xl font-secondary tracking-tighter text-muted-foreground">
               <ProjectTitle title={title} />
@@ -85,5 +85,12 @@ export function Project(props: ProjectProps) {
 }
 
 function ProjectTitle({ title }: { title: string }) {
-  return <MotionText {...getAnimation("projectTitle")}>{title}</MotionText>;
+  return (
+    <MotionText
+      {...getAnimation("projectTitle")}
+      wrapperClassName="text-foreground text-3xl"
+    >
+      {title}
+    </MotionText>
+  );
 }

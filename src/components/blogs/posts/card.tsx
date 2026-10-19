@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 import type { BlogType } from "@/interfaces";
 import { getAnimation } from "@/lib/motion/getAnimation";
 import { MotionContainer } from "@/motion/components/motion-container";
@@ -20,7 +21,39 @@ const { animation, controller, elementType } = getAnimation("blogCard");
 type Props = Omit<BlogType, "content"> & {
   isRecent?: boolean;
   idx: number;
+  isAnimated?: boolean;
 };
+
+function Wrapper({
+  children,
+  idx,
+  isAnimated,
+}: { children: React.ReactNode } & Pick<Props, "idx" | "isAnimated">) {
+  const isReducedMotion = usePrefersReducedMotion();
+  const isMobile = useIsMobile();
+
+  if (isReducedMotion || !isAnimated) return children;
+
+  const delay = isMobile ? 0.22 : (idx % 0.22) + 0.25;
+
+  return (
+    <MotionContainer
+      animation={{
+        mode: [isMobile ? "fadeIn" : "fadeUp", animation.mode],
+        transition: animation.transition,
+        delay,
+      }}
+      controller={{
+        trigger: isMobile ? true : undefined,
+        ...controller,
+      }}
+      elementType={elementType}
+      className="relative"
+    >
+      {children}
+    </MotionContainer>
+  );
+}
 
 export function BlogCard({
   idx,
@@ -32,34 +65,20 @@ export function BlogCard({
   title,
   level,
   isRecent = false,
+  isAnimated,
 }: Props) {
-  const isMobile = useIsMobile();
-
   const date = new Date(published_at).toLocaleDateString("en-US", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",
   });
-  const slug = `/blogs/${convertToSlug(title)}`;
 
-  const delay = isMobile ? 0.22 : (idx % 0.22) + 0.25;
   const isEager = idx <= 2;
+  const slug = `/blogs/${convertToSlug(title)}`;
 
   return (
     <TransitionLink href={slug} className="relative">
-      <MotionContainer
-        animation={{
-          mode: [isMobile ? "fadeIn" : "fadeUp", animation.mode],
-          transition: animation.transition,
-          delay,
-        }}
-        controller={{
-          trigger: isMobile ? true : undefined,
-          ...controller,
-        }}
-        elementType={elementType}
-        className="relative"
-      >
+      <Wrapper idx={idx} isAnimated={isAnimated}>
         <Card
           className="overflow-hidden relative md:max-h-100 h-auto py-0 bg-bg group cursor-pointer border-0 border-none"
           style={{
@@ -128,7 +147,7 @@ export function BlogCard({
             </Badge>
           </CardFooter>
         </Card>
-      </MotionContainer>
+      </Wrapper>
     </TransitionLink>
   );
 }

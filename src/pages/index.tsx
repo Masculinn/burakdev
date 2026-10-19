@@ -1,3 +1,4 @@
+import CtaSkeleton from "@/components/cta-skeleton";
 import Timeline from "@/components/timeline";
 import dynamic from "next/dynamic";
 import Head from "next/head";
@@ -5,6 +6,7 @@ import Link from "next/link";
 
 const Cta = dynamic(() => import("@/components/cta"), {
   ssr: false,
+  loading: () => <CtaSkeleton />,
 });
 
 export default function Home() {
@@ -27,9 +29,9 @@ export default function Home() {
         <div className="max-w-3xl">
           <p className="text-start leading-relaxed inline text-blog-muted">
             Hi 👋 I&apos;m a full-stack software engineer with 5+ years of
-            experience based in Warsaw delivering state-of-art, production-grade
-            solutions on the web across fast-paced industries within TDD and
-            agile approaches.
+            experience based in Warsaw delivering production-grade solutions on
+            the web across fast-paced industries within TDD and agile
+            approaches.
           </p>
           <p className="text-start leading-relaxed text-blog-muted pt-2">
             Over the years, I&apos;ve dedicated myself to build clean, reliable
@@ -81,9 +83,9 @@ export default function Home() {
             Here are pretty much all my career experiences from the last 5 years
             along with brief details.
           </p>
-          <Timeline />
+          <Cta className="pt-8 md:mb-0 mb-12" />
+          <Timeline className="-mt-12" />
         </section>
-        <Cta />
       </div>
     </>
   );

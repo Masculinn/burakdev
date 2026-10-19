@@ -4,9 +4,11 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import type { NavBasicType } from "@/interfaces";
 import type Link from "next/link";
+import type * as React from "react";
 import { TransitionLink } from "../transition-link";
 
 type NavBasicProps = {
@@ -15,18 +17,49 @@ type NavBasicProps = {
   linkProps?: Omit<React.ComponentProps<typeof Link>, "href">;
 };
 
+function WrapperLink({
+  children,
+  title,
+  url,
+  ...linkProps
+}: Pick<NavBasicType, "title" | "url"> & {
+  children: React.ReactNode;
+} & NavBasicProps["linkProps"]) {
+  const { isMobile, toggleSidebar, openMobile } = useSidebar();
+
+  const handleClick = () => {
+    if (!isMobile) return;
+
+    if (openMobile) toggleSidebar();
+  };
+
+  return (
+    <TransitionLink
+      href={url}
+      title={title}
+      aria-label={title}
+      onClick={handleClick}
+      onTouchStart={handleClick}
+      {...linkProps}
+    >
+      {children}
+    </TransitionLink>
+  );
+}
+
 export const NavGroup = ({ items, name, linkProps }: NavBasicProps) => (
-  <SidebarGroup className="group-data-[collapsible=icon]:hidden">
+  <SidebarGroup>
     <SidebarGroupLabel>{name}</SidebarGroupLabel>
     <SidebarMenu>
       {items.map((item) => (
-        <SidebarMenuItem key={item.title}>
+        <SidebarMenuItem key={item.url}>
           <SidebarMenuButton
+            tooltip={item.title}
             render={
-              <TransitionLink {...linkProps} href={item.url} title={item.title}>
+              <WrapperLink url={item.url} title={item.title} {...linkProps}>
                 <item.icon />
                 <span>{item.title}</span>
-              </TransitionLink>
+              </WrapperLink>
             }
           />
         </SidebarMenuItem>

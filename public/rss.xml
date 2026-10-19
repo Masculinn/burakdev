@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>justc0de_sessions RSS feed by Burak Bilen</title>
+        <title>javascript_sessions RSS feed by Burak Bilen</title>
         <link>https://burakdev.com/blogs</link>
         <atom:link href="https://burakdev.com/rss.xml" rel="self" type="application/rss+xml" />
         <description>Stay up to date with my latest blog posts</description>
         <language>en-us</language>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
-        <copyright>Copyright 2026, justc0de_sessions author Burak Bilen</copyright>
-        <lastBuildDate>Fri, 16 Oct 2026 15:10:10 GMT</lastBuildDate>
+        <copyright>Copyright 2026, javascript_sessions author Burak Bilen</copyright>
+        <lastBuildDate>Mon, 19 Oct 2026 10:47:32 GMT</lastBuildDate>
           <item>
     <title>An Undecided User Might Be Killing Your Server All Along</title>
     <link>https://burakdev.com/blogs/an-undecided-user-might-be-killing-your-server-all-along</link>

@@ -1,4 +1,5 @@
-﻿import { navigateWithTransition } from "@/lib/view-transition";
+﻿import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
+import { navigateWithTransition } from "@/lib/view-transition";
 import NextLink, { type LinkProps } from "next/link";
 import { useRouter } from "next/router";
 import {
@@ -35,6 +36,10 @@ function toPath(href: LinkProps["href"]): string {
  * navigateWithTransition; modifier-clicks, middle clicks, and
  * `target="_blank"` fall through to native anchor behavior.
  *
+ * When the user prefers reduced motion, the view-transition path (and its
+ * prefetch race) is skipped entirely and navigation happens synchronously
+ * through the router.
+ *
  * Prefetches on pointerenter/touchstart in addition to next/link's own
  * viewport-based prefetch, so the click-time race in
  * navigateWithTransition almost always finds the route already warm.
@@ -59,11 +64,17 @@ export const TransitionLink = forwardRef<
   ref,
 ) {
   const router = useRouter();
+  const prefersReducedMotion = usePrefersReducedMotion();
   const path = toPath(href);
 
   const warmPrefetch = () => {
     void router.prefetch(path);
   };
+
+  const navigate = () =>
+    replace
+      ? router.replace(href, as, { scroll, shallow })
+      : router.push(href, as, { scroll, shallow });
 
   const handlePointerEnter = (event: PointerEvent<HTMLAnchorElement>) => {
     onPointerEnter?.(event);
@@ -78,19 +89,16 @@ export const TransitionLink = forwardRef<
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event);
 
-    if (isBypassClick(event) || (target && target !== "_self")) {
-      return;
-    }
+    if (isBypassClick(event) || (target && target !== "_self")) return;
 
     event.preventDefault();
 
-    void navigateWithTransition(
-      () => router.prefetch(path),
-      () =>
-        replace
-          ? router.replace(href, as, { scroll, shallow })
-          : router.push(href, as, { scroll, shallow }),
-    );
+    if (prefersReducedMotion) {
+      void navigate();
+      return;
+    }
+
+    void navigateWithTransition(() => router.prefetch(path), navigate);
   };
 
   return (
