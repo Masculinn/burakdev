@@ -48,7 +48,10 @@ async function readServerSideSlugs(): Promise<Item[] | null> {
     const db = dbMod.default ?? dbMod;
     const { convertToSlug } = utilMode.default ?? utilMode;
 
-    const { data, error } = (await db().from("blog_posts").select("title")) as {
+    const { data, error } = (await db()
+      .from("blog_posts")
+      .select("title")
+      .order("published_at", { descending: false })) as {
       data: { title: string }[] | null;
       error: PostgrestError | null;
     };

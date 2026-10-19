@@ -1,6 +1,4 @@
 ﻿import type { IconName } from "@/lib/getIcon";
-import type useEmblaCarousel from "embla-carousel-react";
-import type { UseEmblaCarouselType } from "embla-carousel-react";
 import type { ComponentType, JSX, SetStateAction, SVGProps } from "react";
 
 /** interfaces */
@@ -43,14 +41,6 @@ type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 export type IconProps = SVGProps<SVGSVGElement>;
 export type BlogPostSortProps = "old-to-new" | "new-to-old" | "a-z" | "z-a";
 export type HTMLAttributes<T> = React.HTMLAttributes<T>;
-export type NavItem = {
-  title: string;
-  url: string;
-  icon?: IconComponent;
-  iconProps?: SVGProps<SVGSVGElement>;
-  isActive?: boolean;
-  items?: NavItem[];
-};
 
 export type NavBasicType = {
   title: string;
@@ -69,21 +59,7 @@ export type TimelineContentItem = {
   images: string[];
 };
 
-export type SetStateProps<T> = React.Dispatch<SetStateAction<T>>;
-
-/** ========= carousel ========= */
-export type CarouselApi = UseEmblaCarouselType[1];
-type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
-type CarouselOptions = UseCarouselParameters[0];
-type CarouselPlugin = UseCarouselParameters[1];
-
-export type CarouselProps = {
-  opts?: CarouselOptions;
-  plugins?: CarouselPlugin;
-  orientation?: "horizontal" | "vertical";
-  setApi?: (api: CarouselApi) => void;
-};
-/** ============================ */
+type SetStateProps<T> = React.Dispatch<SetStateAction<T>>;
 
 // mdx
 
@@ -110,11 +86,3 @@ export interface BlogTagsContextProps {
   setSelectedTags: SetStateProps<Tag[]>;
   selectedTags: Tag[];
 }
-export type CarouselContextProps = {
-  carouselRef: ReturnType<typeof useEmblaCarousel>[0];
-  api: ReturnType<typeof useEmblaCarousel>[1];
-  scrollPrev: () => void;
-  scrollNext: () => void;
-  canScrollPrev: boolean;
-  canScrollNext: boolean;
-} & CarouselProps;

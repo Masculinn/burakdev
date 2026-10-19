@@ -1,6 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
 
-export type ConsentCategories = "necessary" | "analytics";
 export type ConsentState = { necessary: true; analytics: boolean };
 export type ConsentSource = "accept_all" | "reject_all" | "preferences";
 export type ConsentRecord = {

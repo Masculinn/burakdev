@@ -6,14 +6,16 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import type { NavBasicType } from "@/interfaces";
+import type Link from "next/link";
 import { TransitionLink } from "../transition-link";
 
 type NavBasicProps = {
   items: NavBasicType[];
   name: string;
+  linkProps?: Omit<React.ComponentProps<typeof Link>, "href">;
 };
 
-export const NavBasic = ({ items, name }: NavBasicProps) => (
+export const NavGroup = ({ items, name, linkProps }: NavBasicProps) => (
   <SidebarGroup className="group-data-[collapsible=icon]:hidden">
     <SidebarGroupLabel>{name}</SidebarGroupLabel>
     <SidebarMenu>
@@ -21,7 +23,7 @@ export const NavBasic = ({ items, name }: NavBasicProps) => (
         <SidebarMenuItem key={item.title}>
           <SidebarMenuButton
             render={
-              <TransitionLink href={item.url} target="_blank">
+              <TransitionLink {...linkProps} href={item.url} title={item.title}>
                 <item.icon />
                 <span>{item.title}</span>
               </TransitionLink>

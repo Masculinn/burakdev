@@ -6,7 +6,7 @@
   MotionTextProps,
 } from "@/motion/types";
 
-export type MotionComponentPropsMap = {
+type MotionComponentPropsMap = {
   MotionContainer: MotionContainerProps;
   MotionChain: Omit<MotionChainProps, "animations"> & {
     animation: MotionAnimationProps;

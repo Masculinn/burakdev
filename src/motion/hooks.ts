@@ -141,4 +141,4 @@ function animationReducer(
   }
 }
 
-export { useAnimation, useAnimationControl, useAnimationMixer };
+export { useAnimationMixer };

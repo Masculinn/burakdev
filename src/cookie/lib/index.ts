@@ -4,7 +4,7 @@ import type { ConsentRecord, ConsentState } from "../types";
 const { CONSENT_KEY, HISTORY_KEY, CONSENT_VERSION } = config;
 export const OPEN_PREFERENCES_EVENT = "site:open-cookie-preferences";
 
-export function parseStoredConsent(raw: string | null): ConsentState | null {
+function parseStoredConsent(raw: string | null): ConsentState | null {
   if (!raw) return null;
   try {
     const record: unknown = JSON.parse(raw);
@@ -59,11 +59,4 @@ export function writeStoredConsent(record: ConsentRecord): boolean {
     /* Consent itself was saved successfully. */
   }
   return true;
-}
-
-/** Can be called from a footer button outside Cookie's internal provider. */
-export function openCookiePreferences(): void {
-  if (typeof window !== "undefined") {
-    window.dispatchEvent(new Event(OPEN_PREFERENCES_EVENT));
-  }
 }

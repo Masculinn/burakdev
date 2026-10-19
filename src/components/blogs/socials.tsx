@@ -12,7 +12,7 @@ import {
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useState } from "react";
-import X from "../icons/svg-icons/X";
+import { X } from "../icons/svg-icons";
 import Linkedin from "../icons/svg-icons/linkedin";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";

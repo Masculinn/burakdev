@@ -1,16 +1,18 @@
-import { NavBasic } from "@/components/sidebar/nav-basic";
-import { NavMain } from "@/components/sidebar/nav-main";
+import { NavGroup } from "@/components/sidebar/nav-basic";
 import { NavUser } from "@/components/sidebar/nav-user";
 import {
   Sidebar,
   SidebarContent,
   SidebarHeader,
 } from "@/components/ui/sidebar";
-import data from "@/constants/sidebar.data";
+import {
+  articlesData,
+  platformData,
+  socialsData,
+} from "@/constants/sidebar.data";
 import type * as React from "react";
-import { NavBlogs } from "./nav-blogs";
 
-const { socials, user } = data;
+const { socials, user } = socialsData;
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -19,9 +21,13 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavUser user={user} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain />
-        <NavBlogs />
-        <NavBasic items={socials} name="Socials" />
+        <NavGroup items={platformData} name="Platform" />
+        <NavGroup items={articlesData} name="Latest Articles" />
+        <NavGroup
+          items={socials}
+          name="Socials"
+          linkProps={{ target: "_blank" }}
+        />
       </SidebarContent>
     </Sidebar>
   );

@@ -4,18 +4,16 @@
   Github,
   Linkedin,
 } from "@/components/icons/svg-icons";
+import slugs from "@/generated/slugs.json" with { type: "json" };
 import type { NavBasicType } from "@/interfaces";
+import {
+  BookOpenTextIcon,
+  EllipsisIcon,
+  HomeIcon,
+  LibraryIcon,
+} from "lucide-react";
 
-type DataType = {
-  user: {
-    name: string;
-    email: string;
-    avatar: string;
-  };
-  socials: NavBasicType[];
-};
-
-const data = {
+const socialsData = {
   user: {
     name: "Burak Bilen",
     email: "hello@burakdev.com",
@@ -43,6 +41,33 @@ const data = {
       icon: Bluesky,
     },
   ],
-} as const satisfies DataType;
+};
 
-export default data;
+const platformData = [
+  {
+    title: "Home",
+    icon: HomeIcon,
+    url: "/",
+  },
+  {
+    title: "Articles",
+    icon: LibraryIcon,
+    url: "/blogs",
+  },
+] as const satisfies NavBasicType[];
+
+const articlesData: NavBasicType[] = slugs
+  .reverse()
+  .slice(0, 3)
+  .map((slug) => ({
+    ...slug,
+    url: `/blogs/${slug.url}`,
+    icon: BookOpenTextIcon,
+  }))
+  .concat({
+    url: "/blogs",
+    title: "See All",
+    icon: EllipsisIcon,
+  });
+
+export { articlesData, platformData, socialsData };

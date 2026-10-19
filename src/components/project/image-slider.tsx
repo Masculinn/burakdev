@@ -25,7 +25,7 @@ export const Slider: FC<SliderProps> = ({ images, selected }) => {
   useEffect(() => {
     if (!api) return;
 
-    const sync = (): void => {
+    const sync = () => {
       setCount(api.scrollSnapList().length);
       setCurrent(api.selectedScrollSnap());
     };
