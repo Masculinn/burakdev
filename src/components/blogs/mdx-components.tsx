@@ -15,7 +15,6 @@ import {
   MdList,
   MdOl,
   MdParagraph,
-  MdPre,
   MdSummary,
   MdTable,
   MdTbody,
@@ -25,6 +24,7 @@ import {
   MdTr,
   MdUl,
 } from "./ui";
+import MdPre from "./ui/md-pre";
 
 export const MDXComponents = createMDXComponents({
   h1: (props) => <MdHeading as="h1" {...props} />,

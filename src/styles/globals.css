@@ -38,6 +38,30 @@
   --sidebar-border: oklch(0.923 0.003 48.717);
   --sidebar-ring: oklch(0.709 0.01 56.259);
   --blog-muted: oklch(0.372 0.01 285.938);
+
+  /* Syntax highlighting */
+
+  --syntax-bg: #000000;
+  --syntax-plain: #dce3ea;
+  --syntax-punctuation: #efefef;
+  --syntax-bracket: #ffd700;
+  --syntax-keyword: #dd4f7d;
+  --syntax-component: #dd4f7d;
+  --syntax-key: #dd4f7d;
+  --syntax-deleted: #dd4f7d;
+  --syntax-operator: #43aaf9;
+  --syntax-function: #43aaf9;
+  --syntax-tag: #43aaf9;
+  --syntax-constant: #43aaf9;
+  --syntax-escape: #43aaf9;
+  --syntax-ternary: #b267e6;
+  --syntax-type: #fac760;
+  --syntax-number: #fac760;
+  --syntax-attr: #fac760;
+  --syntax-string: #5bd1b9;
+  --syntax-regex: #5bd1b9;
+  --syntax-inserted: #5bd1b9;
+  --syntax-comment: #7c8796;
 }
 
 @theme inline {
@@ -207,9 +231,7 @@ button {
   --moon-bg: #c4c9d1;
   --spot-color: #959db1;
   --circle-container-offset: calc(
-    (var(--circle-container-diameter) - var(--container-height)) /
-    2 *
-    -1
+    (var(--circle-container-diameter) - var(--container-height)) / 2 * -1
   );
   --stars-color: #fff;
   --clouds-color: #f3fdff;
@@ -427,9 +449,7 @@ button {
   + .theme-switch__container
   .theme-switch__circle-container {
   left: calc(
-    100% -
-    var(--circle-container-offset) -
-    var(--circle-container-diameter)
+    100% - var(--circle-container-offset) - var(--circle-container-diameter)
   );
 }
 
@@ -440,10 +460,8 @@ button {
   + .theme-switch__container
   .theme-switch__circle-container:hover {
   left: calc(
-    100% -
-    var(--circle-container-offset) -
-    var(--circle-container-diameter) -
-    0.187em
+    100% - var(--circle-container-offset) - var(--circle-container-diameter) -
+      0.187em
   );
 }
 
