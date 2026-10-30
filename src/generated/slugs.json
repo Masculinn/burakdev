@@ -22,5 +22,9 @@
   {
     "url": "an-undecided-user-might-be-killing-your-server-all-along",
     "title": "An Undecided User Might Be Killing Your Server All Along"
+  },
+  {
+    "url": "live-next-js-bundle-analysis-measuring-the-impact-of-replacing-a-syntax-highlighting-library",
+    "title": "Live Next.js Bundle Analysis: Measuring the Impact of Replacing a Syntax Highlighting Library"
   }
 ]

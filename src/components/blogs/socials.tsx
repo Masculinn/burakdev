@@ -3,11 +3,11 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
 import { MotionImage } from "@/motion/components/motion-image";
 import {
-    CheckIcon,
-    CopyIcon,
-    LinkIcon,
-    RssIcon,
-    Share2Icon,
+  CheckIcon,
+  CopyIcon,
+  LinkIcon,
+  RssIcon,
+  Share2Icon,
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
