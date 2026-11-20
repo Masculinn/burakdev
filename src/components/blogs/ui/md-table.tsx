@@ -21,7 +21,7 @@ type MdTCaptionProps = HTMLAttributes<HTMLTableCaptionElement>;
 const MdTable: FC<MdTableProps> = (props) => (
   <Table
     {...props}
-    className="table-sticky table-zebra table-hover rounded-2xl my-4"
+    className="table-sticky table-zebra table-hover rounded-2xl mt-6"
   />
 );
 const MdThead: FC<MdTHeadProps> = (props) => <TableHeader {...props} />;

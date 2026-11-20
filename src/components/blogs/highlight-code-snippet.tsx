@@ -5,13 +5,12 @@ import type { ThemedToken } from "@shikijs/core";
 import { type CSSProperties, use } from "react";
 
 interface Props {
-  isInView: boolean;
   shouldAnimate: boolean;
   code: string;
 }
 
 const ANIMATION_CONFIG = {
-  duration: 0.15,
+  duration: 0.08,
   delayLogic: "linear",
 } as const as MotionChainConfigProps;
 
@@ -41,7 +40,7 @@ function getTokenStyle(
 
 const highlighterPromise = getHighlighter();
 
-function HighlightCodeSnippet({ isInView, shouldAnimate, code }: Props) {
+function HighlightCodeSnippet({ shouldAnimate, code }: Props) {
   const highlighter = use(highlighterPromise);
   if (!highlighter) return null;
 
@@ -58,10 +57,15 @@ function HighlightCodeSnippet({ isInView, shouldAnimate, code }: Props) {
         animations={tokens.map(() => ({
           mode: ["fadeIn", "filterBlurIn"],
           transition: "gentle",
-          duration: 1,
+          duration: 0.66,
         }))}
+        controller={{
+          configView: {
+            once: true,
+            amount: 0.25,
+          },
+        }}
         elementType="div"
-        controller={{ trigger: isInView }}
         config={ANIMATION_CONFIG}
       >
         {tokens.map((line, lineIndex) => (

@@ -360,7 +360,7 @@ export function MdContents({
       </div>
       <nav
         ref={sidebarRef}
-        className="max-h-[74vh] h-auto overflow-y-scroll scrolbar-custom"
+        className="max-h-[60vh] h-auto overflow-y-scroll scrolbar-custom"
         aria-label="On this page"
       >
         <ul className="m-0 flex flex-col list-none gap-3 p-0">

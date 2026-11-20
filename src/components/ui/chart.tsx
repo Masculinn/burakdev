@@ -43,6 +43,7 @@ function ChartContainer({
   children,
   config,
   initialDimension = INITIAL_DIMENSION,
+  title,
   ...props
 }: React.ComponentProps<"div"> & {
   config: ChartConfig;
@@ -53,12 +54,19 @@ function ChartContainer({
     width: number;
     height: number;
   };
+  title?: string;
 }) {
   const uniqueId = React.useId();
   const chartId = `chart-${id ?? uniqueId.replace(/:/g, "")}`;
 
   return (
     <ChartContext.Provider value={{ config }}>
+      {title && (
+        <span className="justify-self-center mt-6 italic font-semibold text-foreground">
+          {title}
+        </span>
+      )}
+
       <div
         data-slot="chart"
         data-chart={chartId}

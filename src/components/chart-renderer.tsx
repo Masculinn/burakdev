@@ -104,8 +104,9 @@ export function ChartRenderer({
   return (
     <ChartContainer
       config={config}
+      title={chart.title}
       className={cn(
-        "aspect-auto block w-full min-w-0 max-w-full overflow-hidden",
+        "aspect-auto block w-full min-w-0 max-w-full overflow-hidden mb-12 mt-6",
         className,
       )}
       style={{ height }}

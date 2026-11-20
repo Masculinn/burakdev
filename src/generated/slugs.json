@@ -26,5 +26,9 @@
   {
     "url": "live-next-js-bundle-analysis-measuring-the-impact-of-replacing-a-syntax-highlighting-library",
     "title": "Live Next.js Bundle Analysis: Measuring the Impact of Replacing a Syntax Highlighting Library"
+  },
+  {
+    "url": "is-your-lazy-loader-preserving-proper-ssr",
+    "title": "Is Your Lazy Loader Preserving Proper SSR?"
   }
 ]

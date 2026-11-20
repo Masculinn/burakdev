@@ -4,7 +4,6 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { useElementSize } from "@/hooks/use-element-size";
 import { usePrefersReducedMotion } from "@/hooks/use-reduced-motion";
 import type { HTMLAttributes } from "@/interfaces";
-import { useInView } from "motion/react";
 import dynamic from "next/dynamic";
 import { Children, isValidElement, memo, Suspense, type FC } from "react";
 import { CopyCode } from "../copy-code";
@@ -37,7 +36,6 @@ function getLanguage(child: unknown): string | "text" {
 
 const MdPreComponent: FC<MdPreProps> = memo(({ lang, ...props }) => {
   const { ref: preRef, size } = useElementSize<HTMLPreElement>();
-  const isInView = useInView(preRef, { once: false });
 
   const isReducedMotion = usePrefersReducedMotion();
 
@@ -88,11 +86,7 @@ const MdPreComponent: FC<MdPreProps> = memo(({ lang, ...props }) => {
             name="highlight-suspense"
             fallback={<Skeleton className="size-full" />}
           >
-            <HighlightCodeSnippet
-              code={code}
-              isInView={isInView}
-              shouldAnimate={shouldAnimate}
-            />
+            <HighlightCodeSnippet code={code} shouldAnimate={shouldAnimate} />
           </Suspense>
         </pre>
         <ScrollBar orientation="vertical" />

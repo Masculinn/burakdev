@@ -344,6 +344,11 @@
     "height": 682,
     "width": 2048
   },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/react-lazy-loading-banner-771e9153.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAv0lEQVQImWPYu7upc0paSWtsbnNcVnN8bGVkZHlEeFlEUHG4V24Qw/9fhz7cm3PuZO/qTXVrttYvWVsxZWFB2/SMhIoQz0QnBv9Y27hMR59Ic+cwU+sAY0M3HSl9SSFNUS4lAQ55TgYGATDiZWAQYWCRYGCVZBCQYeCWYeCUZmASZ2CICFYJCFB08lAyc5RVNxGT1OCVUOdWMhSU1ODilGZgkFbnlNflldPmk1DlkNHiltPmk9TikVDl4BAHmQcA5CktnjcuM50AAAAASUVORK5CYII=",
+    "height": 2251,
+    "width": 4000
+  },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/auth-with-axios-diagram.png": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAJCAIAAACExCpEAAAACXBIWXMAAAsSAAALEgHS3X78AAAA9UlEQVQYlWPYvfuAp1e4kbFdSXHdrVu3bt++U1hYo61jERycsHv3AYb/YHDw4IHCwkJJMEhPT9+2bRtEHCS9atUqSUnJ2NjYVatWzZ+/oKOj49y5cwjpZ8+ebd26ZdWqVUVgcP78hevXr3/+/Bkq/f///1u3bh08eGAVCKxcuWIxHy9rc0vdv39/odIQtZ8/f7l69YKcFAMDA0NkmOad2ydB0p8/f75169azZ8+2bNk2eVKvrASDliZbT1vCvXsXoNLPnj27efPGvgMHpkzuV1ZgSEt2XLm0/v69SwwQf0M8eujQobVr1ycm5zk4+odHph47dhoAfO2u+yvsDTEAAAAASUVORK5CYII=",
     "height": 723,
@@ -408,6 +413,11 @@
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAA+ElEQVQImR3DTUvCcADA4X+X7l73DWTtEF48CDuEWK3aAhcEUyIkiJKUUZoZ0mplgrHaCELNSggpojciKIIIIvDgN+nq9Rf0wCOmdR1zzmQ8kUDTNDa21vnufbHtlNi0bV6fHljOZBATySTmwjyxaISwHMat76IbBm59B6dUwJjRqTkVhBqPY1qzTE6NoaoxKvtlsrkVmh2f++s2brmIf+AicvlVCkWbVDqNlbI461xw3vTpXvr0fz64aQecHu0hItFRhoYFQggkSeJ3MOD5pctVq0a/98bn+y2Pdy2EoiiEQqH/8ohM1fPwTg7Jri1i55cIgiqNxjF/c2eKeqcKB3kAAAAASUVORK5CYII=",
     "height": 495,
     "width": 880
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/motion-provider-animation-complexity-scale-35d74f50.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAIAAADzBuo/AAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAiklEQVQImWOQlZV1QwVdXV2zZs3atGnTrFmzGAw1lTISAj3sjVytDTPjAlytDSEoMy7Aw94IJB3u6+hhb+Rhb5QZ6+dqbWhrrOFhbxQX6BroYsHAJyAgKiHKyMgYHZlQmpOWEBVqb28vJCRka2SkqaTEALGvqqrq/+fLkyZNampqqqqqkpCQYAQDAL/QLBJMv2TmAAAAAElFTkSuQmCC",
+    "height": 429,
+    "width": 926
   },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/outcome-second-session-cd5e9b7f.webp": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAYAAAD68A/GAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAApElEQVQImWNQkpP/Lycj89/ExOS/lqbGfykJif+qKqr/tfX0/ssrKvxnYGCAYEdz6/+ujo7/w6Oi/xdXNf7Pyy36b2ll9d/C1gasmJ2DA6Iw0tv3//8vX/5/+////5TZi/7vPXLif3RM9H8fX9//mdlZ/62trSAKS7Jy/zvZ2f23sbH+LyYq+p+Ziek/Lw8PHHNxcUFMBbkH7g4cGKSYgZAiGAYALs9ZbFltRgwAAAAASUVORK5CYII=",
@@ -488,6 +498,11 @@
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAApElEQVQImWPg5+dnY2PjAANWVlYODg5eXl4BAQF+fn5eXl6G+Ly6sJTisJTiyJTSyJTSmPTymPTyqIxKTTBgKDn7v+jU/5Kz/8tOIVDlgf/qYMBQuft/+fb/ZTv+Vxz+X3H2f8WmnxWbftbuhElfPVRz4WD5hYPll3Ymn1/jXXH6f83R/13bnkCl/191+f/Y6/+HgP+fQKhy5//yLX+rZu2DSAMAKu5UumPhMwMAAAAASUVORK5CYII=",
     "height": 1080,
     "width": 1920
+  },
+  "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/screenshot-2026-11-20-112407-be106ec4.webp": {
+    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAIAAAB1kpiRAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAmElEQVQImWNgZmaWZmHmZWNRleZkEgYhFQluDg4OcXFxZmZmBmZmZj4+Pg4ODkFBQR4w4OLiYmZmhpAgaXZGZmkOdmYYkFJVz2qcGhySCZUWZGFx4uSHS7u5uf3/93/Ltm0gaT4+PjExMRkZGX5xKQ4eXoj0+2/ftu3YDpLm4eEREQJZyQ92CzMzs6m1zezDhyv7JzAzMwMABJMYqzklrn8AAAAASUVORK5CYII=",
+    "height": 410,
+    "width": 697
   },
   "https://ytpmpkgcjlcdidphswzv.supabase.co/storage/v1/object/public/banner/serp-illustration.webp": {
     "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAFCAYAAAB8ZH1oAAAACXBIWXMAAAPoAAAD6AG1e1JrAAAAhklEQVQImWOIb5z8D4QtEsv+MSg7/WMQM4Vj/ZhisFx84+S/DPGNk/+DcP3MVf8zK3r/L9ty7P/8jUfBdH7HLLAcSDFc4Yz1u/9nZef///Tl2//P336DFU5ZtQ1T4cJth/4vX7UOrPDn7///f///D9aMrBDkhv95fXP/101fioIzO2bAFQIAjpmDKhFo+WsAAAAASUVORK5CYII=",
